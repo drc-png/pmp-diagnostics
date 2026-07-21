@@ -9104,6 +9104,41 @@ function submitScoresToSheet(data, isRetry) {
 function saveAsPDF() {
   setTimeout(function() { window.print(); }, 150);
 }
+
+(function() {
+  function getExamHeight() {
+    var body = document.body;
+    var doc = document.documentElement;
+    return Math.max(
+      body ? body.scrollHeight : 0,
+      body ? body.offsetHeight : 0,
+      doc ? doc.clientHeight : 0,
+      doc ? doc.scrollHeight : 0,
+      doc ? doc.offsetHeight : 0
+    );
+  }
+  function sendExamHeight() {
+    try {
+      window.parent.postMessage({ type: 'pmpDiagnosticHeight', height: getExamHeight() }, '*');
+    } catch (e) {}
+  }
+  window.addEventListener('load', sendExamHeight);
+  window.addEventListener('resize', sendExamHeight);
+  window.addEventListener('message', function(event) {
+    if (event && event.data && event.data.type === 'pmpDiagnosticRequestHeight') sendExamHeight();
+  });
+  if (window.MutationObserver) {
+    new MutationObserver(sendExamHeight).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true
+    });
+  }
+  setInterval(sendExamHeight, 1500);
+  sendExamHeight();
+})();
+
 </script>
 </body>
 </html>
