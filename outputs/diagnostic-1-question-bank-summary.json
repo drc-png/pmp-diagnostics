@@ -1,0 +1,74 @@
+{
+  "questionCount": 180,
+  "columns": [
+    "bank_id",
+    "source_exam",
+    "original_number",
+    "status",
+    "reuse_ready",
+    "review_notes",
+    "domain",
+    "topic",
+    "task",
+    "task_label",
+    "approach",
+    "pattern",
+    "format",
+    "difficulty",
+    "stem",
+    "option_a",
+    "option_b",
+    "option_c",
+    "option_d",
+    "option_e",
+    "correct_index_zero_based",
+    "correct_letter",
+    "correct_answer_text",
+    "rationale",
+    "source_references",
+    "eco_reference",
+    "pmbok_reference",
+    "page_references",
+    "stimulus",
+    "case_id",
+    "raw_json"
+  ],
+  "sourceKeysFound": [
+    "a",
+    "caseHtml",
+    "d",
+    "difficulty",
+    "format",
+    "graphicHtml",
+    "o",
+    "pattern",
+    "q",
+    "r",
+    "rule",
+    "t",
+    "task",
+    "taskLabel",
+    "x"
+  ],
+  "domainCounts": {
+    "people": 59,
+    "process": 74,
+    "business": 47
+  },
+  "approachCounts": {
+    "hybrid": 72,
+    "predictive": 72,
+    "adaptive": 36
+  },
+  "formatCounts": {
+    "Scenario": 145,
+    "Case": 24,
+    "Graphic": 11
+  },
+  "difficultyCounts": {
+    "Moderate-Hard": 89,
+    "Hard": 56,
+    "Moderate": 35
+  },
+  "sourceReferenceNote": "ECO source references inferred from each question’s stored domain/task/taskLabel metadata. Original HTML did not include separate PMBOK/sourceAnchors fields."
+}
