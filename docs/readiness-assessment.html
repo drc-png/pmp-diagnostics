@@ -699,7 +699,7 @@ var candidateType = '';
 var targetWindow = '';
 var funnelOptIn = true;
 var checkpoint = 'PMP 2026 Readiness Assessment - Lead Diagnostic';
-var STORAGE_VERSION = 'pmp-2026-readiness-lead-v4';
+var STORAGE_VERSION = 'pmp-2026-readiness-lead-v5';
 var STORAGE_KEY = 'pmpTrainingAcademyReadinessProgress';
 var LAST_SUBMISSION_KEY = 'pmpTrainingAcademyLastSubmission';
 var sessionActive = false;
@@ -720,8 +720,7 @@ var questions = [
       "Route the reprioritization through integrated change control, since changing feature priority alters scope and expected outcomes"
     ],
     "x": 1,
-    "r": "The direction pits a charter-named sponsor against a funded benefit. Before renegotiating criteria, submitting a change, or executing, the PM needs the size of the benefit effect and a governance ruling on which objective now governs. Closest distractor D: Integrated change control is a legitimate later step, but it presumes the answer is a scope change before the value tradeoff is measured or the governing objective is confirmed, so it is premature.",
-    "difficulty": "Hard"
+    "r": "The direction pits a charter-named sponsor against a funded benefit. Before renegotiating criteria, submitting a change, or executing, the PM needs the size of the benefit effect and a governance ruling on which objective now governs. Closest distractor D: Integrated change control is a legitimate later step, but it presumes the answer is a scope change before the value tradeoff is measured or the governing objective is confirmed, so it is premature."
   },
   {
     "d": "business",
@@ -735,8 +734,7 @@ var questions = [
       "Rank the three outcomes by value against the business case and bring the funding tradeoff, with a recommendation, to the body authorized to decide it"
     ],
     "x": 3,
-    "r": "The funding shortfall is a prioritization decision above the PM's authority. The PM prepares a value-based recommendation and escalates to the body that can decide. Closest distractor C: Facilitation is normally preferred, but the workshop already failed once; repeating it delays a decision the PM cannot make.",
-    "difficulty": "Hard"
+    "r": "The funding shortfall is a prioritization decision above the PM's authority. The PM prepares a value-based recommendation and escalates to the body that can decide. Closest distractor C: Facilitation is normally preferred, but the workshop already failed once; repeating it delays a decision the PM cannot make."
   },
   {
     "d": "people",
@@ -750,8 +748,7 @@ var questions = [
       "Select the approach with the lower operational risk, since long-term supportability protects the benefits in the business case"
     ],
     "x": 2,
-    "r": "The sponsor asked the PM to resolve it, and the PM owns facilitation, not the technical verdict. Shared decision criteria with the architects and operational stakeholders produce a defensible choice while the interpersonal conflict is handled separately. Closest distractor B: A combined approach sounds constructive but presumes a hybrid solution exists and skips the agreed criteria that make any choice defensible.",
-    "difficulty": "Hard"
+    "r": "The sponsor asked the PM to resolve it, and the PM owns facilitation, not the technical verdict. Shared decision criteria with the architects and operational stakeholders produce a defensible choice while the interpersonal conflict is handled separately. Closest distractor B: A combined approach sounds constructive but presumes a hybrid solution exists and skips the agreed criteria that make any choice defensible."
   },
   {
     "d": "people",
@@ -765,8 +762,7 @@ var questions = [
       "Ask the expert to spend the remaining three weeks recording detailed walkthroughs of the common troubleshooting scenarios and the judgment behind them"
     ],
     "x": 2,
-    "r": "With three weeks and no named replacement, the PM first separates knowledge critical to deployment from knowledge critical to operations, then chooses transfer methods that do not hinge on a replacement arriving in time. Closest distractor D: Recorded walkthroughs are one valid mechanism, but selecting a mechanism before scoping the critical knowledge risks capturing the wrong things.",
-    "difficulty": "Moderate-Hard"
+    "r": "With three weeks and no named replacement, the PM first separates knowledge critical to deployment from knowledge critical to operations, then chooses transfer methods that do not hinge on a replacement arriving in time. Closest distractor D: Recorded walkthroughs are one valid mechanism, but selecting a mechanism before scoping the critical knowledge risks capturing the wrong things."
   },
   {
     "d": "people",
@@ -780,8 +776,7 @@ var questions = [
       "Raise an issue with the PMO that the mandated template does not support stakeholder decision needs and request a template exception"
     ],
     "x": 1,
-    "r": "Reports are timely, accurate, and on-template, so the gap is relevance to the decisions stakeholders must make. The PM identifies those decisions and the information they require, then revises the approach. Closest distractor C: Adding a section is a plausible partial fix, but it bolts content onto the existing report without first confirming it matches the decisions stakeholders own.",
-    "difficulty": "Moderate-Hard"
+    "r": "Reports are timely, accurate, and on-template, so the gap is relevance to the decisions stakeholders must make. The PM identifies those decisions and the information they require, then revises the approach. Closest distractor C: Adding a section is a plausible partial fix, but it bolts content onto the existing report without first confirming it matches the decisions stakeholders own."
   },
   {
     "d": "people",
@@ -795,8 +790,7 @@ var questions = [
       "Raise the escaped-defect trend to governance, since delivered work is not meeting quality expectations"
     ],
     "x": 0,
-    "r": "Doubling defects plus self-censoring developers signal suppressed dissent, a team-health cause the PM owns. Surfacing the trend and renegotiating working agreements to protect dissent addresses the cause. Closest distractor B: A design-review gate treats the symptom and can further discourage raising concerns, rather than restoring the safety that let them surface.",
-    "difficulty": "Hard"
+    "r": "Doubling defects plus self-censoring developers signal suppressed dissent, a team-health cause the PM owns. Surfacing the trend and renegotiating working agreements to protect dissent addresses the cause. Closest distractor B: A design-review gate treats the symptom and can further discourage raising concerns, rather than restoring the safety that let them surface."
   },
   {
     "d": "business",
@@ -814,7 +808,6 @@ var questions = [
       2
     ],
     "r": "The concern is not yet a finding, so a full halt is disproportionate, but the sponsor should not self-accept regulatory exposure. The PM scopes the affected work and routes the risk-acceptance decision to the proper authority. Continuing everything or seeking a disclaimer skips that authority question.",
-    "difficulty": "Hard",
     "type": "multi",
     "selectCount": 2
   },
@@ -830,8 +823,7 @@ var questions = [
       "Deliver a reduced launch scope in six weeks that operations can support with existing staff, and defer the remaining scope to a second release"
     ],
     "x": 0,
-    "r": "Three sponsor-blessed but incompatible commitments call for the PM to convene the groups, expose the conflict, set decision criteria, and escalate only the unresolved remainder. Closest distractor C: Escalating to the sponsor is defensible, but it hands up the entire tradeoff before facilitation and removes decisions the groups could make themselves.",
-    "difficulty": "Hard"
+    "r": "Three sponsor-blessed but incompatible commitments call for the PM to convene the groups, expose the conflict, set decision criteria, and escalate only the unresolved remainder. Closest distractor C: Escalating to the sponsor is defensible, but it hands up the entire tradeoff before facilitation and removes decisions the groups could make themselves."
   },
   {
     "d": "people",
@@ -845,8 +837,7 @@ var questions = [
       "Ask the sponsor to replace the customer representative with someone who can confirm both technical acceptance and business usability"
     ],
     "x": 0,
-    "r": "The dispute is about what acceptance means, so the PM clarifies and documents the acceptance authority, the story-acceptance versus business-validation distinction, and the escalation path before the next review. Closest distractor B: Treating the approvals as binding is tempting because they are real, but it ignores the unmet business-usability need the executive is raising.",
-    "difficulty": "Hard"
+    "r": "The dispute is about what acceptance means, so the PM clarifies and documents the acceptance authority, the story-acceptance versus business-validation distinction, and the escalation path before the next review. Closest distractor B: Treating the approvals as binding is tempting because they are real, but it ignores the unmet business-usability need the executive is raising."
   },
   {
     "d": "people",
@@ -860,8 +851,7 @@ var questions = [
       "Request sponsor approval for a temporary authority matrix that transfers routine installation decisions to the team while the project manager retains escalation authority"
     ],
     "x": 2,
-    "r": "Mixed demonstrated competence plus a plan that permits delegated execution at approved hold points calls for staged delegation, expanding autonomy as field competence is shown. Closest distractor A: Self-organization with a mentor grants full autonomy before field competence exists and reviews too late for safety-critical work.",
-    "difficulty": "Moderate-Hard"
+    "r": "Mixed demonstrated competence plus a plan that permits delegated execution at approved hold points calls for staged delegation, expanding autonomy as field competence is shown. Closest distractor A: Self-organization with a mentor grants full autonomy before field competence exists and reviews too late for safety-critical work."
   },
   {
     "d": "business",
@@ -875,8 +865,7 @@ var questions = [
       "Ask the accessibility lead whether the reduced testing approach is acceptable, and commit the date if the lead agrees"
     ],
     "x": 0,
-    "r": "The evidence shows the date is reachable only by dropping below an organizational standard, a tradeoff above the PM and above any single lead. The PM puts the evidence in front of governance and forces an explicit decision. Closest distractor B: Proposing a compliant date is constructive, but it hands the decision framing to the sponsor rather than presenting the tradeoff for a governance ruling.",
-    "difficulty": "Hard"
+    "r": "The evidence shows the date is reachable only by dropping below an organizational standard, a tradeoff above the PM and above any single lead. The PM puts the evidence in front of governance and forces an explicit decision. Closest distractor B: Proposing a compliant date is constructive, but it hands the decision framing to the sponsor rather than presenting the tradeoff for a governance ruling."
   },
   {
     "d": "people",
@@ -890,8 +879,7 @@ var questions = [
       "Invite the funding stakeholder to refinement so that priority decisions are made transparently in front of the team"
     ],
     "x": 1,
-    "r": "The PO holds the authority but is deferring against value evidence, so the PM coaches on role authority and facilitates explicit value criteria that include the funding constraint, surfacing any genuine governance conflict. Closest distractor A: Escalating to the sponsor is premature, because it asks someone else to decide a call the PO is empowered to make once supported.",
-    "difficulty": "Hard"
+    "r": "The PO holds the authority but is deferring against value evidence, so the PM coaches on role authority and facilitates explicit value criteria that include the funding constraint, surfacing any genuine governance conflict. Closest distractor A: Escalating to the sponsor is premature, because it asks someone else to decide a call the PO is empowered to make once supported."
   },
   {
     "d": "process",
@@ -905,8 +893,7 @@ var questions = [
       "Require the team to enter every spreadsheet item into the formal system before any status is issued, even if the reporting deadline is missed"
     ],
     "x": 2,
-    "r": "Two valid sources disagree before a customer update, so the PM reconciles enough to correct the customer-facing position, discloses residual uncertainty, and sets up controlled ownership and synchronization for the system of record. Closest distractor A: Reporting the higher count with a caveat is tempting, but it publishes an unreconciled number and postpones the actual fix.",
-    "difficulty": "Moderate-Hard"
+    "r": "Two valid sources disagree before a customer update, so the PM reconciles enough to correct the customer-facing position, discloses residual uncertainty, and sets up controlled ownership and synchronization for the system of record. Closest distractor A: Reporting the higher count with a caveat is tempting, but it publishes an unreconciled number and postpones the actual fix."
   },
   {
     "d": "process",
@@ -920,8 +907,7 @@ var questions = [
       "Document the benefit owner's dissatisfaction in the communications plan and ask her to attend the regular status meeting for additional context"
     ],
     "x": 0,
-    "r": "The dashboard is accurate but does not surface the owner's decision, and the exception was properly denied to keep reporting standard. The PM keeps the standard dashboard and adds a controlled decision brief from the same reconciled data. Closest distractor C: A more detailed dashboard adds volume to the wrong artifact without addressing the specific decision the owner must make.",
-    "difficulty": "Moderate-Hard"
+    "r": "The dashboard is accurate but does not surface the owner's decision, and the exception was properly denied to keep reporting standard. The PM keeps the standard dashboard and adds a controlled decision brief from the same reconciled data. Closest distractor C: A more detailed dashboard adds volume to the wrong artifact without addressing the specific decision the owner must make."
   },
   {
     "d": "people",
@@ -935,8 +921,7 @@ var questions = [
       "Rotate the decision-owner role among team members so authority is distributed more evenly across the next several iterations"
     ],
     "x": 2,
-    "r": "Concentrated decision-making plus rising rework and private-only concerns show the structure is suppressing dissent. The PM uses the rework evidence to establish working agreements for constructive dissent and explicit participation expectations. Closest distractor B: Coaching individuals is reasonable, but leaving the suppressing structure in place lets the cause persist.",
-    "difficulty": "Hard"
+    "r": "Concentrated decision-making plus rising rework and private-only concerns show the structure is suppressing dissent. The PM uses the rework evidence to establish working agreements for constructive dissent and explicit participation expectations. Closest distractor B: Coaching individuals is reasonable, but leaving the suppressing structure in place lets the cause persist."
   },
   {
     "d": "business",
@@ -950,8 +935,7 @@ var questions = [
       "Submit the permit application on the current basis and add the community concerns to the issue log for resolution when the sponsor returns"
     ],
     "x": 1,
-    "r": "Both commitments exceed PM authority and the deadline lands during the sponsor's absence, so the PM uses the governance escalation path to obtain an authorized decision in time. Closest distractor A: Making the communication commitment looks affordable, but it authorizes part of a decision the PM cannot make and splits a coupled tradeoff.",
-    "difficulty": "Hard"
+    "r": "Both commitments exceed PM authority and the deadline lands during the sponsor's absence, so the PM uses the governance escalation path to obtain an authorized decision in time. Closest distractor A: Making the communication commitment looks affordable, but it authorizes part of a decision the PM cannot make and splits a coupled tradeoff."
   },
   {
     "d": "process",
@@ -965,8 +949,7 @@ var questions = [
       "Continue the current iteration and address the conflicting interpretations during the release retrospective"
     ],
     "x": 1,
-    "r": "Stable velocity and acceptance hide that delivered work supports three different goals. The PM facilitates alignment on one measurable outcome and uses it to test future priorities. Closest distractor A: The mapping is useful and necessary input, but analysis alone stops short of resolving the missing shared goal.",
-    "difficulty": "Hard"
+    "r": "Stable velocity and acceptance hide that delivered work supports three different goals. The PM facilitates alignment on one measurable outcome and uses it to test future priorities. Closest distractor A: The mapping is useful and necessary input, but analysis alone stops short of resolving the missing shared goal."
   },
   {
     "d": "process",
@@ -974,7 +957,6 @@ var questions = [
     "a": "Hybrid",
     "q": "A project combines an AI-assisted triage capability, a data-center migration with a contractual cutover date, an analytics vendor doing exploratory work, and one shared release milestone. Match each workstream condition to the planning control that best fits it.",
     "r": "Different workstreams can require different controls. The PM should combine adaptive discovery, predictive milestones, supplier controls, and an integrated roadmap rather than forcing one planning method across all work.",
-    "difficulty": "Hard",
     "type": "matching",
     "pairs": [
       {
@@ -1014,8 +996,7 @@ var questions = [
       "Deferring the approach decision until the analytics requirements are defined well enough to allow a consistent approach across the project"
     ],
     "x": 1,
-    "r": "Stable auditable regulatory work alongside unstable experimental analytics on one platform is the textbook hybrid case, governing each stream appropriately and defining shared-platform and team management. Closest distractor C: Making compliance a definition-of-done item subordinates mandatory audit evidence to a per-iteration checklist inside experimentation.",
-    "difficulty": "Moderate-Hard"
+    "r": "Stable auditable regulatory work alongside unstable experimental analytics on one platform is the textbook hybrid case, governing each stream appropriately and defining shared-platform and team management. Closest distractor C: Making compliance a definition-of-done item subordinates mandatory audit evidence to a per-iteration checklist inside experimentation."
   },
   {
     "d": "business",
@@ -1029,7 +1010,6 @@ var questions = [
       3
     ],
     "r": "When impact analysis is complete, the PM records the request and analysis, sends the package to the authorized change authority, communicates the disposition, and updates baselines only after approval. Implementation before disposition bypasses change control.",
-    "difficulty": "Hard",
     "type": "sequence",
     "steps": [
       "Update affected baselines and authorize implementation of the reporting module.",
@@ -1050,8 +1030,7 @@ var questions = [
       "Release the narrow workflow in three weeks, since it addresses the largest cost driver and starts benefits realization earlier"
     ],
     "x": 0,
-    "r": "The early release has genuine benefit and genuine readiness cost, and the choice belongs to the PO and sponsor once framed. The PM assembles the readiness-versus-benefit tradeoff and options for their decision. Closest distractor B: A pilot looks measured, but it still commits a direction the decision-owners have not chosen and still exposes support.",
-    "difficulty": "Hard"
+    "r": "The early release has genuine benefit and genuine readiness cost, and the choice belongs to the PO and sponsor once framed. The PM assembles the readiness-versus-benefit tradeoff and options for their decision. Closest distractor B: A pilot looks measured, but it still commits a direction the decision-owners have not chosen and still exposes support."
   },
   {
     "d": "process",
@@ -1065,8 +1044,7 @@ var questions = [
       "Rebaseline the schedule using the analyst's actual availability, and report the resulting variance and forecast slip to the sponsor"
     ],
     "x": 1,
-    "r": "The schedule looks clean only because the analyst is absorbing the gap after hours. The PM first surfaces real availability and the sustainability exposure, then routes the resource conflict to the authority that can resolve it. Closest distractor D: Rebaselining reflects reality but accepts the slip and the unsustainable pattern instead of resolving the underlying conflict.",
-    "difficulty": "Hard"
+    "r": "The schedule looks clean only because the analyst is absorbing the gap after hours. The PM first surfaces real availability and the sustainability exposure, then routes the resource conflict to the authority that can resolve it. Closest distractor D: Rebaselining reflects reality but accepts the slip and the unsustainable pattern instead of resolving the underlying conflict."
   },
   {
     "d": "process",
@@ -1080,8 +1058,7 @@ var questions = [
       "Accept the milestone and raise a change request to revise the business outcome or fund internal remediation"
     ],
     "x": 0,
-    "r": "The deliverable meets the numeric appendix but fails the SOW business outcome, and the contract sets the remedy path, so the PM issues written notice with evidence, runs the cure period, and defers acceptance until criteria are met or the contract is amended. Closest distractor C: Refusing acceptance is directionally right, but skipping the required notice-and-cure sequence and going to legal is premature under the contract.",
-    "difficulty": "Hard"
+    "r": "The deliverable meets the numeric appendix but fails the SOW business outcome, and the contract sets the remedy path, so the PM issues written notice with evidence, runs the cure period, and defers acceptance until criteria are met or the contract is amended. Closest distractor C: Refusing acceptance is directionally right, but skipping the required notice-and-cure sequence and going to legal is premature under the contract."
   },
   {
     "d": "process",
@@ -1099,7 +1076,6 @@ var questions = [
       2
     ],
     "r": "A threshold that is forecast to be crossed requires active forecasting and decision-ready options, not hidden use of management reserve or quality cuts. The PM prepares governance before the threshold is breached.",
-    "difficulty": "Hard",
     "type": "multi",
     "selectCount": 2
   },
@@ -1115,8 +1091,7 @@ var questions = [
       "Escalate to governance, since the project will not deliver the benefits in the business case despite meeting its requirements"
     ],
     "x": 2,
-    "r": "Deliverables conform but observed use will halve the benefit, so conformance is not proof of fitness for use. The PM tests whether the criteria capture fitness, quantifies the gap, and presents options to the sponsor and benefit owner. Closest distractor B: Reopening elicitation and raising changes is a plausible response, but it commits to rework before the gap is quantified or the decision-owners weigh in.",
-    "difficulty": "Hard"
+    "r": "Deliverables conform but observed use will halve the benefit, so conformance is not proof of fitness for use. The PM tests whether the criteria capture fitness, quantifies the gap, and presents options to the sponsor and benefit owner. Closest distractor B: Reopening elicitation and raising changes is a plausible response, but it commits to rework before the gap is quantified or the decision-owners weigh in."
   },
   {
     "d": "process",
@@ -1130,8 +1105,7 @@ var questions = [
       "Report the full four-week schedule impact in the governance report and request the corresponding change to the committed release date"
     ],
     "x": 2,
-    "r": "With a report due and the forecast unconfirmed, the PM analyzes the slip against float and release options, develops alternatives with impacts, and reports the exposure and options rather than a single number. Closest distractor D: Reporting the full four-week impact and requesting a date change acts on an unconfirmed forecast before float and options are analyzed, so it commits to one outcome prematurely.",
-    "difficulty": "Hard"
+    "r": "With a report due and the forecast unconfirmed, the PM analyzes the slip against float and release options, develops alternatives with impacts, and reports the exposure and options rather than a single number. Closest distractor D: Reporting the full four-week impact and requesting a date change acts on an unconfirmed forecast before float and options are analyzed, so it commits to one outcome prematurely."
   },
   {
     "d": "process",
@@ -1145,8 +1119,7 @@ var questions = [
       "Facilitate clarification of the business need and acceptance criteria, document the agreed requirement, and then assess change impacts"
     ],
     "x": 3,
-    "r": "The term was never defined, so before acting or filing a change the PM clarifies the business need and acceptance criteria, documents the agreed requirement, and only then assesses change impacts. Closest distractor C: Submitting a change request treats the five-second figure as the agreed requirement before it is defined, so it formalizes an unvalidated interpretation and analyzes the wrong target.",
-    "difficulty": "Hard"
+    "r": "The term was never defined, so before acting or filing a change the PM clarifies the business need and acceptance criteria, documents the agreed requirement, and only then assesses change impacts. Closest distractor C: Submitting a change request treats the five-second figure as the agreed requirement before it is defined, so it formalizes an unvalidated interpretation and analyzes the wrong target."
   },
   {
     "d": "process",
@@ -1160,8 +1133,7 @@ var questions = [
       "Present the benefits data to the sponsor and request a decision on whether the funding stakeholder's priorities should override the retention evidence for the coming release"
     ],
     "x": 2,
-    "r": "The PO owns priority but is reacting to pressure over value, so the PM facilitates a session where the PO applies explicit value criteria with both the benefits data and the funding constraint visible, surfacing any real conflict. Closest distractor D: Escalating to the sponsor asks someone else to decide a prioritization the PO owns; the data can inform the PO's decision without removing it.",
-    "difficulty": "Hard"
+    "r": "The PO owns priority but is reacting to pressure over value, so the PM facilitates a session where the PO applies explicit value criteria with both the benefits data and the funding constraint visible, surfacing any real conflict. Closest distractor D: Escalating to the sponsor asks someone else to decide a prioritization the PO owns; the data can inform the PO's decision without removing it."
   },
   {
     "d": "business",
@@ -1175,8 +1147,7 @@ var questions = [
       "Raise a change request to add the carbon-reduction target to the scope baseline, so that the deployment options can then be evaluated against a controlled requirement"
     ],
     "x": 1,
-    "r": "The commitment is real even though it never reached the baselines, so the PM quantifies the variance and its benefit and reputational exposure and presents deployment alternatives with impacts to the decision makers. Closest distractor D: Adding the target to the baseline via change control is a tidy-looking governance step, but it sequences the paperwork ahead of quantifying the actual variance and the options, which is the decision that matters now.",
-    "difficulty": "Hard"
+    "r": "The commitment is real even though it never reached the baselines, so the PM quantifies the variance and its benefit and reputational exposure and presents deployment alternatives with impacts to the decision makers. Closest distractor D: Adding the target to the baseline via change control is a tidy-looking governance step, but it sequences the paperwork ahead of quantifying the actual variance and the options, which is the decision that matters now."
   },
   {
     "d": "business",
@@ -1190,8 +1161,7 @@ var questions = [
       "Ask the sponsor to accept the temporary control because the policy already recognizes risk-based review"
     ],
     "x": 1,
-    "r": "The policy allows an expedited path, but only after AI governance approves the reviewer pool and method, so the PM holds the affected messages, requests that approval, and releases once the control is in place. Closest distractor C: Routing high-risk messages normally sounds prudent, but releasing low-risk messages still relies on an unapproved reviewer pool, which the policy requires AI governance to approve first.",
-    "difficulty": "Hard"
+    "r": "The policy allows an expedited path, but only after AI governance approves the reviewer pool and method, so the PM holds the affected messages, requests that approval, and releases once the control is in place. Closest distractor C: Routing high-risk messages normally sounds prudent, but releasing low-risk messages still relies on an unapproved reviewer pool, which the policy requires AI governance to approve first."
   },
   {
     "d": "process",
@@ -1199,7 +1169,6 @@ var questions = [
     "a": "Predictive/Hybrid",
     "q": "A roadmap, a sprint backlog, a risk register, and a contract milestone log are each maintained by a different owner and currently tell a different project story. Match each artifact to the status insight it should primarily provide before the project manager reconciles the report.",
     "r": "The PM reconciles status by understanding what each artifact is meant to prove. Mixing artifact purposes creates misleading status reporting even when each source is accurate in isolation.",
-    "difficulty": "Moderate-Hard",
     "type": "matching",
     "pairs": [
       {
@@ -1239,8 +1208,7 @@ var questions = [
       "A forecast with its assumptions and range, a proposed commitment date drawn from a stated confidence level, and the checkpoints at which the forecast will be refined"
     ],
     "x": 3,
-    "r": "Under moving assumptions, an honest forecast pairs assumptions and a range with a commitment date drawn from a stated confidence level and the checkpoints where it will be refined. Closest distractor A: A single high-confidence date with contingency is tempting, but it hides the assumptions and range the sponsor and board need to understand the risk they are accepting.",
-    "difficulty": "Hard"
+    "r": "Under moving assumptions, an honest forecast pairs assumptions and a range with a commitment date drawn from a stated confidence level and the checkpoints where it will be refined. Closest distractor A: A single high-confidence date with contingency is tempting, but it hides the assumptions and range the sponsor and board need to understand the risk they are accepting."
   },
   {
     "d": "process",
@@ -1254,8 +1222,7 @@ var questions = [
       "A firm fixed-price contract with a detailed statement of work, since the budget cap is a hard constraint and the design risk transfers to the seller, who is best placed to price it"
     ],
     "x": 2,
-    "r": "The requirement is both changing scope and a hard cap, so the strategy must hold the cap while accommodating change, such as a phased fixed-price design phase or incentive terms with a not-to-exceed ceiling. Closest distractor B: Cost-reimbursable fits the changing scope, but it does not hold the sponsor's hard budget cap, which the chosen strategy must preserve.",
-    "difficulty": "Hard"
+    "r": "The requirement is both changing scope and a hard cap, so the strategy must hold the cap while accommodating change, such as a phased fixed-price design phase or incentive terms with a not-to-exceed ceiling. Closest distractor B: Cost-reimbursable fits the changing scope, but it does not hold the sponsor's hard budget cap, which the chosen strategy must preserve."
   },
   {
     "d": "process",
@@ -1269,8 +1236,7 @@ var questions = [
       "Raise a change request to broaden reviewer authority for this work and close the audit finding once approval is obtained"
     ],
     "x": 1,
-    "r": "The finding is a process nonconformance, so the PM assesses both the process gap and the product impact, corrects records or checks as needed, and addresses why the plan was bypassed. Closest distractor A: Re-running every check assumes the results are invalid before the product impact is assessed, so it may be wasteful and still misses the root cause.",
-    "difficulty": "Moderate-Hard"
+    "r": "The finding is a process nonconformance, so the PM assesses both the process gap and the product impact, corrects records or checks as needed, and addresses why the plan was bypassed. Closest distractor A: Re-running every check assumes the results are invalid before the product impact is assessed, so it may be wasteful and still misses the root cause."
   },
   {
     "d": "business",
@@ -1284,8 +1250,7 @@ var questions = [
       "Remove the affected region from the release and proceed with the remaining users under the product owner's authority"
     ],
     "x": 2,
-    "r": "The governance plan carves out exactly this case, so once a regional reporting commitment may be affected the decision leaves the PO and goes to the governance path with the readiness evidence and options. Closest distractor D: Carving out the region lets the release proceed, but it sidesteps the governance decision the affected commitment requires rather than resolving it.",
-    "difficulty": "Hard"
+    "r": "The governance plan carves out exactly this case, so once a regional reporting commitment may be affected the decision leaves the PO and goes to the governance path with the readiness evidence and options. Closest distractor D: Carving out the region lets the release proceed, but it sidesteps the governance decision the affected commitment requires rather than resolving it."
   },
   {
     "d": "process",
@@ -1299,8 +1264,7 @@ var questions = [
       "Determine overall status from the integrated release forecast and disclose both the software progress and the migration exposure"
     ],
     "x": 3,
-    "r": "Overall status should reflect the integrated release forecast, so the PM sets status from that forecast and discloses both the strong software progress and the migration exposure. Closest distractor A: A blanket rule that one delayed workstream forces amber ignores the integrated forecast, which is what should actually determine overall status.",
-    "difficulty": "Moderate-Hard"
+    "r": "Overall status should reflect the integrated release forecast, so the PM sets status from that forecast and discloses both the strong software progress and the migration exposure. Closest distractor A: A blanket rule that one delayed workstream forces amber ignores the integrated forecast, which is what should actually determine overall status."
   },
   {
     "d": "business",
@@ -1314,8 +1278,7 @@ var questions = [
       "Accept the completed work, update the baselines to reflect it, and notify the supplier at the next scheduled review"
     ],
     "x": 1,
-    "r": "Approval does not license implementation before amendments, training, and baselines are processed, so the PM stops the affected work and assesses the exposure the early start created. Closest distractor C: Reporting the early start is appropriate later, but the PM should first stop the uncontrolled work and assess exposure rather than let it continue while awaiting direction.",
-    "difficulty": "Hard"
+    "r": "Approval does not license implementation before amendments, training, and baselines are processed, so the PM stops the affected work and assesses the exposure the early start created. Closest distractor C: Reporting the early start is appropriate later, but the PM should first stop the uncontrolled work and assess exposure rather than let it continue while awaiting direction."
   },
   {
     "d": "business",
@@ -1329,8 +1292,7 @@ var questions = [
       "Add the contract and regulatory commitments to the team's definition of done, so that every increment is validated against them before it can be accepted or released"
     ],
     "x": 2,
-    "r": "Thresholds let the PM escalate only the backlog changes that touch contracted or regulated commitments while leaving everything below the line with the PO, which protects both governance and responsiveness. Closest distractor B: Waiting until a breach becomes likely is tempting because nothing has breached yet, but it leaves commitment-affecting changes ungoverned until the last moment.",
-    "difficulty": "Hard"
+    "r": "Thresholds let the PM escalate only the backlog changes that touch contracted or regulated commitments while leaving everything below the line with the PO, which protects both governance and responsiveness. Closest distractor B: Waiting until a breach becomes likely is tempting because nothing has breached yet, but it leaves commitment-affecting changes ungoverned until the last moment."
   },
   {
     "d": "business",
@@ -1344,8 +1306,7 @@ var questions = [
       "Work with legal and compliance to evaluate the compensating-control path, and hold the affected release decision until that control is approved"
     ],
     "x": 3,
-    "r": "The regulator permits a compensating control with compliance approval, so the PM evaluates that path with legal and compliance and holds the affected release until the control is approved. Closest distractor C: Suspending the whole launch is over-broad, since only one data flow is in scope and an approved compensating control is available.",
-    "difficulty": "Hard"
+    "r": "The regulator permits a compensating control with compliance approval, so the PM evaluates that path with legal and compliance and holds the affected release until the control is approved. Closest distractor C: Suspending the whole launch is over-broad, since only one data flow is in scope and an approved compensating control is available."
   },
   {
     "d": "business",
@@ -1359,8 +1320,7 @@ var questions = [
       "Implement the support rotation, since it preserves the release scope while sharing operational demand across the team"
     ],
     "x": 2,
-    "r": "The drivers are not yet isolated, so the PM facilitates analysis of incident demand, capacity impact, and tradeoffs so the parties select an evidence-based intervention rather than a preferred guess. Closest distractor A: Escalating hands the sponsor a choice between two unanalyzed options, which is premature before the drivers are understood.",
-    "difficulty": "Hard"
+    "r": "The drivers are not yet isolated, so the PM facilitates analysis of incident demand, capacity impact, and tradeoffs so the parties select an evidence-based intervention rather than a preferred guess. Closest distractor A: Escalating hands the sponsor a choice between two unanalyzed options, which is premature before the drivers are understood."
   },
   {
     "d": "business",
@@ -1374,8 +1334,7 @@ var questions = [
       "Reassess the response's viability, update the risk or issue information, and obtain the appropriate decision before switching suppliers"
     ],
     "x": 3,
-    "r": "A trigger normally means execute, but the alternate supplier's expired certification is new information that undermines the approved response, so the PM reassesses viability and obtains the appropriate decision before switching. Closest distractor C: Executing on the trigger is usually correct, but here it commits to a response that new information has already undermined.",
-    "difficulty": "Hard"
+    "r": "A trigger normally means execute, but the alternate supplier's expired certification is new information that undermines the approved response, so the PM reassesses viability and obtains the appropriate decision before switching. Closest distractor C: Executing on the trigger is usually correct, but here it commits to a response that new information has already undermined."
   },
   {
     "d": "business",
@@ -1389,8 +1348,7 @@ var questions = [
       "Report the flat adoption as an issue and pause further deployment until the managers commit to attending the coaching"
     ],
     "x": 0,
-    "r": "The plan is only two weeks in, so the PM executes it, makes attendance and adoption visible to the sponsor and the managers' leadership to create accountability, and adjusts if the trend does not move. Closest distractor B: Redesigning to add a manager step responds to the resistance by changing the product before the approved plan has had a fair, visible run.",
-    "difficulty": "Hard"
+    "r": "The plan is only two weeks in, so the PM executes it, makes attendance and adoption visible to the sponsor and the managers' leadership to create accountability, and adjusts if the trend does not move. Closest distractor B: Redesigning to add a manager step responds to the resistance by changing the product before the approved plan has had a fair, visible run."
   },
   {
     "d": "business",
@@ -1404,8 +1362,7 @@ var questions = [
       "Request that the sponsoring organization revalidate the business case before any backlog change is considered"
     ],
     "x": 0,
-    "r": "A market shift with conflicting reads is assessed for its effect on value, priority, and alignment, and that assessment goes to the PO and sponsor for a prioritization decision. Closest distractor B: Inserting the feature respects PO authority, but it commits backlog capacity before the value and alignment effect of the shift is assessed.",
-    "difficulty": "Hard"
+    "r": "A market shift with conflicting reads is assessed for its effect on value, priority, and alignment, and that assessment goes to the PO and sponsor for a prioritization decision. Closest distractor B: Inserting the feature respects PO authority, but it commits backlog capacity before the value and alignment effect of the shift is assessed."
   },
   {
     "d": "business",
@@ -1419,8 +1376,7 @@ var questions = [
       "Escalate the executive's request to the ethics office before issuing the report, because the request attempts to suppress material information"
     ],
     "x": 0,
-    "r": "The standard requires reporting confirmed material concerns and status while allowing sensitive details to be restricted, so the PM reports through the defined path, restricts sensitive detail, and briefs the executive. Closest distractor D: Taking the request to the ethics office treats the situation as an investigation before the PM has simply done the required thing, which is to report the concern accurately.",
-    "difficulty": "Hard"
+    "r": "The standard requires reporting confirmed material concerns and status while allowing sensitive details to be restricted, so the PM reports through the defined path, restricts sensitive detail, and briefs the executive. Closest distractor D: Taking the request to the ethics office treats the situation as an investigation before the PM has simply done the required thing, which is to report the concern accurately."
   },
   {
     "d": "process",
@@ -1434,8 +1390,7 @@ var questions = [
       "Hold the gate and take the unmet criterion to governance with options, so ownership and measurement are assigned or the criterion is formally waived"
     ],
     "x": 3,
-    "r": "The gate requires an owner and a measurement method, so with the criterion unmet the PM holds the gate and takes it to governance with options to assign ownership and measurement or formally waive it. Closest distractor A: Having the project team measure benefits for a quarter lets closure proceed, but it parks an operations accountability with the project and still does not satisfy the gate criterion.",
-    "difficulty": "Hard"
+    "r": "The gate requires an owner and a measurement method, so with the criterion unmet the PM holds the gate and takes it to governance with options to assign ownership and measurement or formally waive it. Closest distractor A: Having the project team measure benefits for a quarter lets closure proceed, but it parks an operations accountability with the project and still does not satisfy the gate criterion."
   },
   {
     "d": "business",
@@ -1449,8 +1404,7 @@ var questions = [
       "Pause detailed design and ask the technical team to continue searching for a solution until both policy owners agree that no compliant option exists"
     ],
     "x": 1,
-    "r": "Neither policy body can decide the other's policy, so the cross-policy tradeoff goes to the enterprise governance body with authority over both, with the conflict, options, and impacts documented. Closest distractor A: Independent exceptions look like progress, but neither body has authority over the other policy, so parallel approvals cannot settle the tradeoff between them.",
-    "difficulty": "Hard"
+    "r": "Neither policy body can decide the other's policy, so the cross-policy tradeoff goes to the enterprise governance body with authority over both, with the conflict, options, and impacts documented. Closest distractor A: Independent exceptions look like progress, but neither body has authority over the other policy, so parallel approvals cannot settle the tradeoff between them."
   },
   {
     "d": "business",
@@ -1464,8 +1418,7 @@ var questions = [
       "Delay the release until the workflow has been redesigned around the users' actual task sequence and re-piloted with the affected user group"
     ],
     "x": 1,
-    "r": "A materialized risk is an issue, so the PM reclassifies it and presents the intervention options with their release and benefit impacts and a recommendation to the decision makers. Closest distractor C: Releasing with enhanced support respects the date, but adoption at 20% with a workflow that does not fit how users work is a known benefit failure the decision-owners should weigh, not one the PM accepts by default.",
-    "difficulty": "Hard"
+    "r": "A materialized risk is an issue, so the PM reclassifies it and presents the intervention options with their release and benefit impacts and a recommendation to the decision makers. Closest distractor C: Releasing with enhanced support respects the date, but adoption at 20% with a workflow that does not fit how users work is a known benefit failure the decision-owners should weigh, not one the PM accepts by default."
   },
   {
     "d": "business",
@@ -1479,8 +1432,7 @@ var questions = [
       "Ask the sponsor and customer to jointly accept the residual disparity until the model can be retrained"
     ],
     "x": 2,
-    "r": "Policy requires AI-governance review on confirmed disparate impact, and the fix creates a contractual conflict, so the PM holds the affected release and puts both configurations, evidence, contractual impacts, and options to AI governance. Closest distractor B: The lower-disparity configuration is ethically appealing, but choosing it drops accuracy below a contractual target, a tradeoff the PM cannot decide alone.",
-    "difficulty": "Hard"
+    "r": "Policy requires AI-governance review on confirmed disparate impact, and the fix creates a contractual conflict, so the PM holds the affected release and puts both configurations, evidence, contractual impacts, and options to AI governance. Closest distractor B: The lower-disparity configuration is ethically appealing, but choosing it drops accuracy below a contractual target, a tradeoff the PM cannot decide alone."
   },
   {
     "d": "process",
@@ -1494,8 +1446,7 @@ var questions = [
       "Rebaseline the project's success measures to reflect the revised market conditions and continue against the new baseline"
     ],
     "x": 2,
-    "r": "Remaining value below remaining investment is a continue, pivot, or terminate decision for governance, so the PM prepares and presents that recommendation weighing remaining investment against revised benefits. Closest distractor B: Trimming to the still-valuable scope is sensible analysis, but it commits to \"continue reduced\" before the decision-owners weigh termination.",
-    "difficulty": "Hard"
+    "r": "Remaining value below remaining investment is a continue, pivot, or terminate decision for governance, so the PM prepares and presents that recommendation weighing remaining investment against revised benefits. Closest distractor B: Trimming to the still-valuable scope is sensible analysis, but it commits to \"continue reduced\" before the decision-owners weigh termination."
   },
   {
     "d": "business",
@@ -1509,8 +1460,7 @@ var questions = [
       "Assess the local value against the enterprise impacts, then route the strategic exception to the governance body authorized to decide it"
     ],
     "x": 3,
-    "r": "The change looks like ordinary scope but the council's strategic warning makes it a strategic exception beyond the PM's authority, so the PM assesses local value against enterprise impacts and routes the exception to the authorized body. Closest distractor B: Approving inside scope tolerance is tempting, but the strategic-standardization warning turns this into an exception the PM cannot authorize.",
-    "difficulty": "Moderate-Hard"
+    "r": "The change looks like ordinary scope but the council's strategic warning makes it a strategic exception beyond the PM's authority, so the PM assesses local value against enterprise impacts and routes the exception to the authorized body. Closest distractor B: Approving inside scope tolerance is tempting, but the strategic-standardization warning turns this into an exception the PM cannot authorize."
   }
 ];
 
