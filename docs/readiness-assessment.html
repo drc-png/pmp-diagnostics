@@ -1787,8 +1787,7 @@ function renderQuestions() {
       : '<button class="submit" type="button" data-submit="true">Submit Diagnostic</button>';
 
     card.innerHTML =
-      '<div class="q-head"><span class="q-num">Question ' + (i + 1) + ' of ' + questions.length + '</span>' +
-      '<span class="q-domain ' + q.d + '">' + domainLabel + '</span></div>' +
+      '<div class="q-head"><span class="q-num">Question ' + (i + 1) + ' of ' + questions.length + '</span></div>' +
       '<div class="q-text" id="qText' + i + '">' + escapeHtml(q.q) + '</div>' +
       (note ? '<div class="q-type-note">' + note + '</div>' : '') +
       '<fieldset style="border:0;padding:0;margin:0;"><legend class="sr-only">Answer question ' + (i + 1) + '</legend>' +
