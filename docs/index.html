@@ -707,6 +707,54 @@ body.pmp-fullscreen-active{
   .pmp-quiz .section-review-actions{display:grid;grid-template-columns:1fr}
 }
 
+
+/* Elementor/GitHub Pages iframe fit */
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  background:#FAF7F0;
+}
+.pmp-quiz {
+  width:100%;
+  max-width:100%;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:visible;
+}
+.pmp-quiz .topbar {
+  width:100%;
+  max-width:100%;
+  flex-wrap:wrap;
+}
+.pmp-quiz .brand-mini { display:none; }
+.pmp-quiz .progress-track {
+  min-width:140px;
+}
+.pmp-quiz .wrap,
+.pmp-quiz .exam-shell,
+.pmp-quiz .q-card,
+.pmp-quiz .stimulus {
+  max-width:100%;
+}
+@media (max-width:980px) {
+  .pmp-quiz .wrap { width:100%; padding:14px 12px; }
+  .pmp-quiz .q-card { border-radius:8px; padding:18px; }
+  .pmp-quiz .stimulus { padding:14px; }
+  .pmp-quiz .topbar { gap:.5rem; padding:.62rem .7rem; }
+  .pmp-quiz .progress-text,
+  .pmp-quiz .timer { min-width:auto; }
+}
+@media (max-width:640px) {
+  .pmp-quiz .progress-track { flex-basis:100%; order:2; }
+  .pmp-quiz .progress-text { text-align:left; }
+  .pmp-quiz .flag-summary,
+  .pmp-quiz .fullscreen-toggle,
+  .pmp-quiz .section-review-toggle { padding:.42rem .55rem; font-size:.72rem; }
+}
+
 </style>
 </head>
 <body>
