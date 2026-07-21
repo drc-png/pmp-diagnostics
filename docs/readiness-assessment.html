@@ -704,39 +704,39 @@ var lastSubmissionPayload = null;
 
 var questions = [
   {
-    "d": "people",
-    "t": "Vision Alignment",
-    "a": "hybrid",
+    "d": "business",
+    "t": "Define and establish project governance",
+    "a": "Predictive/Hybrid",
     "q": "A newly appointed executive directs the team to reprioritize the backlog toward features that generate revenue within the current fiscal year. The approved business case ties funding to a customer-retention benefit, and preliminary analysis indicates the requested features would reduce that benefit. The executive is a named sponsor on the project charter. What should the project manager do first?",
     "o": [
-      "Convene the original sponsors and the new executive to renegotiate the project's success criteria before the reprioritization is analyzed",
-      "Quantify the effect of the requested reprioritization on the approved benefits and success measures, and confirm which objective governance now treats as primary",
-      "Implement the direction as given and record the reduction in retention benefit as a new risk with the executive as risk owner",
-      "Submit the reprioritization through integrated change control, since a change in feature priority alters scope and expected outcomes"
+      "Model the revenue gain against the projected retention loss, then convene the original sponsors and the new executive to renegotiate the project's success criteria before any reprioritization proceeds",
+      "Quantify how the reprioritization would affect the approved benefits and success measures, and confirm with governance which objective now takes precedence",
+      "Implement the executive's direction as given and record the reduced retention benefit as a new risk with the executive named as risk owner",
+      "Route the reprioritization through integrated change control, since changing feature priority alters scope and expected outcomes"
     ],
     "x": 1,
-    "r": "The executive has authority, but the conflict is between two approved objectives. The project manager must first establish the benefit impact and which objective now governs. Renegotiating criteria, raising a change request, or logging a risk are all premature until that is known.",
-    "difficulty": "Expert"
+    "r": "The direction pits a charter-named sponsor against a funded benefit. Before renegotiating criteria, submitting a change, or executing, the PM needs the size of the benefit effect and a governance ruling on which objective now governs. Closest distractor D: Integrated change control is a legitimate later step, but it presumes the answer is a scope change before the value tradeoff is measured or the governing objective is confirmed, so it is premature.",
+    "difficulty": "Hard"
   },
   {
-    "d": "people",
-    "t": "Stakeholder Expectations",
-    "a": "hybrid",
+    "d": "business",
+    "t": "Define and establish project governance (secondary: People P5 Align stakeholder expectations)",
+    "a": "Predictive",
     "q": "Three influential stakeholders each sponsor a different outcome for the same project. Available funding supports roughly one and a half of the three. All three outcomes are defensible against the business case. A joint alignment workshop was held last month and ended without agreement. What should the project manager do next?",
     "o": [
       "Allocate the available funding proportionally across the three outcomes so that each stakeholder receives a partial result",
       "Deliver the outcome sponsored by the stakeholder with the greatest formal authority and manage the other two as candidate future phases",
       "Facilitate a second alignment workshop with an independent facilitator, since stakeholder consensus remains the preferred outcome",
-      "Prepare a value-based prioritization of the three outcomes against the business case and escalate the funding tradeoff to the body authorized to decide it"
+      "Rank the three outcomes by value against the business case and bring the funding tradeoff, with a recommendation, to the body authorized to decide it"
     ],
     "x": 3,
-    "r": "Facilitation has already been attempted and failed. With the conflict outside the project manager's authority to resolve, the next step is to escalate the tradeoff with a value-based analysis, not to repeat the workshop or dilute funding across all three.",
-    "difficulty": "Expert"
+    "r": "The funding shortfall is a prioritization decision above the PM's authority. The PM prepares a value-based recommendation and escalates to the body that can decide. Closest distractor C: Facilitation is normally preferred, but the workshop already failed once; repeating it delays a decision the PM cannot make.",
+    "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Conflict Management",
-    "a": "predictive",
+    "t": "Manage conflicts (secondary: P3 Lead the project team)",
+    "a": "Predictive/Hybrid",
     "q": "Two senior architects have proposed different technical approaches. Both satisfy the requirements and fit the budget. One increases long-term support complexity; the other increases transition risk at cutover. The disagreement has become personal, the team is taking sides, and the sponsor has asked the project manager to settle it before the next status meeting. What should the project manager do first?",
     "o": [
       "Escalate both approaches and their tradeoffs to the sponsor, since the disagreement has become personal and neither architect will concede",
@@ -745,29 +745,29 @@ var questions = [
       "Select the approach with the lower operational risk, since long-term supportability protects the benefits in the business case"
     ],
     "x": 2,
-    "r": "Two viable options require a criteria-based decision, not a compromise design, a unilateral pick, or escalation. The behavioral conflict is a separate problem and should not drive the technical decision path.",
-    "difficulty": "Expert"
+    "r": "The sponsor asked the PM to resolve it, and the PM owns facilitation, not the technical verdict. Shared decision criteria with the architects and operational stakeholders produce a defensible choice while the interpersonal conflict is handled separately. Closest distractor B: A combined approach sounds constructive but presumes a hybrid solution exists and skips the agreed criteria that make any choice defensible.",
+    "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Knowledge Transfer",
-    "a": "predictive",
+    "t": "Help ensure knowledge transfer",
+    "a": "Predictive",
     "q": "A subject matter expert who is the only person able to configure a critical integration will leave the organization in three weeks. Configuration documentation exists and is current, but the expert's troubleshooting judgment has never been captured. A replacement has been requisitioned but not yet identified. Deployment is in ten weeks. What should the project manager do first?",
     "o": [
-      "Raise the departure as an issue and request that the resourcing process be expedited so shadowing can occur",
+      "Raise the departure as an issue and request that the resourcing process be expedited so shadowing can occur before the expert leaves",
       "Extend the deployment date so that the replacement can be identified, onboarded, and able to shadow the expert before the departure",
       "Identify which knowledge is critical to deployment and to operations, then select transfer mechanisms that do not depend on the replacement arriving first",
       "Ask the expert to spend the remaining three weeks recording detailed walkthroughs of the common troubleshooting scenarios and the judgment behind them"
     ],
     "x": 2,
-    "r": "The replacement may not arrive in time, so transfer cannot be built around that assumption. The project manager must first determine what knowledge is actually at risk. Selecting a mechanism, moving the date, or escalating staffing all precede the analysis that should drive them.",
-    "difficulty": "Expert"
+    "r": "With three weeks and no named replacement, the PM first separates knowledge critical to deployment from knowledge critical to operations, then chooses transfer methods that do not hinge on a replacement arriving in time. Closest distractor D: Recorded walkthroughs are one valid mechanism, but selecting a mechanism before scoping the critical knowledge risks capturing the wrong things.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "people",
-    "t": "Communication Effectiveness",
-    "a": "hybrid",
-    "q": "Stakeholders receive every scheduled report on time, the PMO confirms the template is applied correctly, and the project manager has verified the reported data is accurate. Stakeholders nonetheless keep asking what is required of them and misstate project status in other forums. What should the project manager do first?",
+    "t": "Plan and manage communication",
+    "a": "Predictive/Hybrid",
+    "q": "Stakeholders receive every scheduled report on time, the PMO confirms the template is applied correctly, and the project manager has confirmed the reported data is accurate. Stakeholders nonetheless keep asking what is required of them and misstate project status in other forums. What should the project manager do first?",
     "o": [
       "Compare the communications management plan against the stakeholder engagement matrix to confirm each stakeholder is receiving the artifacts assigned to them",
       "Identify the decisions each key stakeholder owns and the information those decisions require, then revise the communications approach accordingly",
@@ -775,43 +775,43 @@ var questions = [
       "Raise an issue with the PMO that the mandated template does not support stakeholder decision needs and request a template exception"
     ],
     "x": 1,
-    "r": "Distribution and accuracy are already confirmed, so the failure is in usefulness. The project manager must first understand what decisions the communication is meant to support. Adding a section, re-checking distribution, or contesting the template all act before the need is understood.",
-    "difficulty": "Hard"
+    "r": "Reports are timely, accurate, and on-template, so the gap is relevance to the decisions stakeholders must make. The PM identifies those decisions and the information they require, then revises the approach. Closest distractor C: Adding a section is a plausible partial fix, but it bolts content onto the existing report without first confirming it matches the decisions stakeholders own.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "people",
-    "t": "Team Performance",
-    "a": "adaptive",
+    "t": "Lead the project team (secondary: P2 Manage conflicts)",
+    "a": "Adaptive",
     "q": "An adaptive team has met every sprint commitment for four iterations, but escaped defects have doubled. In one-on-one conversations, several developers say they no longer raise design objections because doing so puts the sprint commitment at risk. The product owner is satisfied with delivery and the retrospectives report no impediments. What should the project manager do first?",
     "o": [
       "Make the defect trend and its link to suppressed design disagreement visible to the team, and facilitate revised working agreements that protect technical dissent",
-      "Add a definition-of-done criterion requiring design review sign-off before a story can be accepted, so that design concerns must be raised before work is completed",
+      "Add a definition-of-done criterion requiring design-review sign-off before a story can be accepted, so that design concerns must be raised before work is completed",
       "Reduce the next sprint's committed scope to create capacity for defect remediation and design discussion",
       "Raise the escaped-defect trend to governance, since delivered work is not meeting quality expectations"
     ],
     "x": 0,
-    "r": "The defects are a symptom of a team norm that punishes dissent, and the retrospective is not surfacing it. Process controls, scope relief, and escalation all treat the symptom while leaving the cause in place.",
-    "difficulty": "Expert"
+    "r": "Doubling defects plus self-censoring developers signal suppressed dissent, a team-health cause the PM owns. Surfacing the trend and renegotiating working agreements to protect dissent addresses the cause. Closest distractor B: A design-review gate treats the symptom and can further discourage raising concerns, rather than restoring the safety that let them surface.",
+    "difficulty": "Hard"
   },
   {
-    "d": "people",
-    "t": "Stakeholder Engagement",
-    "a": "predictive",
+    "d": "business",
+    "t": "Plan and manage risk (secondary: BE2 Plan and manage project compliance)",
+    "a": "Predictive",
     "q": "A regulator with approval authority over the launch raises a concern that the current design may not satisfy a reporting rule. The regulator has not issued a formal finding. The sponsor considers the concern speculative, notes that a formal finding could take months, and directs the team to continue design work while leadership resolves it. What should the project manager do first?",
     "o": [
-      "Continue the design work as the sponsor has directed, and log the regulator's concern in the risk register with the sponsor as the named risk owner",
-      "Assess which design work is exposed if the concern is upheld, and take that exposure and the sponsor's direction to the body authorized to accept the risk",
+      "Continue the design work as the sponsor has directed, and log the regulator's concern in the risk register with the sponsor named as risk owner",
+      "Determine which design work is exposed if the concern is upheld, and bring that exposure together with the sponsor's direction to the body authorized to accept the risk",
       "Ask the regulator to confirm in writing that the concern is not a formal finding, so that the team can continue the design work on a documented basis",
       "Halt all design work until the regulator issues a formal finding on the reporting rule"
     ],
     "x": 1,
-    "r": "A credible concern from an approving authority creates exposure the sponsor cannot absorb informally. The project manager quantifies the exposure and puts the acceptance decision where it belongs. Proceeding on a logged risk, seeking a written disclaimer, or halting everything are each disproportionate or evasive.",
-    "difficulty": "Expert"
+    "r": "The concern is not yet a finding, so a full halt is disproportionate, but continuing on sponsor say-so lets the sponsor self-accept a regulatory risk that may exceed the sponsor's authority. The PM scopes the exposure and routes it, with the sponsor's position, to the authorized acceptor. Closest distractor A: Continuing while logging a risk is tempting because work can often proceed, but it treats an active regulatory exposure as an owned risk and skips the authority question.",
+    "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Executive Alignment",
-    "a": "hybrid",
+    "t": "Engage stakeholders (secondary: P2 Manage conflicts)",
+    "a": "Predictive/Hybrid",
     "q": "Marketing has publicly committed to a launch in six weeks. Operations will not accept handover without a fully trained support model, which requires eight weeks. Finance has refused all overtime. Each commitment was made in a separate meeting with the sponsor, and each group believes its position is already approved. What should the project manager do first?",
     "o": [
       "Convene the three groups to expose the conflict, establish the launch decision criteria and acceptable tradeoffs, and escalate only what they cannot resolve",
@@ -820,13 +820,13 @@ var questions = [
       "Deliver a reduced launch scope in six weeks that operations can support with existing staff, and defer the remaining scope to a second release"
     ],
     "x": 0,
-    "r": "None of the three groups yet knows the others' positions are incompatible. Alignment on shared tradeoff criteria comes before a solution is proposed, before escalation, and before the project manager selects a winner.",
-    "difficulty": "Expert"
+    "r": "Three sponsor-blessed but incompatible commitments call for the PM to convene the groups, expose the conflict, set decision criteria, and escalate only the unresolved remainder. Closest distractor C: Escalating to the sponsor is defensible, but it hands up the entire tradeoff before facilitation and removes decisions the groups could make themselves.",
+    "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Customer Feedback",
-    "a": "adaptive",
+    "t": "Manage stakeholder expectations (secondary: PR3 Help ensure value-based delivery)",
+    "a": "Adaptive",
     "q": "A customer representative has approved every increment in writing, but after each review a business executive reports that the delivered workflow does not solve the operational problem. The representative says the approvals only confirm that the stories meet acceptance criteria; the executive says the representative was expected to confirm business usability. The product owner believes both interpretations are reasonable. What should the project manager do first?",
     "o": [
       "Clarify and document the acceptance authority, the distinction between story acceptance and business validation, and the path for raising dissatisfaction before the next increment is reviewed",
@@ -835,13 +835,13 @@ var questions = [
       "Ask the sponsor to replace the customer representative with someone who can confirm both technical acceptance and business usability"
     ],
     "x": 0,
-    "r": "The approvals and the dissatisfaction are not necessarily contradictory; they reflect undefined decision rights and different meanings of acceptance. The project manager should clarify those rules before changing the backlog, adding approval gates, or replacing a stakeholder.",
+    "r": "The dispute is about what acceptance means, so the PM clarifies and documents the acceptance authority, the story-acceptance versus business-validation distinction, and the escalation path before the next review. Closest distractor B: Treating the approvals as binding is tempting because they are real, but it ignores the unmet business-usability need the executive is raising.",
     "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Leadership Style",
-    "a": "predictive",
+    "t": "Lead the project team (Determine an appropriate leadership style)",
+    "a": "Predictive",
     "q": "A newly formed team is scheduled to begin a safety-critical installation package. Most members completed the required training, but only two have demonstrated competence under field conditions. The quality plan permits delegated execution when a qualified reviewer approves defined hold points. The team asks to self-organize because the schedule is compressed. What should the project manager do?",
     "o": [
       "Allow the team to self-organize, assign one of the qualified members as a mentor, and review performance at the end of the first work package",
@@ -850,14 +850,14 @@ var questions = [
       "Request sponsor approval for a temporary authority matrix that transfers routine installation decisions to the team while the project manager retains escalation authority"
     ],
     "x": 2,
-    "r": "The control framework already provides a way to balance safety and autonomy. Staged delegation with qualified hold-point review protects the work without unnecessarily delaying it or granting authority before competence is demonstrated.",
-    "difficulty": "Hard"
+    "r": "Mixed demonstrated competence plus a plan that permits delegated execution at approved hold points calls for staged delegation, expanding autonomy as field competence is shown. Closest distractor A: Self-organization with a mentor grants full autonomy before field competence exists and reviews too late for safety-critical work.",
+    "difficulty": "Moderate-Hard"
   },
   {
-    "d": "people",
-    "t": "Team Voice",
-    "a": "hybrid",
-    "q": "Preparing for a governance meeting, the team demonstrates with evidence that the sponsor's requested date can be met only by reducing accessibility testing below the organizational standard. The project manager has verified the analysis. The sponsor, who chairs the meeting, wants the date committed and says accessibility can be caught up after launch. What should the project manager do?",
+    "d": "business",
+    "t": "Define and establish project governance (secondary: PR7 Plan and optimize quality)",
+    "a": "Predictive",
+    "q": "Preparing for a governance meeting, the team demonstrates with evidence that the sponsor's requested date can be met only by reducing accessibility testing below the organizational standard. The project manager has confirmed the analysis. The sponsor, who chairs the meeting, wants the date committed and says accessibility can be caught up after launch. What should the project manager do?",
     "o": [
       "Present the team's evidence in the meeting and require an explicit governance decision on the date, the scope, and the standards tradeoff",
       "Propose an alternative date that preserves the standard, and ask the sponsor to take the revised date to governance",
@@ -865,13 +865,13 @@ var questions = [
       "Ask the accessibility lead whether the reduced testing approach is acceptable, and commit the date if the lead agrees"
     ],
     "x": 0,
-    "r": "The analysis is complete and an organizational standard is at stake, so the tradeoff must be visible to the body that can decide it. Negotiating privately with the sponsor, logging remediation, or seeking informal sign-off all keep the decision out of governance.",
-    "difficulty": "Expert"
+    "r": "The evidence shows the date is reachable only by dropping below an organizational standard, a tradeoff above the PM and above any single lead. The PM puts the evidence in front of governance and forces an explicit decision. Closest distractor B: Proposing a compliant date is constructive, but it hands the decision framing to the sponsor rather than presenting the tradeoff for a governance ruling.",
+    "difficulty": "Hard"
   },
   {
     "d": "people",
-    "t": "Product Ownership",
-    "a": "adaptive",
+    "t": "Lead the project team (Empower the team) (secondary: PR3 Help ensure value-based delivery)",
+    "a": "Adaptive",
     "q": "A junior product owner repeatedly accepts the priorities of a senior funding stakeholder, even when benefits data shows that other backlog items contribute more to the release goal. The stakeholder's funding authority is real, but the product charter assigns backlog priority to the product owner and requires value-based decisions. What should the project manager do first?",
     "o": [
       "Ask the sponsor to decide whether funding authority overrides the product charter for the remainder of the release",
@@ -880,88 +880,88 @@ var questions = [
       "Invite the funding stakeholder to refinement so that priority decisions are made transparently in front of the team"
     ],
     "x": 1,
-    "r": "The project manager should strengthen the product owner's role rather than bypass it. The funding constraint belongs in the prioritization criteria, but any conflict between that constraint and the charter must be surfaced through governance rather than resolved through deference or a mechanical scoring model.",
+    "r": "The PO holds the authority but is deferring against value evidence, so the PM coaches on role authority and facilitates explicit value criteria that include the funding constraint, surfacing any genuine governance conflict. Closest distractor A: Escalating to the sponsor is premature, because it asks someone else to decide a call the PO is empowered to make once supported.",
     "difficulty": "Hard"
   },
   {
-    "d": "people",
-    "t": "Transparency",
-    "a": "hybrid",
+    "d": "process",
+    "t": "Evaluate project status (secondary: P8 Plan and manage communication)",
+    "a": "Predictive/Hybrid",
     "q": "The formal defect system and a team-maintained spreadsheet contain different counts for the same release. Sampling confirms that both contain valid records and that several defects were entered in only one source. A customer-facing status update is due tomorrow, and the PMO requires the formal system to remain the system of record. What should the project manager do first?",
     "o": [
       "Use the higher defect count in tomorrow's report, note that reconciliation is in progress, and postpone source correction until after the reporting deadline",
       "Pause the status update until the PMO identifies which individual records should be considered authoritative",
-      "Reconcile the records sufficiently to correct the customer-facing position, disclose any remaining uncertainty, and establish controlled ownership and synchronization for the formal source",
+      "Reconcile the records enough to correct the customer-facing position, disclose any remaining uncertainty, and establish controlled ownership and synchronization for the formal source",
       "Require the team to enter every spreadsheet item into the formal system before any status is issued, even if the reporting deadline is missed"
     ],
     "x": 2,
-    "r": "The immediate obligation is accurate and transparent reporting, not blind use of either source. The project manager should reconcile the position enough to report responsibly, disclose uncertainty, and then correct the control failure that created competing sources.",
-    "difficulty": "Hard"
+    "r": "Two valid sources disagree before a customer update, so the PM reconciles enough to correct the customer-facing position, discloses residual uncertainty, and sets up controlled ownership and synchronization for the system of record. Closest distractor A: Reporting the higher count with a caveat is tempting, but it publishes an unreconciled number and postpones the actual fix.",
+    "difficulty": "Moderate-Hard"
   },
   {
-    "d": "people",
-    "t": "Stakeholder Trust",
-    "a": "predictive",
+    "d": "process",
+    "t": "Evaluate project status (Identify and tailor needed artifacts) (secondary: P8 Plan and manage communication)",
+    "a": "Predictive",
     "q": "A benefit owner says the mandated PMO dashboard is accurate but does not show the benefit exposure or the decision she must make. The PMO has denied a template exception because portfolio reporting must remain standardized. The benefit owner has begun relying on an analyst's unofficial summary instead. What should the project manager do?",
     "o": [
       "Continue the mandated dashboard and add a controlled decision brief for the benefit owner using the same reconciled source data",
-      "Escalate the denied template exception because unofficial reporting now creates a governance risk",
+      "Escalate the denied template exception, because unofficial reporting now creates a governance risk",
       "Replace the analyst's unofficial summary with a more detailed version of the PMO dashboard and require the benefit owner to use it",
       "Document the benefit owner's dissatisfaction in the communications plan and ask her to attend the regular status meeting for additional context"
     ],
     "x": 0,
-    "r": "Standard portfolio reporting and tailored stakeholder communication can coexist. A controlled decision brief meets the benefit owner's need without undermining the mandated artifact or allowing unofficial data to become a competing source.",
-    "difficulty": "Hard"
+    "r": "The dashboard is accurate but does not surface the owner's decision, and the exception was properly denied to keep reporting standard. The PM keeps the standard dashboard and adds a controlled decision brief from the same reconciled data. Closest distractor C: A more detailed dashboard adds volume to the wrong artifact without addressing the specific decision the owner must make.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "people",
-    "t": "Psychological Safety",
-    "a": "adaptive",
+    "t": "Manage conflicts (Establish ground rules) (secondary: P3 Lead the project team)",
+    "a": "Adaptive/Hybrid",
     "q": "A technically strong team has shortened design meetings by assigning each topic to a senior decision owner. Delivery speed has improved, but junior members now raise concerns only in private and rework is increasing. The senior decision owners say written comments are always welcome and no one has been explicitly prevented from speaking. What should the project manager do first?",
     "o": [
-      "Require anonymous written input before every design decision so junior members can raise concerns without challenging senior owners directly",
+      "Require anonymous written input ahead of major design decisions so junior members can flag concerns without challenging senior owners directly",
       "Coach the senior owners privately and leave the current decision process in place while monitoring whether rework declines",
       "Facilitate a team discussion using the rework evidence, establish working agreements for constructive dissent, and make decision criteria and participation expectations explicit",
       "Rotate the decision-owner role among team members so authority is distributed more evenly across the next several iterations"
     ],
     "x": 2,
-    "r": "The issue is a team system that discourages visible dissent, not merely the absence of a comment channel. The project manager should address the shared norms, evidence, decision criteria, and participation expectations before redesigning roles or relying on anonymous workarounds.",
+    "r": "Concentrated decision-making plus rising rework and private-only concerns show the structure is suppressing dissent. The PM uses the rework evidence to establish working agreements for constructive dissent and explicit participation expectations. Closest distractor B: Coaching individuals is reasonable, but leaving the suppressing structure in place lets the cause persist.",
     "difficulty": "Hard"
   },
   {
-    "d": "people",
-    "t": "External Stakeholder Governance",
-    "a": "hybrid",
+    "d": "business",
+    "t": "Define and establish project governance (Outline escalation paths and thresholds) (secondary: P4 Engage stakeholders)",
+    "a": "Predictive",
     "q": "A community group affected by a rollout has been engaged and its concerns analyzed. The analysis shows the concerns will delay a required permit unless the project commits to a revised construction schedule and a public communication program. Both commitments exceed the project manager's authority. The sponsor is traveling for two weeks and the permit application is due in five days. What should the project manager do next?",
     "o": [
       "Make the public communication commitment, which sits within the project's communication budget, and hold the schedule commitment for the sponsor",
-      "Route the permit exposure, the two commitments, and their cost and schedule impacts through the governance escalation path so an authorized decision is made before the deadline",
+      "Take the permit exposure, both commitments, and their cost and schedule impacts through the governance escalation path so an authorized decision is made before the deadline",
       "Request an extension to the permit deadline from the issuing authority, so that the decision can wait until the sponsor returns in two weeks",
       "Submit the permit application on the current basis and add the community concerns to the issue log for resolution when the sponsor returns"
     ],
     "x": 1,
-    "r": "Analysis is complete and the decision is outside the project manager's authority, so it goes to governance now. The sponsor's absence does not suspend the escalation path, and splitting the commitments or filing regardless both act without authority.",
-    "difficulty": "Expert"
-  },
-  {
-    "d": "people",
-    "t": "Common Vision",
-    "a": "adaptive",
-    "q": "An agile team has stable velocity and stakeholders regularly accept demonstrations, but completed features support three different interpretations of the release goal. The product owner says the roadmap is intentionally broad and that stakeholder acceptance proves the direction is acceptable. What should the project manager do first?",
-    "o": [
-      "Map the completed features to the roadmap and quantify how much work supports each interpretation before asking stakeholders to choose",
-      "Facilitate alignment among the product owner, team, and key stakeholders on a measurable release outcome and use it to test future priorities",
-      "Ask the product owner to publish a more specific release statement and validate it at the next sprint review",
-      "Continue the current iteration and address the conflicting interpretations during the release retrospective"
-    ],
-    "x": 1,
-    "r": "Acceptance of individual increments does not prove alignment on the release outcome. The project manager should establish a shared, measurable outcome collaboratively before more priority decisions reinforce conflicting directions.",
+    "r": "Both commitments exceed PM authority and the deadline lands during the sponsor's absence, so the PM uses the governance escalation path to obtain an authorized decision in time. Closest distractor A: Making the communication commitment looks affordable, but it authorizes part of a decision the PM cannot make and splits a coupled tradeoff.",
     "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Integrated Planning",
-    "a": "hybrid",
+    "t": "Help ensure value-based delivery (secondary: P5 Align stakeholder expectations)",
+    "a": "Adaptive",
+    "q": "An agile team has stable velocity and stakeholders regularly accept demonstrations, but completed features support three different interpretations of the release goal. The product owner says the roadmap is intentionally broad and that stakeholder acceptance proves the direction is acceptable. What should the project manager do first?",
+    "o": [
+      "Map the completed features to the roadmap and quantify how much work supports each interpretation before asking stakeholders to choose",
+      "Facilitate alignment among the product owner, team, and key stakeholders on a measurable release outcome, and use it to test future priorities",
+      "Ask the product owner to publish a more specific release statement and validate it at the next sprint review",
+      "Continue the current iteration and address the conflicting interpretations during the release retrospective"
+    ],
+    "x": 1,
+    "r": "Stable velocity and acceptance hide that delivered work supports three different goals. The PM facilitates alignment on one measurable outcome and uses it to test future priorities. Closest distractor A: The mapping is useful and necessary input, but analysis alone stops short of resolving the missing shared goal.",
+    "difficulty": "Hard"
+  },
+  {
+    "d": "process",
+    "t": "Develop an integrated project management plan (Assess consolidated plans for dependencies and gaps)",
+    "a": "Hybrid",
     "q": "A project combines an AI-assisted triage capability delivered adaptively, a data-center migration with a contractually fixed cutover date, and a sustainability commitment in the business case. Each workstream has a competent plan and a named lead. Two leads have already made scheduling decisions that the third lead learned about only afterward. What should the project manager do first?",
     "o": [
       "Establish an integrated plan that reconciles cross-workstream dependencies, decision rights, and information flow against the expected business value",
@@ -970,13 +970,13 @@ var questions = [
       "Introduce a weekly cross-workstream coordination meeting and require leads to bring scheduling decisions to it before committing"
     ],
     "x": 0,
-    "r": "Competent individual plans are not an integrated plan. Dependencies, decision rights, and value must be reconciled first. A coordination meeting is a mechanism without that reconciliation, and reorganizing leadership or approach does not resolve the dependency blindness.",
-    "difficulty": "Expert"
+    "r": "Competent workstreams surprising each other means the gap is integration: dependencies, decision rights, and information flow tied to business value, which an integrated plan establishes. Closest distractor D: A coordination meeting is a partial mechanism, but without an integrated plan and defined decision rights it does not fix the underlying gap.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Development Approach",
-    "a": "hybrid",
+    "t": "Develop an integrated project management plan (Recommend a development approach)",
+    "a": "Hybrid",
     "q": "Regulatory reporting requirements are stable and must produce auditable evidence at defined checkpoints. Customer analytics requirements are unstable and require experimentation with real users. Both share one data platform and one team. Governance has asked the project manager to recommend a development approach. What should the project manager recommend?",
     "o": [
       "A predictive approach with a formally controlled backlog for the analytics work, so a single governance model applies to the shared platform",
@@ -985,13 +985,13 @@ var questions = [
       "Deferring the approach decision until the analytics requirements are defined well enough to allow a consistent approach across the project"
     ],
     "x": 1,
-    "r": "Different certainty and governance needs in one project point to a hybrid approach, and the shared platform and team make the interface between the two the real design question. A single approach forces one side of the work into the wrong model, and deferring leaves the team without a way to start.",
-    "difficulty": "Expert"
+    "r": "Stable auditable regulatory work alongside unstable experimental analytics on one platform is the textbook hybrid case, governing each stream appropriately and defining shared-platform and team management. Closest distractor C: Making compliance a definition-of-done item subordinates mandatory audit evidence to a per-iteration checklist inside experimentation.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "business",
-    "t": "Scope and Change Control",
-    "a": "predictive",
+    "t": "Manage and control changes",
+    "a": "Predictive",
     "q": "Impact analysis confirms that a reporting module requested by the sponsor would delay a regulatory compliance milestone by two weeks. The regulator permits a filing extension on request, which has not been sought. The sponsor believes the module will materially improve adoption and has asked the team to begin work while the paperwork catches up. What should the project manager do next?",
     "o": [
       "Confirm whether the filing extension would be granted before submitting the change, so the request reflects the actual schedule impact",
@@ -1000,58 +1000,58 @@ var questions = [
       "Submit the change with the documented impacts and the extension option to change control, and authorize no work until a decision is made"
     ],
     "x": 3,
-    "r": "Impact analysis is complete and the decision belongs to change control. The extension is one of the options to present, not a prerequisite to be chased while unauthorized work proceeds. Neither sponsor enthusiasm nor a compliance instinct substitutes for the authorized decision.",
-    "difficulty": "Expert"
+    "r": "Impact analysis is complete and shows a regulatory-milestone effect, so the PM submits the change with impacts and the extension option to change control and authorizes no work until disposition. Closest distractor A: Confirming the extension is reasonable fact-gathering, but it is an input to the change request, not a substitute for the authorized decision, and work still cannot begin.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Value Delivery",
-    "a": "adaptive",
+    "t": "Help ensure value-based delivery (Evaluate delivery options)",
+    "a": "Adaptive",
     "q": "An adaptive team can release a narrow workflow in three weeks that removes a manual step for one user group, or a complete integration in eight weeks that serves all groups. The support organization says a partial release will generate confusion and has not budgeted for the additional call volume. Benefits data shows the manual step is the largest single cost driver. What should the project manager do first?",
     "o": [
-      "Evaluate the earlier benefit against user readiness, support capacity, and benefit measurement, and bring the release options and their tradeoffs to the product owner and sponsor for decision",
+      "Weigh the earlier benefit against user readiness, support capacity, and benefit measurement, and put the release options and their tradeoffs to the product owner and sponsor to decide",
       "Release the narrow workflow to a limited pilot group, so that benefits can begin accruing without exposing the support organization to the full additional call volume",
       "Deliver the complete integration in eight weeks, since the support organization cannot absorb a partial release",
       "Release the narrow workflow in three weeks, since it addresses the largest cost driver and starts benefits realization earlier"
     ],
     "x": 0,
-    "r": "Earlier value and organizational readiness are in genuine tension, and neither the team nor the support organization owns that tradeoff alone. A pilot is a plausible option but is being chosen before the tradeoff is understood or the decision is made by those accountable for it.",
-    "difficulty": "Expert"
-  },
-  {
-    "d": "process",
-    "t": "Resource Management",
-    "a": "predictive",
-    "q": "A specialist analyst is baselined at 50% allocation. For six weeks, operational escalations have consumed nearly all of the analyst's time. The functional manager has told the analyst that operations comes first. The schedule still assumes 50% and shows no variance, because the analyst has been working evenings to stay on track. What should the project manager do first?",
-    "o": [
-      "Reassign the analyst's non-specialist tasks to other team members so the remaining capacity is used only on specialist work",
-      "Establish actual and forecast availability, quantify the schedule and sustainability exposure, and take the conflict to the governance path that can resolve it",
-      "Escalate to the functional manager's superior, since the 50% allocation was formally committed to the project and is not being honoured",
-      "Rebaseline the schedule using the analyst's actual availability, and report the resulting variance and forecast slip to the sponsor"
-    ],
-    "x": 1,
-    "r": "The schedule looks healthy only because an individual is absorbing the gap, which is neither sustainable nor transparent. The project manager must establish the real position and route the conflict through governance. Rebaselining, redistributing work, or escalating over the functional manager all move before the exposure is quantified.",
-    "difficulty": "Expert"
-  },
-  {
-    "d": "process",
-    "t": "Procurement Acceptance",
-    "a": "hybrid",
-    "q": "A vendor deliverable meets the numerical performance threshold in the acceptance appendix, but integrated validation shows that it fails the business outcome stated in the procurement statement of work. The contract requires written notice and a defined cure period before milestone acceptance may be withheld. The sponsor wants conditional acceptance to protect the launch date. What should the project manager do?",
-    "o": [
-      "Issue the contractual notice with the validation evidence, begin the cure process, and defer milestone acceptance until the contract criteria are satisfied or formally amended",
-      "Grant conditional acceptance because the numerical threshold was met, while reserving the right to reject the final deliverable if the cure is unsuccessful",
-      "Withhold acceptance immediately and escalate the vendor to legal because the business outcome takes precedence over the acceptance appendix",
-      "Accept the milestone and raise a change request to revise the business outcome or fund internal remediation"
-    ],
-    "x": 0,
-    "r": "The project manager must follow the contract's specific remedy sequence. The business-outcome failure matters, but acceptance should be handled through the required notice and cure process rather than an improvised conditional acceptance or a remedy that skips contractual steps.",
+    "r": "The early release has genuine benefit and genuine readiness cost, and the choice belongs to the PO and sponsor once framed. The PM assembles the readiness-versus-benefit tradeoff and options for their decision. Closest distractor B: A pilot looks measured, but it still commits a direction the decision-owners have not chosen and still exposes support.",
     "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Financial Governance",
-    "a": "predictive",
+    "t": "Plan and manage resources (Manage and optimize resource availability) (secondary: BE1 governance)",
+    "a": "Predictive",
+    "q": "A specialist analyst is baselined at 50% allocation. For six weeks, operational escalations have consumed nearly all of the analyst's time. The functional manager has told the analyst that operations comes first. The schedule still assumes 50% and shows no variance, because the analyst has been working evenings to stay on track. What should the project manager do first?",
+    "o": [
+      "Reassign the analyst's non-specialist tasks to other team members so the remaining capacity is used only on specialist work",
+      "Establish the analyst's actual and forecast availability, quantify the schedule and sustainability exposure, and take the conflict to the governance path that can resolve it",
+      "Escalate to the functional manager's superior, since the 50% allocation was formally committed to the project and is not being honored",
+      "Rebaseline the schedule using the analyst's actual availability, and report the resulting variance and forecast slip to the sponsor"
+    ],
+    "x": 1,
+    "r": "The schedule looks clean only because the analyst is absorbing the gap after hours. The PM first surfaces real availability and the sustainability exposure, then routes the resource conflict to the authority that can resolve it. Closest distractor D: Rebaselining reflects reality but accepts the slip and the unsustainable pattern instead of resolving the underlying conflict.",
+    "difficulty": "Hard"
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage procurement (Manage suppliers and contracts)",
+    "a": "Predictive",
+    "q": "A vendor deliverable meets the numerical performance threshold in the acceptance appendix, but integrated validation shows that it fails the business outcome stated in the procurement statement of work. The contract requires written notice and a defined cure period before milestone acceptance may be withheld. The sponsor wants conditional acceptance to protect the launch date. What should the project manager do?",
+    "o": [
+      "Issue the contractual notice with the validation evidence, begin the cure process, and defer milestone acceptance until the contract criteria are satisfied or formally amended",
+      "Grant conditional acceptance because the numerical threshold was met, while reserving the right to reject the final deliverable if the cure is unsuccessful",
+      "Withhold acceptance and refer the vendor to legal, since the business outcome outranks the acceptance appendix",
+      "Accept the milestone and raise a change request to revise the business outcome or fund internal remediation"
+    ],
+    "x": 0,
+    "r": "The deliverable meets the numeric appendix but fails the SOW business outcome, and the contract sets the remedy path, so the PM issues written notice with evidence, runs the cure period, and defers acceptance until criteria are met or the contract is amended. Closest distractor C: Refusing acceptance is directionally right, but skipping the required notice-and-cure sequence and going to legal is premature under the contract.",
+    "difficulty": "Hard"
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage finance (Monitor financial variations and work with governance)",
+    "a": "Predictive",
     "q": "Reserve analysis shows contingency is being consumed faster than planned. If current response costs continue, the project is likely to reach a governance threshold during the next reporting cycle, although the approved budget has not yet been exceeded. What should the project manager do?",
     "o": [
       "Apply temporary cost restrictions within project authority and involve governance only if the threshold is actually crossed",
@@ -1060,43 +1060,43 @@ var questions = [
       "Report the forecasted exposure with response options and a recommended reserve strategy through the governance process"
     ],
     "x": 3,
-    "r": "A forecasted governance exposure should be reported with analysis and options. The project manager should not unilaterally release reserves, conceal the forecast through local adjustments, or wait for an actual breach.",
-    "difficulty": "Expert"
+    "r": "Contingency burn forecasts a threshold breach next cycle though the budget is not yet exceeded, so the PM reports the forecast with options and a reserve recommendation through governance before the threshold is crossed. Closest distractor A: Restricting costs and waiting keeps action within authority, but it defers governance until the breach the data already predicts.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Quality",
-    "a": "hybrid",
+    "t": "Help ensure value-based delivery (Examine business value throughout)",
+    "a": "Predictive/Hybrid",
     "q": "All deliverables have passed verification against documented requirements. Post-pilot observation shows users complete the task in a sequence the requirements did not anticipate, and the solution will therefore deliver roughly half the expected efficiency benefit. Acceptance criteria have been met and the customer has raised no objection. What should the project manager do first?",
     "o": [
       "Proceed with acceptance, since the deliverables conform to the agreed criteria, and record the benefit shortfall for the operations owner",
       "Reopen requirements elicitation with the pilot users and raise change requests for the workflow differences observed",
-      "Determine whether the acceptance criteria adequately represent fitness for use, quantify the benefit gap, and present options to the sponsor and benefit owner",
+      "Check whether the acceptance criteria actually represent fitness for use, size the benefit gap, and lay out options for the sponsor and benefit owner",
       "Escalate to governance, since the project will not deliver the benefits in the business case despite meeting its requirements"
     ],
     "x": 2,
-    "r": "Conformance to requirements is not the same as fitness for use, and the benefit gap is the project manager's problem even though no one has complained. The gap must be quantified and options developed before reopening requirements or escalating a conclusion.",
-    "difficulty": "Expert"
+    "r": "Deliverables conform but observed use will halve the benefit, so conformance is not proof of fitness for use. The PM tests whether the criteria capture fitness, quantifies the gap, and presents options to the sponsor and benefit owner. Closest distractor B: Reopening elicitation and raising changes is a plausible response, but it commits to rework before the gap is quantified or the decision-owners weigh in.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Schedule",
-    "a": "predictive",
+    "t": "Plan and manage schedule (Analyze schedule variation) (secondary: BE1 governance)",
+    "a": "Predictive",
     "q": "An external dependency is forecast to slip by four weeks. It feeds two components: one on the critical path and one optional. The other project's manager has not confirmed the forecast and says a recovery plan is being prepared. Your next governance report is in three days. What should the project manager do first?",
     "o": [
-      "Wait for the other project's recovery plan before reporting, so that the governance report reflects a confirmed forecast rather than an unverified slip",
+      "Wait for the other project's recovery plan before reporting, so that the governance report reflects a confirmed forecast rather than an uncertain slip",
       "Escalate to the sponsor now, since another project is creating schedule risk the project cannot control",
-      "Analyze the dependency against float and release options, develop response alternatives with their impacts, and report the exposure and options in governance",
+      "Assess the dependency against available float and release options, build response alternatives with their impacts, and report the exposure with those options at the governance review",
       "Report the full four-week schedule impact in the governance report and request the corresponding change to the committed release date"
     ],
     "x": 2,
-    "r": "An unconfirmed forecast is still exposure, and it must be analyzed rather than either passed through as a date change or held back pending certainty. Escalation without analysis gives the sponsor a problem instead of a decision.",
-    "difficulty": "Expert"
+    "r": "With a report due and the forecast unconfirmed, the PM analyzes the slip against float and release options, develops alternatives with impacts, and reports the exposure and options rather than a single number. Closest distractor D: Reporting the full four-week impact and requesting a date change acts on an unconfirmed forecast before float and options are analyzed, so it commits to one outcome prematurely.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Requirements Clarification",
-    "a": "predictive",
+    "t": "Develop and manage project scope (Obtain stakeholder agreement on scope)",
+    "a": "Predictive/Hybrid",
     "q": "Midway through development, the customer says a requirement for near real-time updates means five seconds. The architect designed for sixty seconds, and neither the requirements documentation nor the contract defines the term. Meeting the customer's interpretation may affect the critical path. What should the project manager do first?",
     "o": [
       "Direct the team to meet the five-second expectation because the customer defines acceptance, then update the requirements documentation",
@@ -1105,13 +1105,13 @@ var questions = [
       "Facilitate clarification of the business need and acceptance criteria, document the agreed requirement, and then assess change impacts"
     ],
     "x": 3,
-    "r": "The requirement is ambiguous. The project manager should first establish a shared, testable interpretation before deciding whether a formal change and schedule response are required.",
-    "difficulty": "Expert"
+    "r": "The term was never defined, so before acting or filing a change the PM clarifies the business need and acceptance criteria, documents the agreed requirement, and only then assesses change impacts. Closest distractor C: Submitting a change request treats the five-second figure as the agreed requirement before it is defined, so it formalizes an unvalidated interpretation and analyzes the wrong target.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Backlog Prioritization",
-    "a": "adaptive",
+    "t": "Help ensure value-based delivery (Prioritize work based on value) (secondary: P3 Lead the project team)",
+    "a": "Adaptive",
     "q": "The product owner prioritizes the backlog by responding to whichever stakeholder escalates most persistently. Benefits data indicates that a quieter customer segment drives most revenue retention. The product owner acknowledges the data but notes that the escalating stakeholder controls funding for the next release. What should the project manager do first?",
     "o": [
       "Reserve a fixed proportion of each iteration for the high-retention segment, so its features are not crowded out",
@@ -1120,28 +1120,28 @@ var questions = [
       "Present the benefits data to the sponsor and request a decision on whether the funding stakeholder's priorities should override the retention evidence for the coming release"
     ],
     "x": 2,
-    "r": "Funding influence is a real constraint, not something to be argued away, so it belongs inside an explicit prioritization rather than escalated around. A fixed allocation is a workaround, and deferring entirely to the product owner leaves the value evidence unused.",
-    "difficulty": "Expert"
+    "r": "The PO owns priority but is reacting to pressure over value, so the PM facilitates a session where the PO applies explicit value criteria with both the benefits data and the funding constraint visible, surfacing any real conflict. Closest distractor D: Escalating to the sponsor asks someone else to decide a prioritization the PO owns; the data can inform the PO's decision without removing it.",
+    "difficulty": "Hard"
   },
   {
-    "d": "process",
-    "t": "Sustainability",
-    "a": "hybrid",
+    "d": "business",
+    "t": "Plan and manage project compliance (sustainability) (secondary: PR3 value)",
+    "a": "Predictive",
     "q": "The approved business case commits the organization to a carbon-reduction target, but the target was never carried into the scope or schedule baselines. The team has selected a deployment option that satisfies the baselined schedule and is projected to exceed the carbon commitment by a material margin. The sponsor wants the schedule protected. What should the project manager do first?",
     "o": [
       "Proceed with the baselined option and record the overage as a lesson learned for future projects",
-      "Quantify the carbon variance and its benefit and reputational exposure, then present deployment alternatives with their schedule and cost impacts to the decision makers",
+      "Size the carbon variance and its benefit and reputational exposure, then put deployment alternatives and their schedule and cost impacts in front of the decision makers",
       "Escalate to the sponsor as a scope change, since the sustainability target does not appear in any baseline",
       "Raise a change request to add the carbon-reduction target to the scope baseline, so that the deployment options can then be evaluated against a controlled requirement"
     ],
     "x": 1,
-    "r": "A business case commitment binds the project whether or not it reached a baseline. The exposure must be quantified and alternatives put in front of the decision makers. Fixing the baseline first is sequencing paperwork ahead of the decision, and proceeding treats an omission as permission.",
-    "difficulty": "Expert"
+    "r": "The commitment is real even though it never reached the baselines, so the PM quantifies the variance and its benefit and reputational exposure and presents deployment alternatives with impacts to the decision makers. Closest distractor D: Adding the target to the baseline via change control is a tidy-looking governance step, but it sequences the paperwork ahead of quantifying the actual variance and the options, which is the decision that matters now.",
+    "difficulty": "Hard"
   },
   {
-    "d": "process",
-    "t": "AI Delivery Governance",
-    "a": "adaptive",
+    "d": "business",
+    "t": "Plan and manage project compliance (Use methods to support compliance)",
+    "a": "Adaptive/Hybrid",
     "q": "A team uses generative AI to draft customer communications. Policy requires approved human review before external release, but it also permits an expedited risk-based review when AI governance approves the reviewer pool and sampling method. The product owner wants to release low-risk messages tomorrow using experienced business reviewers who have not yet been approved for that role. What should the project manager do?",
     "o": [
       "Release only the low-risk messages after the business reviewers sign individual accountability statements",
@@ -1150,13 +1150,13 @@ var questions = [
       "Ask the sponsor to accept the temporary control because the policy already recognizes risk-based review"
     ],
     "x": 1,
-    "r": "The expedited path is valid only after AI governance approves the reviewers and method. The project manager should use that path quickly, but cannot treat experienced reviewers, sponsor acceptance, or post-release monitoring as substitutes for the required approval.",
+    "r": "The policy allows an expedited path, but only after AI governance approves the reviewer pool and method, so the PM holds the affected messages, requests that approval, and releases once the control is in place. Closest distractor C: Routing high-risk messages normally sounds prudent, but releasing low-risk messages still relies on an unapproved reviewer pool, which the policy requires AI governance to approve first.",
     "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Artifacts",
-    "a": "hybrid",
+    "t": "Evaluate project status (Develop metrics, analysis, and reconciliation)",
+    "a": "Predictive/Hybrid",
     "q": "A roadmap, a sprint backlog, a risk register, and a contract milestone log are each maintained by a different owner. Two of them now report different completion percentages for the same scope, and a stakeholder has quoted the more favorable figure to the customer. The next contract milestone review is in one week. What should the project manager do first?",
     "o": [
       "Correct the position given to the customer, then define artifact ownership, update cadence, and reconciliation points so a single reconciled view supports reporting",
@@ -1165,13 +1165,13 @@ var questions = [
       "Consolidate the four artifacts into a single integrated tool so conflicting figures cannot be produced"
     ],
     "x": 0,
-    "r": "An incorrect figure is already with the customer, so correction cannot wait for a structural fix, and the structural fix cannot be skipped once the correction is made. Naming an authoritative artifact or buying a tool addresses neither the immediate exposure nor the ownership gap that produced it.",
-    "difficulty": "Expert"
+    "r": "A wrong figure is already in front of the customer, so the PM corrects it and then establishes artifact ownership, update cadence, and reconciliation points so one reconciled view supports reporting. Closest distractor C: Naming the contract log as the sole external source is a plausible control, but it forces unrelated artifacts to reconcile to a contract view instead of assigning ownership and cadence across all four.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "process",
-    "t": "Estimation",
-    "a": "adaptive",
+    "t": "Plan and manage schedule (Estimate project tasks) (secondary: P8 communication)",
+    "a": "Adaptive/Hybrid",
     "q": "A sponsor needs a completion date for a board commitment. The team has run two experiments in a new product area and the assumptions are still moving. The sponsor says the board will not accept a range and asks for the project manager's best single date. What should the project manager provide?",
     "o": [
       "The date the team considers achievable at high confidence, with the remaining uncertainty managed through schedule contingency and reviewed at each stage gate",
@@ -1180,13 +1180,13 @@ var questions = [
       "A forecast with its assumptions and range, a proposed commitment date drawn from a stated confidence level, and the checkpoints at which the forecast will be refined"
     ],
     "x": 3,
-    "r": "The sponsor needs a single number, and the project manager can supply one — provided it is drawn from a stated confidence level and accompanied by the assumptions and refinement points behind it. A bare date, a refusal, or an accommodation of the sponsor's preference each strip away the basis the commitment depends on.",
-    "difficulty": "Expert"
+    "r": "Under moving assumptions, an honest forecast pairs assumptions and a range with a commitment date drawn from a stated confidence level and the checkpoints where it will be refined. Closest distractor A: A single high-confidence date with contingency is tempting, but it hides the assumptions and range the sponsor and board need to understand the risk they are accepting.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Procurement Strategy",
-    "a": "predictive",
+    "t": "Plan and manage procurement (Select preferred contract types)",
+    "a": "Predictive",
     "q": "A sponsor wants a firm fixed-price contract for an exploratory design engagement because the budget is capped and cannot be exceeded. Requirements will change materially as the seller learns, and qualified sellers have signalled they will price heavy contingency into any fixed-price bid. What should the project manager recommend?",
     "o": [
       "Deferring the procurement until enough internal design work has been completed to define a stable statement of work",
@@ -1195,43 +1195,43 @@ var questions = [
       "A firm fixed-price contract with a detailed statement of work, since the budget cap is a hard constraint and the design risk transfers to the seller, who is best placed to price it"
     ],
     "x": 2,
-    "r": "Fixed price under high uncertainty does not transfer risk, it prices it, and the sellers have said so. Cost-reimbursable abandons the cap the sponsor cannot move. The strategy must satisfy both, which is what phased or incentive structures with a ceiling are for.",
-    "difficulty": "Expert"
+    "r": "The requirement is both changing scope and a hard cap, so the strategy must hold the cap while accommodating change, such as a phased fixed-price design phase or incentive terms with a not-to-exceed ceiling. Closest distractor B: Cost-reimbursable fits the changing scope, but it does not hold the sponsor's hard budget cap, which the chosen strategy must preserve.",
+    "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Quality Compliance",
-    "a": "predictive",
+    "t": "Plan and optimize quality (Conduct ongoing quality reviews)",
+    "a": "Predictive",
     "q": "An audit finds that all required quality checks were completed and no defects were found, but several checks were performed by technically qualified people who were not authorized in the quality plan. What should the project manager do?",
     "o": [
-      "Repeat every affected check with authorized reviewers immediately, then investigate why the quality plan was bypassed",
+      "Repeat every affected check with authorized reviewers, then investigate why the quality plan was bypassed",
       "Assess the process nonconformance and the product impact, correct the records or checks as required, and address the root cause",
       "Accept the checks because qualified reviewers performed them, document the deviation, and update the authorization list for future work",
       "Raise a change request to broaden reviewer authority for this work and close the audit finding once approval is obtained"
     ],
     "x": 1,
-    "r": "The project manager must evaluate both process and product impact, correct what is required, and prevent recurrence. Neither retroactive authorization nor automatic repetition alone resolves the nonconformance.",
-    "difficulty": "Expert"
+    "r": "The finding is a process nonconformance, so the PM assesses both the process gap and the product impact, corrects records or checks as needed, and addresses why the plan was bypassed. Closest distractor A: Re-running every check assumes the results are invalid before the product impact is assessed, so it may be wasteful and still misses the root cause.",
+    "difficulty": "Moderate-Hard"
   },
   {
-    "d": "process",
-    "t": "Incremental Delivery Decision",
-    "a": "adaptive",
+    "d": "business",
+    "t": "Define and establish project governance (Outline escalation thresholds) (secondary: PR3 value)",
+    "a": "Adaptive/Hybrid",
     "q": "Readiness analysis shows that a limited workflow release can produce measurable benefits with manageable operational risk. Training and support are ready, but one regional stakeholder objects because the partial release creates a temporary reporting difference. The governance plan allows the product owner to approve incremental releases unless a regional reporting commitment is affected; analysis shows that this commitment may be affected. What should the project manager do next?",
     "o": [
       "Proceed with the incremental release because the overall risk is manageable and the product owner owns release priority",
       "Delay the release until the regional stakeholder agrees that the temporary reporting difference is acceptable",
-      "Present the readiness evidence, reporting impact, and release options through the governance path that can decide the commitment tradeoff",
+      "Bring the readiness evidence, the reporting impact, and the release options to the governance path that can decide the commitment tradeoff",
       "Remove the affected region from the release and proceed with the remaining users under the product owner's authority"
     ],
     "x": 2,
-    "r": "The incremental release is otherwise ready, but the possible impact on a regional commitment crosses the product owner's authority threshold. The project manager should route that specific tradeoff for decision rather than proceeding, waiting for consensus, or redesigning the release unilaterally.",
+    "r": "The governance plan carves out exactly this case, so once a regional reporting commitment may be affected the decision leaves the PO and goes to the governance path with the readiness evidence and options. Closest distractor D: Carving out the region lets the release proceed, but it sidesteps the governance decision the affected commitment requires rather than resolving it.",
     "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Integrated Status",
-    "a": "hybrid",
+    "t": "Evaluate project status (Communicate project status) (secondary: P8 communication)",
+    "a": "Hybrid",
     "q": "Software increments are ahead of plan and customer demonstrations are receiving positive feedback, but data migration is behind and may delay the integrated release. Leadership asks the project manager to report the project as green because the visible product work is progressing well. What should the project manager do?",
     "o": [
       "Report amber because any delay on a critical workstream requires the entire project to be amber",
@@ -1240,13 +1240,13 @@ var questions = [
       "Determine overall status from the integrated release forecast and disclose both the software progress and the migration exposure"
     ],
     "x": 3,
-    "r": "Overall status should reflect the integrated outcome and forecast, not the most visible workstream or a single variance in isolation. Component performance and release impact should both be transparent.",
-    "difficulty": "Expert"
+    "r": "Overall status should reflect the integrated release forecast, so the PM sets status from that forecast and discloses both the strong software progress and the migration exposure. Closest distractor A: A blanket rule that one delayed workstream forces amber ignores the integrated forecast, which is what should actually determine overall status.",
+    "difficulty": "Moderate-Hard"
   },
   {
     "d": "business",
-    "t": "Change Control Execution",
-    "a": "predictive",
+    "t": "Manage and control changes (Implement approved changes)",
+    "a": "Predictive",
     "q": "A change request has been approved. Procurement amendments, training impacts, and baseline updates remain outstanding. To protect the date, the team has already begun implementing the change and has completed two days of work. The affected supplier has not been notified. What should the project manager do first?",
     "o": [
       "Allow the work to continue, since the change is approved, and complete the outstanding updates in parallel",
@@ -1255,14 +1255,14 @@ var questions = [
       "Accept the completed work, update the baselines to reflect it, and notify the supplier at the next scheduled review"
     ],
     "x": 1,
-    "r": "Approval authorizes the change, not the uncontrolled work, and the supplier exposure is live. The project manager stops the affected work and assesses what the early start has already created. Reporting and waiting leaves the exposure running; continuing in parallel accepts it.",
-    "difficulty": "Expert"
+    "r": "Approval does not license implementation before amendments, training, and baselines are processed, so the PM stops the affected work and assesses the exposure the early start created. Closest distractor C: Reporting the early start is appropriate later, but the PM should first stop the uncontrolled work and assess exposure rather than let it continue while awaiting direction.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Governance",
-    "a": "hybrid",
-    "q": "Backlog decisions on an adaptive project have begun altering commitments in a customer contract and a regulatory filing. The product owner argues that routing backlog changes to the steering committee will destroy the team's responsiveness, and notes that no change so far has actually breached a commitment. What should the project manager do first?",
+    "t": "Define and establish project governance (Outline escalation paths and thresholds) (secondary: BE3 change)",
+    "a": "Adaptive/Hybrid",
+    "q": "Backlog decisions have begun altering commitments in a customer contract and a regulatory filing. The product owner argues that routing backlog changes to the steering committee will destroy the team's responsiveness, and notes that no change so far has actually breached a commitment. What should the project manager do first?",
     "o": [
       "Require legal and compliance to review the backlog before each iteration begins, so that changes affecting commitments are caught before the team commits to them",
       "Accept the product owner's position while no commitment has been breached, and introduce governance review only if a breach becomes likely",
@@ -1270,43 +1270,43 @@ var questions = [
       "Add the contract and regulatory commitments to the team's definition of done, so that every increment is validated against them before it can be accepted or released"
     ],
     "x": 2,
-    "r": "Governance should protect commitments that exceed team authority without governing everything. Thresholds do that. A definition-of-done criterion cannot authorize a contract change, blanket review destroys responsiveness, and waiting for a breach forfeits the control.",
-    "difficulty": "Expert"
+    "r": "Thresholds let the PM escalate only the backlog changes that touch contracted or regulated commitments while leaving everything below the line with the PO, which protects both governance and responsiveness. Closest distractor B: Waiting until a breach becomes likely is tempting because nothing has breached yet, but it leaves commitment-affecting changes ungoverned until the last moment.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Compliance",
-    "a": "predictive",
+    "t": "Plan and manage project compliance (Determine actions to address compliance needs)",
+    "a": "Predictive/Hybrid",
     "q": "A new privacy rule takes effect before launch. Legal confirms that one project data flow falls within the rule, but the regulator permits compensating controls when they are reviewed and approved by compliance. The technical team proposes adding the permanent control after launch. What should the project manager do first?",
     "o": [
       "Proceed with launch using enhanced monitoring and record the permanent control as a time-bound post-launch compliance action",
       "Ask the sponsor to accept the temporary exposure, document the proposed compensating control, and notify compliance after launch",
       "Suspend the entire launch until the permanent privacy control is implemented and independently validated by legal and compliance",
-      "Work with legal and compliance to evaluate the compensating-control path, and hold the affected release decision pending approval"
+      "Work with legal and compliance to evaluate the compensating-control path, and hold the affected release decision until that control is approved"
     ],
     "x": 3,
-    "r": "The rule applies, but an authorized compliance path may exist. The project manager should obtain the required assessment and governance decision before releasing the affected functionality.",
-    "difficulty": "Expert"
+    "r": "The regulator permits a compensating control with compliance approval, so the PM evaluates that path with legal and compliance and holds the affected release until the control is approved. Closest distractor C: Suspending the whole launch is over-broad, since only one data flow is in scope and an approved compensating control is available.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Issue Intervention",
-    "a": "adaptive",
+    "t": "Remove impediments and manage issues (Determine an intervention strategy) (secondary: PR4 resources)",
+    "a": "Adaptive",
     "q": "Recurring production-support incidents are reducing the agile team's delivery capacity. The product owner favors reducing release scope, while the operations manager favors a temporary support rotation. Available data shows the trend but has not isolated the main capacity drivers. What should the project manager do first?",
     "o": [
       "Escalate the resource-priority conflict to the sponsor with both preferred responses for decision",
       "Reduce release scope, since velocity has declined for two iterations and the release goal is no longer realistic",
-      "Facilitate analysis of incident demand, capacity impact, and response tradeoffs so the parties can select an evidence-based intervention",
+      "Facilitate analysis of incident demand, capacity impact, and response tradeoffs so the team and managers can choose an evidence-based intervention",
       "Implement the support rotation, since it preserves the release scope while sharing operational demand across the team"
     ],
     "x": 2,
-    "r": "The problem is known, but the best intervention is not. The project manager should help the parties understand the drivers and tradeoffs before implementing or escalating a response.",
-    "difficulty": "Expert"
+    "r": "The drivers are not yet isolated, so the PM facilitates analysis of incident demand, capacity impact, and tradeoffs so the parties select an evidence-based intervention rather than a preferred guess. Closest distractor A: Escalating hands the sponsor a choice between two unanalyzed options, which is premature before the drivers are understood.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Risk Response Execution",
-    "a": "hybrid",
+    "t": "Plan and manage risk (Execute a risk response) (secondary: BE4 issues)",
+    "a": "Predictive",
     "q": "A supplier delay triggers the project's approved response to switch to an alternate supplier. Before execution, the risk owner learns that the alternate supplier's required sustainability certification has expired. What should the project manager do first?",
     "o": [
       "Keep the original supplier, update the schedule forecast, and wait until the delay becomes an actual issue before changing vendors",
@@ -1315,13 +1315,13 @@ var questions = [
       "Reassess the response's viability, update the risk or issue information, and obtain the appropriate decision before switching suppliers"
     ],
     "x": 3,
-    "r": "An approved response should not be executed blindly when new information makes it potentially noncompliant. The response must be reassessed and routed through the appropriate decision path.",
-    "difficulty": "Expert"
+    "r": "A trigger normally means execute, but the alternate supplier's expired certification is new information that undermines the approved response, so the PM reassesses viability and obtains the appropriate decision before switching. Closest distractor C: Executing on the trigger is usually correct, but here it commits to a response that new information has already undermined.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Organizational Change Execution",
-    "a": "hybrid",
+    "t": "Support organizational change (Evaluate impact and determine actions)",
+    "a": "Predictive/Hybrid",
     "q": "Adoption analysis has confirmed that middle managers are discouraging use of a new automated approval workflow because it removes a control they value. The sponsor has approved a change-management plan with manager coaching and adoption metrics. Two weeks in, adoption remains flat and the coaching sessions are being scheduled but not attended. What should the project manager do next?",
     "o": [
       "Execute the approved plan while making adoption metrics and coaching attendance visible to the sponsor and the managers' leadership, and adjust the response if the trend does not move",
@@ -1330,28 +1330,28 @@ var questions = [
       "Report the flat adoption as an issue and pause further deployment until the managers commit to attending the coaching"
     ],
     "x": 0,
-    "r": "The approved response is only two weeks old and has not actually been received by its audience. The project manager executes it while making non-attendance visible where it can be acted on. Redesigning, pausing, or escalating for sanctions all abandon or overrun the approved plan prematurely.",
-    "difficulty": "Expert"
+    "r": "The plan is only two weeks in, so the PM executes it, makes attendance and adoption visible to the sponsor and the managers' leadership to create accountability, and adjusts if the trend does not move. Closest distractor B: Redesigning to add a manager step responds to the resistance by changing the product before the approved plan has had a fair, visible run.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "External Environment",
-    "a": "adaptive",
+    "t": "Evaluate external business environment changes (Assess impact on scope/backlog)",
+    "a": "Adaptive",
     "q": "A competitor has released a capability that changes what customers now expect from the product your team is building. The current backlog still supports the approved business case. The sponsor's initial reaction is that the competitor's feature is superficial. The product owner wants to insert a comparable feature into the next iteration. What should the project manager do first?",
     "o": [
-      "Assess the effect of the shift on expected value, backlog priority, and strategic alignment, and bring the assessment to the product owner and sponsor for a prioritization decision",
+      "Evaluate how the shift affects expected value, backlog priority, and strategic alignment, and take that assessment to the product owner and sponsor for a prioritization decision",
       "Insert the comparable feature into the next iteration, since the product owner owns backlog priority and customer expectations have moved",
       "Continue with the approved backlog, since the business case remains valid, the sponsor considers the competitor's feature superficial, and the expected value is unchanged",
       "Request that the sponsoring organization revalidate the business case before any backlog change is considered"
     ],
     "x": 0,
-    "r": "A market shift is an input to value, not an instruction to react or to hold firm. The project manager assesses the impact and puts it in front of the people who decide priority. Reacting, standing pat, or demanding a business-case revalidation all skip that assessment.",
-    "difficulty": "Expert"
+    "r": "A market shift with conflicting reads is assessed for its effect on value, priority, and alignment, and that assessment goes to the PO and sponsor for a prioritization decision. Closest distractor B: Inserting the feature respects PO authority, but it commits backlog capacity before the value and alignment effect of the shift is assessed.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Ethics and Reporting",
-    "a": "predictive",
+    "t": "Plan and manage project compliance (secondary: BE1 governance; PMI Code of Ethics)",
+    "a": "Predictive",
     "q": "A confirmed compliance concern is due in tomorrow's steering report. A senior executive asks the project manager to omit it until the response owner selects a workaround, arguing that reporting an unresolved concern will cause unnecessary escalation. The reporting standard requires confirmed material concerns and current response status, but permits sensitive details to be restricted. What should the project manager do?",
     "o": [
       "Include the concern and current response status through the defined reporting path, restrict sensitive details appropriately, and brief the executive on the message",
@@ -1360,73 +1360,73 @@ var questions = [
       "Escalate the executive's request to the ethics office before issuing the report, because the request attempts to suppress material information"
     ],
     "x": 0,
-    "r": "The reporting standard already defines the ethical and governance path: report the material concern and current status while protecting sensitive details. An ethics escalation may become necessary if pressure continues, but it is not required before the project manager performs the clear reporting obligation.",
+    "r": "The standard requires reporting confirmed material concerns and status while allowing sensitive details to be restricted, so the PM reports through the defined path, restricts sensitive detail, and briefs the executive. Closest distractor D: Taking the request to the ethics office treats the situation as an investigation before the PM has simply done the required thing, which is to report the concern accurately.",
     "difficulty": "Hard"
   },
   {
     "d": "process",
-    "t": "Benefits Transition",
-    "a": "hybrid",
+    "t": "Manage project closure (Validate readiness for transition) (secondary: BE1 governance)",
+    "a": "Predictive",
     "q": "A transition gate requires a named benefits owner and an agreed measurement method for the expected reduction in customer wait time. Operations has accepted the deliverables and says benefits ownership can be settled after go-live, once the operating model stabilizes. The sponsor wants the project closed this quarter. What should the project manager do?",
     "o": [
       "Assign benefits measurement to the project team for the first quarter after go-live, so that the transition can proceed and the project can close this quarter",
       "Add wait-time metrics to the project dashboard and continue reporting them until operations designates an owner",
       "Pass the gate, since operations has accepted the deliverables, and record the missing benefits ownership in lessons learned",
-      "Hold the gate and present the unmet criterion to governance with options, so that ownership and measurement are assigned or the criterion is formally waived"
+      "Hold the gate and take the unmet criterion to governance with options, so ownership and measurement are assigned or the criterion is formally waived"
     ],
     "x": 3,
-    "r": "A gate criterion is either met or formally waived by the body that set it. The project manager cannot pass it on the strength of deliverable acceptance, nor can the project absorb an operational accountability to keep the closure date.",
-    "difficulty": "Expert"
+    "r": "The gate requires an owner and a measurement method, so with the criterion unmet the PM holds the gate and takes it to governance with options to assign ownership and measurement or formally waive it. Closest distractor A: Having the project team measure benefits for a quarter lets closure proceed, but it parks an operations accountability with the project and still does not satisfy the gate criterion.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Compliance Governance",
-    "a": "hybrid",
+    "t": "Plan and manage project compliance (Analyze consequences of noncompliance) (secondary: BE1 governance)",
+    "a": "Predictive",
     "q": "Impact analysis confirms that a cybersecurity control and an accessibility requirement cannot both be satisfied within the approved scope and cost. Both are mandatory organizational policies. Cybersecurity governance can approve security exceptions, accessibility governance can approve accessibility exceptions, and neither body has authority over the other policy. What should the project manager do next?",
     "o": [
       "Ask both policy owners to approve temporary exceptions independently and proceed if both approvals are obtained",
-      "Present the documented conflict, options, and impacts to the enterprise governance body with authority to resolve cross-policy tradeoffs",
+      "Take the documented conflict, options, and impacts to the enterprise governance body that has authority to resolve cross-policy tradeoffs",
       "Implement the control with the greater quantified risk reduction and document the other requirement as residual organizational risk",
       "Pause detailed design and ask the technical team to continue searching for a solution until both policy owners agree that no compliant option exists"
     ],
     "x": 1,
-    "r": "Separate exception authorities cannot resolve a conflict between two mandatory policies when the project cannot satisfy both. The project manager should route the cross-policy tradeoff to the enterprise body authorized to decide it, supported by the completed analysis.",
+    "r": "Neither policy body can decide the other's policy, so the cross-policy tradeoff goes to the enterprise governance body with authority over both, with the conflict, options, and impacts documented. Closest distractor A: Independent exceptions look like progress, but neither body has authority over the other policy, so parallel approvals cannot settle the tradeoff between them.",
     "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Issue Intervention",
-    "a": "adaptive",
+    "t": "Remove impediments and manage issues (Recognize when a risk becomes an issue) (secondary: PR3 value)",
+    "a": "Adaptive",
     "q": "A risk that users would reject a redesigned workflow has materialized: pilot adoption is 20% against a 70% target. Release is three weeks away. Analysis shows the workflow does not match how users sequence the task, and training will not close the gap. The product owner proposes releasing on schedule with enhanced support and fixing the workflow in the next release. What should the project manager do next?",
     "o": [
       "Keep the item in the risk register with increased probability and impact until the release decision is made",
-      "Treat the materialized risk as an issue, and present the intervention options, their release and benefit impacts, and a recommendation to the decision makers",
+      "Reclassify the materialized risk as an issue, then present the intervention options, their release and benefit impacts, and a recommendation to the decision makers",
       "Accept the product owner's proposal, since the release date is committed, enhanced support is available, and a workflow fix is already planned for the next release",
       "Delay the release until the workflow has been redesigned around the users' actual task sequence and re-piloted with the affected user group"
     ],
     "x": 1,
-    "r": "A materialized risk is an issue, and the release decision now carries a known benefit shortfall that the decision makers have not seen. The product owner cannot absorb that tradeoff alone, a unilateral delay preempts it, and leaving it in the risk register misclassifies what has already happened.",
-    "difficulty": "Expert"
-  },
-  {
-    "d": "business",
-    "t": "AI Governance",
-    "a": "adaptive",
-    "q": "An AI recommendation engine meets its overall accuracy target, but validation confirms materially worse outcomes for a protected customer segment. Policy requires AI-governance review before any use affected by confirmed disparate impact. The team has identified a configuration that reduces the disparity but also lowers overall accuracy below the contractual target. What should the project manager do next?",
-    "o": [
-      "Deploy the original configuration only to customer segments without observed disparity while remediation continues",
-      "Adopt the lower-accuracy configuration because reducing disparate impact takes precedence over the contractual accuracy target",
-      "Pause the affected release and present both configurations, validation evidence, contractual impacts, and remediation options to AI governance",
-      "Ask the sponsor and customer to jointly accept the residual disparity until the model can be retrained"
-    ],
-    "x": 2,
-    "r": "Confirmed disparate impact activates the governance requirement, and the alternative configuration creates a second contractual tradeoff. The project manager should contain the release and present the complete evidence and options to the authorized body rather than selecting or accepting either exposure locally.",
+    "r": "A materialized risk is an issue, so the PM reclassifies it and presents the intervention options with their release and benefit impacts and a recommendation to the decision makers. Closest distractor C: Releasing with enhanced support respects the date, but adoption at 20% with a workflow that does not fit how users work is a known benefit failure the decision-owners should weigh, not one the PM accepts by default.",
     "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Continued Business Value",
-    "a": "hybrid",
+    "t": "Plan and manage project compliance (secondary: BE5 risk)",
+    "a": "Predictive/Hybrid",
+    "q": "An AI recommendation engine meets its overall accuracy target, but validation confirms materially worse outcomes for a protected customer segment. Policy requires AI-governance review before any use affected by confirmed disparate impact. The team has identified a configuration that reduces the disparity but also lowers overall accuracy below the contractual target. What should the project manager do next?",
+    "o": [
+      "Deploy the original configuration only to customer segments without observed disparity while remediation continues",
+      "Adopt the lower-accuracy configuration because reducing disparate impact takes precedence over the contractual accuracy target",
+      "Pause the affected release and present both configurations, the validation evidence, the contractual impacts, and remediation options to AI governance",
+      "Ask the sponsor and customer to jointly accept the residual disparity until the model can be retrained"
+    ],
+    "x": 2,
+    "r": "Policy requires AI-governance review on confirmed disparate impact, and the fix creates a contractual conflict, so the PM holds the affected release and puts both configurations, evidence, contractual impacts, and options to AI governance. Closest distractor B: The lower-disparity configuration is ethically appealing, but choosing it drops accuracy below a contractual target, a tradeoff the PM cannot decide alone.",
+    "difficulty": "Hard"
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (Examine business value throughout) (secondary: BE1 governance)",
+    "a": "Predictive/Hybrid",
     "q": "An independent market analysis, accepted by the sponsoring organization, shows the project's remaining benefits no longer justify the remaining investment. Schedule and cost performance are healthy, the team is highly engaged, and roughly 70% of the budget has already been spent. What should the project manager do next?",
     "o": [
       "Continue to completion, since most of the investment is already committed and performance remains strong",
@@ -1435,23 +1435,23 @@ var questions = [
       "Rebaseline the project's success measures to reflect the revised market conditions and continue against the new baseline"
     ],
     "x": 2,
-    "r": "The decision to continue belongs to governance and turns on the remaining investment, not on the amount already spent or on execution performance. Narrowing scope may well be the right answer, but the project manager cannot select it unilaterally, and rebaselining hides the question rather than answering it.",
-    "difficulty": "Expert"
+    "r": "Remaining value below remaining investment is a continue, pivot, or terminate decision for governance, so the PM prepares and presents that recommendation weighing remaining investment against revised benefits. Closest distractor B: Trimming to the still-valuable scope is sensible analysis, but it commits to \"continue reduced\" before the decision-owners weigh termination.",
+    "difficulty": "Hard"
   },
   {
     "d": "business",
-    "t": "Strategic Governance",
-    "a": "hybrid",
+    "t": "Define and establish project governance (secondary: BE3 change; BE8 external environment)",
+    "a": "Predictive/Hybrid",
     "q": "A regional business unit requests a customization that is likely to improve local adoption and remains within the project's scope tolerance. The enterprise architecture council warns that the customization may undermine a strategic standardization objective. The project manager can approve ordinary scope changes but cannot authorize strategic exceptions. What should the project manager do next?",
     "o": [
       "Move the customization to a future phase so the current project can proceed without a governance decision",
       "Approve the customization, since it remains within the project's delegated scope tolerance",
       "Reject the customization, since enterprise architecture objectives take precedence over local adoption benefits",
-      "Assess the local value and the enterprise impacts, then route the strategic exception to the authorized governance body"
+      "Assess the local value against the enterprise impacts, then route the strategic exception to the governance body authorized to decide it"
     ],
     "x": 3,
-    "r": "The request is within normal scope tolerance but creates a strategic exception outside the project manager's authority. The tradeoff should be analyzed and decided by the appropriate governance body.",
-    "difficulty": "Expert"
+    "r": "The change looks like ordinary scope but the council's strategic warning makes it a strategic exception beyond the PM's authority, so the PM assesses local value against enterprise impacts and routes the exception to the authorized body. Closest distractor B: Approving inside scope tolerance is tempting, but the strategic-standardization warning turns this into an exception the PM cannot authorize.",
+    "difficulty": "Moderate-Hard"
   }
 ];
 
