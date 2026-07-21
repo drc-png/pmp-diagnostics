@@ -293,7 +293,12 @@
 .pmp-quiz .q-domain.people { background:#ECFDF3; color:var(--green); }
 .pmp-quiz .q-domain.process { background:#EFF8FF; color:var(--blue); }
 .pmp-quiz .q-domain.business { background:#FFF7E3; color:#6F3B00; }
-.pmp-quiz .q-difficulty { border-radius:999px; padding:.28rem .58rem; background:#FEE4E2; color:#B42318; font-size:.68rem; font-weight:950; text-transform:uppercase; letter-spacing:.05em; }
+.pmp-quiz .q-type-note { margin:-.35rem 0 1rem; color:var(--muted); font-size:.86rem; font-weight:850; text-transform:uppercase; letter-spacing:.05em; }
+.pmp-quiz .structured-group { display:grid; gap:.8rem; margin:1rem 0; }
+.pmp-quiz .structured-row { border:2px solid var(--line); border-radius:8px; padding:.9rem; background:#fff; display:grid; gap:.55rem; }
+.pmp-quiz .structured-row label { font-weight:900; color:var(--navy); }
+.pmp-quiz .structured-row select { width:100%; border:1px solid var(--line); border-radius:6px; padding:.72rem; font:inherit; color:var(--ink); background:#fff; }
+.pmp-quiz .structured-row select:focus { outline:3px solid rgba(196,154,39,.28); border-color:var(--gold); }
 .pmp-quiz .q-text {
   margin:0 0 1.2rem;
   color:var(--navy);
@@ -694,7 +699,7 @@ var candidateType = '';
 var targetWindow = '';
 var funnelOptIn = true;
 var checkpoint = 'PMP 2026 Readiness Assessment - Lead Diagnostic';
-var STORAGE_VERSION = 'pmp-2026-readiness-lead-v3';
+var STORAGE_VERSION = 'pmp-2026-readiness-lead-v4';
 var STORAGE_KEY = 'pmpTrainingAcademyReadinessProgress';
 var LAST_SUBMISSION_KEY = 'pmpTrainingAcademyLastSubmission';
 var sessionActive = false;
@@ -797,16 +802,21 @@ var questions = [
     "d": "business",
     "t": "Plan and manage risk (secondary: BE2 Plan and manage project compliance)",
     "a": "Predictive",
-    "q": "A regulator with approval authority over the launch raises a concern that the current design may not satisfy a reporting rule. The regulator has not issued a formal finding. The sponsor considers the concern speculative, notes that a formal finding could take months, and directs the team to continue design work while leadership resolves it. What should the project manager do first?",
+    "q": "A regulator with approval authority over the launch raises a concern that the current design may not satisfy a reporting rule. The regulator has not issued a formal finding. The sponsor considers the concern speculative and directs the team to continue design work while leadership resolves it. Which two actions should the project manager take first? Select two.",
     "o": [
-      "Continue the design work as the sponsor has directed, and log the regulator's concern in the risk register with the sponsor named as risk owner",
-      "Determine which design work is exposed if the concern is upheld, and bring that exposure together with the sponsor's direction to the body authorized to accept the risk",
-      "Ask the regulator to confirm in writing that the concern is not a formal finding, so that the team can continue the design work on a documented basis",
-      "Halt all design work until the regulator issues a formal finding on the reporting rule"
+      "Continue all design work under the sponsor's direction and assign the sponsor as the regulatory risk owner.",
+      "Determine which design work would be exposed if the regulator's concern is upheld.",
+      "Bring the exposure and the sponsor's direction to the body authorized to accept regulatory risk.",
+      "Ask the regulator to state that the concern is not a formal finding before the team proceeds."
     ],
-    "x": 1,
-    "r": "The concern is not yet a finding, so a full halt is disproportionate, but continuing on sponsor say-so lets the sponsor self-accept a regulatory risk that may exceed the sponsor's authority. The PM scopes the exposure and routes it, with the sponsor's position, to the authorized acceptor. Closest distractor A: Continuing while logging a risk is tempting because work can often proceed, but it treats an active regulatory exposure as an owned risk and skips the authority question.",
-    "difficulty": "Hard"
+    "x": [
+      1,
+      2
+    ],
+    "r": "The concern is not yet a finding, so a full halt is disproportionate, but the sponsor should not self-accept regulatory exposure. The PM scopes the affected work and routes the risk-acceptance decision to the proper authority. Continuing everything or seeking a disclaimer skips that authority question.",
+    "difficulty": "Hard",
+    "type": "multi",
+    "selectCount": 2
   },
   {
     "d": "people",
@@ -962,16 +972,35 @@ var questions = [
     "d": "process",
     "t": "Develop an integrated project management plan (Assess consolidated plans for dependencies and gaps)",
     "a": "Hybrid",
-    "q": "A project combines an AI-assisted triage capability delivered adaptively, a data-center migration with a contractually fixed cutover date, and a sustainability commitment in the business case. Each workstream has a competent plan and a named lead. Two leads have already made scheduling decisions that the third lead learned about only afterward. What should the project manager do first?",
-    "o": [
-      "Establish an integrated plan that reconciles cross-workstream dependencies, decision rights, and information flow against the expected business value",
-      "Assign a single lead across all three workstreams so that scheduling decisions are made by one accountable person",
-      "Keep the migration on a predictive baseline and move the other two to adaptive delivery, so each workstream has an approach matched to its uncertainty",
-      "Introduce a weekly cross-workstream coordination meeting and require leads to bring scheduling decisions to it before committing"
+    "q": "A project combines an AI-assisted triage capability, a data-center migration with a contractual cutover date, an analytics vendor doing exploratory work, and one shared release milestone. Match each workstream condition to the planning control that best fits it.",
+    "r": "Different workstreams can require different controls. The PM should combine adaptive discovery, predictive milestones, supplier controls, and an integrated roadmap rather than forcing one planning method across all work.",
+    "difficulty": "Hard",
+    "type": "matching",
+    "pairs": [
+      {
+        "left": "AI-assisted triage capability",
+        "answer": "Adaptive backlog and review cadence with defined integration checkpoints"
+      },
+      {
+        "left": "Data-center migration with contractual cutover",
+        "answer": "Predictive milestone plan with change and readiness gates"
+      },
+      {
+        "left": "Analytics vendor doing exploratory work",
+        "answer": "Supplier integration plan with acceptance criteria and review cadence"
+      },
+      {
+        "left": "Shared release milestone",
+        "answer": "Integrated roadmap showing dependencies, decision points, and handoffs"
+      }
     ],
-    "x": 0,
-    "r": "Competent workstreams surprising each other means the gap is integration: dependencies, decision rights, and information flow tied to business value, which an integrated plan establishes. Closest distractor D: A coordination meeting is a partial mechanism, but without an integrated plan and defined decision rights it does not fix the underlying gap.",
-    "difficulty": "Hard"
+    "choices": [
+      "Adaptive backlog and review cadence with defined integration checkpoints",
+      "Predictive milestone plan with change and readiness gates",
+      "Supplier integration plan with acceptance criteria and review cadence",
+      "Integrated roadmap showing dependencies, decision points, and handoffs",
+      "Single team-managed backlog with no external milestones"
+    ]
   },
   {
     "d": "process",
@@ -992,16 +1021,22 @@ var questions = [
     "d": "business",
     "t": "Manage and control changes",
     "a": "Predictive",
-    "q": "Impact analysis confirms that a reporting module requested by the sponsor would delay a regulatory compliance milestone by two weeks. The regulator permits a filing extension on request, which has not been sought. The sponsor believes the module will materially improve adoption and has asked the team to begin work while the paperwork catches up. What should the project manager do next?",
-    "o": [
-      "Confirm whether the filing extension would be granted before submitting the change, so the request reflects the actual schedule impact",
-      "Allow the work to begin, since the sponsor has accepted the delay risk and an extension mechanism exists",
-      "Decline the request, since a regulatory milestone cannot be traded against an adoption benefit",
-      "Submit the change with the documented impacts and the extension option to change control, and authorize no work until a decision is made"
+    "q": "Impact analysis confirms that a sponsor-requested reporting module would delay a regulatory compliance feature unless the release scope changes. Place the change-control actions in the correct order.",
+    "x": [
+      4,
+      1,
+      2,
+      3
     ],
-    "x": 3,
-    "r": "Impact analysis is complete and shows a regulatory-milestone effect, so the PM submits the change with impacts and the extension option to change control and authorizes no work until disposition. Closest distractor A: Confirming the extension is reasonable fact-gathering, but it is an input to the change request, not a substitute for the authorized decision, and work still cannot begin.",
-    "difficulty": "Hard"
+    "r": "When impact analysis is complete, the PM records the request and analysis, sends the package to the authorized change authority, communicates the disposition, and updates baselines only after approval. Implementation before disposition bypasses change control.",
+    "difficulty": "Hard",
+    "type": "sequence",
+    "steps": [
+      "Update affected baselines and authorize implementation of the reporting module.",
+      "Record the requested reporting-module change and the completed impact analysis.",
+      "Submit the change package to the authorized change authority for disposition.",
+      "Communicate the approved, rejected, or deferred decision and update plans only if approved."
+    ]
   },
   {
     "d": "process",
@@ -1052,16 +1087,21 @@ var questions = [
     "d": "process",
     "t": "Plan and manage finance (Monitor financial variations and work with governance)",
     "a": "Predictive",
-    "q": "Reserve analysis shows contingency is being consumed faster than planned. If current response costs continue, the project is likely to reach a governance threshold during the next reporting cycle, although the approved budget has not yet been exceeded. What should the project manager do?",
+    "q": "Reserve analysis shows contingency is being consumed faster than planned. If current response costs continue, the project will cross the delegated contingency threshold within the next reporting period, but the threshold has not yet been crossed. Which two actions should the project manager take next? Select two.",
     "o": [
-      "Apply temporary cost restrictions within project authority and involve governance only if the threshold is actually crossed",
-      "Request release of management reserve now, since the forecast demonstrates that additional funding will be needed",
-      "Revise the risk responses to remain below the threshold and include the change in the normal status report",
-      "Report the forecasted exposure with response options and a recommended reserve strategy through the governance process"
+      "Reforecast expected reserve consumption against the delegated threshold using the current response-cost trend.",
+      "Use management reserve now so the project can avoid reporting a contingency threshold issue.",
+      "Prepare decision-ready options for governance if the forecast shows the threshold will be exceeded.",
+      "Reduce quality-review frequency to preserve contingency until the next baseline review."
     ],
-    "x": 3,
-    "r": "Contingency burn forecasts a threshold breach next cycle though the budget is not yet exceeded, so the PM reports the forecast with options and a reserve recommendation through governance before the threshold is crossed. Closest distractor A: Restricting costs and waiting keeps action within authority, but it defers governance until the breach the data already predicts.",
-    "difficulty": "Hard"
+    "x": [
+      0,
+      2
+    ],
+    "r": "A threshold that is forecast to be crossed requires active forecasting and decision-ready options, not hidden use of management reserve or quality cuts. The PM prepares governance before the threshold is breached.",
+    "difficulty": "Hard",
+    "type": "multi",
+    "selectCount": 2
   },
   {
     "d": "process",
@@ -1157,16 +1197,35 @@ var questions = [
     "d": "process",
     "t": "Evaluate project status (Develop metrics, analysis, and reconciliation)",
     "a": "Predictive/Hybrid",
-    "q": "A roadmap, a sprint backlog, a risk register, and a contract milestone log are each maintained by a different owner. Two of them now report different completion percentages for the same scope, and a stakeholder has quoted the more favorable figure to the customer. The next contract milestone review is in one week. What should the project manager do first?",
-    "o": [
-      "Correct the position given to the customer, then define artifact ownership, update cadence, and reconciliation points so a single reconciled view supports reporting",
-      "Raise an issue and ask the PMO to determine which artifact is authoritative before the milestone review",
-      "Designate the contract milestone log as the single source of truth for all external reporting, and require the other three artifacts to reconcile to it before each review",
-      "Consolidate the four artifacts into a single integrated tool so conflicting figures cannot be produced"
+    "q": "A roadmap, a sprint backlog, a risk register, and a contract milestone log are each maintained by a different owner and currently tell a different project story. Match each artifact to the status insight it should primarily provide before the project manager reconciles the report.",
+    "r": "The PM reconciles status by understanding what each artifact is meant to prove. Mixing artifact purposes creates misleading status reporting even when each source is accurate in isolation.",
+    "difficulty": "Moderate-Hard",
+    "type": "matching",
+    "pairs": [
+      {
+        "left": "Roadmap",
+        "answer": "Release sequence and benefit timing assumptions"
+      },
+      {
+        "left": "Sprint backlog",
+        "answer": "Near-term work selected and progress toward the next increment"
+      },
+      {
+        "left": "Risk register",
+        "answer": "Uncertainty, triggers, response owners, and exposure"
+      },
+      {
+        "left": "Contract milestone log",
+        "answer": "Supplier obligations, acceptance events, and committed dates"
+      }
     ],
-    "x": 0,
-    "r": "A wrong figure is already in front of the customer, so the PM corrects it and then establishes artifact ownership, update cadence, and reconciliation points so one reconciled view supports reporting. Closest distractor C: Naming the contract log as the sole external source is a plausible control, but it forces unrelated artifacts to reconcile to a contract view instead of assigning ownership and cadence across all four.",
-    "difficulty": "Moderate-Hard"
+    "choices": [
+      "Release sequence and benefit timing assumptions",
+      "Near-term work selected and progress toward the next increment",
+      "Uncertainty, triggers, response owners, and exposure",
+      "Supplier obligations, acceptance events, and committed dates",
+      "Stakeholder sentiment and communications preference"
+    ]
   },
   {
     "d": "process",
@@ -1465,19 +1524,72 @@ function shuffleInPlace(list) {
   }
   return list;
 }
+function getQuestionType(q) {
+  return q.type || 'single';
+}
 function randomizeQuestionBank(bank) {
   bank.forEach(function(q) {
-    var paired = q.o.map(function(text, index) {
-      return {text:text, correct:index === q.x};
-    });
-    shuffleInPlace(paired);
-    q.o = paired.map(function(item) { return item.text; });
-    q.x = paired.findIndex(function(item) { return item.correct; });
+    var type = getQuestionType(q);
+    if (type === 'single' || type === 'multi') {
+      var correctIndexes = type === 'multi' ? q.x.slice() : [q.x];
+      var paired = q.o.map(function(text, index) {
+        return {text:text, correct:correctIndexes.indexOf(index) !== -1};
+      });
+      shuffleInPlace(paired);
+      q.o = paired.map(function(item) { return item.text; });
+      if (type === 'multi') {
+        q.x = paired.map(function(item, index) { return item.correct ? index : -1; }).filter(function(index) { return index !== -1; });
+      } else {
+        q.x = paired.findIndex(function(item) { return item.correct; });
+      }
+    } else if (type === 'matching' && Array.isArray(q.choices)) {
+      shuffleInPlace(q.choices);
+    }
   });
   shuffleInPlace(bank);
 }
+function makeEmptyAnswer(q) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return [];
+  if (type === 'matching' || type === 'sequence') return {};
+  return -1;
+}
+function makeEmptyAnswers() {
+  return questions.map(function(q) { return makeEmptyAnswer(q); });
+}
+function sortedCopy(list) {
+  return list.slice().sort(function(a, b) { return a - b; });
+}
+function isQuestionAnswered(q, answer) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return Array.isArray(answer) && answer.length === q.selectCount;
+  if (type === 'matching') return q.pairs.every(function(_, index) { return answer && answer[index] && answer[index] !== ''; });
+  if (type === 'sequence') {
+    if (!answer) return false;
+    var ranks = q.steps.map(function(_, index) { return parseInt(answer[index], 10); });
+    return ranks.every(function(rank) { return rank >= 1 && rank <= q.steps.length; }) &&
+      new Set(ranks).size === q.steps.length;
+  }
+  return answer !== -1;
+}
+function isCorrectAnswer(q, answer) {
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    if (!Array.isArray(answer) || answer.length !== q.x.length) return false;
+    var a = sortedCopy(answer.map(Number));
+    var x = sortedCopy(q.x.map(Number));
+    return a.every(function(value, index) { return value === x[index]; });
+  }
+  if (type === 'matching') {
+    return q.pairs.every(function(pair, index) { return answer && answer[index] === pair.answer; });
+  }
+  if (type === 'sequence') {
+    return q.steps.every(function(_, index) { return parseInt(answer && answer[index], 10) === q.x[index]; });
+  }
+  return answer === q.x;
+}
 var questionTemplate = JSON.parse(JSON.stringify(questions));
-var answers = new Array(questions.length).fill(-1);
+var answers = makeEmptyAnswers();
 
 function safeStorageGet(key) {
   try { return localStorage.getItem(key); } catch (err) { return null; }
@@ -1537,7 +1649,7 @@ function saveProgress() {
 function prepareNewAttempt() {
   questions = JSON.parse(JSON.stringify(questionTemplate));
   randomizeQuestionBank(questions);
-  answers = new Array(questions.length).fill(-1);
+  answers = makeEmptyAnswers();
   remainingSeconds = EXAM_SECONDS;
   currentQ = 0;
   submitted = false;
@@ -1653,27 +1765,74 @@ function startQuiz() {
   launchAssessment(0);
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>\"']/g, function(ch) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch];
+  });
+}
+function renderSingleOrMulti(q, i, type) {
+  var letters = ['A','B','C','D','E','F'];
+  return q.o.map(function(o, j) {
+    var inputId = 'q' + i + 'o' + j;
+    var isChecked = type === 'multi' ? (answers[i] || []).indexOf(j) !== -1 : answers[i] === j;
+    var checked = isChecked ? ' checked' : '';
+    var selected = isChecked ? ' selected' : '';
+    var inputType = type === 'multi' ? 'checkbox' : 'radio';
+    return '<label class="option' + selected + '" for="' + inputId + '">' +
+      '<input class="option-input" type="' + inputType + '" id="' + inputId + '" name="question-' + i + '" value="' + j + '" data-q="' + i + '" data-opt="' + j + '"' + checked + '>' +
+      '<span class="letter" aria-hidden="true">' + letters[j] + '</span>' +
+      '<span class="option-text">' + escapeHtml(o) + '</span>' +
+    '</label>';
+  }).join('');
+}
+function renderMatching(q, i) {
+  var answer = answers[i] || {};
+  var choiceOptions = '<option value="">Choose a match</option>' + q.choices.map(function(choice) {
+    return '<option value="' + escapeHtml(choice) + '">' + escapeHtml(choice) + '</option>';
+  }).join('');
+  return '<div class="structured-group">' + q.pairs.map(function(pair, index) {
+    var selectId = 'q' + i + 'm' + index;
+    var options = choiceOptions.replace('value="' + escapeHtml(answer[index] || '') + '"', 'value="' + escapeHtml(answer[index] || '') + '" selected');
+    return '<div class="structured-row"><label for="' + selectId + '">' + escapeHtml(pair.left) + '</label>' +
+      '<select class="match-select" id="' + selectId + '" data-q="' + i + '" data-row="' + index + '">' + options + '</select></div>';
+  }).join('') + '</div>';
+}
+function renderSequence(q, i) {
+  var answer = answers[i] || {};
+  var rankOptions = '<option value="">Choose order</option>' + q.steps.map(function(_, index) {
+    return '<option value="' + (index + 1) + '">' + (index + 1) + '</option>';
+  }).join('');
+  return '<div class="structured-group">' + q.steps.map(function(step, index) {
+    var selectId = 'q' + i + 's' + index;
+    var selectedValue = String(answer[index] || '');
+    var options = selectedValue ? rankOptions.replace('value="' + selectedValue + '"', 'value="' + selectedValue + '" selected') : rankOptions;
+    return '<div class="structured-row"><label for="' + selectId + '">' + escapeHtml(step) + '</label>' +
+      '<select class="sequence-select" id="' + selectId + '" data-q="' + i + '" data-row="' + index + '">' + options + '</select></div>';
+  }).join('') + '</div>';
+}
+function renderQuestionBody(q, i) {
+  var type = getQuestionType(q);
+  if (type === 'matching') return renderMatching(q, i);
+  if (type === 'sequence') return renderSequence(q, i);
+  return renderSingleOrMulti(q, i, type);
+}
+function questionTypeNote(q) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return 'Select ' + q.selectCount + ' responses';
+  if (type === 'matching') return 'Match each item';
+  if (type === 'sequence') return 'Choose the correct order';
+  return '';
+}
 function renderQuestions() {
   var c = document.getElementById('quizContainer');
   c.innerHTML = '';
   questions.forEach(function(q, i) {
-    var letters = ['A','B','C','D'];
     var domainLabel = q.d === 'people' ? 'People' : q.d === 'process' ? 'Process' : 'Business Environment';
     var card = document.createElement('section');
     card.className = 'q-card';
     card.id = 'q' + i;
     card.setAttribute('aria-labelledby', 'qText' + i);
-
-    var options = q.o.map(function(o, j) {
-      var inputId = 'q' + i + 'o' + j;
-      var checked = answers[i] === j ? ' checked' : '';
-      var selected = answers[i] === j ? ' selected' : '';
-      return '<label class="option' + selected + '" for="' + inputId + '">' +
-        '<input class="option-input" type="radio" id="' + inputId + '" name="question-' + i + '" value="' + j + '" data-q="' + i + '" data-opt="' + j + '"' + checked + '>' +
-        '<span class="letter" aria-hidden="true">' + letters[j] + '</span>' +
-        '<span class="option-text">' + o + '</span>' +
-      '</label>';
-    }).join('');
+    var note = questionTypeNote(q);
 
     var prev = i > 0 ? '<button class="prev" type="button" data-goto="' + (i - 1) + '">Previous</button>' : '<span></span>';
     var next = i < questions.length - 1
@@ -1682,17 +1841,20 @@ function renderQuestions() {
 
     card.innerHTML =
       '<div class="q-head"><span class="q-num">Question ' + (i + 1) + ' of ' + questions.length + '</span>' +
-      '<span class="q-difficulty">' + (q.difficulty || 'Hard') + '</span>' +
       '<span class="q-domain ' + q.d + '">' + domainLabel + '</span></div>' +
-      '<div class="q-text" id="qText' + i + '">' + q.q + '</div>' +
-      '<fieldset style="border:0;padding:0;margin:0;"><legend class="sr-only">Select one answer for question ' + (i + 1) + '</legend>' +
-      options + '</fieldset><div class="nav">' + prev + next + '</div>';
+      '<div class="q-text" id="qText' + i + '">' + escapeHtml(q.q) + '</div>' +
+      (note ? '<div class="q-type-note">' + note + '</div>' : '') +
+      '<fieldset style="border:0;padding:0;margin:0;"><legend class="sr-only">Answer question ' + (i + 1) + '</legend>' +
+      renderQuestionBody(q, i) + '</fieldset><div class="nav">' + prev + next + '</div>';
     c.appendChild(card);
   });
 
   c.addEventListener('change', function(e) {
     if (e.target.matches('.option-input')) {
-      selectOption(parseInt(e.target.dataset.q, 10), parseInt(e.target.dataset.opt, 10));
+      selectOption(parseInt(e.target.dataset.q, 10), parseInt(e.target.dataset.opt, 10), e.target.checked);
+    }
+    if (e.target.matches('.match-select') || e.target.matches('.sequence-select')) {
+      selectStructured(parseInt(e.target.dataset.q, 10), parseInt(e.target.dataset.row, 10), e.target.value);
     }
   });
   c.addEventListener('click', function(e) {
@@ -1709,23 +1871,47 @@ function showQuestion(idx, shouldSave) {
   updateProgress();
   if (shouldSave !== false) saveProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  var selected = document.querySelector('#q' + idx + ' .option-input:checked');
-  var first = selected || document.querySelector('#q' + idx + ' .option-input');
+  var selected = document.querySelector('#q' + idx + ' .option-input:checked, #q' + idx + ' select');
+  var first = selected || document.querySelector('#q' + idx + ' .option-input, #q' + idx + ' select');
   if (first) setTimeout(function() { first.focus({preventScroll:true}); }, 100);
 }
 
-function selectOption(qi, oi) {
+function selectOption(qi, oi, checked) {
   if (submitted) return;
-  answers[qi] = oi;
+  var q = questions[qi];
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    var current = Array.isArray(answers[qi]) ? answers[qi].slice() : [];
+    if (checked && current.indexOf(oi) === -1) {
+      if (current.length >= q.selectCount) {
+        var input = document.querySelector('#q' + qi + ' .option-input[data-opt="' + oi + '"]');
+        if (input) input.checked = false;
+        return;
+      }
+      current.push(oi);
+    }
+    if (!checked) current = current.filter(function(value) { return value !== oi; });
+    answers[qi] = current;
+  } else {
+    answers[qi] = oi;
+  }
   document.querySelectorAll('#q' + qi + ' .option').forEach(function(opt, j) {
-    opt.classList.toggle('selected', j === oi);
+    var selected = type === 'multi' ? answers[qi].indexOf(j) !== -1 : j === oi;
+    opt.classList.toggle('selected', selected);
   });
+  updateProgress();
+  saveProgress();
+}
+function selectStructured(qi, row, value) {
+  if (submitted) return;
+  if (!answers[qi] || typeof answers[qi] !== 'object' || Array.isArray(answers[qi])) answers[qi] = {};
+  answers[qi][row] = value;
   updateProgress();
   saveProgress();
 }
 
 function updateProgress() {
-  var answered = answers.filter(function(a) { return a !== -1; }).length;
+  var answered = answers.filter(function(answer, index) { return isQuestionAnswered(questions[index], answer); }).length;
   document.getElementById('progressText').textContent = answered + ' / ' + questions.length;
   document.getElementById('progressFill').style.width = (answered / questions.length * 100) + '%';
 }
@@ -1777,7 +1963,7 @@ function readinessLabel(pct) {
 
 function submitQuiz(auto) {
   if (submitted) return;
-  var unanswered = answers.filter(function(a) { return a === -1; }).length;
+  var unanswered = answers.filter(function(answer, index) { return !isQuestionAnswered(questions[index], answer); }).length;
   if (!auto && unanswered > 0 && !confirm('You have ' + unanswered + ' unanswered question' + (unanswered === 1 ? '' : 's') + '. Submit anyway?')) return;
   submitted = true;
   sessionActive = false;
@@ -1792,7 +1978,7 @@ function submitQuiz(auto) {
     var key = q.d + '||' + q.t;
     if (!topicScores[key]) topicScores[key] = {domain:q.d, topic:q.t, correct:0, total:0};
     topicScores[key].total++;
-    if (answers[i] === q.x) {
+    if (isCorrectAnswer(q, answers[i])) {
       scores[q.d].correct++;
       topicScores[key].correct++;
       totalCorrect++;
@@ -1804,7 +1990,7 @@ function submitQuiz(auto) {
   document.getElementById('resultsScreen').classList.add('active');
   var pct = Math.round(totalCorrect / questions.length * 100);
   var completedSeconds = EXAM_SECONDS - Math.max(remainingSeconds, 0);
-  var answeredCount = answers.filter(function(a) { return a !== -1; }).length;
+  var answeredCount = answers.filter(function(answer, index) { return isQuestionAnswered(questions[index], answer); }).length;
   document.getElementById('totalPct').textContent = pct + '%';
   document.getElementById('readinessLabel').textContent = readinessLabel(pct);
   document.getElementById('totalFraction').textContent = totalCorrect + ' / ' + questions.length + ' correct · ' + Math.floor(completedSeconds / 60) + 'm ' + (completedSeconds % 60) + 's';
@@ -1883,18 +2069,46 @@ function submitQuiz(auto) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function formatAnswer(q, answer) {
+  var letters = ['A','B','C','D','E','F'];
+  var type = getQuestionType(q);
+  if (!isQuestionAnswered(q, answer)) return '<span class="incorrect-text">Not answered</span>';
+  if (type === 'multi') {
+    return sortedCopy(answer.map(Number)).map(function(index) { return letters[index] + '. ' + escapeHtml(q.o[index]); }).join('<br>');
+  }
+  if (type === 'matching') {
+    return q.pairs.map(function(pair, index) { return escapeHtml(pair.left) + ' → ' + escapeHtml(answer[index] || ''); }).join('<br>');
+  }
+  if (type === 'sequence') {
+    return q.steps.map(function(step, index) { return escapeHtml(answer[index] || '?') + '. ' + escapeHtml(step); }).join('<br>');
+  }
+  return letters[answer] + '. ' + escapeHtml(q.o[answer]);
+}
+function formatCorrectAnswer(q) {
+  var letters = ['A','B','C','D','E','F'];
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    return sortedCopy(q.x.map(Number)).map(function(index) { return letters[index] + '. ' + escapeHtml(q.o[index]); }).join('<br>');
+  }
+  if (type === 'matching') {
+    return q.pairs.map(function(pair) { return escapeHtml(pair.left) + ' → ' + escapeHtml(pair.answer); }).join('<br>');
+  }
+  if (type === 'sequence') {
+    return q.steps.map(function(step, index) { return q.x[index] + '. ' + escapeHtml(step); }).sort().join('<br>');
+  }
+  return letters[q.x] + '. ' + escapeHtml(q.o[q.x]);
+}
 function buildReview() {
   var rv = document.getElementById('reviewSection');
-  var letters = ['A','B','C','D'];
   rv.innerHTML = '';
   var missedCount = 0;
   questions.forEach(function(q, i) {
-    var ok = answers[i] === q.x;
+    var ok = isCorrectAnswer(q, answers[i]);
     if (ok) return;
     missedCount++;
-    var your = answers[i] === -1 ? '<span class="incorrect-text">Not answered</span>' : '<span class="' + (ok ? 'correct-text' : 'incorrect-text') + '">' + letters[answers[i]] + '. ' + q.o[answers[i]] + '</span>';
-    var correct = ok ? '' : '<br>Correct answer: <span class="correct-text">' + letters[q.x] + '. ' + q.o[q.x] + '</span>';
-    rv.innerHTML += '<div class="review-item ' + (ok ? 'correct' : 'incorrect') + '"><strong>' + (i + 1) + '. ' + q.q + '</strong><div class="review-meta">' + q.t + ' \u00b7 ' + q.a + '</div><p>Your answer: ' + your + correct + '</p><p><em>' + q.r + '</em></p></div>';
+    var your = '<span class="incorrect-text">' + formatAnswer(q, answers[i]) + '</span>';
+    var correct = '<br>Correct answer: <span class="correct-text">' + formatCorrectAnswer(q) + '</span>';
+    rv.innerHTML += '<div class="review-item incorrect"><strong>' + (i + 1) + '. ' + escapeHtml(q.q) + '</strong><div class="review-meta">' + escapeHtml(q.t) + ' \u00b7 ' + escapeHtml(q.a) + '</div><p>Your answer: ' + your + correct + '</p><p><em>' + escapeHtml(q.r) + '</em></p></div>';
   });
   if (missedCount === 0) {
     rv.innerHTML = '<div class="review-item correct"><strong>No missed questions.</strong><p>Your next step is to verify this performance under a full-length timed simulation.</p></div>';
