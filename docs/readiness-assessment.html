@@ -645,6 +645,14 @@ html, body {
             <button class="text-btn" id="restartBtn" type="button">Discard Saved Attempt</button>
           </div>
         </div>
+        <div class="resume-panel" id="savedSubmissionPanel" hidden>
+          <h3>Recover your completed score</h3>
+          <p id="savedSubmissionSummary">A completed score report was found in this browser.</p>
+          <div class="resume-actions">
+            <button class="btn secondary" id="resendSavedSubmissionBtn" type="button">Send Saved Score</button>
+          </div>
+          <p class="autosave-note" id="savedSubmissionStatus" role="status" aria-live="polite"></p>
+        </div>
         <button class="btn" id="beginBtn" type="button">Begin Readiness Assessment</button>
       </div>
     </section>
@@ -1660,13 +1668,67 @@ function createSubmissionId() {
     Math.random().toString(36).slice(2, 8).toUpperCase();
 }
 
+function loadLastSubmission() {
+  var raw = safeStorageGet(LAST_SUBMISSION_KEY);
+  if (!raw) return null;
+  try {
+    var data = JSON.parse(raw);
+    return data && data.email && data.checkpoint ? data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function showSavedSubmissionOption() {
+  var data = loadLastSubmission();
+  var panel = document.getElementById('savedSubmissionPanel');
+  if (!data) {
+    panel.hidden = true;
+    return;
+  }
+  var score = data.overallScore || (data.overallPct === undefined ? 'saved result' : data.overallPct + '%');
+  document.getElementById('savedSubmissionSummary').textContent =
+    'A completed ' + (data.checkpoint || 'assessment') + ' result (' + score + ') is saved in this browser.';
+  panel.hidden = false;
+}
+
+function resendSavedSubmission() {
+  var data = loadLastSubmission();
+  var status = document.getElementById('savedSubmissionStatus');
+  if (!data) {
+    status.textContent = 'No completed score is available in this browser.';
+    showSavedSubmissionOption();
+    return;
+  }
+  data.accessKey = DIAGNOSTIC_ACCESS_KEY;
+  data.submissionId = data.submissionId || createSubmissionId();
+  data.submissionReference = data.submissionReference || data.submissionId;
+  data.submittedAt = data.submittedAt || new Date().toISOString();
+  safeStorageSet(LAST_SUBMISSION_KEY, JSON.stringify(data));
+  status.textContent = 'Sending the saved score…';
+  fetch(GOOGLE_SCRIPT_URL, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(data)
+  })
+    .then(function() {
+      status.textContent = 'Saved score sent. Refresh the Assessment Center in a few moments. Reference: ' + data.submissionReference;
+    })
+    .catch(function() {
+      status.textContent = 'The saved score could not be sent. Keep the saved report and contact support with reference: ' + data.submissionReference;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('beginBtn').addEventListener('click', startQuiz);
   document.getElementById('resumeBtn').addEventListener('click', resumeQuiz);
   document.getElementById('restartBtn').addEventListener('click', discardSavedAttempt);
+  document.getElementById('resendSavedSubmissionBtn').addEventListener('click', resendSavedSubmission);
   document.getElementById('reviewBtn').addEventListener('click', toggleReview);
   document.getElementById('retrySubmitBtn').addEventListener('click', retryLastSubmission);
   showResumeOption();
+  showSavedSubmissionOption();
 });
 
 window.addEventListener('beforeunload', function(event) {
@@ -2074,6 +2136,7 @@ function submitScoresToSheet(data) {
   retryBtn.style.display = 'none';
 
   data.submissionId = data.submissionId || createSubmissionId();
+  data.submissionReference = data.submissionReference || data.submissionId;
   data.submittedAt = data.submittedAt || new Date().toISOString();
   lastSubmissionPayload = data;
   safeStorageSet(LAST_SUBMISSION_KEY, JSON.stringify(data));
