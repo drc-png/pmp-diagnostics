@@ -31,7 +31,7 @@ Add this shortcode to the authenticated Assessment Center page:
 [pta_readiness_dashboard]
 ```
 
-The shortcode is optional on the restored Assessment Center design. Plugin version 1.2 automatically finds that design's existing **My Score Snapshot** card and replaces:
+The shortcode is optional on the restored Assessment Center design. Plugin version 1.3 automatically finds that design's existing **My Score Snapshot** card and replaces:
 
 - Completed Assessments
 - Latest Score
@@ -39,6 +39,16 @@ The shortcode is optional on the restored Assessment Center design. Plugin versi
 - the status message beneath the metrics
 
 with results matched to the logged-in WordPress user's email.
+
+## Direct-launch practice sets with automatic score saving
+
+Plugin version 1.3 adds a signed-in practice wrapper. Create a normal WordPress page for Practice Set 1 and place this shortcode in its content:
+
+```text
+[pta_practice_embed src="https://drc-png.github.io/pmp-diagnostics/practice-set-1-refined-direct.html" height="1500"]
+```
+
+Link the Assessment Center's **Begin Set** button to that WordPress page—not directly to GitHub. The learner still lands on Question 1 with no name or email form. At submission, the iframe sends only the result to WordPress; WordPress attaches the authenticated learner identity server-side and forwards the score to the private score service.
 
 ## 3. Point assessments to the deployment
 
