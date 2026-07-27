@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP® Focused Practice — Teams, Stakeholders &amp; Conflict</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+.pmp-quiz {
+  --navy:#1a2744;--dark-navy:#111b30;--gold:#D4A84B;--light-gold:#F5E6C4;
+  --white:#FFFFFF;--light-gray:#F0F2F5;--mid-gray:#8A94A6;--cream:#FDF8F0;
+  --green:#27AE60;--red:#C0392B;--orange:#E67E22;
+  font-family:'Source Sans 3',sans-serif;color:var(--navy);line-height:1.6;max-width:100%;overflow:hidden;position:relative;
+}
+.pmp-quiz *,.pmp-quiz *::before,.pmp-quiz *::after{box-sizing:border-box;}
+.pmp-quiz .progress-bar-container{background:var(--dark-navy);padding:.6rem 2rem;position:relative;z-index:10;display:flex;align-items:center;gap:1rem;max-width:100%;}
+.pmp-quiz .progress-bar-track{flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
+.pmp-quiz .progress-bar-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease;width:0%;}
+.pmp-quiz .progress-text{color:var(--mid-gray);font-size:.75rem;min-width:80px;text-align:right;}
+.pmp-quiz .container{max-width:800px;margin:0 auto;padding:1.5rem;}
+.pmp-quiz .start-screen{text-align:center;padding:3rem 2rem;}
+.pmp-quiz .start-screen h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.5rem;}
+.pmp-quiz .set-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#2E7D32;background:#E8F5E9;padding:.3rem .9rem;border-radius:3px;display:inline-block;margin-bottom:1rem;}
+.pmp-quiz .start-screen p{color:var(--mid-gray);margin-bottom:.5rem;font-size:.95rem;}
+.pmp-quiz .domain-badges{display:flex;justify-content:center;gap:.8rem;margin:1.5rem 0;flex-wrap:wrap;}
+.pmp-quiz .domain-badge{padding:.4rem 1rem;border-radius:4px;font-size:.8rem;font-weight:600;}
+.pmp-quiz .domain-badge.people{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .domain-badge.process{background:#E3F2FD;color:#1565C0;}
+.pmp-quiz .domain-badge.business{background:#F3E5F5;color:#7B1FA2;}
+.pmp-quiz .student-info-form{max-width:420px;margin:1.5rem auto 0;text-align:left;background:var(--white);border-radius:8px;padding:1.5rem 2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.pmp-quiz .form-group{margin-bottom:1rem;}
+.pmp-quiz .form-group label{display:block;font-weight:600;font-size:.85rem;margin-bottom:.3rem;color:var(--navy);}
+.pmp-quiz .form-group input{width:100%;padding:.7rem .9rem;border:2px solid #E8EBF0;border-radius:6px;font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:var(--navy);transition:border-color .2s;background:var(--white);}
+.pmp-quiz .form-group input:focus{outline:none;border-color:var(--gold);}
+.pmp-quiz .form-group input::placeholder{color:var(--mid-gray);}
+.pmp-quiz .form-error{color:var(--red);font-size:.8rem;margin-top:.2rem;display:none;}
+.pmp-quiz .form-error.show{display:block;}
+.pmp-quiz .q-count-selector{margin-top:1.2rem;}
+.pmp-quiz .q-count-options{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.3rem;}
+.pmp-quiz .q-count-option{cursor:pointer;}
+.pmp-quiz .q-count-option input[type="radio"]{display:none;}
+.pmp-quiz .q-count-pill{display:flex;flex-direction:column;align-items:center;justify-content:center;width:84px;padding:.5rem .4rem;border:2px solid #E8EBF0;border-radius:6px;font-weight:700;font-size:.95rem;color:var(--navy);background:var(--white);cursor:pointer;transition:all .2s;line-height:1.2;}
+.pmp-quiz .q-count-pill small{font-size:.68rem;font-weight:400;color:var(--mid-gray);}
+.pmp-quiz .q-count-option input[type="radio"]:checked+.q-count-pill,.pmp-quiz .q-count-option .q-count-pill:hover{border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .btn{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy);font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:1rem;border:none;border-radius:4px;cursor:pointer;transition:all .2s;margin-top:1.5rem;}
+.pmp-quiz .btn:hover{background:#c49a3f;transform:translateY(-1px);}
+.pmp-quiz .question-card{background:var(--white);border-radius:8px;padding:2rem;margin-bottom:1rem;box-shadow:0 2px 12px rgba(0,0,0,.06);display:none;animation:pmpFadeIn .3s ease;}
+.pmp-quiz .question-card.active{display:block;}
+@keyframes pmpFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pmp-quiz .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;gap:.5rem;}
+.pmp-quiz .q-header-left{display:flex;flex-direction:column;gap:.3rem;}
+.pmp-quiz .q-number{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--gold);font-weight:700;}
+.pmp-quiz .q-eco{font-size:.68rem;color:var(--mid-gray);font-weight:600;letter-spacing:.3px;}
+.pmp-quiz .q-domain{font-size:.7rem;padding:.2rem .6rem;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+.pmp-quiz .q-domain.people{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .q-domain.process{background:#E3F2FD;color:#1565C0;}
+.pmp-quiz .q-domain.business{background:#F3E5F5;color:#7B1FA2;}
+.pmp-quiz .q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.2rem;line-height:1.5;color:var(--navy);}
+.pmp-quiz .options{display:flex;flex-direction:column;gap:.5rem;}
+.pmp-quiz .option{padding:.8rem 1rem;border:2px solid #E8EBF0;border-radius:6px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:.8rem;font-size:.95rem;}
+.pmp-quiz .option:hover:not(.locked){border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .option.selected{border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .option.correct{border-color:var(--green);background:#E8F5E9;}
+.pmp-quiz .option.incorrect{border-color:var(--red);background:#FFEBEE;}
+.pmp-quiz .option.reveal-correct{border-color:var(--green);background:#E8F5E9;}
+.pmp-quiz .option.locked{pointer-events:none;}
+.pmp-quiz .option-letter{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;color:var(--navy);transition:all .2s;}
+.pmp-quiz .option.selected .option-letter{background:var(--gold);color:var(--navy);}
+.pmp-quiz .option.correct .option-letter{background:var(--green);color:white;}
+.pmp-quiz .option.incorrect .option-letter{background:var(--red);color:white;}
+.pmp-quiz .option.reveal-correct .option-letter{background:var(--green);color:white;}
+.pmp-quiz .explanation{margin-top:1rem;padding:1rem;background:var(--cream);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:.9rem;color:var(--navy);display:none;animation:pmpFadeIn .3s ease;}
+.pmp-quiz .explanation.show{display:block;}
+.pmp-quiz .exam-trap{margin-top:.7rem;padding:.7rem .9rem;background:#1a2744;border-radius:4px;font-size:.82rem;color:#F5E6C4;}
+.pmp-quiz .exam-trap strong{color:var(--gold);}
+.pmp-quiz .nav-buttons{display:flex;justify-content:space-between;margin-top:1.5rem;gap:1rem;}
+.pmp-quiz .btn-nav{padding:.7rem 1.5rem;border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;}
+.pmp-quiz .btn-prev{background:var(--light-gray);color:var(--navy);}
+.pmp-quiz .btn-prev:hover{background:#dde0e5;}
+.pmp-quiz .btn-next{background:var(--navy);color:var(--white);margin-left:auto;}
+.pmp-quiz .btn-next:hover{background:#243553;}
+.pmp-quiz .btn-next:disabled{opacity:.4;cursor:not-allowed;}
+.pmp-quiz .btn-submit{background:var(--gold);color:var(--navy);font-weight:700;margin-left:auto;}
+.pmp-quiz .btn-submit:hover{background:#c49a3f;}
+.pmp-quiz .results-screen{display:none;animation:pmpFadeIn .5s ease;}
+.pmp-quiz .results-screen.active{display:block;}
+.pmp-quiz .score-hero{background:var(--navy);border-radius:8px;padding:2.5rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.pmp-quiz .score-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);}
+.pmp-quiz .score-big{font-family:'Playfair Display',serif;font-size:4rem;color:var(--gold);font-weight:700;line-height:1;}
+.pmp-quiz .score-label{color:var(--mid-gray);font-size:.9rem;margin-top:.3rem;}
+.pmp-quiz .score-fraction{color:var(--white);font-size:1.2rem;margin-top:.5rem;font-weight:600;}
+.pmp-quiz .score-sub{color:var(--light-gold);font-size:.85rem;margin-top:.4rem;font-style:italic;}
+.pmp-quiz .domain-results{display:grid;grid-template-columns:1fr;gap:.8rem;margin-bottom:1.5rem;}
+.pmp-quiz .domain-result-card{background:var(--white);border-radius:8px;padding:1.2rem 1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:1.2rem;}
+.pmp-quiz .domain-result-card .domain-name{font-weight:700;font-size:.95rem;min-width:160px;}
+.pmp-quiz .domain-bar-bg{flex:1;height:10px;background:var(--light-gray);border-radius:5px;overflow:hidden;}
+.pmp-quiz .domain-bar-fill{height:100%;border-radius:5px;transition:width 1s ease;}
+.pmp-quiz .domain-bar-fill.people{background:#2E7D32;}
+.pmp-quiz .domain-bar-fill.process{background:#1565C0;}
+.pmp-quiz .domain-bar-fill.business{background:#7B1FA2;}
+.pmp-quiz .domain-pct{font-weight:700;font-size:1rem;min-width:50px;text-align:right;}
+.pmp-quiz .domain-score-detail{font-size:.8rem;color:var(--mid-gray);min-width:50px;text-align:right;}
+.pmp-quiz .breakdown-section{margin-bottom:1.5rem;}
+.pmp-quiz .breakdown-header{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:2px solid var(--light-gray);display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .domain-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.pmp-quiz .domain-dot.people{background:#2E7D32;}
+.pmp-quiz .domain-dot.process{background:#1565C0;}
+.pmp-quiz .domain-dot.business{background:#7B1FA2;}
+.pmp-quiz .subtopic-row{display:flex;align-items:center;gap:.8rem;padding:.6rem 0;border-bottom:1px solid #f0f0f0;}
+.pmp-quiz .subtopic-row:last-child{border-bottom:none;}
+.pmp-quiz .subtopic-name{font-size:.88rem;font-weight:600;min-width:220px;color:var(--navy);}
+.pmp-quiz .subtopic-bar-bg{flex:1;height:8px;background:var(--light-gray);border-radius:4px;overflow:hidden;}
+.pmp-quiz .subtopic-bar-fill{height:100%;border-radius:4px;transition:width 1s ease;}
+.pmp-quiz .subtopic-score{font-size:.82rem;font-weight:700;min-width:40px;text-align:right;color:var(--navy);}
+.pmp-quiz .subtopic-status{font-size:.75rem;font-weight:700;min-width:100px;text-align:center;padding:.15rem .5rem;border-radius:3px;text-transform:uppercase;letter-spacing:.3px;}
+.pmp-quiz .status-strong{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .status-developing{background:#FFF3E0;color:#E65100;}
+.pmp-quiz .status-focus{background:#FFEBEE;color:#C0392B;}
+.pmp-quiz .breakdown-card{background:var(--white);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.pmp-quiz .focus-summary{background:var(--cream);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;border-left:4px solid var(--gold);}
+.pmp-quiz .focus-summary h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.6rem;color:var(--navy);}
+.pmp-quiz .focus-list{list-style:none;padding:0;margin:0;}
+.pmp-quiz .focus-list li{font-size:.88rem;padding:.3rem 0;color:var(--navy);display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .focus-list li::before{content:'\25B8';color:var(--red);font-weight:700;}
+.pmp-quiz .results-footer{background:var(--white);border-radius:8px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.pmp-quiz .results-footer p{color:var(--mid-gray);font-size:.9rem;margin-bottom:.5rem;}
+.pmp-quiz .legend{display:flex;gap:1.2rem;margin-bottom:1rem;flex-wrap:wrap;}
+.pmp-quiz .legend-item{display:flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;}
+.pmp-quiz .legend-swatch{width:12px;height:12px;border-radius:2px;display:inline-block;}
+.pmp-quiz .review-toggle{text-align:center;margin:1.5rem 0;}
+.pmp-quiz .btn-review{padding:.7rem 2rem;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;}
+.pmp-quiz .btn-review:hover{background:var(--navy);color:var(--white);}
+.pmp-quiz .review-section{display:none;margin-top:1rem;}
+.pmp-quiz .review-section.active{display:block;}
+.pmp-quiz .review-item{background:var(--white);border-radius:8px;padding:1.2rem;margin-bottom:.8rem;box-shadow:0 1px 4px rgba(0,0,0,.05);border-left:4px solid var(--mid-gray);}
+.pmp-quiz .review-item.correct-item{border-left-color:var(--green);}
+.pmp-quiz .review-item.incorrect-item{border-left-color:var(--red);}
+.pmp-quiz .review-q{font-weight:600;font-size:.9rem;margin-bottom:.4rem;}
+.pmp-quiz .review-answer{font-size:.85rem;color:var(--mid-gray);}
+.pmp-quiz .review-answer .correct-text{color:var(--green);font-weight:600;}
+.pmp-quiz .review-answer .incorrect-text{color:var(--red);font-weight:600;}
+.pmp-quiz .save-actions{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap;}
+.pmp-quiz .btn-save{padding:.8rem 2rem;background:var(--gold);color:var(--navy);border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:.9rem;transition:all .2s;display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .btn-save:hover{background:#c49a3f;transform:translateY(-1px);}
+.pmp-quiz .btn-save svg{width:18px;height:18px;fill:currentColor;}
+.pmp-quiz .retake-btn{display:inline-block;padding:.8rem 2rem;background:var(--navy);color:var(--white);border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;margin-top:1rem;}
+.pmp-quiz .retake-btn:hover{background:#243553;}
+.pmp-quiz .bank-note{font-size:.78rem;color:#2E7D32;background:#E8F5E9;padding:.4rem .8rem;border-radius:4px;display:inline-block;margin:.5rem 0;}
+@media(max-width:600px){.pmp-quiz .container{padding:1rem;}.pmp-quiz .question-card{padding:1.5rem;}.pmp-quiz .score-big{font-size:3rem;}.pmp-quiz .domain-result-card{flex-wrap:wrap;}.pmp-quiz .domain-result-card .domain-name{min-width:100%;}.pmp-quiz .subtopic-row{flex-wrap:wrap;gap:.4rem;}.pmp-quiz .subtopic-name{min-width:100%;}}
+</style>
+</head>
+<body>
+<div class="pmp-quiz">
+  <div class="progress-bar-container" id="progressBarContainer" style="display:flex;">
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 12</div>
+  </div>
+  <div class="container">
+    <div class="start-screen" id="startScreen" hidden aria-hidden="true"></div>
+    <div id="quizContainer"></div>
+    <div class="results-screen" id="resultsScreen">
+      <div class="score-hero">
+        <div class="score-big" id="totalPct">0%</div>
+        <div class="score-label">Practice Set Score</div>
+        <div class="score-fraction" id="totalFraction">0 / 12</div>
+        <div class="score-sub">Focused Practice — Teams, Stakeholders &amp; Conflict</div>
+      </div>
+      <div class="domain-results" id="domainResults"></div>
+      <div class="focus-summary" id="focusSummary"><h3>Priority Focus Areas</h3><ul class="focus-list" id="focusList"></ul></div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch" style="background:#27AE60;"></span>Strong (75%+)</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#E67E22;"></span>Developing (50–74%)</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#C0392B;"></span>Review Needed (&lt;50%)</div>
+      </div>
+      <div id="breakdownContainer"></div>
+      <div class="results-footer">
+        <p><strong>Focused practice complete.</strong> Review each explanation and revisit the decisions that were difficult to distinguish.</p>
+        <p>Retake this set to practice the same refined learning objectives in a different order.</p>
+        <p style="margin-top:.8rem;font-size:.8rem;">PMP Training Academy &bull; support@pmptrainingacademy.com</p>
+      </div>
+      <div style="text-align:center;"><button class="retake-btn" onclick="retakeQuiz()">&#x1F504; Retake with New Questions</button></div>
+      <div class="save-actions"><button class="btn-save" onclick="saveAsPDF()"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>Save Results as PDF</button></div>
+      <div class="review-toggle"><button class="btn-review" id="reviewBtn">Review All Answers</button></div>
+      <div class="review-section" id="reviewSection"></div>
+    </div>
+  </div>
+</div>
+<script>
+var SERVE_COUNT=12,studentName='',studentEmail='',activeQuestions=[],answers=[],submitted=false,currentQ=0;
+var questions = [
+  {
+    "id": "W2-S3-01",
+    "d": "people",
+    "t": "Team structure",
+    "task": "PE3",
+    "taskLabel": "People Task 3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Create role and decision clarity collaboratively before correcting individual performance.",
+    "rule": "Create role and decision clarity collaboratively before correcting individual performance.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A newly formed cross-functional team is duplicating work because members interpret ownership differently. What should the project manager do first?",
+    "o": [
+      "Facilitate a team charter that clarifies roles, decision rights, working agreements, and how the team will resolve overlap.",
+      "Ask the functional managers to assign the duplicated tasks directly to individual specialists.",
+      "Allow the team to continue until a retrospective reveals which role assignments are ineffective.",
+      "Create a detailed responsibility matrix independently and issue it as the required team structure."
+    ],
+    "x": 0,
+    "r": "The team needs shared clarity, not a structure imposed without participation. Facilitating a charter and responsibility discussion establishes roles, decision rights, and working agreements the team understands and owns.",
+    "sourceAnchors": [
+      "2026 ECO People Task 3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S3-02",
+    "d": "people",
+    "t": "Leadership tailoring",
+    "task": "PE3",
+    "taskLabel": "People Task 3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Tailor leadership to the team's current need rather than to a preferred style.",
+    "rule": "Tailor leadership to the team's current need rather than to a preferred style.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A team understands its purpose but is openly challenging roles and working methods during its first iteration. Which leadership response is most appropriate?",
+    "o": [
+      "Delegate operating decisions so the team can demonstrate that it is ready to self-manage.",
+      "Facilitate the disagreement, clarify agreements, and provide structure for progress.",
+      "Ask functional managers to reinforce individual role agreements until the team's working rhythm stabilizes.",
+      "Escalate the disagreement to the sponsor because the team has not reached the performing stage."
+    ],
+    "x": 1,
+    "r": "The team is displaying a normal storming-stage need. The project manager should facilitate productive conflict and reinforce structure, then increase autonomy as agreements and capability stabilize.",
+    "sourceAnchors": [
+      "2026 ECO People Task 3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S3-03",
+    "d": "people",
+    "t": "Psychological safety",
+    "task": "PE6",
+    "taskLabel": "People Task 6 - Build a shared understanding",
+    "a": "hybrid",
+    "pattern": "Protect the work, then repair the team condition that prevented early evidence from surfacing.",
+    "rule": "Protect the work, then repair the team condition that prevented early evidence from surfacing.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "After a production defect, a specialist admits noticing an early warning but staying silent because a senior expert had dismissed similar concerns. What should the project manager do first?",
+    "o": [
+      "Document the specialist's omission as a performance issue before discussing the defect with the team.",
+      "Ask the senior expert to approve a new escalation procedure for technical concerns.",
+      "Control the exposure, then facilitate a blameless review that restores a safe, reliable way to raise concerns.",
+      "Limit future technical reviews to senior experts so accountability remains clear."
+    ],
+    "x": 2,
+    "r": "The immediate exposure must be controlled, followed by a blameless learning review. The underlying risk is a team condition that suppresses evidence; punishment or narrower participation would reinforce it.",
+    "sourceAnchors": [
+      "2026 ECO People Task 6 - Build a shared understanding",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S3-04",
+    "d": "people",
+    "t": "Empowerment",
+    "task": "PE3",
+    "taskLabel": "People Task 3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Empower through explicit outcomes, boundaries, and feedback—not through absence of oversight.",
+    "rule": "Empower through explicit outcomes, boundaries, and feedback—not through absence of oversight.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "An experienced team asks to approve routine design decisions without waiting for the project manager. Governance allows delegation within stated cost and risk thresholds. What should the project manager do?",
+    "o": [
+      "Retain approval authority and invite the team to recommend decisions because accountability remains with the project manager.",
+      "Delegate broad design authority and review the outcome when the release is complete.",
+      "Ask the sponsor to approve each design category and its risk level before the team can act.",
+      "Define the outcome, constraints, thresholds, and escalation path, then delegate the decisions and inspect results."
+    ],
+    "x": 3,
+    "r": "The team has capability and governance permits delegation. Clear boundaries and an inspection mechanism preserve accountability while enabling timely team decisions.",
+    "sourceAnchors": [
+      "2026 ECO People Task 3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S3-05",
+    "d": "people",
+    "t": "Virtual teams",
+    "task": "PE8",
+    "taskLabel": "People Task 8 - Manage communications",
+    "a": "adaptive",
+    "pattern": "Design virtual collaboration for equitable participation, not merely message distribution.",
+    "rule": "Design virtual collaboration for equitable participation, not merely message distribution.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Remote team members in one region rarely contribute during live planning because the meeting falls outside their working hours. Decisions are later posted in chat. What should the project manager do first?",
+    "o": [
+      "Revise working agreements for equitable participation, asynchronous input, and decision records.",
+      "Require the region to rotate attendance so each planning meeting has a representative.",
+      "Keep the schedule because posting decisions in chat satisfies the documented communication plan.",
+      "Move planning to email so participants in different time zones receive identical information."
+    ],
+    "x": 0,
+    "r": "The communication system is excluding part of the team from shaping decisions. The project manager should redesign working agreements around access, participation, asynchronous input, and traceability.",
+    "sourceAnchors": [
+      "2026 ECO People Task 8 - Manage communications",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S3-06",
+    "d": "people",
+    "t": "Motivation and recognition",
+    "task": "PE7",
+    "taskLabel": "People Task 7 - Support team performance",
+    "a": "predictive",
+    "pattern": "Understand the person's needs and constraints before choosing recognition or support.",
+    "rule": "Understand the person's needs and constraints before choosing recognition or support.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A high-performing analyst says public awards are uncomfortable and that repeated urgent requests are reducing focus. What should the project manager do?",
+    "o": [
+      "Continue public recognition because consistent treatment supports a transparent team environment.",
+      "Remove the analyst from urgent work and transfer recognition decisions to the functional manager.",
+      "Discuss recognition and workload preferences, then tailor support to project priorities.",
+      "Offer a financial incentive for urgent requests completed before the next status cycle."
+    ],
+    "x": 2,
+    "r": "Effective recognition and support are tailored to the individual and the work context. A direct conversation reveals the motivational need and workload constraint before a response is selected.",
+    "sourceAnchors": [
+      "2026 ECO People Task 7 - Support team performance",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-01",
+    "d": "people",
+    "t": "Stakeholder identification",
+    "task": "PE4",
+    "taskLabel": "People Task 4 - Engage stakeholders",
+    "a": "hybrid",
+    "pattern": "Analyze a newly identified stakeholder before defaulting to a communication tactic.",
+    "rule": "Analyze a newly identified stakeholder before defaulting to a communication tactic.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A regulatory liaison joins the organization midway through a project and can influence the acceptance path. The liaison is not in the stakeholder register. What should the project manager do first?",
+    "o": [
+      "Analyze the liaison's influence, impact, information needs, and desired engagement, then update the stakeholder register and approach.",
+      "Add the liaison to the standard status-report distribution before requesting further information.",
+      "Wait for the next governance review because stakeholder identification was completed during initiation.",
+      "Ask the sponsor to manage the liaison because regulatory stakeholders are outside the project team's authority."
+    ],
+    "x": 0,
+    "r": "Stakeholder identification is continuous. The project manager should analyze the new stakeholder before selecting communications or engagement actions, then update the relevant records and plan.",
+    "sourceAnchors": [
+      "2026 ECO People Task 4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-02",
+    "d": "people",
+    "t": "Engagement planning",
+    "task": "PE4",
+    "taskLabel": "People Task 4 - Engage stakeholders",
+    "a": "predictive",
+    "pattern": "Plan engagement from the stakeholder's current state, desired state, and underlying interests.",
+    "rule": "Plan engagement from the stakeholder's current state, desired state, and underlying interests.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A department head has high influence and is currently resistant, but adoption by the department is essential. What is the most useful next step?",
+    "o": [
+      "Increase the frequency of general status reports so the department head receives more project information.",
+      "Identify the engagement gap and plan actions around the stakeholder's interests.",
+      "Classify the stakeholder as a blocker and ask the sponsor to require cooperation.",
+      "Remove sensitive concerns from the stakeholder register so the engagement plan remains neutral."
+    ],
+    "x": 1,
+    "r": "The project manager needs a tailored engagement response based on the gap, interests, and concerns. More broadcast information or labels do not create the understanding needed for adoption.",
+    "sourceAnchors": [
+      "2026 ECO People Task 4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-03",
+    "d": "people",
+    "t": "Stakeholder information",
+    "task": "PE8",
+    "taskLabel": "People Task 8 - Manage communications",
+    "a": "hybrid",
+    "pattern": "Tailor access to stakeholder information as well as the message itself.",
+    "rule": "Tailor access to stakeholder information as well as the message itself.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A team member asks for the full stakeholder register to prepare a presentation. The register includes confidential influence assessments and personal concerns. What should the project manager do?",
+    "o": [
+      "Share the register because project team members should have unrestricted access to project artifacts.",
+      "Remove stakeholder names but retain the assessments so the team member can infer the strategy.",
+      "Provide the needed presentation information while protecting confidential relationship data.",
+      "Refuse the request and require the sponsor to present stakeholder information."
+    ],
+    "x": 2,
+    "r": "Stakeholder information should be accessible on a need-to-know basis while sensitive relationship data remains protected. The project manager should supply the usable information without exposing unnecessary confidential assessments.",
+    "sourceAnchors": [
+      "2026 ECO People Task 8 - Manage communications",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-04",
+    "d": "people",
+    "t": "Communication methods",
+    "task": "PE8",
+    "taskLabel": "People Task 8 - Manage communications",
+    "a": "adaptive",
+    "pattern": "Use interactive communication for ambiguity or conflict, then record the outcome.",
+    "rule": "Use interactive communication for ambiguity or conflict, then record the outcome.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Two leaders interpret an ambiguous release commitment differently, and the disagreement is delaying a decision. Which communication method should the project manager use first?",
+    "o": [
+      "A pull repository containing the release plan and meeting minutes.",
+      "A formal email restating the project manager's interpretation of the commitment.",
+      "A dashboard update showing the current schedule and unresolved decision.",
+      "An interactive clarification, followed by a documented decision."
+    ],
+    "x": 3,
+    "r": "Ambiguous and contentious issues need rapid feedback and shared meaning, which interactive communication supports. The resulting agreement should then be documented for traceability.",
+    "sourceAnchors": [
+      "2026 ECO People Task 8 - Manage communications",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-05",
+    "d": "people",
+    "t": "Active listening",
+    "task": "PE5",
+    "taskLabel": "People Task 5 - Align stakeholders' needs and expectations",
+    "a": "hybrid",
+    "pattern": "Clarify meaning and interests before selecting a response to stakeholder resistance.",
+    "rule": "Clarify meaning and interests before selecting a response to stakeholder resistance.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A stakeholder repeatedly says a new workflow is 'not practical,' but gives no specific examples. What should the project manager do next?",
+    "o": [
+      "Use open questions and paraphrasing to uncover and confirm the concern.",
+      "Ask the stakeholder to submit a change request before the concern can be discussed.",
+      "Explain the approved workflow in greater detail so the stakeholder understands why it is practical.",
+      "Record the stakeholder as resistant and increase executive communications."
+    ],
+    "x": 0,
+    "r": "The statement is too general to support action. Active listening, open questions, and paraphrasing help reveal the underlying interest or constraint and verify shared understanding.",
+    "sourceAnchors": [
+      "2026 ECO People Task 5 - Align stakeholders' needs and expectations",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  },
+  {
+    "id": "W2-S4-06",
+    "d": "people",
+    "t": "Conflict and decision rights",
+    "task": "PE2",
+    "taskLabel": "People Task 2 - Manage conflict",
+    "a": "adaptive",
+    "pattern": "Facilitate the conflict at the lowest authorized level and preserve established decision rights.",
+    "rule": "Facilitate the conflict at the lowest authorized level and preserve established decision rights.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A sponsor wants a visible feature moved into the next release. The product owner says it would displace a higher-value item and owns backlog ordering. Both ask the project manager to choose. What should the project manager do?",
+    "o": [
+      "Accept the sponsor's request and ask the product owner to rebalance the remaining backlog around the change.",
+      "Ask the team to compare the features and use its majority vote as the release-order decision.",
+      "Facilitate the value-and-impact tradeoff, respect the product owner's backlog authority, and document the resulting decision.",
+      "Escalate the disagreement to the steering committee before discussing the competing interests."
+    ],
+    "x": 2,
+    "r": "The project manager should facilitate understanding of value and impact without taking over the product owner's defined decision right. Escalation is appropriate only if governance thresholds or authority boundaries require it.",
+    "sourceAnchors": [
+      "2026 ECO People Task 2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep learner resources"
+    ]
+  }
+];
+var QUESTION_BANK=questions.map(function(item){return{id:item.id,q:item.q,opts:item.o,ans:item.x,domain:item.d,topic:item.t+' | '+item.taskLabel,explanation:item.r,approach:item.a,difficulty:item.difficulty};});
+
+function shuffleAndSlice(bank,count){var arr=bank.slice();for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=arr[i];arr[i]=arr[j];arr[j]=tmp;}return arr.slice(0,Math.min(count,arr.length));}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('reviewBtn').addEventListener('click',toggleReview);
+  startQuiz();
+});
+
+function validateForm(){var name=document.getElementById('studentName').value.trim();var email=document.getElementById('studentEmail').value.trim();var valid=true;document.getElementById('nameError').classList.remove('show');document.getElementById('emailError').classList.remove('show');if(!name){document.getElementById('nameError').classList.add('show');valid=false;}if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('emailError').classList.add('show');valid=false;}return valid;}
+
+function startQuiz(){activeQuestions=shuffleAndSlice(QUESTION_BANK,SERVE_COUNT);answers=new Array(activeQuestions.length).fill(-1);submitted=false;currentQ=0;var start=document.getElementById('startScreen');if(start)start.style.display='none';document.getElementById('progressBarContainer').style.display='flex';document.getElementById('progressText').textContent='0 / '+activeQuestions.length;renderQuestions();showQuestion(0);}
+
+function retakeQuiz(){document.getElementById('quizContainer').innerHTML='';document.getElementById('reviewSection').innerHTML='';document.getElementById('breakdownContainer').innerHTML='';document.getElementById('focusList').innerHTML='';document.getElementById('domainResults').innerHTML='';document.getElementById('resultsScreen').classList.remove('active');submitted=false;currentQ=0;activeQuestions=shuffleAndSlice(QUESTION_BANK,SERVE_COUNT);answers=new Array(activeQuestions.length).fill(-1);document.getElementById('quizContainer').style.display='';document.getElementById('progressBarContainer').style.display='flex';document.getElementById('progressText').textContent='0 / '+activeQuestions.length;renderQuestions();showQuestion(0);window.scrollTo({top:0,behavior:'smooth'});}
+
+function renderQuestions(){var c=document.getElementById('quizContainer');c.innerHTML='';var L=['A','B','C','D'];activeQuestions.forEach(function(q,i){var dl=q.domain==='people'?'People':q.domain==='process'?'Process':'Business Environment';var card=document.createElement('div');card.className='question-card';card.id='q'+i;var oh='';q.opts.forEach(function(o,j){oh+='<div class="option" data-q="'+i+'" data-opt="'+j+'"><span class="option-letter">'+L[j]+'</span><span>'+o+'</span></div>';});var isLast=i===activeQuestions.length-1;var pb=i>0?'<button class="btn-nav btn-prev" data-goto="'+(i-1)+'">&larr; Previous</button>':'<div></div>';var nb=isLast?'<button class="btn-nav btn-submit" data-submit="true">Submit Practice Set</button>':'<button class="btn-nav btn-next" id="next-'+i+'" data-goto="'+(i+1)+'" disabled>Next &rarr;</button>';var eco=q.topic.indexOf('|')>-1?q.topic.split('|')[1].trim():q.topic;var expl=q.explanation+(q.trap?'<div class="exam-trap"><strong>Exam Trap:</strong> '+q.trap+'</div>':'')+'<div style="margin-top:.6rem;font-size:.78rem;color:var(--mid-gray);font-style:italic;">Topic: '+q.topic.split('|')[0].trim()+'</div>';card.innerHTML='<div class="q-header"><div class="q-header-left"><span class="q-number">Question '+(i+1)+' of '+activeQuestions.length+'</span><span class="q-eco">'+eco+'</span></div><span class="q-domain '+q.domain+'">'+dl+'</span></div><div class="q-text">'+q.q+'</div><div class="options">'+oh+'</div><div class="explanation" id="exp-'+i+'">'+expl+'</div><div class="nav-buttons">'+pb+nb+'</div>';c.appendChild(card);});c.onclick=function(e){var o=e.target.closest('.option');if(o&&o.dataset.q!==undefined){selectOption(parseInt(o.dataset.q),parseInt(o.dataset.opt));return;}var n=e.target.closest('[data-goto]');if(n){showQuestion(parseInt(n.dataset.goto));return;}var s=e.target.closest('[data-submit]');if(s){submitQuiz();}};}
+
+function showQuestion(idx){var cards=document.querySelectorAll('.question-card');for(var c=0;c<cards.length;c++)cards[c].classList.remove('active');document.getElementById('q'+idx).classList.add('active');currentQ=idx;updateProgress();window.scrollTo({top:0,behavior:'smooth'});}
+
+function selectOption(qi,oi){if(submitted)return;answers[qi]=oi;var opts=document.querySelectorAll('#q'+qi+' .option');for(var j=0;j<opts.length;j++){opts[j].classList.remove('selected','correct','incorrect','reveal-correct');opts[j].classList.add('locked');if(j===oi){opts[j].classList.add('selected');opts[j].classList.add(oi===activeQuestions[qi].ans?'correct':'incorrect');}if(j===activeQuestions[qi].ans&&oi!==activeQuestions[qi].ans){opts[j].classList.add('reveal-correct');}}document.getElementById('exp-'+qi).classList.add('show');var nextBtn=document.getElementById('next-'+qi);if(nextBtn){nextBtn.disabled=false;nextBtn.removeAttribute('disabled');}updateProgress();}
+
+function updateProgress(){var a=0;for(var i=0;i<answers.length;i++)if(answers[i]!==-1)a++;document.getElementById('progressFill').style.width=(a/activeQuestions.length*100)+'%';document.getElementById('progressText').textContent=a+' / '+activeQuestions.length;}
+
+function getStatus(c,t){if(t===0)return{label:'—',cls:'status-developing'};var p=c/t*100;if(p>=75)return{label:'Strong',cls:'status-strong'};if(p>=50)return{label:'Developing',cls:'status-developing'};return{label:'Review Needed',cls:'status-focus'};}
+function getBarColor(c,t){if(t===0)return'#ccc';var p=c/t*100;if(p>=75)return'#27AE60';if(p>=50)return'#E67E22';return'#C0392B';}
+
+function submitQuiz(){submitted=true;var totalCorrect=0;var domainScores={people:{correct:0,total:0},process:{correct:0,total:0},business:{correct:0,total:0}};var topicScores={};activeQuestions.forEach(function(q,i){domainScores[q.domain].total++;var k=q.domain+'||'+q.topic;if(!topicScores[k])topicScores[k]={domain:q.domain,topic:q.topic,correct:0,total:0};topicScores[k].total++;if(answers[i]===q.ans){totalCorrect++;domainScores[q.domain].correct++;topicScores[k].correct++;}});document.getElementById('quizContainer').style.display='none';document.getElementById('progressBarContainer').style.display='none';document.getElementById('resultsScreen').classList.add('active');var pct=Math.round(totalCorrect/activeQuestions.length*100);document.getElementById('totalPct').textContent=pct+'%';document.getElementById('totalFraction').textContent=totalCorrect+' / '+activeQuestions.length;renderDomainResults(domainScores);renderBreakdown(topicScores);renderReview();window.scrollTo({top:0,behavior:'smooth'});}
+
+function renderDomainResults(domainScores){var dr=document.getElementById('domainResults');dr.innerHTML='';[['people','People'],['process','Process'],['business','Business Environment']].forEach(function(d){var key=d[0],label=d[1];if(domainScores[key].total===0)return;var p=Math.round(domainScores[key].correct/domainScores[key].total*100);dr.innerHTML+='<div class="domain-result-card"><div class="domain-name">'+label+'</div><div class="domain-bar-bg"><div class="domain-bar-fill '+key+'" style="width:'+p+'%"></div></div><div class="domain-pct">'+p+'%</div><div class="domain-score-detail">'+domainScores[key].correct+'/'+domainScores[key].total+'</div></div>';});}
+
+function renderBreakdown(topicScores){var bc=document.getElementById('breakdownContainer');var fl=document.getElementById('focusList');bc.innerHTML='';fl.innerHTML='';[['people','People'],['process','Process'],['business','Business Environment']].forEach(function(dom){var rows=Object.keys(topicScores).map(function(k){return topicScores[k];}).filter(function(t){return t.domain===dom[0];});if(!rows.length)return;rows.sort(function(a,b){return(a.correct/a.total)-(b.correct/b.total);});var html='<div class="breakdown-section"><div class="breakdown-header"><span class="domain-dot '+dom[0]+'"></span>'+dom[1]+' — Topic Breakdown</div><div class="breakdown-card">';rows.forEach(function(t){var st=getStatus(t.correct,t.total);var bp=Math.round(t.correct/t.total*100);var col=getBarColor(t.correct,t.total);if(st.label==='Review Needed'){fl.innerHTML+='<li><strong>'+t.topic.split('|')[0].trim()+'</strong> <span style="color:#8a94a6;font-size:.82rem;">('+dom[1]+' — '+t.correct+'/'+t.total+')</span></li>';}html+='<div class="subtopic-row"><div class="subtopic-name">'+t.topic.split('|')[0].trim()+'</div><div class="subtopic-bar-bg"><div class="subtopic-bar-fill" style="width:'+bp+'%;background:'+col+';"></div></div><div class="subtopic-score">'+t.correct+'/'+t.total+'</div><div class="subtopic-status '+st.cls+'">'+st.label+'</div></div>';});html+='</div></div>';bc.innerHTML+=html;});if(!fl.innerHTML)fl.innerHTML='<li style="color:#2E7D32;">No critical gaps on this attempt. Keep working across all domains.</li>';}
+
+function renderReview(){var rv=document.getElementById('reviewSection');rv.innerHTML='';var L=['A','B','C','D'];activeQuestions.forEach(function(q,i){var correct=answers[i]===q.ans;var user=answers[i]===-1?'<span class="incorrect-text">Not answered</span>':'Your answer: <span class="'+(correct?'correct-text':'incorrect-text')+'">'+L[answers[i]]+'. '+q.opts[answers[i]]+'</span>';var right=correct?'':'<br>Correct: <span class="correct-text">'+L[q.ans]+'. '+q.opts[q.ans]+'</span>';var trap=q.trap?'<br><em style="color:#1a2744;font-size:.8rem;"><strong>Exam Trap:</strong> '+q.trap+'</em>':'';;rv.innerHTML+='<div class="review-item '+(correct?'correct-item':'incorrect-item')+'"><div class="review-q">'+(i+1)+'. '+q.q+' <span style="font-size:.75rem;color:#8a94a6;font-weight:400;">('+q.topic.split('|')[0].trim()+')</span></div><div class="review-answer">'+user+right+'<br><em style="color:#8a94a6;font-size:.8rem;">'+q.explanation+'</em>'+trap+'</div></div>';})}
+
+function toggleReview(){var s=document.getElementById('reviewSection');s.classList.toggle('active');document.getElementById('reviewBtn').textContent=s.classList.contains('active')?'Hide Review':'Review All Answers';}
+function saveAsPDF(){window.print();}
+</script>
+</body>
+</html>
