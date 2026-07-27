@@ -898,6 +898,13 @@
   </main>
   <script>
     (function () {
+      function configureAssessmentLinks() {
+        var links = document.querySelectorAll('a.pmp-button[href]');
+        links.forEach(function (link) {
+          link.setAttribute('target', '_top');
+        });
+      }
+
       function reportAssessmentHeight() {
         var height = Math.max(
           document.documentElement.scrollHeight,
@@ -909,7 +916,10 @@
         );
       }
 
-      window.addEventListener('load', reportAssessmentHeight);
+      window.addEventListener('load', function () {
+        configureAssessmentLinks();
+        reportAssessmentHeight();
+      });
       window.addEventListener('resize', reportAssessmentHeight);
 
       if ('ResizeObserver' in window && document.body) {
