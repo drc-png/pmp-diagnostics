@@ -156,7 +156,7 @@
 <div class="pmp-quiz">
   <div class="progress-bar-container" id="progressBarContainer" style="display:flex;">
     <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
-    <div class="progress-text" id="progressText">0 / 12</div>
+    <div class="progress-text" id="progressText">0 / 15</div>
   </div>
   <div class="container">
     <div class="start-screen" id="startScreen" hidden aria-hidden="true"></div>
@@ -165,7 +165,7 @@
       <div class="score-hero">
         <div class="score-big" id="totalPct">0%</div>
         <div class="score-label">Practice Set Score</div>
-        <div class="score-fraction" id="totalFraction">0 / 12</div>
+        <div class="score-fraction" id="totalFraction">0 / 15</div>
         <div class="score-sub">Focused Practice — Teams, Stakeholders &amp; Conflict</div>
       </div>
       <div class="domain-results" id="domainResults"></div>
@@ -178,7 +178,7 @@
       <div id="breakdownContainer"></div>
       <div class="results-footer">
         <p><strong>Focused practice complete.</strong> Review each explanation and revisit the decisions that were difficult to distinguish.</p>
-        <p>Use the answer review to study this pilot set. Additional attempts will open after the expanded bank contains independently written questions.</p>
+        <p>This assessment draws 15 questions from the first 30-question validated bank. Additional independently written batches will expand the bank to 150.</p>
         <p style="margin-top:.8rem;font-size:.8rem;">PMP Training Academy &bull; support@pmptrainingacademy.com</p>
       </div>
       <div class="score-save-status" id="scoreSaveStatus" role="status" aria-live="polite">This score is shown on this page. Open the set through your signed-in course page to save it to your learner dashboard.</div>
@@ -190,307 +190,817 @@
   </div>
 </div>
 <script>
-var SERVE_COUNT=12,studentName='',studentEmail='',activeQuestions=[],answers=[],submitted=false,currentQ=0;
+var SERVE_COUNT=15,studentName='',studentEmail='',activeQuestions=[],answers=[],submitted=false,currentQ=0;
 var questions = [
   {
-    "id": "W2-S3-01",
+    "id": "PS1-TFSL-001",
     "d": "people",
     "t": "Team structure",
-    "task": "PE3",
-    "taskLabel": "People Task 3 - Lead and structure the team",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
     "a": "hybrid",
-    "pattern": "Create role and decision clarity collaboratively before correcting individual performance.",
-    "rule": "Create role and decision clarity collaboratively before correcting individual performance.",
+    "pattern": "Clarify ownership and decision rights collaboratively before treating overlap as an individual performance problem.",
     "format": "Scenario",
     "difficulty": "Moderate",
-    "q": "A newly formed cross-functional team is duplicating work because members interpret ownership differently. What should the project manager do first?",
+    "q": "A hybrid product team has begun duplicating analysis because the business analysts and product specialists both believe they own requirement clarification. The overlap has delayed two decisions, but no role boundaries were documented. What should the project manager do first?",
     "o": [
-      "Facilitate a team charter that clarifies roles, decision rights, working agreements, and how the team will resolve overlap.",
-      "Ask the functional managers to assign the duplicated tasks directly to individual specialists.",
-      "Allow the team to continue until a retrospective reveals which role assignments are ineffective.",
-      "Create a detailed responsibility matrix independently and issue it as the required team structure."
+      "Ask the functional managers to divide the analysis work between their departments",
+      "Facilitate team agreement on ownership, handoffs, and decision rights",
+      "Assign requirement clarification to the most experienced analyst for the next release",
+      "Track the duplicated effort for another iteration before changing the team's working agreements"
     ],
-    "x": 0,
-    "r": "The team needs shared clarity, not a structure imposed without participation. Facilitating a charter and responsibility discussion establishes roles, decision rights, and working agreements the team understands and owns.",
+    "x": 1,
+    "r": "The immediate need is shared clarity about ownership, handoffs, and decision rights. A facilitated team decision addresses the cause and preserves cross-functional collaboration. Assigning the work to one person may stop the current duplication, but it does not create durable role clarity.",
+    "closestDistractorRationale": "Assigning the work to the experienced analyst is a plausible short-term remedy, but it substitutes a person for an agreed operating model.",
     "sourceAnchors": [
-      "2026 ECO People Task 3 - Lead and structure the team",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Leading and Structuring the Team"
+    ],
+    "antiCue": "pass",
+    "rule": "Clarify ownership and decision rights collaboratively before treating overlap as an individual performance problem."
   },
   {
-    "id": "W2-S3-02",
+    "id": "PS1-TFSL-002",
     "d": "people",
     "t": "Leadership tailoring",
-    "task": "PE3",
-    "taskLabel": "People Task 3 - Lead and structure the team",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
     "a": "adaptive",
-    "pattern": "Tailor leadership to the team's current need rather than to a preferred style.",
-    "rule": "Tailor leadership to the team's current need rather than to a preferred style.",
+    "pattern": "Tailor leadership to team competence, confidence, and the risk of the work.",
     "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "A team understands its purpose but is openly challenging roles and working methods during its first iteration. Which leadership response is most appropriate?",
+    "difficulty": "Moderate-Hard",
+    "q": "An established adaptive team is highly capable in product delivery but has never performed a regulated data migration. Members want full autonomy over the migration plan, while the compliance specialist reports several unfamiliar controls. Which leadership response is most appropriate?",
     "o": [
-      "Delegate operating decisions so the team can demonstrate that it is ready to self-manage.",
-      "Facilitate the disagreement, clarify agreements, and provide structure for progress.",
-      "Ask functional managers to reinforce individual role agreements until the team's working rhythm stabilizes.",
-      "Escalate the disagreement to the sponsor because the team has not reached the performing stage."
+      "Let the team self-manage the migration and schedule a compliance review after the first increment",
+      "Ask the compliance specialist to direct all migration work until the release is approved",
+      "Move the migration to a predictive workstream managed by the project manager",
+      "Keep team ownership while adding control boundaries, specialist guidance, and frequent compliance feedback"
     ],
-    "x": 1,
-    "r": "The team is displaying a normal storming-stage need. The project manager should facilitate productive conflict and reinforce structure, then increase autonomy as agreements and capability stabilize.",
+    "x": 3,
+    "r": "Leadership should be tailored to both capability and risk. The team can retain ownership while receiving added structure and specialist feedback for unfamiliar regulated work. Full autonomy without early control feedback creates avoidable exposure, while transferring all authority would unnecessarily weaken self-management.",
+    "closestDistractorRationale": "Specialist direction may appear safer, but it overcorrects by replacing team ownership rather than setting appropriate boundaries.",
     "sourceAnchors": [
-      "2026 ECO People Task 3 - Lead and structure the team",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Leadership Styles and Team Empowerment"
+    ],
+    "antiCue": "pass",
+    "rule": "Tailor leadership to team competence, confidence, and the risk of the work."
   },
   {
-    "id": "W2-S3-03",
+    "id": "PS1-TFSL-003",
     "d": "people",
     "t": "Psychological safety",
-    "task": "PE6",
-    "taskLabel": "People Task 6 - Build a shared understanding",
-    "a": "hybrid",
-    "pattern": "Protect the work, then repair the team condition that prevented early evidence from surfacing.",
-    "rule": "Protect the work, then repair the team condition that prevented early evidence from surfacing.",
-    "format": "Scenario",
-    "difficulty": "Moderate-Hard",
-    "q": "After a production defect, a specialist admits noticing an early warning but staying silent because a senior expert had dismissed similar concerns. What should the project manager do first?",
-    "o": [
-      "Document the specialist's omission as a performance issue before discussing the defect with the team.",
-      "Ask the senior expert to approve a new escalation procedure for technical concerns.",
-      "Control the exposure, then facilitate a blameless review that restores a safe, reliable way to raise concerns.",
-      "Limit future technical reviews to senior experts so accountability remains clear."
-    ],
-    "x": 2,
-    "r": "The immediate exposure must be controlled, followed by a blameless learning review. The underlying risk is a team condition that suppresses evidence; punishment or narrower participation would reinforce it.",
-    "sourceAnchors": [
-      "2026 ECO People Task 6 - Build a shared understanding",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S3-04",
-    "d": "people",
-    "t": "Empowerment",
-    "task": "PE3",
-    "taskLabel": "People Task 3 - Lead and structure the team",
-    "a": "hybrid",
-    "pattern": "Empower through explicit outcomes, boundaries, and feedback—not through absence of oversight.",
-    "rule": "Empower through explicit outcomes, boundaries, and feedback—not through absence of oversight.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "An experienced team asks to approve routine design decisions without waiting for the project manager. Governance allows delegation within stated cost and risk thresholds. What should the project manager do?",
-    "o": [
-      "Retain approval authority and invite the team to recommend decisions because accountability remains with the project manager.",
-      "Delegate broad design authority and review the outcome when the release is complete.",
-      "Ask the sponsor to approve each design category and its risk level before the team can act.",
-      "Define the outcome, constraints, thresholds, and escalation path, then delegate the decisions and inspect results."
-    ],
-    "x": 3,
-    "r": "The team has capability and governance permits delegation. Clear boundaries and an inspection mechanism preserve accountability while enabling timely team decisions.",
-    "sourceAnchors": [
-      "2026 ECO People Task 3 - Lead and structure the team",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S3-05",
-    "d": "people",
-    "t": "Virtual teams",
-    "task": "PE8",
-    "taskLabel": "People Task 8 - Manage communications",
-    "a": "adaptive",
-    "pattern": "Design virtual collaboration for equitable participation, not merely message distribution.",
-    "rule": "Design virtual collaboration for equitable participation, not merely message distribution.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "Remote team members in one region rarely contribute during live planning because the meeting falls outside their working hours. Decisions are later posted in chat. What should the project manager do first?",
-    "o": [
-      "Revise working agreements for equitable participation, asynchronous input, and decision records.",
-      "Require the region to rotate attendance so each planning meeting has a representative.",
-      "Keep the schedule because posting decisions in chat satisfies the documented communication plan.",
-      "Move planning to email so participants in different time zones receive identical information."
-    ],
-    "x": 0,
-    "r": "The communication system is excluding part of the team from shaping decisions. The project manager should redesign working agreements around access, participation, asynchronous input, and traceability.",
-    "sourceAnchors": [
-      "2026 ECO People Task 8 - Manage communications",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S3-06",
-    "d": "people",
-    "t": "Motivation and recognition",
-    "task": "PE7",
-    "taskLabel": "People Task 7 - Support team performance",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
     "a": "predictive",
-    "pattern": "Understand the person's needs and constraints before choosing recognition or support.",
-    "rule": "Understand the person's needs and constraints before choosing recognition or support.",
-    "format": "Scenario",
-    "difficulty": "Moderate-Hard",
-    "q": "A high-performing analyst says public awards are uncomfortable and that repeated urgent requests are reducing focus. What should the project manager do?",
-    "o": [
-      "Continue public recognition because consistent treatment supports a transparent team environment.",
-      "Remove the analyst from urgent work and transfer recognition decisions to the functional manager.",
-      "Discuss recognition and workload preferences, then tailor support to project priorities.",
-      "Offer a financial incentive for urgent requests completed before the next status cycle."
-    ],
-    "x": 2,
-    "r": "Effective recognition and support are tailored to the individual and the work context. A direct conversation reveals the motivational need and workload constraint before a response is selected.",
-    "sourceAnchors": [
-      "2026 ECO People Task 7 - Support team performance",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-01",
-    "d": "people",
-    "t": "Stakeholder identification",
-    "task": "PE4",
-    "taskLabel": "People Task 4 - Engage stakeholders",
-    "a": "hybrid",
-    "pattern": "Analyze a newly identified stakeholder before defaulting to a communication tactic.",
-    "rule": "Analyze a newly identified stakeholder before defaulting to a communication tactic.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "A regulatory liaison joins the organization midway through a project and can influence the acceptance path. The liaison is not in the stakeholder register. What should the project manager do first?",
-    "o": [
-      "Analyze the liaison's influence, impact, information needs, and desired engagement, then update the stakeholder register and approach.",
-      "Add the liaison to the standard status-report distribution before requesting further information.",
-      "Wait for the next governance review because stakeholder identification was completed during initiation.",
-      "Ask the sponsor to manage the liaison because regulatory stakeholders are outside the project team's authority."
-    ],
-    "x": 0,
-    "r": "Stakeholder identification is continuous. The project manager should analyze the new stakeholder before selecting communications or engagement actions, then update the relevant records and plan.",
-    "sourceAnchors": [
-      "2026 ECO People Task 4 - Engage stakeholders",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-02",
-    "d": "people",
-    "t": "Engagement planning",
-    "task": "PE4",
-    "taskLabel": "People Task 4 - Engage stakeholders",
-    "a": "predictive",
-    "pattern": "Plan engagement from the stakeholder's current state, desired state, and underlying interests.",
-    "rule": "Plan engagement from the stakeholder's current state, desired state, and underlying interests.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "A department head has high influence and is currently resistant, but adoption by the department is essential. What is the most useful next step?",
-    "o": [
-      "Increase the frequency of general status reports so the department head receives more project information.",
-      "Identify the engagement gap and plan actions around the stakeholder's interests.",
-      "Classify the stakeholder as a blocker and ask the sponsor to require cooperation.",
-      "Remove sensitive concerns from the stakeholder register so the engagement plan remains neutral."
-    ],
-    "x": 1,
-    "r": "The project manager needs a tailored engagement response based on the gap, interests, and concerns. More broadcast information or labels do not create the understanding needed for adoption.",
-    "sourceAnchors": [
-      "2026 ECO People Task 4 - Engage stakeholders",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-03",
-    "d": "people",
-    "t": "Stakeholder information",
-    "task": "PE8",
-    "taskLabel": "People Task 8 - Manage communications",
-    "a": "hybrid",
-    "pattern": "Tailor access to stakeholder information as well as the message itself.",
-    "rule": "Tailor access to stakeholder information as well as the message itself.",
-    "format": "Scenario",
-    "difficulty": "Moderate-Hard",
-    "q": "A team member asks for the full stakeholder register to prepare a presentation. The register includes confidential influence assessments and personal concerns. What should the project manager do?",
-    "o": [
-      "Share the register because project team members should have unrestricted access to project artifacts.",
-      "Remove stakeholder names but retain the assessments so the team member can infer the strategy.",
-      "Provide the needed presentation information while protecting confidential relationship data.",
-      "Refuse the request and require the sponsor to present stakeholder information."
-    ],
-    "x": 2,
-    "r": "Stakeholder information should be accessible on a need-to-know basis while sensitive relationship data remains protected. The project manager should supply the usable information without exposing unnecessary confidential assessments.",
-    "sourceAnchors": [
-      "2026 ECO People Task 8 - Manage communications",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-04",
-    "d": "people",
-    "t": "Communication methods",
-    "task": "PE8",
-    "taskLabel": "People Task 8 - Manage communications",
-    "a": "adaptive",
-    "pattern": "Use interactive communication for ambiguity or conflict, then record the outcome.",
-    "rule": "Use interactive communication for ambiguity or conflict, then record the outcome.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "Two leaders interpret an ambiguous release commitment differently, and the disagreement is delaying a decision. Which communication method should the project manager use first?",
-    "o": [
-      "A pull repository containing the release plan and meeting minutes.",
-      "A formal email restating the project manager's interpretation of the commitment.",
-      "A dashboard update showing the current schedule and unresolved decision.",
-      "An interactive clarification, followed by a documented decision."
-    ],
-    "x": 3,
-    "r": "Ambiguous and contentious issues need rapid feedback and shared meaning, which interactive communication supports. The resulting agreement should then be documented for traceability.",
-    "sourceAnchors": [
-      "2026 ECO People Task 8 - Manage communications",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-05",
-    "d": "people",
-    "t": "Active listening",
-    "task": "PE5",
-    "taskLabel": "People Task 5 - Align stakeholders' needs and expectations",
-    "a": "hybrid",
-    "pattern": "Clarify meaning and interests before selecting a response to stakeholder resistance.",
-    "rule": "Clarify meaning and interests before selecting a response to stakeholder resistance.",
-    "format": "Scenario",
-    "difficulty": "Moderate",
-    "q": "A stakeholder repeatedly says a new workflow is 'not practical,' but gives no specific examples. What should the project manager do next?",
-    "o": [
-      "Use open questions and paraphrasing to uncover and confirm the concern.",
-      "Ask the stakeholder to submit a change request before the concern can be discussed.",
-      "Explain the approved workflow in greater detail so the stakeholder understands why it is practical.",
-      "Record the stakeholder as resistant and increase executive communications."
-    ],
-    "x": 0,
-    "r": "The statement is too general to support action. Active listening, open questions, and paraphrasing help reveal the underlying interest or constraint and verify shared understanding.",
-    "sourceAnchors": [
-      "2026 ECO People Task 5 - Align stakeholders' needs and expectations",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
-  },
-  {
-    "id": "W2-S4-06",
-    "d": "people",
-    "t": "Conflict and decision rights",
-    "task": "PE2",
-    "taskLabel": "People Task 2 - Manage conflict",
-    "a": "adaptive",
-    "pattern": "Facilitate the conflict at the lowest authorized level and preserve established decision rights.",
-    "rule": "Facilitate the conflict at the lowest authorized level and preserve established decision rights.",
+    "pattern": "Create a safe mechanism for surfacing evidence and address the behavior that suppresses participation.",
     "format": "Scenario",
     "difficulty": "Hard",
-    "q": "A sponsor wants a visible feature moved into the next release. The product owner says it would displace a higher-value item and owns backlog ordering. Both ask the project manager to choose. What should the project manager do?",
+    "q": "During a quality review, a junior engineer privately tells the project manager that several team members stopped raising concerns after a senior architect repeatedly challenged their competence in meetings. No formal complaints have been submitted. What should the project manager do first?",
     "o": [
-      "Accept the sponsor's request and ask the product owner to rebalance the remaining backlog around the change.",
-      "Ask the team to compare the features and use its majority vote as the release-order decision.",
-      "Facilitate the value-and-impact tradeoff, respect the product owner's backlog authority, and document the resulting decision.",
-      "Escalate the disagreement to the steering committee before discussing the competing interests."
+      "Gather confidential examples, address the meeting behavior, and reinforce safe ways to raise technical concerns",
+      "Request a formal complaint before discussing the architect's conduct with the functional manager",
+      "Move technical reviews to written comments so participants do not have to disagree in meetings",
+      "Ask the functional manager to coach the architect while technical reviews move to written comments"
+    ],
+    "x": 0,
+    "r": "The project manager should establish enough evidence to act fairly and address the conduct that is suppressing technical information. Reinforcing safe reporting supports both the team and project quality. Requiring a formal complaint delays a proportionate response and may further discourage participation.",
+    "closestDistractorRationale": "Written reviews may reduce visible tension, but they avoid the harmful behavior instead of restoring psychological safety.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Psychological Safety and Balanced Teams"
+    ],
+    "antiCue": "pass",
+    "rule": "Create a safe mechanism for surfacing evidence and address the behavior that suppresses participation."
+  },
+  {
+    "id": "PS1-TFSL-004",
+    "d": "people",
+    "t": "Team charter",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Use team agreements to define working norms and revisit them when the environment changes.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A colocated project team becomes hybrid after two departments relocate. Turnaround times are declining because members have different assumptions about availability, response times, and meeting attendance. What should the project manager do next?",
+    "o": [
+      "Publish standard availability hours based on the project manager's calendar",
+      "Increase the number of mandatory status meetings until response times improve",
+      "Revise the team charter together to define availability, response times, channels, and escalation",
+      "Ask department managers to monitor whether their employees respond on time"
     ],
     "x": 2,
-    "r": "The project manager should facilitate understanding of value and impact without taking over the product owner's defined decision right. Escalation is appropriate only if governance thresholds or authority boundaries require it.",
+    "r": "The team's operating environment has changed, so its working agreements should be revisited collaboratively. Updating the charter creates shared expectations about availability, communication, and escalation. Imposing more meetings may add coordination cost without resolving differing assumptions.",
+    "closestDistractorRationale": "Publishing standard hours provides clarity, but it does not account for team input, work needs, or channel-specific expectations.",
     "sourceAnchors": [
-      "2026 ECO People Task 2 - Manage conflict",
-      "PMI Authorized PMP Exam Prep learner resources"
-    ]
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Team Charter and Virtual Teams"
+    ],
+    "antiCue": "pass",
+    "rule": "Use team agreements to define working norms and revisit them when the environment changes."
+  },
+  {
+    "id": "PS1-TFSL-005",
+    "d": "people",
+    "t": "Coaching",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "predictive",
+    "pattern": "Coach to close a capability gap when expectations are clear and the person can develop.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A workstream lead understands the schedule but gives vague task directions, causing repeated rework. The lead is receptive to feedback and has strong technical knowledge. What should the project manager do?",
+    "o": [
+      "Reassign task direction to the project coordinator and keep the lead focused on technical decisions",
+      "Coach the lead with a recent example, agree on clearer delegation, and observe the next cycle",
+      "Ask the team to document unclear instructions and resolve them during weekly status reviews",
+      "Request formal leadership training before allowing the lead to assign additional work"
+    ],
+    "x": 1,
+    "r": "The lead has relevant knowledge and is open to development, making targeted coaching the proportionate response. Specific feedback, an agreed practice, and observation connect development to actual work. Reassigning the responsibility may hide the skill gap rather than improve capability.",
+    "closestDistractorRationale": "Formal training could help, but it delays an immediate, work-based coaching opportunity and may be broader than the identified need.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Coaching and Team Development"
+    ],
+    "antiCue": "pass",
+    "rule": "Coach to close a capability gap when expectations are clear and the person can develop."
+  },
+  {
+    "id": "PS1-TFSL-006",
+    "d": "people",
+    "t": "Mentoring",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Use mentoring for broader professional development while preserving current delivery accountability.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A capable developer wants to become a product owner in the future and asks the project manager for support. The current product owner is willing to help, but release priorities cannot be disrupted. What is the most appropriate action?",
+    "o": [
+      "Arrange mentoring and shadowing with learning goals while retaining current product-owner accountability",
+      "Allow the developer to prioritize a portion of the backlog so the learning is authentic",
+      "Recommend certification training and revisit the request after the project closes",
+      "Rotate product-owner authority between the developer and the current product owner during low-risk iterations"
+    ],
+    "x": 0,
+    "r": "Mentoring and shadowing support long-term development without confusing current decision authority. The product owner remains accountable for prioritization while the developer gains exposure to the role. Temporarily rotating authority would create governance and accountability ambiguity.",
+    "closestDistractorRationale": "Allowing limited backlog prioritization offers practical experience, but it transfers accountability that the scenario says must remain stable.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Mentoring and Knowledge Sharing"
+    ],
+    "antiCue": "pass",
+    "rule": "Use mentoring for broader professional development while preserving current delivery accountability."
+  },
+  {
+    "id": "PS1-TFSL-007",
+    "d": "people",
+    "t": "Team development",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Diagnose whether a team-development stage requires structure, facilitation, or greater autonomy.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A newly assembled team agrees on the project goal but challenges work methods and competes for influence during planning. Delivery has not started, and the disagreements remain focused on the work. What should the project manager do?",
+    "o": [
+      "Select the work method with the strongest historical performance and direct the team to use it",
+      "Separate the members with the strongest disagreements into different workstreams",
+      "Ask the sponsor to reinforce that the team must follow the project manager's decisions",
+      "Facilitate the role and method disagreements to establish workable team norms"
+    ],
+    "x": 3,
+    "r": "Task-focused disagreement is expected as a new team establishes roles and norms. Facilitation helps the team convert conflict into workable agreements. Directing a method too early may suppress useful information and reduce ownership.",
+    "closestDistractorRationale": "Choosing a historically successful method may appear efficient, but the scenario calls for team formation and shared working norms, not a technical method decision alone.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Team Development and Team Norms"
+    ],
+    "antiCue": "pass",
+    "rule": "Diagnose whether a team-development stage requires structure, facilitation, or greater autonomy."
+  },
+  {
+    "id": "PS1-TFSL-008",
+    "d": "people",
+    "t": "Empowerment",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "predictive",
+    "pattern": "Delegate decisions within explicit authority, risk, cost, and reporting boundaries.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "An experienced engineering team asks to approve routine design substitutions without waiting for the weekly change meeting. The governance plan allows delegated decisions below stated cost and safety thresholds. Which action best supports empowerment?",
+    "o": [
+      "Permit substitutions that do not change the delivery date and review them during the monthly design audit",
+      "Keep all substitutions in the weekly meeting because design changes can affect the baseline",
+      "Define delegation thresholds, required evidence, records, and return-to-governance conditions",
+      "Authorize the engineering lead to decide which substitutions require formal review"
+    ],
+    "x": 2,
+    "r": "Empowerment is strongest when authority boundaries and feedback mechanisms are explicit. The governance plan permits delegation, so the project manager should operationalize the thresholds and traceability requirements. Delegating the decision about the limits themselves would make authority unclear.",
+    "closestDistractorRationale": "Reviewing low-impact substitutions later is plausible, but schedule impact alone does not address cost, safety, evidence, or governance thresholds.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Empowering Teams to Act"
+    ],
+    "antiCue": "pass",
+    "rule": "Delegate decisions within explicit authority, risk, cost, and reporting boundaries."
+  },
+  {
+    "id": "PS1-TFSL-009",
+    "d": "people",
+    "t": "Diversity and inclusion",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Design participation so different communication needs contribute to decisions.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "In iteration planning, fluent speakers dominate rapid discussion while several remote members contribute detailed ideas only after the meeting. Decisions are often finalized before those comments arrive. What should the project manager do first?",
+    "o": [
+      "Use advance materials, structured turn-taking, and a period for asynchronous input",
+      "Ask remote members to send their recommendations to the product owner before each meeting",
+      "Extend the planning meeting so each member can speak before decisions are finalized",
+      "Use anonymous voting to select among options proposed by the fluent speakers"
+    ],
+    "x": 0,
+    "r": "Inclusive collaboration requires designing the decision process so different communication patterns can influence outcomes. Advance context, structured participation, and asynchronous input address the participation barrier. Routing comments only through the product owner reduces direct team contribution.",
+    "closestDistractorRationale": "Extending the meeting provides more time but does not correct dominance, language load, or the timing of asynchronous contributions.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Diversity, Inclusion, and Virtual Teams"
+    ],
+    "antiCue": "pass",
+    "rule": "Design participation so different communication needs contribute to decisions."
+  },
+  {
+    "id": "PS1-TFSL-010",
+    "d": "people",
+    "t": "Motivation and recognition",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Tailor recognition to the person and reinforce behaviors that support team outcomes.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A specialist who resolved a complex integration problem declines a proposed public award and says the recognition would be uncomfortable. The project manager still wants to reinforce the collaborative behavior that enabled the solution. What should the project manager do?",
+    "o": [
+      "Give the award to the full integration team so the specialist is not singled out",
+      "Mention the contribution in the next status report without naming the specialist",
+      "Provide the public award because visible recognition establishes the desired team norm",
+      "Ask the specialist's preference and recognize the collaborative behavior accordingly"
+    ],
+    "x": 3,
+    "r": "Recognition should be meaningful to the recipient and should reinforce the behavior that supported the team. Asking about preference respects the individual while preserving the leadership purpose. Converting the recognition into a team award may misrepresent the contribution and still ignore personal preference.",
+    "closestDistractorRationale": "Recognizing the whole team can support cohesion, but it does not necessarily meet the identified need or honor the specialist's preference.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Rewards and Recognition"
+    ],
+    "antiCue": "pass",
+    "rule": "Tailor recognition to the person and reinforce behaviors that support team outcomes."
+  },
+  {
+    "id": "PS1-TFSL-011",
+    "d": "people",
+    "t": "Resource capability",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "predictive",
+    "pattern": "Evaluate capability against work needs before adding, replacing, or training resources.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A critical testing phase begins in six weeks. The resource plan lists four testers, but a capability review shows that only one has experience with the required automation framework. The schedule has limited contingency. What should the project manager do next?",
+    "o": [
+      "Ask the experienced tester to create the automation suite while the others execute manual tests",
+      "Compare the gap with the test strategy and evaluate training, pairing, or supplemental expertise against schedule risk",
+      "Request two additional automation testers because the current team cannot meet the plan",
+      "Revise the test strategy to rely on the techniques the assigned testers already know"
+    ],
+    "x": 1,
+    "r": "The project manager should connect the verified capability gap to the planned work and evaluate proportionate development or staffing responses. Adding resources before comparing options may create cost and onboarding effects without addressing the specific need.",
+    "closestDistractorRationale": "Assigning all automation to the experienced tester may appear efficient, but it creates concentration risk and does not test whether the strategy can be delivered.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Team Skills and Capability Development"
+    ],
+    "antiCue": "pass",
+    "rule": "Evaluate capability against work needs before adding, replacing, or training resources."
+  },
+  {
+    "id": "PS1-TFSL-012",
+    "d": "people",
+    "t": "Decision making",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Select a decision method that fits urgency, consequence, expertise, and required commitment.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A self-managing team must choose among three technically viable approaches. The choice is reversible, the decision is needed today, and broad team commitment will affect implementation. Which decision method is most appropriate?",
+    "o": [
+      "Ask the architect to select the approach because technical expertise is the primary criterion",
+      "Send the alternatives to the sponsor with the team's analysis and recommendation",
+      "Use agreed criteria and a timeboxed team method that makes support visible",
+      "Begin with the lowest-cost approach and revisit the choice if implementation problems occur"
+    ],
+    "x": 2,
+    "r": "The decision is within the team's scope, reversible, and dependent on team commitment. A timeboxed, criteria-based team method provides both data and participation. Expert selection may be faster, but it underuses the team's decision rights and may weaken commitment.",
+    "closestDistractorRationale": "Architect selection is defensible for a narrow technical ruling, but the stem emphasizes multiple viable choices and the value of shared commitment.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Team Decision-Making Methods"
+    ],
+    "antiCue": "pass",
+    "rule": "Select a decision method that fits urgency, consequence, expertise, and required commitment."
+  },
+  {
+    "id": "PS1-TFSL-013",
+    "d": "people",
+    "t": "Conflict analysis",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "hybrid",
+    "pattern": "Identify the conflict source and context before selecting a resolution approach.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "Two workstream leads repeatedly argue about sequencing. One says the other is withholding resources; the other says late design changes make reliable commitments impossible. Both provide data supporting parts of their claims. What should the project manager do first?",
+    "o": [
+      "Use the integrated schedule to determine which lead caused the first missed commitment",
+      "Ask each functional manager to confirm the resources committed to the project",
+      "Compromise by alternating priority between the workstreams for the next two reporting periods",
+      "Review dependencies, change timing, resource assumptions, and shared objectives"
+    ],
+    "x": 3,
+    "r": "The conflict appears to involve connected causes rather than a single person's failure. A fact-based review of dependencies, changes, resources, and objectives creates a sound basis for resolution. Alternating priority may distribute dissatisfaction without resolving the underlying system.",
+    "closestDistractorRationale": "Checking resource commitments addresses one claim, but it does not examine late changes and sequencing dependencies.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Conflict Sources and Context"
+    ],
+    "antiCue": "pass",
+    "rule": "Identify the conflict source and context before selecting a resolution approach."
+  },
+  {
+    "id": "PS1-TFSL-014",
+    "d": "people",
+    "t": "Collaborative conflict resolution",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "predictive",
+    "pattern": "Collaborate when the issue is important, time permits, and durable commitment is needed.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "The quality lead and construction lead disagree about an inspection sequence. Both objectives are important, neither party has authority over the other, and a decision is needed before work starts in three days. Which conflict approach should the project manager use?",
+    "o": [
+      "Smooth the disagreement by emphasizing that both leads want a safe and timely result",
+      "Collaborate on a sequence addressing quality evidence and construction constraints",
+      "Compromise by removing one inspection from each lead's preferred sequence",
+      "Use the project schedule to direct the sequence with the least delay"
+    ],
+    "x": 1,
+    "r": "The issue is important, there is time to resolve it, and both perspectives contain essential constraints. Collaboration seeks a durable solution that integrates quality and construction needs. Compromise may be quicker, but removing inspections without evaluating their purpose could reduce value or control effectiveness.",
+    "closestDistractorRationale": "Compromise is plausible under time pressure, but it concedes elements before determining whether the inspection needs can be integrated.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Conflict Management Approaches"
+    ],
+    "antiCue": "pass",
+    "rule": "Collaborate when the issue is important, time permits, and durable commitment is needed."
+  },
+  {
+    "id": "PS1-TFSL-015",
+    "d": "people",
+    "t": "Conflict escalation",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "adaptive",
+    "pattern": "Use agreed conflict paths and escalate when the decision exceeds team authority or defined thresholds.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "An adaptive team and a security group cannot agree on whether a release meets an enterprise control. The team has provided test evidence, but the security group interprets the control differently. The working agreement assigns unresolved control interpretations to the risk authority, and the release window closes tomorrow. What should the project manager do?",
+    "o": [
+      "Submit the evidence, impacts, and options to the designated risk authority",
+      "Release the increment because the team completed the agreed tests",
+      "Have the product owner prioritize the business value over the disputed control",
+      "Facilitate another team-security workshop and move the release if consensus is not reached"
+    ],
+    "x": 0,
+    "r": "The team has reached the defined authority boundary, and the working agreement identifies the decision path. The project manager should provide decision-ready information to the risk authority. Another workshop could be useful only if new evidence is likely; it should not replace the assigned authority under a closing deadline.",
+    "closestDistractorRationale": "Another workshop is collaborative, but the interpretation remains unresolved and the agreed escalation condition has been met.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Conflict Resolution and Escalation"
+    ],
+    "antiCue": "pass",
+    "rule": "Use agreed conflict paths and escalate when the decision exceeds team authority or defined thresholds."
+  },
+  {
+    "id": "PS1-TFSL-016",
+    "d": "people",
+    "t": "Emotional intelligence",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "hybrid",
+    "pattern": "Use emotional intelligence to understand triggers, regulate the interaction, and return attention to the issue.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "During a planning workshop, a stakeholder responds defensively to an estimate and accuses the team of protecting itself. A team member begins responding in the same tone. What should the project manager do first?",
+    "o": [
+      "End the workshop and ask both individuals to submit their concerns in writing",
+      "Explain the estimating method so the stakeholder understands the team's reasoning",
+      "Acknowledge the concern, de-escalate the exchange, and surface the assumptions behind each position",
+      "Remind the participants that the communication ground rules prohibit personal accusations"
+    ],
+    "x": 2,
+    "r": "The project manager should first regulate the interaction and create space to understand the assumptions driving the conflict. This uses empathy and active listening while returning the discussion to evidence. Explaining the method may later help, but doing so before de-escalation may be heard as defending the team.",
+    "closestDistractorRationale": "Restating ground rules is relevant, but it addresses conduct without first lowering the emotional intensity or exploring the concern.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Emotional Intelligence and Active Listening"
+    ],
+    "antiCue": "pass",
+    "rule": "Use emotional intelligence to understand triggers, regulate the interaction, and return attention to the issue."
+  },
+  {
+    "id": "PS1-TFSL-017",
+    "d": "people",
+    "t": "Conflict follow-through",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "predictive",
+    "pattern": "Confirm that an agreed resolution changes behavior and project conditions.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Two specialists agree to a new handoff protocol after a conflict caused missed reviews. The next handoff succeeds, but both specialists say the process is cumbersome. What should the project manager do next?",
+    "o": [
+      "Keep the protocol unchanged until the project closes because it prevented another missed review",
+      "Refine the agreement with both specialists while protecting the required review",
+      "Return to the original handoff and add a reminder before each review deadline",
+      "Ask the quality lead to own all future handoffs between the specialists"
+    ],
+    "x": 1,
+    "r": "Conflict resolution includes evaluating whether the agreement is effective and sustainable. The successful review should be preserved while the unnecessary burden is refined collaboratively. Keeping an inefficient process unchanged may create new friction and weaken adherence.",
+    "closestDistractorRationale": "Keeping the protocol protects the immediate control, but it ignores evidence that the agreement may not be sustainable.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Implementing and Reinforcing Resolution Strategies"
+    ],
+    "antiCue": "pass",
+    "rule": "Confirm that an agreed resolution changes behavior and project conditions."
+  },
+  {
+    "id": "PS1-TFSL-018",
+    "d": "people",
+    "t": "Ground rules",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "adaptive",
+    "pattern": "Establish conflict principles before pressure exposes inconsistent expectations.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A newly formed adaptive team has no agreed method for handling disagreement. Members currently work well together, but the next increment requires several difficult tradeoffs. What is the most appropriate action?",
+    "o": [
+      "Let the team develop its conflict approach when the first disagreement occurs, then document the method used",
+      "Provide the organization's standard escalation procedure as the team's conflict method",
+      "Ask the scrum master to resolve disagreements so delivery discussions remain efficient",
+      "Set team-defined ground rules for disagreement, decision methods, and escalation conditions"
+    ],
+    "x": 3,
+    "r": "The team should establish shared conflict and decision norms before pressure increases. Team-defined ground rules support ownership and make escalation conditions clear. An organizational escalation procedure may be one input, but it does not replace team-level working agreements.",
+    "closestDistractorRationale": "Using the standard procedure provides consistency, but it focuses on escalation rather than how the team will resolve routine disagreement.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Conflict Principles and Team Ground Rules"
+    ],
+    "antiCue": "pass",
+    "rule": "Establish conflict principles before pressure exposes inconsistent expectations."
+  },
+  {
+    "id": "PS1-TFSL-019",
+    "d": "people",
+    "t": "Stakeholder identification",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "hybrid",
+    "pattern": "Identify stakeholders continuously from project evidence and changing relationships.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "During integration planning, the team learns that a regional operations group will support the solution after deployment. The group is not listed in the stakeholder register or transition plan. What should the project manager do first?",
+    "o": [
+      "Ask the sponsor to add the operations director to the steering committee",
+      "Send the operations group the current status, deployment schedule, support assumptions, and training outline",
+      "Assess the group's role, influence, needs, and impact, then update the stakeholder information",
+      "Add operational training to the scope before the group reviews the solution"
+    ],
+    "x": 2,
+    "r": "A newly identified stakeholder should first be assessed so engagement is tailored to its role, influence, needs, and impact. Sending standard status information assumes communication needs before they are understood. Adding training may later be appropriate but requires engagement and scope analysis.",
+    "closestDistractorRationale": "Sending project information starts engagement, but it may not address the group's actual responsibilities or expectations.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Stakeholder Identification and Register"
+    ],
+    "antiCue": "pass",
+    "rule": "Identify stakeholders continuously from project evidence and changing relationships."
+  },
+  {
+    "id": "PS1-TFSL-020",
+    "d": "people",
+    "t": "Stakeholder analysis",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "predictive",
+    "pattern": "Tailor engagement using influence, interest, impact, legitimacy, and urgency rather than title alone.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A local regulator has limited day-to-day interest in a facility project but can stop commissioning if permit evidence is incomplete. The project team currently categorizes the regulator as a low-engagement stakeholder. What should the project manager do?",
+    "o": [
+      "Reassess the regulator's authority, legitimacy, urgency, and required engagement",
+      "Keep the current category because the regulator is not involved in project execution",
+      "Move the regulator to the highest communication frequency used for executive stakeholders",
+      "Ask the compliance lead to manage the relationship and report regulatory decisions through project status"
+    ],
+    "x": 0,
+    "r": "Stakeholder classification should reflect the regulator's authority, legitimacy, urgency, and potential impact, not only daily interest. The engagement approach should then be tailored to required evidence and decision points. Maximum communication frequency may create noise without ensuring the right regulatory interactions.",
+    "closestDistractorRationale": "Increasing communication may seem cautious, but frequency alone is not a substitute for a tailored regulatory engagement plan.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Stakeholder Analysis and Salience"
+    ],
+    "antiCue": "pass",
+    "rule": "Tailor engagement using influence, interest, impact, legitimacy, and urgency rather than title alone."
+  },
+  {
+    "id": "PS1-TFSL-021",
+    "d": "people",
+    "t": "Stakeholder engagement gap",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "adaptive",
+    "pattern": "Compare current and desired engagement and address the reason for the gap.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A product sponsor attends reviews but rarely makes prioritization decisions. Interviews show that the sponsor supports the product vision but doubts the reliability of the team's forecasts. What should the project manager do next?",
+    "o": [
+      "Ask the sponsor to delegate prioritization to a business analyst who attends team events",
+      "Increase the detail in weekly status reports so the sponsor has more project information",
+      "Improve forecast transparency with the sponsor and agree on evidence for timely decisions",
+      "Escalate the sponsor's limited participation to the governance board as an accountability issue"
+    ],
+    "x": 2,
+    "r": "The engagement gap is caused by low confidence in forecast evidence, not lack of support for the vision. Improving transparency and agreeing on decision evidence addresses the identified barrier. More status detail may add information without resolving forecast credibility.",
+    "closestDistractorRationale": "Detailed reporting is a plausible response to uncertainty, but it does not specifically rebuild confidence in forecasting or clarify decision evidence.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Stakeholder Engagement Assessment"
+    ],
+    "antiCue": "pass",
+    "rule": "Compare current and desired engagement and address the reason for the gap."
+  },
+  {
+    "id": "PS1-TFSL-022",
+    "d": "people",
+    "t": "Stakeholder feedback",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "hybrid",
+    "pattern": "Select feedback methods that match stakeholder scale, access, decision need, and timing.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A public-service project needs feedback from thousands of future users and detailed input from six accessibility advocates before selecting a design. Which engagement approach is most appropriate?",
+    "o": [
+      "Use one public survey so all participants answer the same questions",
+      "Combine broad user research with advocate sessions and integrate the findings using design criteria",
+      "Ask the advocates to represent all users during workshops and validate their recommendations with usage data",
+      "Publish two design options and select the one receiving the most public support"
+    ],
+    "x": 1,
+    "r": "Different stakeholder groups and decision needs require different methods. Broad research provides reach, while facilitated sessions capture specialized accessibility knowledge; shared criteria support integration. Asking a small expert group to represent all users would overextend its perspective.",
+    "closestDistractorRationale": "A single survey is efficient and comparable, but it may not elicit the depth needed from specialist advocates.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Capturing Stakeholder Feedback and Perceptions"
+    ],
+    "antiCue": "pass",
+    "rule": "Select feedback methods that match stakeholder scale, access, decision need, and timing."
+  },
+  {
+    "id": "PS1-TFSL-023",
+    "d": "people",
+    "t": "Expectation alignment",
+    "task": "1.5",
+    "taskLabel": "People Task 1.5 - Align and manage stakeholder expectations",
+    "a": "predictive",
+    "pattern": "Clarify and negotiate expectations against project objectives, scope, authority, and success criteria.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A department director expects a new reporting feature at launch, but the approved scope and acceptance criteria do not include it. The director says the feature was discussed during initiation. What should the project manager do first?",
+    "o": [
+      "Add the feature to the requirements traceability matrix because it was discussed by a key stakeholder",
+      "Tell the director that the feature must wait for a future project because scope is approved",
+      "Ask the sponsor whether the director's expectation should take priority over current requirements",
+      "Review the initiation records with the director and determine whether the expectation is a change request"
+    ],
+    "x": 3,
+    "r": "The project manager should establish what was agreed and whether the director is now requesting a change. This separates misunderstanding from a new requirement before using change control. Asking the sponsor to prioritize the feature is premature until the request and its basis are clear.",
+    "closestDistractorRationale": "Sponsor input may eventually be needed, but the project manager should first clarify the expectation and the nature of the request.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.5 - Align and manage stakeholder expectations",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Validating and Aligning Expectations"
+    ],
+    "antiCue": "pass",
+    "rule": "Clarify and negotiate expectations against project objectives, scope, authority, and success criteria."
+  },
+  {
+    "id": "PS1-TFSL-024",
+    "d": "people",
+    "t": "Success criteria",
+    "task": "1.5",
+    "taskLabel": "People Task 1.5 - Align and manage stakeholder expectations",
+    "a": "adaptive",
+    "pattern": "Make success criteria measurable, shared, and usable for product decisions.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "Three senior stakeholders agree that a customer portal should be \"easy to use,\" but each interprets that phrase differently during review. The team is about to plan the next release. What should the project manager do?",
+    "o": [
+      "Agree on measurable outcomes, acceptance criteria, and how evidence will be gathered",
+      "Let the product owner choose the interpretation that best supports the product vision",
+      "Use the organization's standard usability checklist as the release acceptance criteria",
+      "Deliver a prototype, compare representative-user reactions, and use the majority interpretation for release planning"
+    ],
+    "x": 0,
+    "r": "The phrase is not yet a usable success criterion. Stakeholders should agree on measurable outcomes, acceptance conditions, and evidence before the team commits the release. A standard checklist can inform the discussion but cannot replace context-specific agreement.",
+    "closestDistractorRationale": "A prototype can reveal preferences, but voting among undefined interpretations does not establish measurable success.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.5 - Align and manage stakeholder expectations",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Negotiating Project Success Criteria"
+    ],
+    "antiCue": "pass",
+    "rule": "Make success criteria measurable, shared, and usable for product decisions."
+  },
+  {
+    "id": "PS1-TFSL-025",
+    "d": "people",
+    "t": "Expectation monitoring",
+    "task": "1.5",
+    "taskLabel": "People Task 1.5 - Align and manage stakeholder expectations",
+    "a": "hybrid",
+    "pattern": "Use feedback loops to detect and resolve expectation drift throughout delivery.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A steering committee approved phased deployment, but recent comments show that two members now expect all regions to launch together. The project documents have not changed. What should the project manager do next?",
+    "o": [
+      "Continue with phased deployment because the approved decision remains documented",
+      "Validate the expectation change, explain impacts, and confirm or revise the deployment approach through governance",
+      "Update the communications plan to emphasize the benefits of phased deployment",
+      "Ask the sponsor to remind the committee that the deployment decision was already approved"
+    ],
+    "x": 1,
+    "r": "The comments indicate expectation drift that could affect a major project decision. The project manager should validate the shift, make impacts visible, and use the authorized decision process to confirm or revise the approach. Continuing without alignment risks later rejection or disruption.",
+    "closestDistractorRationale": "Reinforcing the benefits may improve understanding, but it assumes the issue is only communication rather than a possible change in stakeholder expectations.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.5 - Align and manage stakeholder expectations",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Feedback Loops and Expectation Alignment"
+    ],
+    "antiCue": "pass",
+    "rule": "Use feedback loops to detect and resolve expectation drift throughout delivery."
+  },
+  {
+    "id": "PS1-TFSL-026",
+    "d": "people",
+    "t": "Communication strategy",
+    "task": "1.8",
+    "taskLabel": "People Task 1.8 - Plan and manage communication",
+    "a": "predictive",
+    "pattern": "Tailor content, channel, frequency, detail, and ownership to the audience and decision need.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Executives say the monthly project report is too detailed to support decisions, while technical leads use the same report to coordinate dependencies. What should the project manager do?",
+    "o": [
+      "Shorten the report for all recipients and link to the project repository for technical details",
+      "Keep the report because changing formats may create inconsistent project information",
+      "Create tailored views from the same data for executives and technical leads",
+      "Send the full report to technical leads and a verbal summary to executives"
+    ],
+    "x": 2,
+    "r": "Communication should be tailored without creating competing facts. Audience-specific views derived from the same verified source provide executives with decision information and technical leads with coordination detail. A verbal-only executive summary may weaken traceability.",
+    "closestDistractorRationale": "A shorter common report is efficient, but it may remove the technical detail needed for dependency management.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.8 - Plan and manage communication",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Communication Strategy and Requirements"
+    ],
+    "antiCue": "pass",
+    "rule": "Tailor content, channel, frequency, detail, and ownership to the audience and decision need."
+  },
+  {
+    "id": "PS1-TFSL-027",
+    "d": "people",
+    "t": "Communication effectiveness",
+    "task": "1.8",
+    "taskLabel": "People Task 1.8 - Plan and manage communication",
+    "a": "adaptive",
+    "pattern": "Measure whether communication creates shared understanding and action, not only whether messages were sent.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A distributed team receives daily release updates, yet members continue acting on outdated dependency information. Delivery records confirm that the messages were sent and opened. What should the project manager evaluate first?",
+    "o": [
+      "Whether the method, timing, ownership, and feedback loop create shared understanding of dependency changes",
+      "Whether members should acknowledge each update and identify affected dependencies before beginning work",
+      "Whether the release manager is publishing updates frequently enough",
+      "Whether consolidating dependency updates in the primary platform would reduce fragmentation"
+    ],
+    "x": 0,
+    "r": "Delivery and read receipts do not prove shared understanding or action. The project manager should evaluate the communication system, including timing, ownership, channel, and feedback. Requiring acknowledgment may measure receipt again without showing that dependency implications are understood.",
+    "closestDistractorRationale": "A single platform could reduce fragmentation, but selecting a tool before diagnosing the communication failure is premature.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.8 - Plan and manage communication",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Monitoring Communication Effectiveness"
+    ],
+    "antiCue": "pass",
+    "rule": "Measure whether communication creates shared understanding and action, not only whether messages were sent."
+  },
+  {
+    "id": "PS1-TFSL-028",
+    "d": "people",
+    "t": "Sensitive communication",
+    "task": "1.8",
+    "taskLabel": "People Task 1.8 - Plan and manage communication",
+    "a": "hybrid",
+    "pattern": "Match the communication method to sensitivity, urgency, complexity, and the need for dialogue.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A vendor's delay will affect one internal milestone but not the contractual delivery date. The project manager must inform a stakeholder who has previously interpreted schedule variance as project failure. Which communication approach is most appropriate?",
+    "o": [
+      "Add the variance to the next written status report with the current recovery forecast",
+      "Ask the sponsor to brief the stakeholder because the relationship is sensitive",
+      "Send the schedule analysis first and offer to answer questions after the stakeholder reviews it",
+      "Discuss verified impacts and recovery options directly, then document the exchange"
+    ],
+    "x": 3,
+    "r": "The message is sensitive and may be misunderstood, so direct dialogue allows context, questions, and expectation alignment. A written follow-up preserves traceability. A report alone may not address the stakeholder's known interpretation risk.",
+    "closestDistractorRationale": "Sending the analysis provides evidence, but postponing dialogue increases the chance that the stakeholder will interpret the variance without context.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.8 - Plan and manage communication",
+      "PMI Authorized PMP Exam Prep Lesson 3 - Communication Methods and Tailoring"
+    ],
+    "antiCue": "pass",
+    "rule": "Match the communication method to sensitivity, urgency, complexity, and the need for dialogue."
+  },
+  {
+    "id": "PS1-TFSL-029",
+    "d": "people",
+    "t": "Tacit knowledge transfer",
+    "task": "1.7",
+    "taskLabel": "People Task 1.7 - Ensure knowledge transfer",
+    "a": "predictive",
+    "pattern": "Transfer tacit knowledge through practice, observation, and feedback rather than documentation alone.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A specialist who diagnoses rare equipment failures will leave before operations assume support. The specialist has written procedures, but successful diagnosis depends heavily on recognizing subtle patterns. What should the project manager do?",
+    "o": [
+      "Use shadowing, guided practice, and observed diagnosis while refining the procedures",
+      "Ask the specialist to add more detailed examples to the procedures before departure",
+      "Record the specialist describing previous failures and store the videos in the knowledge repository",
+      "Retain the specialist on call during the first month of operations"
+    ],
+    "x": 0,
+    "r": "Pattern recognition is tacit knowledge and is best transferred through observation, practice, feedback, and demonstration. Documentation and recordings can support the transfer but do not establish operational capability. On-call support may reduce transition risk but does not ensure learning before departure.",
+    "closestDistractorRationale": "More examples improve explicit knowledge, but they cannot fully convey the judgment used to recognize subtle failure patterns.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.7 - Ensure knowledge transfer",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Tacit Knowledge, Shadowing, and Practice"
+    ],
+    "antiCue": "pass",
+    "rule": "Transfer tacit knowledge through practice, observation, and feedback rather than documentation alone."
+  },
+  {
+    "id": "PS1-TFSL-030",
+    "d": "people",
+    "t": "Knowledge-sharing culture",
+    "task": "1.7",
+    "taskLabel": "People Task 1.7 - Ensure knowledge transfer",
+    "a": "adaptive",
+    "pattern": "Integrate knowledge sharing into delivery instead of postponing it until closure.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "One developer has become the only person who can safely deploy a critical service. The team documents each deployment, but other members avoid performing it because errors would be visible to customers. What should the project manager do next?",
+    "o": [
+      "Keep the specialist as deployment owner and train a backup after the current release",
+      "Use pairing, simulation, supervised practice, and progressive authorization for other team members",
+      "Rotate deployment ownership among team members using the existing documentation",
+      "Automate the deployment before asking other team members to assume responsibility"
+    ],
+    "x": 1,
+    "r": "The team needs capability transfer that protects customers while reducing concentration risk. Pairing, simulation, supervised practice, and progressive authorization create experience under controlled conditions. Rotation based only on documentation exposes the service before competence is demonstrated.",
+    "closestDistractorRationale": "Automation may reduce manual risk, but it can also embed the specialist's knowledge without transferring the judgment needed to manage exceptions.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.7 - Ensure knowledge transfer",
+      "PMI Authorized PMP Exam Prep Lesson 4 - Knowledge-Sharing Culture and Transfer Methods"
+    ],
+    "antiCue": "pass",
+    "rule": "Integrate knowledge sharing into delivery instead of postponing it until closure."
   }
 ];
 var QUESTION_BANK=questions.map(function(item){return{id:item.id,q:item.q,opts:item.o,ans:item.x,domain:item.d,topic:item.t+' | '+item.taskLabel,explanation:item.r,approach:item.a,difficulty:item.difficulty};});

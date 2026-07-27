@@ -1,0 +1,898 @@
+<!-- PMP Training Academy Assessment Center: paste into an Elementor HTML widget -->
+<style>
+
+    :root {
+      --pmp-navy: #111b35;
+      --pmp-navy-soft: #1b2b50;
+      --pmp-gold: #d4a829;
+      --pmp-gold-light: #fff7df;
+      --pmp-cream: #fbf8f0;
+      --pmp-ink: #07192f;
+      --pmp-slate: #536176;
+      --pmp-line: #dfe5ee;
+      --pmp-blue-light: #eef4ff;
+      --pmp-teal: #2b8b88;
+      --pmp-teal-light: #eefafa;
+      --pmp-red: #b73535;
+      --pmp-red-light: #fff1f1;
+      --pmp-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f8fb;
+      color: var(--pmp-ink);
+      font-family: "Source Sans 3", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .pmp-assessment-page {
+      background: #f7f8fb;
+    }
+
+    .pmp-assessment-hero {
+      background: var(--pmp-cream);
+      border-bottom: 1px solid #eadfca;
+      padding: 64px 20px 42px;
+    }
+
+    .pmp-wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .pmp-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #8a6810;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .pmp-eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pmp-gold);
+      display: inline-block;
+    }
+
+    .pmp-hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 36px;
+      align-items: end;
+    }
+
+    .pmp-hero-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 52px;
+      line-height: 1.03;
+      margin: 16px 0 14px;
+      color: var(--pmp-navy);
+      max-width: 720px;
+    }
+
+    .pmp-hero-copy {
+      color: var(--pmp-slate);
+      font-size: 20px;
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .pmp-next-card {
+      background: var(--pmp-white);
+      border: 1px solid #e3d6b9;
+      border-left: 6px solid var(--pmp-gold);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(17, 27, 53, 0.08);
+    }
+
+    .pmp-card-label {
+      color: #8a6810;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pmp-next-card h2,
+    .pmp-panel h2,
+    .pmp-phase-title,
+    .pmp-row-title {
+      margin: 0;
+      color: var(--pmp-navy);
+    }
+
+    .pmp-next-card h2 {
+      font-size: 24px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .pmp-next-card p {
+      color: var(--pmp-slate);
+      margin: 0 0 18px;
+    }
+
+    .pmp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 13px;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      cursor: pointer;
+    }
+
+    .pmp-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(17, 27, 53, 0.12);
+    }
+
+    .pmp-button.gold {
+      background: var(--pmp-gold);
+      color: #111111;
+      border-color: #c4971f;
+    }
+
+    .pmp-button.navy {
+      background: var(--pmp-navy);
+      color: var(--pmp-white);
+      border-color: var(--pmp-navy);
+    }
+
+    .pmp-button.outline {
+      background: var(--pmp-white);
+      color: var(--pmp-navy);
+      border-color: #bec9d8;
+    }
+
+    .pmp-main {
+      padding: 34px 20px 72px;
+    }
+
+    .pmp-snapshot {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .pmp-panel {
+      background: var(--pmp-white);
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      box-shadow: 0 12px 34px rgba(17, 27, 53, 0.06);
+      padding: 24px;
+    }
+
+    .pmp-panel h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .pmp-panel-copy {
+      color: var(--pmp-slate);
+      margin: 0 0 18px;
+    }
+
+    .pmp-status-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pmp-status-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--pmp-line);
+      padding-top: 10px;
+      color: var(--pmp-slate);
+    }
+
+    .pmp-status-item strong {
+      color: var(--pmp-navy);
+      text-align: right;
+    }
+
+    .pmp-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .pmp-metric {
+      background: #f7f9fc;
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 98px;
+    }
+
+    .pmp-metric-label {
+      color: var(--pmp-slate);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .pmp-metric-value {
+      color: var(--pmp-navy);
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .pmp-readiness-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--pmp-gold-light);
+      border: 1px solid #ead69c;
+      border-radius: 999px;
+      color: #7a5a09;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 12px;
+      margin-top: 12px;
+    }
+
+    .pmp-phase-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    details.pmp-phase {
+      background: var(--pmp-white);
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(17, 27, 53, 0.05);
+    }
+
+    details.pmp-phase[open] summary {
+      border-bottom: 1px solid var(--pmp-line);
+    }
+
+    summary.pmp-phase-summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+    }
+
+    summary.pmp-phase-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pmp-phase-marker {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--pmp-white);
+      background: var(--pmp-navy);
+    }
+
+    .pmp-phase.gold .pmp-phase-marker {
+      background: var(--pmp-gold);
+      color: #111111;
+    }
+
+    .pmp-phase.teal .pmp-phase-marker {
+      background: var(--pmp-teal);
+    }
+
+    .pmp-phase.red .pmp-phase-marker {
+      background: var(--pmp-red);
+    }
+
+    .pmp-phase-title {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .pmp-phase-subtitle {
+      color: var(--pmp-slate);
+      margin-top: 3px;
+    }
+
+    .pmp-phase-toggle {
+      color: var(--pmp-slate);
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    details[open] .pmp-phase-toggle {
+      transform: rotate(180deg);
+    }
+
+    .pmp-phase-body {
+      padding: 24px;
+    }
+
+    .pmp-feature-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      background: var(--pmp-gold-light);
+      border: 1px solid #ead69c;
+      border-left: 6px solid var(--pmp-gold);
+      border-radius: 8px;
+      padding: 22px;
+    }
+
+    .pmp-feature-card.teal {
+      background: var(--pmp-teal-light);
+      border-color: #cce7e6;
+      border-left-color: var(--pmp-teal);
+    }
+
+    .pmp-feature-card.red {
+      background: var(--pmp-red-light);
+      border-color: #f0caca;
+      border-left-color: var(--pmp-red);
+    }
+
+    .pmp-feature-card h3 {
+      margin: 0 0 8px;
+      color: var(--pmp-navy);
+      font-size: 22px;
+    }
+
+    .pmp-feature-card p {
+      margin: 0;
+      color: var(--pmp-slate);
+    }
+
+    .pmp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pmp-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--pmp-line);
+      background: var(--pmp-white);
+      color: var(--pmp-slate);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pmp-progress-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .pmp-progress-head h3 {
+      margin: 0;
+      color: var(--pmp-navy);
+      font-size: 22px;
+    }
+
+    .pmp-progress-head p {
+      color: var(--pmp-slate);
+      margin: 4px 0 0;
+    }
+
+    .pmp-progress-pill {
+      background: var(--pmp-blue-light);
+      border: 1px solid #cddaf2;
+      color: var(--pmp-navy);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pmp-rows {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pmp-assessment-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #fbfcff;
+    }
+
+    .pmp-row-kicker {
+      color: #7a5a09;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .pmp-row-title {
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .pmp-row-copy {
+      color: var(--pmp-slate);
+      margin-top: 5px;
+    }
+
+    .pmp-readiness-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: table;
+    }
+
+    .pmp-readiness-table th,
+    .pmp-readiness-table td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--pmp-line);
+      vertical-align: middle;
+    }
+
+    .pmp-readiness-table th {
+      background: var(--pmp-navy);
+      color: var(--pmp-white);
+      font-weight: 800;
+    }
+
+    .pmp-readiness-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .pmp-table-status {
+      color: var(--pmp-slate);
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .pmp-assessment-hero {
+        padding: 44px 18px 34px;
+      }
+
+      .pmp-wrap {
+        width: min(100%, calc(100% - 24px));
+      }
+
+      .pmp-hero-grid,
+      .pmp-snapshot {
+        grid-template-columns: 1fr;
+      }
+
+      .pmp-hero-title {
+        font-size: 40px;
+      }
+
+      .pmp-hero-copy {
+        font-size: 18px;
+      }
+
+      .pmp-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pmp-feature-card,
+      .pmp-assessment-row {
+        grid-template-columns: 1fr;
+      }
+
+      .pmp-feature-card .pmp-button,
+      .pmp-assessment-row .pmp-button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .pmp-main {
+        padding: 24px 14px 52px;
+      }
+
+      .pmp-assessment-hero {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .pmp-hero-title {
+        font-size: 34px;
+      }
+
+      .pmp-panel,
+      .pmp-next-card,
+      .pmp-phase-body {
+        padding: 18px;
+      }
+
+      summary.pmp-phase-summary {
+        grid-template-columns: auto 1fr;
+        padding: 18px;
+      }
+
+      .pmp-phase-toggle {
+        display: none;
+      }
+
+      .pmp-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .pmp-status-item {
+        display: block;
+      }
+
+      .pmp-status-item strong {
+        display: block;
+        text-align: left;
+        margin-top: 2px;
+      }
+
+      .pmp-progress-head {
+        display: block;
+      }
+
+      .pmp-progress-pill {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+
+      .pmp-readiness-table,
+      .pmp-readiness-table thead,
+      .pmp-readiness-table tbody,
+      .pmp-readiness-table th,
+      .pmp-readiness-table td,
+      .pmp-readiness-table tr {
+        display: block;
+        width: 100%;
+      }
+
+      .pmp-readiness-table thead {
+        display: none;
+      }
+
+      .pmp-readiness-table tr {
+        border-bottom: 1px solid var(--pmp-line);
+        padding: 12px;
+      }
+
+      .pmp-readiness-table tr:last-child {
+        border-bottom: 0;
+      }
+
+      .pmp-readiness-table td {
+        border: 0;
+        padding: 5px 0;
+      }
+
+      .pmp-readiness-table td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--pmp-slate);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    }
+  
+</style>
+  <main class="pmp-assessment-page">
+    <section class="pmp-assessment-hero">
+      <div class="pmp-wrap pmp-hero-grid">
+        <div>
+          <div class="pmp-eyebrow">PMP Training Academy Assessment Center</div>
+          <h1 class="pmp-hero-title">Know where you stand before exam day.</h1>
+          <p class="pmp-hero-copy">Use this assessment center to measure your readiness across the PMP® domains, complete focused practice, and confirm when you are ready for a full exam simulation.</p>
+        </div>
+
+        <aside class="pmp-next-card" aria-label="Recommended next assessment">
+          <div class="pmp-card-label">Recommended Starting Point</div>
+          <h2>Checkpoint 1: Baseline Diagnostic</h2>
+          <p>Start here after your foundation work so you can see your starting domain profile before deeper practice.</p>
+          <a class="pmp-button gold" href="https://drc-png.github.io/pmp-diagnostics/readiness-assessment.html">Start Checkpoint 1 <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="pmp-main">
+      <div class="pmp-wrap">
+        <div class="pmp-snapshot">
+          <section class="pmp-panel">
+            <div class="pmp-card-label">My Score Snapshot</div>
+            <h2>See what to focus on next</h2>
+            <p class="pmp-panel-copy">Your assessment results help you identify weak domains, compare progress across checkpoints, and decide where to spend your next study block.</p>
+
+            <div class="pmp-metrics" aria-label="readiness metrics">
+              <div class="pmp-metric">
+                <div class="pmp-metric-label">Completed Assessments</div>
+                <div class="pmp-metric-value">--</div>
+              </div>
+              <div class="pmp-metric">
+                <div class="pmp-metric-label">Latest Score</div>
+                <div class="pmp-metric-value">--</div>
+              </div>
+              <div class="pmp-metric">
+                <div class="pmp-metric-label">Readiness Trend</div>
+                <div class="pmp-metric-value">--</div>
+              </div>
+            </div>
+
+            <div class="pmp-readiness-tag">Scores appear here when connected to quiz results</div>
+          </section>
+
+          <section class="pmp-panel">
+            <div class="pmp-card-label">How to Use This Center</div>
+            <h2>Assessment, practice, then readiness</h2>
+            <p class="pmp-panel-copy">The lessons and workbook activities live inside the LMS. This page is only for diagnostics, domain practice, checkpoint assessments, and full exam simulations.</p>
+
+            <div class="pmp-status-list">
+              <div class="pmp-status-item"><span>Start</span><strong>Baseline</strong></div>
+              <div class="pmp-status-item"><span>Build</span><strong>Practice Sets</strong></div>
+              <div class="pmp-status-item"><span>Check</span><strong>Midpoint</strong></div>
+              <div class="pmp-status-item"><span>Confirm</span><strong>Full Exams</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="pmp-phase-stack">
+          <details class="pmp-phase gold" open>
+            <summary class="pmp-phase-summary">
+              <div class="pmp-phase-marker">1</div>
+              <div>
+                <h2 class="pmp-phase-title">Checkpoint 1: Baseline Diagnostic</h2>
+                <div class="pmp-phase-subtitle">Measure your starting point across all three PMP® domains.</div>
+              </div>
+              <div class="pmp-phase-toggle">⌄</div>
+            </summary>
+            <div class="pmp-phase-body">
+              <article class="pmp-assessment-row">
+                <div>
+                  <div class="pmp-row-kicker">Baseline</div>
+                  <h3 class="pmp-row-title">Baseline Diagnostic</h3>
+                  <div class="pmp-row-copy">Use this diagnostic to see your initial domain profile and identify where your study time should go first.</div>
+                  <div class="pmp-tags">
+                    <span class="pmp-tag">50 questions</span>
+                    <span class="pmp-tag">Scored by domain</span>
+                    <span class="pmp-tag">Checkpoint 1</span>
+                  </div>
+                </div>
+                <a class="pmp-button gold" href="https://drc-png.github.io/pmp-diagnostics/readiness-assessment.html">Start Diagnostic <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </details>
+
+          <details class="pmp-phase" open>
+            <summary class="pmp-phase-summary">
+              <div class="pmp-phase-marker">2</div>
+              <div>
+                <h2 class="pmp-phase-title">Domain Practice Sets</h2>
+                <div class="pmp-phase-subtitle">Use these sets to strengthen specific PMP® domains and topic areas.</div>
+              </div>
+              <div class="pmp-phase-toggle">⌄</div>
+            </summary>
+            <div class="pmp-phase-body">
+              <div class="pmp-progress-head">
+                <div>
+                  <h3>Focused Practice</h3>
+                  <p>Each practice set gives you targeted repetition before moving into full exam readiness.</p>
+                </div>
+                <span class="pmp-progress-pill">5 practice sets</span>
+              </div>
+
+              <div class="pmp-rows">
+                <article class="pmp-assessment-row">
+                  <div>
+                    <div class="pmp-row-kicker">Practice Set 1 · People Domain</div>
+                    <h3 class="pmp-row-title">Team Formation &amp; Stakeholder Leadership</h3>
+                    <div class="pmp-row-copy">Team development, leadership styles, coaching, mentoring, conflict management, stakeholder engagement, and communication strategy.</div>
+                    <div class="pmp-tags">
+                      <span class="pmp-tag">30 validated questions</span>
+                      <span class="pmp-tag">15 per attempt</span>
+                      <span class="pmp-tag">People</span>
+                      <span class="pmp-tag">Study mode</span>
+                    </div>
+                  </div>
+                  <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/practice-set-1-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="pmp-assessment-row">
+                  <div>
+                    <div class="pmp-row-kicker">Practice Set 2 · Process Domain</div>
+                    <h3 class="pmp-row-title">Planning &amp; Scope Control</h3>
+                    <div class="pmp-row-copy">Scope, WBS, schedule, resources, budget, risk response, quality, and integrated planning across predictive and agile approaches.</div>
+                    <div class="pmp-tags">
+                      <span class="pmp-tag">30 validated questions</span>
+                      <span class="pmp-tag">15 per attempt</span>
+                      <span class="pmp-tag">Process</span>
+                      <span class="pmp-tag">Study mode</span>
+                    </div>
+                  </div>
+                  <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/practice-set-2-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="pmp-assessment-row">
+                  <div>
+                    <div class="pmp-row-kicker">Practice Set 3 · Process Domain</div>
+                    <h3 class="pmp-row-title">Execution &amp; Monitoring</h3>
+                    <div class="pmp-row-copy">Continuous improvement, status reporting, issue and impediment resolution, change management, and corrective action.</div>
+                    <div class="pmp-tags">
+                      <span class="pmp-tag">30 validated questions</span>
+                      <span class="pmp-tag">15 per attempt</span>
+                      <span class="pmp-tag">Process</span>
+                      <span class="pmp-tag">Study mode</span>
+                    </div>
+                  </div>
+                  <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/practice-set-3-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="pmp-assessment-row">
+                  <div>
+                    <div class="pmp-row-kicker">Practice Set 4 · Agile / Hybrid</div>
+                    <h3 class="pmp-row-title">Agile &amp; Hybrid Deep Dive</h3>
+                    <div class="pmp-row-copy">Scrum ceremonies, servant leadership, hybrid approach selection, and iterative delivery in complex environments.</div>
+                    <div class="pmp-tags">
+                      <span class="pmp-tag">30 validated questions</span>
+                      <span class="pmp-tag">15 per attempt</span>
+                      <span class="pmp-tag">Agile / hybrid</span>
+                      <span class="pmp-tag">Study mode</span>
+                    </div>
+                  </div>
+                  <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/practice-set-4-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="pmp-assessment-row">
+                  <div>
+                    <div class="pmp-row-kicker">Practice Set 5 · Business Environment</div>
+                    <h3 class="pmp-row-title">Business Environment &amp; Strategic Alignment</h3>
+                    <div class="pmp-row-copy">Benefits realization, governance, compliance, organizational change, project selection, and external business factors.</div>
+                    <div class="pmp-tags">
+                      <span class="pmp-tag">30 validated questions</span>
+                      <span class="pmp-tag">15 per attempt</span>
+                      <span class="pmp-tag">Business Environment</span>
+                      <span class="pmp-tag">Study mode</span>
+                    </div>
+                  </div>
+                  <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/practice-set-5-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <details class="pmp-phase teal" open>
+            <summary class="pmp-phase-summary">
+              <div class="pmp-phase-marker">3</div>
+              <div>
+                <h2 class="pmp-phase-title">Checkpoint 2: Midpoint Readiness</h2>
+                <div class="pmp-phase-subtitle">Compare your progress after domain practice and before full simulations.</div>
+              </div>
+              <div class="pmp-phase-toggle">⌄</div>
+            </summary>
+            <div class="pmp-phase-body">
+              <article class="pmp-feature-card teal">
+                <div>
+                  <div class="pmp-card-label">Midpoint</div>
+                  <h3>Midpoint Checkpoint</h3>
+                  <p>Use this checkpoint to compare progress against your baseline and identify which domains need reinforcement before full exam simulations.</p>
+                  <div class="pmp-tags">
+                    <span class="pmp-tag">50 questions</span>
+                    <span class="pmp-tag">Timed</span>
+                    <span class="pmp-tag">Scored by domain</span>
+                  </div>
+                </div>
+                <a class="pmp-button navy" href="https://pmptrainingacademy.com/midpoint/">Start Midpoint <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </details>
+
+          <details class="pmp-phase red" open>
+            <summary class="pmp-phase-summary">
+              <div class="pmp-phase-marker">4</div>
+              <div>
+                <h2 class="pmp-phase-title">Practice Readiness Assessments</h2>
+                <div class="pmp-phase-subtitle">Full exam simulations for pacing, stamina, and final readiness review.</div>
+              </div>
+              <div class="pmp-phase-toggle">⌄</div>
+            </summary>
+            <div class="pmp-phase-body">
+              <article class="pmp-feature-card red" style="margin-bottom: 18px;">
+                <div>
+                  <div class="pmp-card-label">Full Exam Simulation</div>
+                  <h3>Practice Readiness Assessments</h3>
+                  <p>Use these after you have completed the domain practice sets. Each assessment is designed for exam pacing and final readiness review.</p>
+                  <div class="pmp-tags">
+                    <span class="pmp-tag">180 questions</span>
+                    <span class="pmp-tag">230 minutes</span>
+                    <span class="pmp-tag">Timed</span>
+                    <span class="pmp-tag">Scored by domain</span>
+                  </div>
+                </div>
+                <a class="pmp-button navy" href="https://drc-png.github.io/pmp-diagnostics/diagnostic-1-full.html?v=20260721-2">Begin Assessment 1 <span aria-hidden="true">→</span></a>
+              </article>
+
+              <table class="pmp-readiness-table" aria-label="Practice readiness assessments">
+                <thead>
+                  <tr>
+                    <th>Assessment</th>
+                    <th>Recommended Use</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Assessment"><strong>Practice Readiness Assessment 1</strong></td>
+                    <td data-label="Recommended Use">First full exam simulation</td>
+                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                    <td data-label="Action"><a class="pmp-button outline" href="https://drc-png.github.io/pmp-diagnostics/diagnostic-1-full.html?v=20260721-2">Begin Exam</a></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Assessment"><strong>Practice Readiness Assessment 2</strong></td>
+                    <td data-label="Recommended Use">Second simulation after review</td>
+                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                    <td data-label="Action"><a class="pmp-button outline" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-2/">Begin Exam</a></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Assessment"><strong>Practice Readiness Assessment 3</strong></td>
+                    <td data-label="Recommended Use">Final preparation cycle</td>
+                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                    <td data-label="Action"><a class="pmp-button outline" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-3/">Begin Exam</a></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Assessment"><strong>Practice Readiness Assessment 4</strong></td>
+                    <td data-label="Recommended Use">Optional reinforcement</td>
+                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                    <td data-label="Action"><a class="pmp-button outline" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-4/">Begin Exam</a></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Assessment"><strong>Practice Readiness Assessment 5</strong></td>
+                    <td data-label="Recommended Use">Final readiness validation</td>
+                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                    <td data-label="Action"><a class="pmp-button outline" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-5/">Begin Exam</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>

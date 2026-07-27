@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP® Focused Practice - Agile &amp; Hybrid Deep Dive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+.pmp-quiz {
+  --navy:#1a2744;--dark-navy:#111b30;--gold:#D4A84B;--light-gold:#F5E6C4;
+  --white:#FFFFFF;--light-gray:#F0F2F5;--mid-gray:#8A94A6;--cream:#FDF8F0;
+  --green:#27AE60;--red:#C0392B;--orange:#E67E22;
+  font-family:'Source Sans 3',sans-serif;color:var(--navy);line-height:1.6;max-width:100%;overflow:hidden;position:relative;
+}
+.pmp-quiz *,.pmp-quiz *::before,.pmp-quiz *::after{box-sizing:border-box;}
+.pmp-quiz .progress-bar-container{background:var(--dark-navy);padding:.6rem 2rem;position:relative;z-index:10;display:flex;align-items:center;gap:1rem;max-width:100%;}
+.pmp-quiz .progress-bar-track{flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
+.pmp-quiz .progress-bar-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease;width:0%;}
+.pmp-quiz .progress-text{color:var(--mid-gray);font-size:.75rem;min-width:80px;text-align:right;}
+.pmp-quiz .container{max-width:800px;margin:0 auto;padding:1.5rem;}
+.pmp-quiz .start-screen{text-align:center;padding:3rem 2rem;}
+.pmp-quiz .start-screen h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.5rem;}
+.pmp-quiz .set-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#2E7D32;background:#E8F5E9;padding:.3rem .9rem;border-radius:3px;display:inline-block;margin-bottom:1rem;}
+.pmp-quiz .start-screen p{color:var(--mid-gray);margin-bottom:.5rem;font-size:.95rem;}
+.pmp-quiz .domain-badges{display:flex;justify-content:center;gap:.8rem;margin:1.5rem 0;flex-wrap:wrap;}
+.pmp-quiz .domain-badge{padding:.4rem 1rem;border-radius:4px;font-size:.8rem;font-weight:600;}
+.pmp-quiz .domain-badge.people{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .domain-badge.process{background:#E3F2FD;color:#1565C0;}
+.pmp-quiz .domain-badge.business{background:#F3E5F5;color:#7B1FA2;}
+.pmp-quiz .student-info-form{max-width:420px;margin:1.5rem auto 0;text-align:left;background:var(--white);border-radius:8px;padding:1.5rem 2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.pmp-quiz .form-group{margin-bottom:1rem;}
+.pmp-quiz .form-group label{display:block;font-weight:600;font-size:.85rem;margin-bottom:.3rem;color:var(--navy);}
+.pmp-quiz .form-group input{width:100%;padding:.7rem .9rem;border:2px solid #E8EBF0;border-radius:6px;font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:var(--navy);transition:border-color .2s;background:var(--white);}
+.pmp-quiz .form-group input:focus{outline:none;border-color:var(--gold);}
+.pmp-quiz .form-group input::placeholder{color:var(--mid-gray);}
+.pmp-quiz .form-error{color:var(--red);font-size:.8rem;margin-top:.2rem;display:none;}
+.pmp-quiz .form-error.show{display:block;}
+.pmp-quiz .q-count-selector{margin-top:1.2rem;}
+.pmp-quiz .q-count-options{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.3rem;}
+.pmp-quiz .q-count-option{cursor:pointer;}
+.pmp-quiz .q-count-option input[type="radio"]{display:none;}
+.pmp-quiz .q-count-pill{display:flex;flex-direction:column;align-items:center;justify-content:center;width:84px;padding:.5rem .4rem;border:2px solid #E8EBF0;border-radius:6px;font-weight:700;font-size:.95rem;color:var(--navy);background:var(--white);cursor:pointer;transition:all .2s;line-height:1.2;}
+.pmp-quiz .q-count-pill small{font-size:.68rem;font-weight:400;color:var(--mid-gray);}
+.pmp-quiz .q-count-option input[type="radio"]:checked+.q-count-pill,.pmp-quiz .q-count-option .q-count-pill:hover{border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .btn{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy);font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:1rem;border:none;border-radius:4px;cursor:pointer;transition:all .2s;margin-top:1.5rem;}
+.pmp-quiz .btn:hover{background:#c49a3f;transform:translateY(-1px);}
+.pmp-quiz .question-card{background:var(--white);border-radius:8px;padding:2rem;margin-bottom:1rem;box-shadow:0 2px 12px rgba(0,0,0,.06);display:none;animation:pmpFadeIn .3s ease;}
+.pmp-quiz .question-card.active{display:block;}
+@keyframes pmpFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pmp-quiz .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;gap:.5rem;}
+.pmp-quiz .q-header-left{display:flex;flex-direction:column;gap:.3rem;}
+.pmp-quiz .q-number{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--gold);font-weight:700;}
+.pmp-quiz .q-eco{font-size:.68rem;color:var(--mid-gray);font-weight:600;letter-spacing:.3px;}
+.pmp-quiz .q-domain{font-size:.7rem;padding:.2rem .6rem;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+.pmp-quiz .q-domain.people{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .q-domain.process{background:#E3F2FD;color:#1565C0;}
+.pmp-quiz .q-domain.business{background:#F3E5F5;color:#7B1FA2;}
+.pmp-quiz .q-text{font-size:1.05rem;font-weight:600;margin-bottom:1.2rem;line-height:1.5;color:var(--navy);}
+.pmp-quiz .options{display:flex;flex-direction:column;gap:.5rem;}
+.pmp-quiz .option{padding:.8rem 1rem;border:2px solid #E8EBF0;border-radius:6px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:.8rem;font-size:.95rem;}
+.pmp-quiz .option:hover:not(.locked){border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .option.selected{border-color:var(--gold);background:var(--cream);}
+.pmp-quiz .option.correct{border-color:var(--green);background:#E8F5E9;}
+.pmp-quiz .option.incorrect{border-color:var(--red);background:#FFEBEE;}
+.pmp-quiz .option.reveal-correct{border-color:var(--green);background:#E8F5E9;}
+.pmp-quiz .option.locked{pointer-events:none;}
+.pmp-quiz .option-letter{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;color:var(--navy);transition:all .2s;}
+.pmp-quiz .option.selected .option-letter{background:var(--gold);color:var(--navy);}
+.pmp-quiz .option.correct .option-letter{background:var(--green);color:white;}
+.pmp-quiz .option.incorrect .option-letter{background:var(--red);color:white;}
+.pmp-quiz .option.reveal-correct .option-letter{background:var(--green);color:white;}
+.pmp-quiz .explanation{margin-top:1rem;padding:1rem;background:var(--cream);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:.9rem;color:var(--navy);display:none;animation:pmpFadeIn .3s ease;}
+.pmp-quiz .explanation.show{display:block;}
+.pmp-quiz .exam-trap{margin-top:.7rem;padding:.7rem .9rem;background:#1a2744;border-radius:4px;font-size:.82rem;color:#F5E6C4;}
+.pmp-quiz .exam-trap strong{color:var(--gold);}
+.pmp-quiz .nav-buttons{display:flex;justify-content:space-between;margin-top:1.5rem;gap:1rem;}
+.pmp-quiz .btn-nav{padding:.7rem 1.5rem;border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;}
+.pmp-quiz .btn-prev{background:var(--light-gray);color:var(--navy);}
+.pmp-quiz .btn-prev:hover{background:#dde0e5;}
+.pmp-quiz .btn-next{background:var(--navy);color:var(--white);margin-left:auto;}
+.pmp-quiz .btn-next:hover{background:#243553;}
+.pmp-quiz .btn-next:disabled{opacity:.4;cursor:not-allowed;}
+.pmp-quiz .btn-submit{background:var(--gold);color:var(--navy);font-weight:700;margin-left:auto;}
+.pmp-quiz .btn-submit:hover{background:#c49a3f;}
+.pmp-quiz .results-screen{display:none;animation:pmpFadeIn .5s ease;}
+.pmp-quiz .results-screen.active{display:block;}
+.pmp-quiz .score-hero{background:var(--navy);border-radius:8px;padding:2.5rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.pmp-quiz .score-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);}
+.pmp-quiz .score-big{font-family:'Playfair Display',serif;font-size:4rem;color:var(--gold);font-weight:700;line-height:1;}
+.pmp-quiz .score-label{color:var(--mid-gray);font-size:.9rem;margin-top:.3rem;}
+.pmp-quiz .score-fraction{color:var(--white);font-size:1.2rem;margin-top:.5rem;font-weight:600;}
+.pmp-quiz .score-sub{color:var(--light-gold);font-size:.85rem;margin-top:.4rem;font-style:italic;}
+.pmp-quiz .domain-results{display:grid;grid-template-columns:1fr;gap:.8rem;margin-bottom:1.5rem;}
+.pmp-quiz .domain-result-card{background:var(--white);border-radius:8px;padding:1.2rem 1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:1.2rem;}
+.pmp-quiz .domain-result-card .domain-name{font-weight:700;font-size:.95rem;min-width:160px;}
+.pmp-quiz .domain-bar-bg{flex:1;height:10px;background:var(--light-gray);border-radius:5px;overflow:hidden;}
+.pmp-quiz .domain-bar-fill{height:100%;border-radius:5px;transition:width 1s ease;}
+.pmp-quiz .domain-bar-fill.people{background:#2E7D32;}
+.pmp-quiz .domain-bar-fill.process{background:#1565C0;}
+.pmp-quiz .domain-bar-fill.business{background:#7B1FA2;}
+.pmp-quiz .domain-pct{font-weight:700;font-size:1rem;min-width:50px;text-align:right;}
+.pmp-quiz .domain-score-detail{font-size:.8rem;color:var(--mid-gray);min-width:50px;text-align:right;}
+.pmp-quiz .breakdown-section{margin-bottom:1.5rem;}
+.pmp-quiz .breakdown-header{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:2px solid var(--light-gray);display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .domain-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.pmp-quiz .domain-dot.people{background:#2E7D32;}
+.pmp-quiz .domain-dot.process{background:#1565C0;}
+.pmp-quiz .domain-dot.business{background:#7B1FA2;}
+.pmp-quiz .subtopic-row{display:flex;align-items:center;gap:.8rem;padding:.6rem 0;border-bottom:1px solid #f0f0f0;}
+.pmp-quiz .subtopic-row:last-child{border-bottom:none;}
+.pmp-quiz .subtopic-name{font-size:.88rem;font-weight:600;min-width:220px;color:var(--navy);}
+.pmp-quiz .subtopic-bar-bg{flex:1;height:8px;background:var(--light-gray);border-radius:4px;overflow:hidden;}
+.pmp-quiz .subtopic-bar-fill{height:100%;border-radius:4px;transition:width 1s ease;}
+.pmp-quiz .subtopic-score{font-size:.82rem;font-weight:700;min-width:40px;text-align:right;color:var(--navy);}
+.pmp-quiz .subtopic-status{font-size:.75rem;font-weight:700;min-width:100px;text-align:center;padding:.15rem .5rem;border-radius:3px;text-transform:uppercase;letter-spacing:.3px;}
+.pmp-quiz .status-strong{background:#E8F5E9;color:#2E7D32;}
+.pmp-quiz .status-developing{background:#FFF3E0;color:#E65100;}
+.pmp-quiz .status-focus{background:#FFEBEE;color:#C0392B;}
+.pmp-quiz .breakdown-card{background:var(--white);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.pmp-quiz .focus-summary{background:var(--cream);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;border-left:4px solid var(--gold);}
+.pmp-quiz .focus-summary h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.6rem;color:var(--navy);}
+.pmp-quiz .focus-list{list-style:none;padding:0;margin:0;}
+.pmp-quiz .focus-list li{font-size:.88rem;padding:.3rem 0;color:var(--navy);display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .focus-list li::before{content:'\25B8';color:var(--red);font-weight:700;}
+.pmp-quiz .results-footer{background:var(--white);border-radius:8px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.pmp-quiz .results-footer p{color:var(--mid-gray);font-size:.9rem;margin-bottom:.5rem;}
+.pmp-quiz .legend{display:flex;gap:1.2rem;margin-bottom:1rem;flex-wrap:wrap;}
+.pmp-quiz .legend-item{display:flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;}
+.pmp-quiz .legend-swatch{width:12px;height:12px;border-radius:2px;display:inline-block;}
+.pmp-quiz .review-toggle{text-align:center;margin:1.5rem 0;}
+.pmp-quiz .btn-review{padding:.7rem 2rem;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;}
+.pmp-quiz .btn-review:hover{background:var(--navy);color:var(--white);}
+.pmp-quiz .review-section{display:none;margin-top:1rem;}
+.pmp-quiz .review-section.active{display:block;}
+.pmp-quiz .review-item{background:var(--white);border-radius:8px;padding:1.2rem;margin-bottom:.8rem;box-shadow:0 1px 4px rgba(0,0,0,.05);border-left:4px solid var(--mid-gray);}
+.pmp-quiz .review-item.correct-item{border-left-color:var(--green);}
+.pmp-quiz .review-item.incorrect-item{border-left-color:var(--red);}
+.pmp-quiz .review-q{font-weight:600;font-size:.9rem;margin-bottom:.4rem;}
+.pmp-quiz .review-answer{font-size:.85rem;color:var(--mid-gray);}
+.pmp-quiz .review-answer .correct-text{color:var(--green);font-weight:600;}
+.pmp-quiz .review-answer .incorrect-text{color:var(--red);font-weight:600;}
+.pmp-quiz .save-actions{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap;}
+.pmp-quiz .btn-save{padding:.8rem 2rem;background:var(--gold);color:var(--navy);border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:.9rem;transition:all .2s;display:flex;align-items:center;gap:.5rem;}
+.pmp-quiz .btn-save:hover{background:#c49a3f;transform:translateY(-1px);}
+.pmp-quiz .btn-save svg{width:18px;height:18px;fill:currentColor;}
+.pmp-quiz .retake-btn{display:inline-block;padding:.8rem 2rem;background:var(--navy);color:var(--white);border:none;border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:.9rem;transition:all .2s;margin-top:1rem;}
+.pmp-quiz .retake-btn:hover{background:#243553;}
+.pmp-quiz .bank-note{font-size:.78rem;color:#2E7D32;background:#E8F5E9;padding:.4rem .8rem;border-radius:4px;display:inline-block;margin:.5rem 0;}
+.pmp-quiz .score-save-status{max-width:760px;margin:1rem auto;padding:.85rem 1rem;border-left:4px solid var(--gold);background:#FAF7F0;color:var(--navy);font-weight:700;text-align:center;}
+.pmp-quiz .score-save-status.success{border-left-color:#27AE60;background:#EAF6EE;color:#216E39;}
+.pmp-quiz .score-save-status.error{border-left-color:#C0392B;background:#FDECEC;color:#B42318;}
+@media(max-width:600px){.pmp-quiz .container{padding:1rem;}.pmp-quiz .question-card{padding:1.5rem;}.pmp-quiz .score-big{font-size:3rem;}.pmp-quiz .domain-result-card{flex-wrap:wrap;}.pmp-quiz .domain-result-card .domain-name{min-width:100%;}.pmp-quiz .subtopic-row{flex-wrap:wrap;gap:.4rem;}.pmp-quiz .subtopic-name{min-width:100%;}}
+</style>
+</head>
+<body>
+<div class="pmp-quiz">
+  <div class="progress-bar-container" id="progressBarContainer" style="display:flex;">
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0 / 15</div>
+  </div>
+  <div class="container">
+    <div class="start-screen" id="startScreen" hidden aria-hidden="true"></div>
+    <div id="quizContainer"></div>
+    <div class="results-screen" id="resultsScreen">
+      <div class="score-hero">
+        <div class="score-big" id="totalPct">0%</div>
+        <div class="score-label">Practice Set Score</div>
+        <div class="score-fraction" id="totalFraction">0 / 15</div>
+        <div class="score-sub">Focused Practice - Agile &amp; Hybrid Delivery</div>
+      </div>
+      <div class="domain-results" id="domainResults"></div>
+      <div class="focus-summary" id="focusSummary"><h3>Priority Focus Areas</h3><ul class="focus-list" id="focusList"></ul></div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch" style="background:#27AE60;"></span>Strong (75%+)</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#E67E22;"></span>Developing (50–74%)</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#C0392B;"></span>Review Needed (&lt;50%)</div>
+      </div>
+      <div id="breakdownContainer"></div>
+      <div class="results-footer">
+        <p><strong>Focused practice complete.</strong> Review each explanation and revisit the decisions that were difficult to distinguish.</p>
+        <p>This assessment draws 15 questions from the first 30-question validated bank. Additional independently written batches will expand the bank to 100.</p>
+        <p style="margin-top:.8rem;font-size:.8rem;">PMP Training Academy &bull; support@pmptrainingacademy.com</p>
+      </div>
+      <div class="score-save-status" id="scoreSaveStatus" role="status" aria-live="polite">This score is shown on this page. Open the set through your signed-in course page to save it to your learner dashboard.</div>
+      
+      <div class="save-actions"><button class="btn-save" onclick="saveAsPDF()"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>Save Results as PDF</button></div>
+      <div class="review-toggle"><button class="btn-review" id="reviewBtn">Review All Answers</button></div>
+      <div class="review-section" id="reviewSection"></div>
+    </div>
+  </div>
+</div>
+<script>
+var SERVE_COUNT=15,studentName='',studentEmail='',activeQuestions=[],answers=[],submitted=false,currentQ=0;
+var questions = [
+  {
+    "id": "PS4-AH-001",
+    "d": "process",
+    "t": "Backlog ownership",
+    "task": "2.2",
+    "taskLabel": "Process Task 2.2 - Develop scope and value orientation",
+    "a": "adaptive",
+    "pattern": "Respect product-owner priority authority while improving decision evidence.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A senior architect asks the project manager to move a technical-enabler story above a customer feature. What should the project manager do?",
+    "o": [
+      "Reorder the backlog because the architect owns technical integrity",
+      "Present value and risk evidence to the product owner",
+      "Ask the team to complete both stories in the next iteration",
+      "Escalate the priority conflict to the sponsor"
+    ],
+    "x": 1,
+    "r": "The product owner remains accountable for backlog priority. The project manager should help make technical value and risk visible rather than assume that decision.",
+    "closestDistractorRationale": "The project manager should help make technical value and risk visible rather than assume that decision.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.2 - Develop scope and value orientation",
+      "PMI Authorized PMP Exam Prep Adaptive Delivery"
+    ],
+    "antiCue": "pass",
+    "rule": "Respect product-owner priority authority while improving decision evidence."
+  },
+  {
+    "id": "PS4-AH-002",
+    "d": "process",
+    "t": "Hybrid integration",
+    "task": "2.1",
+    "taskLabel": "Process Task 2.1 - Develop an integrated project management plan",
+    "a": "hybrid",
+    "pattern": "Hybrid delivery requires explicit integration points and decision ownership.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "An adaptive software team releases monthly, while a hardware workstream has quarterly verification gates. Integration failures are discovered late. What should the project manager do?",
+    "o": [
+      "Move software releases to the quarterly hardware schedule",
+      "Ask hardware engineers to join each software daily coordination meeting",
+      "Create a separate integration team to reconcile completed outputs",
+      "Define interface ownership, integration increments, and required gate evidence"
+    ],
+    "x": 3,
+    "r": "The approaches can remain different, but integration must be designed. Shared interfaces, increments, criteria, and evidence expose incompatibility earlier.",
+    "closestDistractorRationale": "Shared interfaces, increments, criteria, and evidence expose incompatibility earlier.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.1 - Develop an integrated project management plan",
+      "PMI Authorized PMP Exam Prep Integrated Hybrid Delivery"
+    ],
+    "antiCue": "pass",
+    "rule": "Hybrid delivery requires explicit integration points and decision ownership."
+  },
+  {
+    "id": "PS4-AH-003",
+    "d": "people",
+    "t": "Servant leadership",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Serve the team by enabling ownership rather than retaining unnecessary control.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A capable team waits for the project manager to assign tasks because that was expected on prior predictive projects. What should the project manager do?",
+    "o": [
+      "Rotate task-assignment authority among senior team members",
+      "Continue assigning work until the team demonstrates consistent delivery",
+      "Have the product owner distribute stories based on specialist skills",
+      "Clarify boundaries and coach team-owned work selection"
+    ],
+    "x": 3,
+    "r": "The team is capable but has learned a command-driven pattern. Clarifying boundaries and coaching self-management supports a durable transition.",
+    "closestDistractorRationale": "Clarifying boundaries and coaching self-management supports a durable transition.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Leadership and Team Structure"
+    ],
+    "antiCue": "pass",
+    "rule": "Serve the team by enabling ownership rather than retaining unnecessary control."
+  },
+  {
+    "id": "PS4-AH-004",
+    "d": "process",
+    "t": "Iteration commitment",
+    "task": "2.8",
+    "taskLabel": "Process Task 2.8 - Plan and manage schedule",
+    "a": "adaptive",
+    "pattern": "Protect the iteration goal while preserving product-owner authority over future priority.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "Mid-iteration, a customer requests an urgent feature that is valuable but not tied to an active incident. The team is on track for its goal. What should happen?",
+    "o": [
+      "Add the feature and remove work of equal size without team review",
+      "Extend the iteration so the urgent feature can be completed",
+      "Protect the iteration goal unless the team renegotiates it",
+      "Ask the sponsor to decide whether urgency outweighs the iteration commitment"
+    ],
+    "x": 2,
+    "r": "The product owner can reprioritize future backlog work, while the current iteration goal should remain stable unless the team deliberately renegotiates it.",
+    "closestDistractorRationale": "The product owner can reprioritize future backlog work, while the current iteration goal should remain stable unless the team deliberately renegotiates it.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.8 - Plan and manage schedule",
+      "PMI Authorized PMP Exam Prep Adaptive Schedule Management"
+    ],
+    "antiCue": "pass",
+    "rule": "Protect the iteration goal while preserving product-owner authority over future priority."
+  },
+  {
+    "id": "PS4-AH-005",
+    "d": "process",
+    "t": "Definition of done",
+    "task": "2.7",
+    "taskLabel": "Process Task 2.7 - Plan and optimize quality",
+    "a": "adaptive",
+    "pattern": "Build quality into normal increments rather than accumulating unverified work.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A team marks stories done after development, but integration and security testing occur in a later hardening iteration. Defects are delaying releases. What should the project manager support?",
+    "o": [
+      "Increase the duration of the hardening iteration",
+      "Include integration and security evidence in the definition of done",
+      "Create a defect reserve for issues found after development",
+      "Have the security team approve stories before developers begin"
+    ],
+    "x": 1,
+    "r": "Done should represent a usable quality state and prevent hidden downstream work. Integrating testing into delivery reduces delayed defect discovery.",
+    "closestDistractorRationale": "Integrating testing into delivery reduces delayed defect discovery.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.7 - Plan and optimize quality",
+      "PMI Authorized PMP Exam Prep Adaptive Quality"
+    ],
+    "antiCue": "pass",
+    "rule": "Build quality into normal increments rather than accumulating unverified work."
+  },
+  {
+    "id": "PS4-AH-006",
+    "d": "people",
+    "t": "Team facilitation",
+    "task": "1.2",
+    "taskLabel": "People Task 1.2 - Manage conflict",
+    "a": "adaptive",
+    "pattern": "Match decision governance to reversibility, consequence, and team authority.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Two developers disagree about an implementation pattern. Both options meet acceptance criteria, and the choice is reversible. What should the project manager do?",
+    "o": [
+      "Select the option with stronger historical use in the organization",
+      "Use the agreed team method and timebox the reversible choice",
+      "Ask the architect to issue a binding standard for the iteration",
+      "Delay the story until the team reaches full consensus"
+    ],
+    "x": 1,
+    "r": "The decision is reversible and within team expertise. The team should use its agreed method without unnecessary external authority or delay.",
+    "closestDistractorRationale": "The team should use its agreed method without unnecessary external authority or delay.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.2 - Manage conflict",
+      "PMI Authorized PMP Exam Prep Adaptive Team Decisions"
+    ],
+    "antiCue": "pass",
+    "rule": "Match decision governance to reversibility, consequence, and team authority."
+  },
+  {
+    "id": "PS4-AH-007",
+    "d": "business",
+    "t": "Release governance",
+    "task": "3.3",
+    "taskLabel": "Business Environment Task 3.3 - Manage and control changes",
+    "a": "hybrid",
+    "pattern": "Adaptive delivery remains subject to mandatory governance and compliance gates.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "An adaptive team has completed a feature, but a required enterprise release gate has not reviewed its privacy evidence. What should the project manager do?",
+    "o": [
+      "Release to a limited customer group because the feature passed its definition of done",
+      "Let the product owner authorize the pilot based on its limited exposure",
+      "Revise the definition of done after release to include the privacy gate",
+      "Hold the affected release and obtain the required gate decision with complete evidence"
+    ],
+    "x": 3,
+    "r": "Adaptive completion does not override a mandatory enterprise release gate. Only the affected release needs to be held while authorized review occurs.",
+    "closestDistractorRationale": "Only the affected release needs to be held while authorized review occurs.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.3 - Manage and control changes",
+      "PMI Authorized PMP Exam Prep Hybrid Governance"
+    ],
+    "antiCue": "pass",
+    "rule": "Adaptive delivery remains subject to mandatory governance and compliance gates."
+  },
+  {
+    "id": "PS4-AH-008",
+    "d": "business",
+    "t": "Flow management",
+    "task": "3.4",
+    "taskLabel": "Business Environment Task 3.4 - Remove impediments and manage issues",
+    "a": "adaptive",
+    "pattern": "Manage flow by limiting work in progress and making blockers visible.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A Kanban team starts many items, but completion time is growing and blocked work is difficult to see. What should the project manager support?",
+    "o": [
+      "Add specialists to the work stages with the largest queues",
+      "Prioritize items by the date they entered the system",
+      "Visualize blockers, limit work in progress, and manage flow",
+      "Convert the board to fixed iterations so work has clearer deadlines"
+    ],
+    "x": 2,
+    "r": "WIP limits and visible blocked work address excessive concurrency and support flow. Adding resources before examining the system may move the bottleneck.",
+    "closestDistractorRationale": "Adding resources before examining the system may move the bottleneck.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.4 - Remove impediments and manage issues",
+      "PMI Authorized PMP Exam Prep Adaptive Flow"
+    ],
+    "antiCue": "pass",
+    "rule": "Manage flow by limiting work in progress and making blockers visible."
+  },
+  {
+    "id": "PS4-AH-009",
+    "d": "process",
+    "t": "Empirical planning",
+    "task": "2.8",
+    "taskLabel": "Process Task 2.8 - Plan and manage schedule",
+    "a": "adaptive",
+    "pattern": "Use observed delivery data to refine forecasts and decisions.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "After two iterations, observed throughput is lower than the assumption used for the release forecast. What should the project manager do?",
+    "o": [
+      "Update the forecast and discuss scope, date, and capacity options",
+      "Keep the forecast until at least five iterations provide a stable average",
+      "Ask the team to commit to the assumed throughput for the next iteration",
+      "Increase story-point estimates so reported velocity matches the plan"
+    ],
+    "x": 0,
+    "r": "Empirical planning uses current evidence. The forecast should be updated and tradeoffs made visible rather than preserving an unsupported assumption.",
+    "closestDistractorRationale": "The forecast should be updated and tradeoffs made visible rather than preserving an unsupported assumption.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.8 - Plan and manage schedule",
+      "PMI Authorized PMP Exam Prep Adaptive Schedule Management"
+    ],
+    "antiCue": "pass",
+    "rule": "Use observed delivery data to refine forecasts and decisions."
+  },
+  {
+    "id": "PS4-AH-010",
+    "d": "people",
+    "t": "Product owner availability",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "adaptive",
+    "pattern": "Design stakeholder engagement around the decisions delivery requires.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "The product owner attends reviews but is unavailable during refinement, causing delayed answers and weak iteration readiness. What should the project manager do first?",
+    "o": [
+      "Ask a business analyst to make priority decisions during refinement",
+      "Move refinement into the formal review meeting",
+      "Increase documentation so the team needs fewer product-owner decisions",
+      "Agree on product-owner availability, clear delegation, and response times"
+    ],
+    "x": 3,
+    "r": "The engagement gap concerns timely decisions. The project manager should agree on availability and any valid delegation without silently transferring accountability.",
+    "closestDistractorRationale": "The project manager should agree on availability and any valid delegation without silently transferring accountability.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Stakeholder Engagement"
+    ],
+    "antiCue": "pass",
+    "rule": "Design stakeholder engagement around the decisions delivery requires."
+  },
+  {
+    "id": "PS4-AH-011",
+    "d": "business",
+    "t": "Retrospective action",
+    "task": "3.6",
+    "taskLabel": "Business Environment Task 3.6 - Support continuous improvement",
+    "a": "adaptive",
+    "pattern": "Convert retrospective findings into focused experiments with ownership and measures.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "Retrospectives produce long lists of ideas, but the same problems recur because actions are not completed. What should the project manager support?",
+    "o": [
+      "Select one owned improvement experiment with a review measure",
+      "Send all action items to functional managers for completion",
+      "Extend retrospectives until the team agrees on a comprehensive improvement plan",
+      "Track the complete list in the risk register until each item is closed"
+    ],
+    "x": 0,
+    "r": "A small owned experiment with an observable result turns reflection into learning. Large unowned lists create activity without feedback.",
+    "closestDistractorRationale": "Large unowned lists create activity without feedback.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.6 - Support continuous improvement",
+      "PMI Authorized PMP Exam Prep Continuous Improvement"
+    ],
+    "antiCue": "pass",
+    "rule": "Convert retrospective findings into focused experiments with ownership and measures."
+  },
+  {
+    "id": "PS4-AH-012",
+    "d": "process",
+    "t": "Architecture runway",
+    "task": "2.1",
+    "taskLabel": "Process Task 2.1 - Develop an integrated project management plan",
+    "a": "hybrid",
+    "pattern": "Plan enabling work incrementally as part of integrated value delivery.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A product team repeatedly pauses feature work because shared platform capabilities are unavailable. Which response is most appropriate?",
+    "o": [
+      "Create a complete platform design before resuming feature delivery",
+      "Fund a separate platform project outside the product backlog",
+      "Prioritize enabling work and explicit dependencies with features",
+      "Ask feature teams to build local substitutes for missing capabilities"
+    ],
+    "x": 2,
+    "r": "Enabling work should be visible and prioritized with product value, while dependencies are actively managed. Full up-front design or local substitutes may create delay or fragmentation.",
+    "closestDistractorRationale": "Full up-front design or local substitutes may create delay or fragmentation.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.1 - Develop an integrated project management plan",
+      "PMI Authorized PMP Exam Prep Hybrid Integrated Planning"
+    ],
+    "antiCue": "pass",
+    "rule": "Plan enabling work incrementally as part of integrated value delivery."
+  },
+  {
+    "id": "PS4-AH-013",
+    "d": "people",
+    "t": "Adaptive coaching",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Enable team-owned coordination rather than converting it into individual status reporting.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A new team asks the project manager to run its daily coordination meeting and report individual status. What should the project manager do?",
+    "o": [
+      "Run the meeting until the team reaches a stable velocity",
+      "Ask each member to report progress to the product owner",
+      "Use written status updates while the project manager coordinates unresolved dependencies",
+      "Coach the team to own a short coordination focused on progress, plan, and impediments"
+    ],
+    "x": 3,
+    "r": "The coordination is for team planning and blocker visibility, not management status. Coaching the team to own it supports self-management.",
+    "closestDistractorRationale": "Coaching the team to own it supports self-management.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Adaptive Leadership"
+    ],
+    "antiCue": "pass",
+    "rule": "Enable team-owned coordination rather than converting it into individual status reporting."
+  },
+  {
+    "id": "PS4-AH-014",
+    "d": "process",
+    "t": "Minimum viable product",
+    "task": "2.3",
+    "taskLabel": "Process Task 2.3 - Deliver value",
+    "a": "adaptive",
+    "pattern": "Define early delivery around learning and value evidence, not feature volume.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "Stakeholders call the first planned release an MVP, but it includes all requested features and will take a year. What should the project manager do?",
+    "o": [
+      "Identify the smallest outcome that can test the critical value assumption",
+      "Rename the release because the full feature set is already approved",
+      "Deliver a prototype without operational capability to obtain early reactions",
+      "Increase team capacity so the approved MVP can be delivered sooner"
+    ],
+    "x": 0,
+    "r": "An MVP is intended to test important value assumptions with the least sufficient capability. It is not simply the first large release or a nonoperational demonstration.",
+    "closestDistractorRationale": "It is not simply the first large release or a nonoperational demonstration.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.3 - Deliver value",
+      "PMI Authorized PMP Exam Prep Adaptive Value Delivery"
+    ],
+    "antiCue": "pass",
+    "rule": "Define early delivery around learning and value evidence, not feature volume."
+  },
+  {
+    "id": "PS4-AH-015",
+    "d": "process",
+    "t": "Hybrid reporting",
+    "task": "2.9",
+    "taskLabel": "Process Task 2.9 - Evaluate project status and manage artifacts",
+    "a": "hybrid",
+    "pattern": "Integrate heterogeneous measures through shared decision outcomes, not false equivalence.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "Governance expects percent-complete reporting, but the adaptive workstream uses throughput and release forecasts. What should the project manager do?",
+    "o": [
+      "Convert story points to percent complete for governance consistency",
+      "Integrate fit-for-purpose measures around shared outcomes",
+      "Require the adaptive team to maintain a detailed activity schedule",
+      "Report predictive and adaptive status separately without a combined forecast"
+    ],
+    "x": 1,
+    "r": "Different workstreams can use appropriate measures while governance receives an integrated view tied to common outcomes and milestones. Artificial conversion distorts the data.",
+    "closestDistractorRationale": "Artificial conversion distorts the data.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.9 - Evaluate project status and manage artifacts",
+      "PMI Authorized PMP Exam Prep Hybrid Status Reporting"
+    ],
+    "antiCue": "pass",
+    "rule": "Integrate heterogeneous measures through shared decision outcomes, not false equivalence."
+  },
+  {
+    "id": "PS4-AH-016",
+    "d": "people",
+    "t": "Psychological safety",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Create psychological safety where evidence can affect decisions at the right time.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A team member identifies a design risk but waits until the retrospective because challenges are poorly received during planning. What should the project manager do?",
+    "o": [
+      "Move design-risk discussion into retrospectives so it has a dedicated forum",
+      "Ask the member to submit concerns privately before planning",
+      "Establish safe, timely ways to challenge assumptions",
+      "Have the architect review concerns before team discussion"
+    ],
+    "x": 2,
+    "r": "Risks should surface when decisions are being made. The project manager should repair the team condition suppressing timely evidence rather than create a delayed side channel.",
+    "closestDistractorRationale": "The project manager should repair the team condition suppressing timely evidence rather than create a delayed side channel.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Team Environment"
+    ],
+    "antiCue": "pass",
+    "rule": "Create psychological safety where evidence can affect decisions at the right time."
+  },
+  {
+    "id": "PS4-AH-017",
+    "d": "process",
+    "t": "Backlog refinement",
+    "task": "2.2",
+    "taskLabel": "Process Task 2.2 - Develop scope and value orientation",
+    "a": "adaptive",
+    "pattern": "Refine work into small testable value slices suitable for delivery cadence.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "The top backlog items are too large to complete within an iteration. What should the project manager encourage?",
+    "o": [
+      "Split items into valuable, testable slices",
+      "Extend the iteration for high-value items that cannot be divided",
+      "Assign each large item to multiple developers working in parallel",
+      "Move the items lower until the team has more capacity"
+    ],
+    "x": 0,
+    "r": "Vertical, valuable slices improve flow, feedback, and completion without changing iteration length. Parallel assignment does not make an indivisible outcome testable.",
+    "closestDistractorRationale": "Parallel assignment does not make an indivisible outcome testable.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.2 - Develop scope and value orientation",
+      "PMI Authorized PMP Exam Prep Adaptive Scope"
+    ],
+    "antiCue": "pass",
+    "rule": "Refine work into small testable value slices suitable for delivery cadence."
+  },
+  {
+    "id": "PS4-AH-018",
+    "d": "business",
+    "t": "Adaptive risk response",
+    "task": "3.5",
+    "taskLabel": "Business Environment Task 3.5 - Plan for and manage risk",
+    "a": "adaptive",
+    "pattern": "Use early experiments to reduce high-impact uncertainty and avoid premature commitment.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "An uncertain integration could invalidate a planned architecture. The team can test the riskiest assumption with a short technical experiment. What should the project manager support?",
+    "o": [
+      "Schedule the experiment after the architecture is approved to avoid rework",
+      "Run the risk experiment early and use its evidence",
+      "Add contingency to affected stories and continue feature development",
+      "Ask the architect to select the safest design without an experiment"
+    ],
+    "x": 1,
+    "r": "A short experiment reduces uncertainty before large commitments. It should be prioritized as risk-reduction work and its evidence should shape later decisions.",
+    "closestDistractorRationale": "It should be prioritized as risk-reduction work and its evidence should shape later decisions.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.5 - Plan for and manage risk",
+      "PMI Authorized PMP Exam Prep Adaptive Risk"
+    ],
+    "antiCue": "pass",
+    "rule": "Use early experiments to reduce high-impact uncertainty and avoid premature commitment."
+  },
+  {
+    "id": "PS4-AH-019",
+    "d": "process",
+    "t": "Technical debt",
+    "task": "2.7",
+    "taskLabel": "Process Task 2.7 - Plan and optimize quality",
+    "a": "adaptive",
+    "pattern": "Treat technical debt as an explicit value and risk tradeoff, not hidden work.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A team repeatedly defers refactoring to preserve feature throughput. Defect rates and cycle time are now worsening. What should the project manager support?",
+    "o": [
+      "Create a separate refactoring project after the next release",
+      "Require a fixed percentage of each iteration for technical debt",
+      "Make debt cost and risk visible for product-team prioritization",
+      "Pause feature delivery until the architecture meets the original design standard"
+    ],
+    "x": 2,
+    "r": "Technical debt should be made visible in value, risk, and flow terms so targeted work can be prioritized with features. A fixed percentage may not fit current exposure.",
+    "closestDistractorRationale": "A fixed percentage may not fit current exposure.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.7 - Plan and optimize quality",
+      "PMI Authorized PMP Exam Prep Adaptive Quality"
+    ],
+    "antiCue": "pass",
+    "rule": "Treat technical debt as an explicit value and risk tradeoff, not hidden work."
+  },
+  {
+    "id": "PS4-AH-020",
+    "d": "people",
+    "t": "Stakeholder review",
+    "task": "1.4",
+    "taskLabel": "People Task 1.4 - Engage stakeholders",
+    "a": "adaptive",
+    "pattern": "Design feedback events to generate actionable evidence, not ceremonial approval.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Stakeholders attend release demonstrations but give only general praise, and important usability problems appear after deployment. What should the project manager change?",
+    "o": [
+      "Use representative users, real scenarios, and decision questions",
+      "Increase the number of stakeholders invited to each demonstration",
+      "Send a satisfaction survey after demonstrations",
+      "Have the product owner interpret stakeholder reactions for the team"
+    ],
+    "x": 0,
+    "r": "Useful feedback requires representative participants, realistic scenarios, and specific decision questions. Larger attendance or generic surveys may not expose usability evidence.",
+    "closestDistractorRationale": "Larger attendance or generic surveys may not expose usability evidence.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.4 - Engage stakeholders",
+      "PMI Authorized PMP Exam Prep Stakeholder Engagement"
+    ],
+    "antiCue": "pass",
+    "rule": "Design feedback events to generate actionable evidence, not ceremonial approval."
+  },
+  {
+    "id": "PS4-AH-021",
+    "d": "business",
+    "t": "Hybrid change path",
+    "task": "3.3",
+    "taskLabel": "Business Environment Task 3.3 - Manage and control changes",
+    "a": "hybrid",
+    "pattern": "Use the control path of each affected commitment within an integrated hybrid model.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A backlog reprioritization does not change product scope but shifts a contracted integration milestone. Which control applies?",
+    "o": [
+      "Only backlog management because the product scope is unchanged",
+      "Control the contract milestone and coordinate backlog priority",
+      "Contract change after the team completes the reprioritized feature",
+      "Sponsor approval because the change spans adaptive and predictive work"
+    ],
+    "x": 1,
+    "r": "Backlog priority may be adaptive, but a contracted milestone is governed by agreement and change authority. Both systems must be coordinated.",
+    "closestDistractorRationale": "Both systems must be coordinated.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.3 - Manage and control changes",
+      "PMI Authorized PMP Exam Prep Hybrid Change Control"
+    ],
+    "antiCue": "pass",
+    "rule": "Use the control path of each affected commitment within an integrated hybrid model."
+  },
+  {
+    "id": "PS4-AH-022",
+    "d": "business",
+    "t": "Iteration failure",
+    "task": "3.4",
+    "taskLabel": "Business Environment Task 3.4 - Remove impediments and manage issues",
+    "a": "adaptive",
+    "pattern": "Do not extend iterations or carry work mechanically; resolve the issue and replan transparently.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A team misses its iteration goal after an external dependency fails. The dependency remains unresolved. What should the project manager do next?",
+    "o": [
+      "Extend the iteration to complete the goal after the dependency is restored",
+      "Move incomplete work forward and keep the original velocity assumption",
+      "Treat the dependency as an issue, replan work, and improve its risk handling",
+      "Reduce the next iteration commitment by the amount of unfinished work"
+    ],
+    "x": 2,
+    "r": "The failed dependency is an issue requiring active resolution. Unfinished work should be replanned, and the team should improve how dependency exposure is handled.",
+    "closestDistractorRationale": "Unfinished work should be replanned, and the team should improve how dependency exposure is handled.",
+    "sourceAnchors": [
+      "2026 ECO Business Environment Task 3.4 - Remove impediments and manage issues",
+      "PMI Authorized PMP Exam Prep Adaptive Issue Management"
+    ],
+    "antiCue": "pass",
+    "rule": "Do not extend iterations or carry work mechanically; resolve the issue and replan transparently."
+  },
+  {
+    "id": "PS4-AH-023",
+    "d": "people",
+    "t": "Distributed collaboration",
+    "task": "1.8",
+    "taskLabel": "People Task 1.8 - Plan and manage communication",
+    "a": "hybrid",
+    "pattern": "Design distributed communication for participation in decisions, not only access to information.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A hybrid team spans nine time zones. Decisions made in live meetings repeatedly exclude members whose work is affected. What should the project manager do?",
+    "o": [
+      "Rotate meeting times but keep decisions within the live meeting",
+      "Require affected members to appoint a representative in the primary time zone",
+      "Record meetings and allow objections after decisions are implemented",
+      "Use asynchronous briefs and response windows for shared decisions"
+    ],
+    "x": 3,
+    "r": "Asynchronous decision briefs and response windows allow equitable participation while preserving live dialogue for complex issues. Recording alone does not create influence.",
+    "closestDistractorRationale": "Recording alone does not create influence.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.8 - Plan and manage communication",
+      "PMI Authorized PMP Exam Prep Communication Planning"
+    ],
+    "antiCue": "pass",
+    "rule": "Design distributed communication for participation in decisions, not only access to information."
+  },
+  {
+    "id": "PS4-AH-024",
+    "d": "process",
+    "t": "Release readiness",
+    "task": "2.10",
+    "taskLabel": "Process Task 2.10 - Manage closures",
+    "a": "hybrid",
+    "pattern": "A hybrid release must satisfy both product completion and operational transition controls.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "The adaptive team has completed product work, but operations has not demonstrated support readiness required by the predictive transition gate. What should the project manager do?",
+    "o": [
+      "Hold the transition gate and close the operations readiness gaps",
+      "Release to a pilot group because product acceptance is complete",
+      "Transfer the product and keep the project open until operations is ready",
+      "Remove the operations criterion from the gate because it is outside development"
+    ],
+    "x": 0,
+    "r": "Product completion and operational readiness are separate. The required transition criterion must be satisfied before release or formally changed by the proper authority.",
+    "closestDistractorRationale": "The required transition criterion must be satisfied before release or formally changed by the proper authority.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.10 - Manage closures",
+      "PMI Authorized PMP Exam Prep Hybrid Transition"
+    ],
+    "antiCue": "pass",
+    "rule": "A hybrid release must satisfy both product completion and operational transition controls."
+  },
+  {
+    "id": "PS4-AH-025",
+    "d": "process",
+    "t": "Value metrics",
+    "task": "2.3",
+    "taskLabel": "Process Task 2.3 - Deliver value",
+    "a": "adaptive",
+    "pattern": "Measure and optimize outcomes rather than treating feature volume as value.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "A feature team celebrates increasing output, but customer task completion has not improved. What should the project manager emphasize?",
+    "o": [
+      "Higher output is useful because more features create more opportunities for value",
+      "Shift attention to outcome measures and use them to guide product experiments and priority",
+      "Reduce work in progress until output and customer completion rise together",
+      "Ask marketing to improve adoption before changing the backlog"
+    ],
+    "x": 1,
+    "r": "Output is not the same as value. Outcome measures should guide experiments and priority so the team learns what improves customer performance.",
+    "closestDistractorRationale": "Outcome measures should guide experiments and priority so the team learns what improves customer performance.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.3 - Deliver value",
+      "PMI Authorized PMP Exam Prep Adaptive Value"
+    ],
+    "antiCue": "pass",
+    "rule": "Measure and optimize outcomes rather than treating feature volume as value."
+  },
+  {
+    "id": "PS4-AH-026",
+    "d": "people",
+    "t": "Cross-functional skills",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "adaptive",
+    "pattern": "Build team capability to complete valuable work rather than optimize specialist utilization.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "A team cannot finish stories because testing is performed by one specialist at iteration end. What should the project manager support?",
+    "o": [
+      "Add a second tester and retain the current handoff",
+      "Create a testing subteam that serves several feature teams",
+      "Build team testing capability and move quality work earlier",
+      "Increase iteration length so the specialist can complete the queue"
+    ],
+    "x": 2,
+    "r": "Cross-functional capability and earlier quality work reduce the bottleneck and improve end-to-end ownership. Adding capacity preserves the handoff system.",
+    "closestDistractorRationale": "Adding capacity preserves the handoff system.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Team Structure"
+    ],
+    "antiCue": "pass",
+    "rule": "Build team capability to complete valuable work rather than optimize specialist utilization."
+  },
+  {
+    "id": "PS4-AH-027",
+    "d": "process",
+    "t": "Progressive elaboration",
+    "task": "2.1",
+    "taskLabel": "Process Task 2.1 - Develop an integrated project management plan",
+    "a": "hybrid",
+    "pattern": "Match planning detail to uncertainty and the decision horizon.",
+    "format": "Scenario",
+    "difficulty": "Moderate",
+    "q": "Governance asks for detail on work scheduled eighteen months from now, but technology selection depends on trials planned next quarter. What should the project manager provide?",
+    "o": [
+      "Provide a range-based roadmap with decision points",
+      "A complete activity schedule using the most likely technology",
+      "Only the next-quarter plan because later work is not ready",
+      "A fixed milestone plan with management reserve for unknown work"
+    ],
+    "x": 0,
+    "r": "Progressive elaboration provides governance visibility without false precision. Decision points explain when and how later detail will become reliable.",
+    "closestDistractorRationale": "Decision points explain when and how later detail will become reliable.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.1 - Develop an integrated project management plan",
+      "PMI Authorized PMP Exam Prep Hybrid Planning"
+    ],
+    "antiCue": "pass",
+    "rule": "Match planning detail to uncertainty and the decision horizon."
+  },
+  {
+    "id": "PS4-AH-028",
+    "d": "process",
+    "t": "Agile contracting",
+    "task": "2.5",
+    "taskLabel": "Process Task 2.5 - Plan and manage procurement",
+    "a": "hybrid",
+    "pattern": "Align adaptive contracting with outcome evidence, funding controls, and decision gates.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A vendor will deliver evolving features, but procurement requires cost control and measurable performance. Which agreement structure is most suitable?",
+    "o": [
+      "A fixed-price contract for a complete feature list defined before work begins",
+      "A time-and-materials contract with no delivery commitments",
+      "A cost-reimbursable contract measured by vendor activity",
+      "An incremental agreement with funding limits, outcome measures, and exit criteria"
+    ],
+    "x": 3,
+    "r": "An incremental agreement can preserve flexibility while setting commercial boundaries, evidence, and continuation decisions. Activity payment alone does not assure value.",
+    "closestDistractorRationale": "Activity payment alone does not assure value.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.5 - Plan and manage procurement",
+      "PMI Authorized PMP Exam Prep Hybrid Procurement"
+    ],
+    "antiCue": "pass",
+    "rule": "Align adaptive contracting with outcome evidence, funding controls, and decision gates."
+  },
+  {
+    "id": "PS4-AH-029",
+    "d": "process",
+    "t": "Scaling dependencies",
+    "task": "2.1",
+    "taskLabel": "Process Task 2.1 - Develop an integrated project management plan",
+    "a": "adaptive",
+    "pattern": "Coordinate dependencies before commitment while preserving team-level ownership.",
+    "format": "Scenario",
+    "difficulty": "Moderate-Hard",
+    "q": "Four teams share one product and independently plan work, but cross-team dependencies are discovered after iteration commitments. What should the project manager improve?",
+    "o": [
+      "Refine cross-team dependencies, interfaces, and sequencing before commitment",
+      "Combine the teams into one planning meeting with a single iteration backlog",
+      "Assign a program manager to approve each team backlog",
+      "Require teams to reserve capacity for dependencies discovered during execution"
+    ],
+    "x": 0,
+    "r": "Cross-team refinement exposes dependency and interface needs early while preserving team planning. Central approval can slow decisions without improving discovery.",
+    "closestDistractorRationale": "Central approval can slow decisions without improving discovery.",
+    "sourceAnchors": [
+      "2026 ECO Process Task 2.1 - Develop an integrated project management plan",
+      "PMI Authorized PMP Exam Prep Adaptive Scaling"
+    ],
+    "antiCue": "pass",
+    "rule": "Coordinate dependencies before commitment while preserving team-level ownership."
+  },
+  {
+    "id": "PS4-AH-030",
+    "d": "people",
+    "t": "Leadership transition",
+    "task": "1.3",
+    "taskLabel": "People Task 1.3 - Lead and structure the team",
+    "a": "hybrid",
+    "pattern": "Tailor leadership by capability and risk rather than applying one style to all work.",
+    "format": "Scenario",
+    "difficulty": "Hard",
+    "q": "A team successfully self-manages routine delivery, but an upcoming safety-critical installation is new to all members. How should the project manager lead?",
+    "o": [
+      "Continue the same delegation because changing style would reduce team trust",
+      "Add direction, specialist input, decision boundaries, and verification for critical work",
+      "Transfer installation authority to the sponsor until the team gains experience",
+      "Route installation decisions through the project manager while retaining team planning"
+    ],
+    "x": 1,
+    "r": "Leadership should be tailored to competence and consequence. More structure and specialist verification are appropriate for unfamiliar safety-critical work without removing broader self-management.",
+    "closestDistractorRationale": "More structure and specialist verification are appropriate for unfamiliar safety-critical work without removing broader self-management.",
+    "sourceAnchors": [
+      "2026 ECO People Task 1.3 - Lead and structure the team",
+      "PMI Authorized PMP Exam Prep Leadership Tailoring"
+    ],
+    "antiCue": "pass",
+    "rule": "Tailor leadership by capability and risk rather than applying one style to all work."
+  }
+];
+var QUESTION_BANK=questions.map(function(item){return{id:item.id,q:item.q,opts:item.o,ans:item.x,domain:item.d,topic:item.t+' | '+item.taskLabel,explanation:item.r,approach:item.a,difficulty:item.difficulty};});
+
+function shuffleAndSlice(bank,count){var arr=bank.slice();for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=arr[i];arr[i]=arr[j];arr[j]=tmp;}return arr.slice(0,Math.min(count,arr.length));}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('reviewBtn').addEventListener('click',toggleReview);
+  startQuiz();
+});
+
+function validateForm(){var name=document.getElementById('studentName').value.trim();var email=document.getElementById('studentEmail').value.trim();var valid=true;document.getElementById('nameError').classList.remove('show');document.getElementById('emailError').classList.remove('show');if(!name){document.getElementById('nameError').classList.add('show');valid=false;}if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('emailError').classList.add('show');valid=false;}return valid;}
+
+function startQuiz(){activeQuestions=shuffleAndSlice(QUESTION_BANK,SERVE_COUNT);answers=new Array(activeQuestions.length).fill(-1);submitted=false;currentQ=0;var start=document.getElementById('startScreen');if(start)start.style.display='none';document.getElementById('progressBarContainer').style.display='flex';document.getElementById('progressText').textContent='0 / '+activeQuestions.length;renderQuestions();showQuestion(0);}
+
+function retakeQuiz(){document.getElementById('quizContainer').innerHTML='';document.getElementById('reviewSection').innerHTML='';document.getElementById('breakdownContainer').innerHTML='';document.getElementById('focusList').innerHTML='';document.getElementById('domainResults').innerHTML='';document.getElementById('resultsScreen').classList.remove('active');submitted=false;currentQ=0;activeQuestions=shuffleAndSlice(QUESTION_BANK,SERVE_COUNT);answers=new Array(activeQuestions.length).fill(-1);document.getElementById('quizContainer').style.display='';document.getElementById('progressBarContainer').style.display='flex';document.getElementById('progressText').textContent='0 / '+activeQuestions.length;renderQuestions();showQuestion(0);window.scrollTo({top:0,behavior:'smooth'});}
+
+function renderQuestions(){var c=document.getElementById('quizContainer');c.innerHTML='';var L=['A','B','C','D'];activeQuestions.forEach(function(q,i){var dl=q.domain==='people'?'People':q.domain==='process'?'Process':'Business Environment';var card=document.createElement('div');card.className='question-card';card.id='q'+i;var oh='';q.opts.forEach(function(o,j){oh+='<div class="option" data-q="'+i+'" data-opt="'+j+'"><span class="option-letter">'+L[j]+'</span><span>'+o+'</span></div>';});var isLast=i===activeQuestions.length-1;var pb=i>0?'<button class="btn-nav btn-prev" data-goto="'+(i-1)+'">&larr; Previous</button>':'<div></div>';var nb=isLast?'<button class="btn-nav btn-submit" data-submit="true">Submit Practice Set</button>':'<button class="btn-nav btn-next" id="next-'+i+'" data-goto="'+(i+1)+'" disabled>Next &rarr;</button>';var eco=q.topic.indexOf('|')>-1?q.topic.split('|')[1].trim():q.topic;var expl=q.explanation+(q.trap?'<div class="exam-trap"><strong>Exam Trap:</strong> '+q.trap+'</div>':'')+'<div style="margin-top:.6rem;font-size:.78rem;color:var(--mid-gray);font-style:italic;">Topic: '+q.topic.split('|')[0].trim()+'</div>';card.innerHTML='<div class="q-header"><div class="q-header-left"><span class="q-number">Question '+(i+1)+' of '+activeQuestions.length+'</span><span class="q-eco">'+eco+'</span></div><span class="q-domain '+q.domain+'">'+dl+'</span></div><div class="q-text">'+q.q+'</div><div class="options">'+oh+'</div><div class="explanation" id="exp-'+i+'">'+expl+'</div><div class="nav-buttons">'+pb+nb+'</div>';c.appendChild(card);});c.onclick=function(e){var o=e.target.closest('.option');if(o&&o.dataset.q!==undefined){selectOption(parseInt(o.dataset.q),parseInt(o.dataset.opt));return;}var n=e.target.closest('[data-goto]');if(n){showQuestion(parseInt(n.dataset.goto));return;}var s=e.target.closest('[data-submit]');if(s){submitQuiz();}};}
+
+function showQuestion(idx){var cards=document.querySelectorAll('.question-card');for(var c=0;c<cards.length;c++)cards[c].classList.remove('active');document.getElementById('q'+idx).classList.add('active');currentQ=idx;updateProgress();window.scrollTo({top:0,behavior:'smooth'});}
+
+function selectOption(qi,oi){if(submitted)return;answers[qi]=oi;var opts=document.querySelectorAll('#q'+qi+' .option');for(var j=0;j<opts.length;j++){opts[j].classList.remove('selected','correct','incorrect','reveal-correct');opts[j].classList.add('locked');if(j===oi){opts[j].classList.add('selected');opts[j].classList.add(oi===activeQuestions[qi].ans?'correct':'incorrect');}if(j===activeQuestions[qi].ans&&oi!==activeQuestions[qi].ans){opts[j].classList.add('reveal-correct');}}document.getElementById('exp-'+qi).classList.add('show');var nextBtn=document.getElementById('next-'+qi);if(nextBtn){nextBtn.disabled=false;nextBtn.removeAttribute('disabled');}updateProgress();}
+
+function updateProgress(){var a=0;for(var i=0;i<answers.length;i++)if(answers[i]!==-1)a++;document.getElementById('progressFill').style.width=(a/activeQuestions.length*100)+'%';document.getElementById('progressText').textContent=a+' / '+activeQuestions.length;}
+
+function getStatus(c,t){if(t===0)return{label:'—',cls:'status-developing'};var p=c/t*100;if(p>=75)return{label:'Strong',cls:'status-strong'};if(p>=50)return{label:'Developing',cls:'status-developing'};return{label:'Review Needed',cls:'status-focus'};}
+function getBarColor(c,t){if(t===0)return'#ccc';var p=c/t*100;if(p>=75)return'#27AE60';if(p>=50)return'#E67E22';return'#C0392B';}
+
+function submitQuiz(){submitted=true;var totalCorrect=0;var domainScores={people:{correct:0,total:0},process:{correct:0,total:0},business:{correct:0,total:0}};var topicScores={};activeQuestions.forEach(function(q,i){domainScores[q.domain].total++;var k=q.domain+'||'+q.topic;if(!topicScores[k])topicScores[k]={domain:q.domain,topic:q.topic,correct:0,total:0};topicScores[k].total++;if(answers[i]===q.ans){totalCorrect++;domainScores[q.domain].correct++;topicScores[k].correct++;}});document.getElementById('quizContainer').style.display='none';document.getElementById('progressBarContainer').style.display='none';document.getElementById('resultsScreen').classList.add('active');var pct=Math.round(totalCorrect/activeQuestions.length*100);document.getElementById('totalPct').textContent=pct+'%';document.getElementById('totalFraction').textContent=totalCorrect+' / '+activeQuestions.length;renderDomainResults(domainScores);renderBreakdown(topicScores);renderReview();sendResultToCourse(pct,totalCorrect,domainScores,topicScores);window.scrollTo({top:0,behavior:'smooth'});}
+
+function sendResultToCourse(pct,totalCorrect,domainScores,topicScores){var answeredCount=answers.filter(function(answer){return answer!==-1;}).length;var domainPct=function(key){var score=domainScores[key];return score.total?Math.round(score.correct/score.total*100):0;};var domainRaw=function(key){var score=domainScores[key];return score.correct+'/'+score.total;};var details=Object.keys(topicScores).map(function(key){var item=topicScores[key];return{domain:item.domain,topic:item.topic,correct:item.correct,total:item.total,pct:Math.round(item.correct/item.total*100)};});var payload={checkpoint:"Practice Set 4 - Agile and Hybrid Deep Dive",overallPct:pct,overallScore:totalCorrect+'/'+activeQuestions.length,peoplePct:domainPct('people'),peopleScore:domainRaw('people'),processPct:domainPct('process'),processScore:domainRaw('process'),businessPct:domainPct('business'),businessScore:domainRaw('business'),answeredCount:answeredCount,unansweredCount:activeQuestions.length-answeredCount,topicDetails:details};if(window.parent!==window){window.parent.postMessage({type:'ptaPracticeResult',payload:payload},'https://pmptrainingacademy.com');}}
+
+window.addEventListener('message',function(event){if(event.origin!=='https://pmptrainingacademy.com')return;var message=event.data||{};if(message.type!=='ptaPracticeSaveStatus')return;var status=document.getElementById('scoreSaveStatus');if(!status)return;if(message.ok){status.className='score-save-status success';status.textContent='Score saved to your learner dashboard. Reference: '+message.reference;}else{status.className='score-save-status error';status.textContent='Your score is visible, but it could not be saved. Save the PDF and contact support.';}});
+
+function renderDomainResults(domainScores){var dr=document.getElementById('domainResults');dr.innerHTML='';[['people','People'],['process','Process'],['business','Business Environment']].forEach(function(d){var key=d[0],label=d[1];if(domainScores[key].total===0)return;var p=Math.round(domainScores[key].correct/domainScores[key].total*100);dr.innerHTML+='<div class="domain-result-card"><div class="domain-name">'+label+'</div><div class="domain-bar-bg"><div class="domain-bar-fill '+key+'" style="width:'+p+'%"></div></div><div class="domain-pct">'+p+'%</div><div class="domain-score-detail">'+domainScores[key].correct+'/'+domainScores[key].total+'</div></div>';});}
+
+function renderBreakdown(topicScores){var bc=document.getElementById('breakdownContainer');var fl=document.getElementById('focusList');bc.innerHTML='';fl.innerHTML='';[['people','People'],['process','Process'],['business','Business Environment']].forEach(function(dom){var rows=Object.keys(topicScores).map(function(k){return topicScores[k];}).filter(function(t){return t.domain===dom[0];});if(!rows.length)return;rows.sort(function(a,b){return(a.correct/a.total)-(b.correct/b.total);});var html='<div class="breakdown-section"><div class="breakdown-header"><span class="domain-dot '+dom[0]+'"></span>'+dom[1]+' — Topic Breakdown</div><div class="breakdown-card">';rows.forEach(function(t){var st=getStatus(t.correct,t.total);var bp=Math.round(t.correct/t.total*100);var col=getBarColor(t.correct,t.total);if(st.label==='Review Needed'){fl.innerHTML+='<li><strong>'+t.topic.split('|')[0].trim()+'</strong> <span style="color:#8a94a6;font-size:.82rem;">('+dom[1]+' — '+t.correct+'/'+t.total+')</span></li>';}html+='<div class="subtopic-row"><div class="subtopic-name">'+t.topic.split('|')[0].trim()+'</div><div class="subtopic-bar-bg"><div class="subtopic-bar-fill" style="width:'+bp+'%;background:'+col+';"></div></div><div class="subtopic-score">'+t.correct+'/'+t.total+'</div><div class="subtopic-status '+st.cls+'">'+st.label+'</div></div>';});html+='</div></div>';bc.innerHTML+=html;});if(!fl.innerHTML)fl.innerHTML='<li style="color:#2E7D32;">No critical gaps on this attempt. Keep working across all domains.</li>';}
+
+function renderReview(){var rv=document.getElementById('reviewSection');rv.innerHTML='';var L=['A','B','C','D'];activeQuestions.forEach(function(q,i){var correct=answers[i]===q.ans;var user=answers[i]===-1?'<span class="incorrect-text">Not answered</span>':'Your answer: <span class="'+(correct?'correct-text':'incorrect-text')+'">'+L[answers[i]]+'. '+q.opts[answers[i]]+'</span>';var right=correct?'':'<br>Correct: <span class="correct-text">'+L[q.ans]+'. '+q.opts[q.ans]+'</span>';var trap=q.trap?'<br><em style="color:#1a2744;font-size:.8rem;"><strong>Exam Trap:</strong> '+q.trap+'</em>':'';;rv.innerHTML+='<div class="review-item '+(correct?'correct-item':'incorrect-item')+'"><div class="review-q">'+(i+1)+'. '+q.q+' <span style="font-size:.75rem;color:#8a94a6;font-weight:400;">('+q.topic.split('|')[0].trim()+')</span></div><div class="review-answer">'+user+right+'<br><em style="color:#8a94a6;font-size:.8rem;">'+q.explanation+'</em>'+trap+'</div></div>';})}
+
+function toggleReview(){var s=document.getElementById('reviewSection');s.classList.toggle('active');document.getElementById('reviewBtn').textContent=s.classList.contains('active')?'Hide Review':'Review All Answers';}
+function saveAsPDF(){window.print();}
+</script>
+</body>
+</html>
