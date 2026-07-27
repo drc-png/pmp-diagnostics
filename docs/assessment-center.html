@@ -896,3 +896,26 @@
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      function reportAssessmentHeight() {
+        var height = Math.max(
+          document.documentElement.scrollHeight,
+          document.body ? document.body.scrollHeight : 0
+        );
+        window.parent.postMessage(
+          { type: 'ptaAssessmentCenterHeight', height: height },
+          '*'
+        );
+      }
+
+      window.addEventListener('load', reportAssessmentHeight);
+      window.addEventListener('resize', reportAssessmentHeight);
+
+      if ('ResizeObserver' in window && document.body) {
+        new ResizeObserver(reportAssessmentHeight).observe(document.body);
+      } else {
+        window.setInterval(reportAssessmentHeight, 1000);
+      }
+    }());
+  </script>
