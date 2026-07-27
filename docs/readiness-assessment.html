@@ -2096,7 +2096,7 @@ function submitScoresToSheet(data) {
     .then(function() {
       statusEl.className = 'status-box show success';
       statusEl.innerHTML =
-        'Your score was sent for processing. Because the reporting service does not return a delivery confirmation to this page, please keep your saved report until the email arrives. ' +
+        'Your score submission was sent. Refresh the Assessment Center in a few moments to view your updated Score Snapshot. If the result does not appear, save this report and provide the reference number to support. ' +
         '<strong>Reference: ' + data.submissionId + '</strong>';
     })
     .catch(function() {
