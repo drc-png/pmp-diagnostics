@@ -1973,6 +1973,7 @@ function submitQuiz(auto) {
   if (submitted) return;
   var unanswered = answers.filter(function(answer, index) { return !isQuestionAnswered(questions[index], answer); }).length;
   if (!auto && unanswered > 0 && !confirm('You have ' + unanswered + ' unanswered question' + (unanswered === 1 ? '' : 's') + '. Submit anyway?')) return;
+  var completionStatus = unanswered === 0 ? 'Completed' : 'Incomplete';
   submitted = true;
   sessionActive = false;
   clearSavedProgress();
@@ -2071,6 +2072,7 @@ function submitQuiz(auto) {
     completedSeconds:completedSeconds,
     answeredCount:answeredCount,
     unansweredCount:questions.length - answeredCount,
+    completionStatus:completionStatus,
     focusTopics:focusTopics,
     topicDetails:topicDetails
   });

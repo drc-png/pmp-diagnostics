@@ -1,0 +1,137 @@
+{
+  "program": "PMP Training Academy Assessment Center",
+  "blueprint": "2026 PMP Examination Content Outline",
+  "releaseRule": "Only original questions that pass editorial, answer-key, anti-cue, domain, desktop, mobile, scoring, and reporting validation count toward the published inventory.",
+  "targetUniqueQuestions": 1750,
+  "banks": [
+    {
+      "id": "baseline",
+      "title": "Checkpoint 1: Baseline Diagnostic",
+      "target": 50,
+      "purpose": "Initial domain profile and coaching priorities",
+      "status": "scoring-repair"
+    },
+    {
+      "id": "practice-1",
+      "title": "Team Formation and Stakeholder Leadership",
+      "target": 150,
+      "primaryDomain": "People",
+      "topics": [
+        "team formation and working agreements",
+        "leadership and empowerment",
+        "coaching and mentoring",
+        "conflict resolution",
+        "stakeholder engagement",
+        "communications",
+        "virtual and cross-cultural teams",
+        "emotional intelligence"
+      ],
+      "status": "refinement"
+    },
+    {
+      "id": "practice-2",
+      "title": "Planning and Scope Control",
+      "target": 150,
+      "primaryDomain": "Process",
+      "topics": [
+        "integrated planning",
+        "scope and requirements",
+        "schedule",
+        "cost and finance",
+        "quality planning",
+        "resources",
+        "procurement",
+        "predictive and adaptive planning"
+      ],
+      "status": "not-started"
+    },
+    {
+      "id": "practice-3",
+      "title": "Execution and Monitoring",
+      "target": 150,
+      "primaryDomain": "Process",
+      "topics": [
+        "delivery execution",
+        "status evaluation",
+        "issue and impediment management",
+        "quality control",
+        "EVM and forecasting",
+        "change control",
+        "risk response",
+        "transition and closure"
+      ],
+      "status": "not-started"
+    },
+    {
+      "id": "practice-4",
+      "title": "Agile and Hybrid Deep Dive",
+      "target": 150,
+      "primaryDomain": "Cross-domain",
+      "topics": [
+        "adaptive roles and accountabilities",
+        "backlog and value",
+        "iteration and release planning",
+        "servant leadership",
+        "flow and feedback",
+        "hybrid integration",
+        "adaptive governance",
+        "compliance in adaptive delivery"
+      ],
+      "status": "not-started"
+    },
+    {
+      "id": "practice-5",
+      "title": "Business Environment and Strategic Alignment",
+      "target": 150,
+      "primaryDomain": "Business Environment",
+      "topics": [
+        "governance",
+        "compliance",
+        "organizational change",
+        "external environment",
+        "risk",
+        "strategic alignment",
+        "benefits and value",
+        "ethical decision-making"
+      ],
+      "status": "not-started"
+    },
+    {
+      "id": "midpoint",
+      "title": "Checkpoint 2: Midpoint Readiness",
+      "target": 50,
+      "purpose": "Independent progress comparison",
+      "status": "not-started"
+    },
+    {
+      "id": "simulation-1",
+      "title": "Practice Readiness Assessment 1",
+      "target": 180,
+      "status": "editorial-and-interface-validation"
+    },
+    {
+      "id": "simulation-2",
+      "title": "Practice Readiness Assessment 2",
+      "target": 180,
+      "status": "not-started"
+    },
+    {
+      "id": "simulation-3",
+      "title": "Practice Readiness Assessment 3",
+      "target": 180,
+      "status": "not-started"
+    },
+    {
+      "id": "simulation-4",
+      "title": "Practice Readiness Assessment 4",
+      "target": 180,
+      "status": "not-started"
+    },
+    {
+      "id": "simulation-5",
+      "title": "Practice Readiness Assessment 5",
+      "target": 180,
+      "status": "not-started"
+    }
+  ]
+}
