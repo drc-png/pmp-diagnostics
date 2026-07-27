@@ -68,7 +68,7 @@ html = html.replace(
 );
 html = html.replace(
   '<p>Retake this set for a different random draw from the 150-question bank.</p>',
-  '<p>Retake this set to practice the same refined learning objectives in a different order.</p>',
+  '<p>Use the answer review to study this pilot set. Additional attempts will open after the expanded bank contains independently written questions.</p>',
 );
 html = html.replace(
   "var SERVE_COUNT=15,studentName='',studentEmail='',activeQuestions=[],answers=[],submitted=false,currentQ=0;",
@@ -104,6 +104,10 @@ html = html.replace(
 html = html.replace(
   '<div style="text-align:center;"><button class="retake-btn"',
   '<div class="score-save-status" id="scoreSaveStatus" role="status" aria-live="polite">This score is shown on this page. Open the set through your signed-in course page to save it to your learner dashboard.</div>\n      <div style="text-align:center;"><button class="retake-btn"',
+);
+html = html.replace(
+  /<div style="text-align:center;"><button class="retake-btn"[\s\S]*?<\/button><\/div>/,
+  '',
 );
 html = html.replace(
   'renderDomainResults(domainScores);renderBreakdown(topicScores);renderReview();window.scrollTo',
