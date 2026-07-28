@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "enterprise-digital-transformation",
+    "title": "Enterprise Digital Transformation for Project Managers",
+    "area": "Ways of Working",
+    "pdus": 8,
+    "description": "Plan and lead large-scale transformation from discovery through stabilization, with disciplined governance, rollout, vendor, adoption, and value controls.",
+    "topics": [
+      "Transformation lifecycle: discovery through hypercare and stabilization",
+      "Building and managing cross-functional implementation teams",
+      "Vendor and system-integrator management at enterprise scale",
+      "Phased rollout strategies for multi-location deployments",
+      "Change control and scope management during transformation",
+      "Operational readiness, adoption, and transition",
+      "Measuring transformation success beyond go-live",
+      "Enterprise transformation capstone and lessons learned"
+    ]
+  },
+  {
+    "slug": "agile-at-scale",
+    "title": "Agile at Scale: From Framework to Execution",
+    "area": "Ways of Working",
+    "pdus": 6,
+    "description": "Translate scaled-agile concepts into workable enterprise delivery across dependencies, governance, legacy systems, and distributed teams.",
+    "topics": [
+      "Selecting SAFe, Scrum@Scale, hybrid, or locally tailored structures",
+      "PI planning, release trains, objectives, and dependency visibility",
+      "Integrating adaptive work into predictive and regulated environments",
+      "Managing dependencies across multiple teams and suppliers",
+      "Agile governance, metrics, and executive reporting",
+      "Failure patterns, recovery actions, and execution capstone"
+    ]
+  },
+  {
+    "slug": "ai-powered-project-management",
+    "title": "AI-Powered Project Management: A Practitioner's Guide",
+    "area": "Ways of Working",
+    "pdus": 6,
+    "description": "Use AI as a governed decision-support tool for planning, reporting, risk, communication, resource analysis, and project controls.",
+    "topics": [
+      "AI foundations, use-case selection, and human accountability",
+      "Planning support: WBS, estimation, sequencing, and assumptions",
+      "Status reporting and stakeholder communication workflows",
+      "Risk identification, response design, and evidence validation",
+      "Resource and capacity analysis with privacy-aware data handling",
+      "Prompt patterns, ethics, governance, and applied capstone"
+    ]
+  },
+  {
+    "slug": "risk-management-complex-programs",
+    "title": "Risk Management in Complex Programs",
+    "area": "Ways of Working",
+    "pdus": 4,
+    "description": "Move beyond isolated risk registers to manage systemic exposure, interdependencies, third parties, escalation, and resilience.",
+    "topics": [
+      "Enterprise and program risk architecture",
+      "Quantitative analysis, decision trees, and scenario ranges",
+      "Dependency, vendor, and third-party risk mapping",
+      "Executive communication, escalation, resilience, and capstone"
+    ]
+  },
+  {
+    "slug": "executive-presence-project-leaders",
+    "title": "Executive Presence for Project Leaders",
+    "area": "Power Skills",
+    "pdus": 6,
+    "description": "Communicate with credibility, influence without authority, navigate organizational dynamics ethically, and lead difficult executive conversations.",
+    "topics": [
+      "Leadership brand, credibility, and professional identity",
+      "Executive briefings and steering-committee communication",
+      "Influencing without authority in matrixed organizations",
+      "Navigating organizational politics with integrity",
+      "Difficult conversations, bad news, and conflict",
+      "Stakeholder trust, executive simulation, and action plan"
+    ]
+  },
+  {
+    "slug": "leading-through-change",
+    "title": "Leading Through Change: The Human Side of Transformation",
+    "area": "Power Skills",
+    "pdus": 6,
+    "description": "Guide people through uncertainty using sponsorship, involvement, communication, learning, resistance evidence, and reinforcement.",
+    "topics": [
+      "Change leadership and the project leader's role",
+      "Coalitions, sponsorship, and distributed ownership",
+      "Resistance evidence and root-cause response",
+      "Communication and involvement across stakeholder groups",
+      "Training, capability, adoption, and rollout readiness",
+      "Sustainment, culture, reinforcement, and capstone"
+    ]
+  },
+  {
+    "slug": "high-performance-team-building",
+    "title": "High-Performance Team Building for Project Managers",
+    "area": "Power Skills",
+    "pdus": 4,
+    "description": "Create team clarity, psychological safety, accountability, coaching, and conflict practices that work across colocated and distributed teams.",
+    "topics": [
+      "Team formation, roles, norms, and operating agreements",
+      "Psychological safety, inclusion, and productive disagreement",
+      "Distributed-team leadership, coaching, and development",
+      "Accountability, conflict resolution, and team capstone"
+    ]
+  },
+  {
+    "slug": "strategic-alignment-business-value",
+    "title": "Strategic Alignment: Connecting Projects to Business Value",
+    "area": "Business Acumen",
+    "pdus": 6,
+    "description": "Connect project decisions to strategy, business cases, benefits, financial measures, stakeholder value, and outcome evidence.",
+    "topics": [
+      "Organizational strategy, portfolios, and project alignment",
+      "Business cases and executive decision logic",
+      "Benefits realization from promise to proof",
+      "Financial literacy: ROI, NPV, and payback",
+      "Stakeholder value mapping and prioritization",
+      "OKRs, KPIs, strategic metrics, and capstone"
+    ]
+  },
+  {
+    "slug": "ai-strategy-business-impact",
+    "title": "AI Strategy and Business Impact for Project Leaders",
+    "area": "Business Acumen",
+    "pdus": 4,
+    "description": "Evaluate AI opportunities, readiness, governance, vendors, integration, and measurable business impact without requiring coding.",
+    "topics": [
+      "AI landscape, opportunity framing, and strategic fit",
+      "Use-case evaluation, readiness, and business-case design",
+      "Data governance, ethics, vendors, and integration",
+      "ROI, adoption measures, risk, and decision capstone"
+    ]
+  },
+  {
+    "slug": "retail-enterprise-operations",
+    "title": "Industry Domain Deep Dive: Retail and Enterprise Operations",
+    "area": "Business Acumen",
+    "pdus": 4,
+    "description": "Understand the operating, technology, deployment, vendor, and governance context behind complex retail and enterprise initiatives.",
+    "topics": [
+      "Retail technology ecosystem: POS, supply chain, HCM, and ERP",
+      "Multi-location rollout and store-operations impact",
+      "Shared services, process optimization, compliance, and governance",
+      "Vendor ecosystems, transformation trends, and industry capstone"
+    ]
+  },
+  {
+    "slug": "organizational-change-transformation-strategy",
+    "title": "Organizational Change and Transformation Strategy",
+    "area": "Business Acumen",
+    "pdus": 6,
+    "description": "Connect transformation vision to portfolio choices, funding, governance, roadmaps, value measurement, and PMO capability.",
+    "topics": [
+      "Transformation vision and execution roadmaps",
+      "Portfolio management and program prioritization",
+      "Funding models: CapEx, OpEx, and value streams",
+      "Governance for enterprise change programs",
+      "Transformation ROI and organizational impact",
+      "Building a transformation PMO and strategy capstone"
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+<iframe
+  id="pta-homepage"
+  src="https://drc-png.github.io/pmp-diagnostics/homepage.html?v=20260728-1"
+  title="PMP Training Academy"
+  scrolling="no"
+  loading="eager"
+  style="width:100%;height:1800px;border:0;overflow:hidden;display:block;"
+  allow="clipboard-write"
+></iframe>
+
+<script>
+(function () {
+  var frame = document.getElementById('pta-homepage');
+
+  window.addEventListener('message', function (event) {
+    if (event.origin !== 'https://drc-png.github.io' || !event.data) return;
+
+    if (event.data.type === 'ptaHomepageHeight') {
+      var height = Number(event.data.height);
+      if (height > 800) frame.style.height = Math.ceil(height + 12) + 'px';
+    }
+
+    if (event.data.type === 'ptaHomepageFocus') {
+      frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}());
+</script>

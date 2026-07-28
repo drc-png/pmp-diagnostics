@@ -1,0 +1,2771 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PMP Training Academy | Certification, PDU Renewal and Professional Development</title>
+<!-- PMP Training Academy hosted homepage -->
+<style>
+  :root {
+    --pmp-ink: #1B2E5E;
+    --pmp-navy: #1B2E5E;
+    --pmp-deep-navy: #111E3E;
+    --pmp-charcoal: #2C2C2A;
+    --pmp-muted: #5b6678;
+    --pmp-line: #dfe4ec;
+    --pmp-paper: #FDFCF8;
+    --pmp-wash: #FAF7F0;
+    --pmp-gold: #C49A27;
+    --pmp-gold-dark: #8D6A12;
+    --pmp-soft-gold: #F0E4B8;
+    --pmp-radius: 8px;
+    --pmp-shadow: 0 18px 50px rgba(22, 32, 51, 0.14);
+  }
+
+  .pmp-home, .pmp-home * {
+    box-sizing: border-box;
+  }
+
+  .pmp-home {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    color: var(--pmp-ink);
+    background: var(--pmp-paper);
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  .pmp-home a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pmp-home img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .pmp-inner {
+    width: min(1160px, calc(100% - 36px));
+    margin: 0 auto;
+  }
+
+  .pmp-btn {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    cursor: pointer;
+  }
+
+  .pmp-btn,
+  .pmp-btn:visited,
+  .pmp-btn:hover,
+  .pmp-btn:focus {
+    text-decoration: none !important;
+  }
+
+  .pmp-cta-main {
+    color: #fff !important;
+    font-size: 0;
+  }
+
+  .pmp-cta-main::before {
+    content: "ENROLL IN THE NEXT COHORT";
+    color: #fff;
+    font-size: 0.96rem;
+    line-height: 1.1;
+  }
+
+  .pmp-btn-primary {
+    background: var(--pmp-ink);
+    color: #fff !important;
+    box-shadow: 0 10px 26px rgba(22, 32, 51, 0.18);
+  }
+
+  .pmp-btn-gold {
+    background: linear-gradient(180deg, #ffd35a 0%, var(--pmp-gold) 100%);
+    color: #211600 !important;
+    box-shadow: 0 14px 28px rgba(242, 185, 30, 0.28);
+  }
+
+  .pmp-btn-secondary {
+    background: #fff;
+    color: var(--pmp-ink) !important;
+    border-color: #bfc7d4;
+  }
+
+  .pmp-kicker {
+    color: var(--pmp-gold-dark);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .pmp-muted {
+    color: var(--pmp-muted);
+  }
+
+  .pmp-home h1,
+  .pmp-home h2,
+  .pmp-home h3,
+  .pmp-home p {
+    margin-top: 0;
+  }
+
+  .pmp-home h2,
+  .pmp-home h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+  }
+
+  .pmp-hero {
+    min-height: clamp(560px, 72vh, 740px);
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--pmp-line);
+    background:
+      linear-gradient(90deg, rgba(250,247,240,0.18) 0%, rgba(250,247,240,0.72) 44%, rgba(250,247,240,0.96) 100%),
+      url("https://pmptrainingacademy.com/wp-content/uploads/2026/03/ChatGPT-Image-Jan-2-2026-07_03_23-PM-1.webp") center top / cover no-repeat;
+  }
+
+  .pmp-hero .pmp-inner {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .pmp-hero-copy {
+    width: min(650px, 100%);
+    margin-left: auto;
+    transform: translateX(76px);
+    padding: 58px 0 42px;
+  }
+
+  .pmp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    margin-bottom: 18px;
+    border: 1px solid rgba(196, 154, 39, 0.42);
+    border-radius: 999px;
+    background: rgba(17, 30, 62, 0.94);
+    color: #FDFCF8;
+    padding: 9px 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 24px rgba(17, 30, 62, 0.18);
+  }
+
+  .pmp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--pmp-gold);
+  }
+
+  .pmp-hero h1 {
+    max-width: 720px;
+    margin-bottom: 14px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(2.35rem, 4.6vw, 4.3rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .pmp-hero h1 span {
+    color: var(--pmp-gold-dark);
+  }
+
+  .pmp-hero-lede {
+    max-width: 670px;
+    margin-bottom: 18px;
+    color: #38445a;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.25vw, 1.16rem);
+  }
+
+  .pmp-proof {
+    width: min(630px, 100%);
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    border-left: 5px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: rgba(255,255,255,0.86);
+    box-shadow: 0 12px 26px rgba(22, 32, 51, 0.09);
+  }
+
+  .pmp-proof strong {
+    display: block;
+    color: var(--pmp-ink);
+  }
+
+  .pmp-proof span {
+    color: var(--pmp-muted);
+    font-size: 0.84rem;
+    font-weight: 800;
+  }
+
+  .pmp-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    width: fit-content;
+    margin: 0 0 16px;
+    padding: 9px 12px;
+    border: 1px solid rgba(180, 124, 0, 0.28);
+    border-radius: var(--pmp-radius);
+    background: rgba(242, 185, 30, 0.18);
+    color: #211600;
+  }
+
+  .pmp-price del {
+    color: #7c6a41;
+    font-weight: 800;
+  }
+
+  .pmp-price strong {
+    font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+    line-height: 0.92;
+  }
+
+  .pmp-included {
+    width: min(630px, 100%);
+    margin: -4px 0 16px;
+    color: var(--pmp-ink);
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .pmp-included strong {
+    color: var(--pmp-gold-dark);
+  }
+
+  .pmp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .pmp-note {
+    color: var(--pmp-gold-dark);
+    font-size: 0.86rem;
+    font-weight: 900;
+  }
+
+  .pmp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-pills li {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d8dee8;
+    border-radius: 999px;
+    background: #fff;
+    padding: 7px 12px;
+    color: #28354d;
+    font-size: 0.86rem;
+    font-weight: 900;
+  }
+
+  .pmp-metric-bar {
+    background: var(--pmp-deep-navy);
+    color: #fff;
+  }
+
+  .pmp-path-finder {
+    background: #fff;
+    border-bottom: 1px solid var(--pmp-line);
+    padding: 30px 0;
+  }
+
+  .pmp-free-strip {
+    background: linear-gradient(180deg, #fff 0%, #fffaf0 100%);
+    border-bottom: 1px solid var(--pmp-line);
+    padding: 26px 0;
+  }
+
+  .pmp-free-strip .pmp-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .pmp-free-guide-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    border: 1px solid rgba(196, 154, 39, 0.34);
+    border-left: 7px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 22px 24px;
+    box-shadow: 0 18px 48px rgba(22, 32, 51, 0.12);
+  }
+
+  .pmp-guide-badge {
+    width: 72px;
+    min-height: 92px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, var(--pmp-ink) 0%, #2a3a5c 100%);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 900;
+    line-height: 1.15;
+    box-shadow: 0 14px 28px rgba(22, 32, 51, 0.18);
+  }
+
+  .pmp-guide-badge span {
+    display: block;
+    margin-top: 6px;
+    color: var(--pmp-gold);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .pmp-lead-text {
+    margin: 0 0 6px;
+    color: var(--pmp-muted);
+    font-weight: 800;
+  }
+
+  .pmp-lead-text strong { color: var(--pmp-gold-dark); }
+
+  .pmp-free-guide-card h2 {
+    margin: 0 0 6px;
+    color: var(--pmp-ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.05;
+  }
+
+  .pmp-free-guide-card p:last-child {
+    margin: 0;
+    color: var(--pmp-muted);
+    font-weight: 750;
+  }
+
+  .pmp-guide-btn {
+    min-width: 220px;
+    justify-content: center;
+  }
+
+  .pmp-path-panel {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+    gap: 20px;
+    align-items: center;
+    border: 1px solid rgba(196, 154, 39, 0.26);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(22, 32, 51, 0.08);
+    padding: 22px;
+  }
+
+  .pmp-path-copy h2 {
+    margin-bottom: 6px;
+    font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+    line-height: 1.08;
+  }
+
+  .pmp-path-copy p {
+    margin-bottom: 0;
+  }
+
+  .pmp-path-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .pmp-path-card {
+    --path-accent: var(--pmp-gold);
+    --path-accent-dark: var(--pmp-gold-dark);
+    --path-soft: #fff4cf;
+    min-height: 126px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(196,154,39,0.32);
+    border-top: 5px solid var(--path-accent);
+    border-radius: var(--pmp-radius);
+    background: linear-gradient(135deg, #fff 0%, var(--path-soft) 100%);
+    padding: 16px 42px 16px 16px;
+    color: var(--pmp-ink);
+    position: relative;
+    box-shadow: 0 10px 22px rgba(22, 32, 51, 0.08);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  }
+
+  .pmp-path-card:nth-child(2) { --path-accent:#2E8B8B; --path-accent-dark:#176060; --path-soft:#eaf8f7; }
+  .pmp-path-card:nth-child(3) { --path-accent:#5571C8; --path-accent-dark:#30488E; --path-soft:#eef2ff; }
+  .pmp-path-card:nth-child(4) { --path-accent:#7B5BA7; --path-accent-dark:#503579; --path-soft:#f4efff; }
+  .pmp-path-card:nth-child(5) { --path-accent:#D89B2B; --path-accent-dark:#8A5D10; --path-soft:#fff6e3; }
+
+  .pmp-path-card:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--path-accent);
+    box-shadow: 0 0 0 5px rgba(196,154,39,0.14);
+  }
+
+  .pmp-path-card:after {
+    content: "→";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--path-accent-dark);
+    box-shadow: 0 6px 16px rgba(22,32,51,0.12);
+    font-size: 1.1rem;
+    font-weight: 900;
+  }
+
+  .pmp-path-card:hover,
+  .pmp-path-card:focus {
+    transform: translateY(-3px);
+    border-color: var(--path-accent);
+    box-shadow: 0 18px 34px rgba(22, 32, 51, 0.14);
+  }
+
+  .pmp-path-card strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 0.98rem;
+    line-height: 1.12;
+  }
+
+  .pmp-path-card span {
+    color: var(--path-accent-dark);
+    font-size: 0.75rem;
+    font-weight: 900;
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .pmp-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .pmp-metric {
+    min-height: 96px;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    text-align: center;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .pmp-metric strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--pmp-gold);
+    font-size: clamp(1.5rem, 3.3vw, 2.3rem);
+    line-height: 1;
+  }
+
+  .pmp-metric span {
+    color: #dce4f0;
+    font-weight: 800;
+  }
+
+  .pmp-footnote {
+    padding: 8px 18px 12px;
+    color: rgba(220, 228, 240, 0.72);
+    font-size: 0.76rem;
+    text-align: center;
+  }
+
+  .pmp-section {
+    padding: 72px 0;
+  }
+
+  .pmp-section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .pmp-section h2 {
+    max-width: 850px;
+    margin-bottom: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .pmp-lead-strip {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    margin: 24px auto 0;
+    border: 1px solid rgba(180, 124, 0, 0.26);
+    border-left: 7px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fffaf0;
+    padding: 20px 22px;
+    box-shadow: 0 16px 36px rgba(22, 32, 51, 0.09);
+  }
+
+  .pmp-lead-strip h3 {
+    margin-bottom: 4px;
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    line-height: 1.1;
+  }
+
+  .pmp-lead-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .pmp-trust {
+    background: #fff;
+    border-bottom: 1px solid var(--pmp-line);
+  }
+
+  .pmp-trust-inner {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    gap: 26px;
+    padding: 28px 0;
+  }
+
+  .pmp-trust-inner img {
+    max-width: 138px;
+  }
+
+  .pmp-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .pmp-trust-item {
+    border-left: 4px solid var(--pmp-gold);
+    padding-left: 14px;
+  }
+
+  .pmp-trust-item strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .pmp-trust-item span {
+    color: var(--pmp-muted);
+    font-size: 0.92rem;
+  }
+
+  .pmp-cohort-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .pmp-offer {
+    border: 1px solid var(--pmp-line);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(22, 32, 51, 0.08);
+    overflow: hidden;
+  }
+
+  .pmp-offer-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: start;
+    padding: 28px;
+    border-bottom: 1px solid var(--pmp-line);
+  }
+
+  .pmp-offer-price {
+    min-width: 160px;
+    text-align: right;
+  }
+
+  .pmp-offer-price del {
+    display: block;
+    color: #8a94a5;
+    font-weight: 700;
+  }
+
+  .pmp-offer-price strong {
+    display: block;
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .pmp-offer-body {
+    padding: 28px;
+  }
+
+  .pmp-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-feature-grid li {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--pmp-line);
+    border-radius: var(--pmp-radius);
+    padding: 12px 14px;
+    background: #fff;
+    font-weight: 800;
+  }
+
+  .pmp-schedule {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .pmp-schedule-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--pmp-line);
+  }
+
+  .pmp-alert {
+    margin-top: 18px;
+    border: 1px solid rgba(180, 124, 0, 0.28);
+    border-left: 5px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fffaf0;
+    padding: 16px 18px;
+  }
+
+  .pmp-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .pmp-card {
+    border: 1px solid var(--pmp-line);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 22px;
+    box-shadow: 0 10px 28px rgba(22, 32, 51, 0.07);
+  }
+
+  .pmp-card h3 {
+    margin-bottom: 8px;
+    line-height: 1.12;
+  }
+
+  .pmp-card p {
+    margin-bottom: 0;
+    color: var(--pmp-muted);
+  }
+
+  .pmp-curriculum-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .pmp-curriculum-list details {
+    border: 1px solid var(--pmp-line);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 0;
+    box-shadow: 0 8px 22px rgba(22, 32, 51, 0.05);
+  }
+
+  .pmp-curriculum-list summary {
+    cursor: pointer;
+    padding: 16px 18px;
+    color: var(--pmp-ink);
+    font-weight: 900;
+    list-style-position: inside;
+  }
+
+  .pmp-curriculum-list details[open] summary {
+    border-bottom: 1px solid var(--pmp-line);
+  }
+
+  .pmp-curriculum-list p {
+    margin: 0;
+    padding: 14px 18px 18px;
+    color: var(--pmp-muted);
+  }
+
+  .pmp-course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .pmp-course-card {
+    display: flex;
+    min-height: 430px;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--pmp-line);
+    border-top: 5px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 28px rgba(22, 32, 51, 0.07);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .pmp-course-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(196, 154, 39, 0.58);
+    box-shadow: 0 18px 42px rgba(22, 32, 51, 0.13);
+  }
+
+  .pmp-course-card.has-media {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .pmp-course-card.has-media > div:not(.pmp-course-media),
+  .pmp-course-card.has-media > a {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .pmp-course-card.has-media > a {
+    margin-bottom: 24px;
+  }
+
+  .pmp-course-media {
+    position: relative;
+    min-height: 230px;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 22px;
+    background:
+      linear-gradient(135deg, rgba(17, 30, 62, 0.58), rgba(196, 154, 39, 0.14) 54%, rgba(250, 247, 240, 0.05)),
+      var(--course-img, url("https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg")) var(--media-pos, center) / cover no-repeat;
+  }
+
+  .pmp-course-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-bottom: 1px solid rgba(196, 154, 39, 0.34);
+    background: linear-gradient(180deg, transparent 52%, rgba(17, 30, 62, 0.28));
+    pointer-events: none;
+  }
+
+  .pmp-course-card.featured .pmp-course-media {
+    min-height: 285px;
+    aspect-ratio: 16 / 7;
+    background:
+      linear-gradient(135deg, rgba(17, 30, 62, 0.68), rgba(27, 46, 94, 0.24) 48%, rgba(196, 154, 39, 0.16)),
+      var(--course-img, url("https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg")) var(--media-pos, center) / cover no-repeat;
+  }
+
+  .pmp-course-media span {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 1;
+    border-radius: 999px;
+    background: rgba(253, 252, 248, 0.92);
+    color: var(--pmp-ink);
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pmp-course-card.featured .pmp-course-media span {
+    background: var(--pmp-gold);
+    color: #211600;
+  }
+
+  .pmp-course-card.featured {
+    grid-column: span 2;
+    border-color: rgba(196, 154, 39, 0.45);
+    background: #fff;
+    color: var(--pmp-ink);
+  }
+
+  .pmp-course-card.accent {
+    border-top-color: var(--pmp-ink);
+    background: var(--pmp-paper);
+  }
+
+  .pmp-course-card h3 {
+    margin-bottom: 8px;
+    line-height: 1.12;
+  }
+
+  .pmp-course-card.featured h3 {
+    color: var(--pmp-ink);
+  }
+
+  .pmp-course-card p {
+    color: var(--pmp-muted);
+    font-size: 0.95rem;
+  }
+
+  .pmp-course-card.featured p {
+    color: var(--pmp-muted);
+  }
+
+  .pmp-course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 14px 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-course-meta li {
+    border: 1px solid rgba(196, 154, 39, 0.28);
+    border-radius: 999px;
+    background: #fff;
+    padding: 6px 9px;
+    color: var(--pmp-ink);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .pmp-course-card.featured .pmp-course-meta li {
+    background: #fff;
+    color: var(--pmp-ink);
+  }
+
+  .pmp-course-link {
+    width: fit-content;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(27, 46, 94, 0.18);
+    border-radius: 6px;
+    background: var(--pmp-ink);
+    color: #fff !important;
+    padding: 11px 15px;
+    box-shadow: 0 10px 22px rgba(22, 32, 51, 0.14);
+    font-size: 0.84rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+
+  .pmp-course-link::after {
+    content: "→";
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .pmp-course-link:hover,
+  .pmp-course-link:focus {
+    background: var(--pmp-deep-navy);
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px rgba(22, 32, 51, 0.2);
+    text-decoration: none !important;
+  }
+
+  .pmp-course-card.featured .pmp-course-link {
+    border-color: rgba(196, 154, 39, 0.5);
+    background: linear-gradient(180deg, #ffd35a 0%, var(--pmp-gold) 100%);
+    color: #211600 !important;
+    box-shadow: 0 14px 28px rgba(242, 185, 30, 0.22);
+  }
+
+  .pmp-course-card.featured .pmp-course-link:hover,
+  .pmp-course-card.featured .pmp-course-link:focus {
+    background: linear-gradient(180deg, #ffe082 0%, #cfa42e 100%);
+    color: #211600 !important;
+  }
+
+  .pmp-course-note {
+    margin-top: 18px;
+    color: var(--pmp-muted);
+    font-size: 0.92rem;
+  }
+
+  .pmp-dark-box {
+    border-radius: var(--pmp-radius);
+    background:
+      radial-gradient(circle at 18% 0%, rgba(242, 185, 30, 0.18), transparent 34%),
+      var(--pmp-ink);
+    color: #fff;
+    padding: 28px;
+    box-shadow: var(--pmp-shadow);
+  }
+
+  .pmp-dark-box h3 {
+    margin: 8px 0 12px;
+    color: #fff;
+    font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+    line-height: 1.04;
+  }
+
+  .pmp-dark-box p {
+    color: #dbe2ed;
+  }
+
+  .pmp-dark-list {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0 22px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-dark-list li {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-left: 4px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 11px 13px;
+    color: #fff;
+    font-weight: 850;
+  }
+
+  .pmp-about {
+    background: var(--pmp-deep-navy);
+    color: #fff;
+  }
+
+  .pmp-about-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 42px;
+    align-items: center;
+  }
+
+  .pmp-about img {
+    width: 100%;
+    aspect-ratio: 1 / 1.15;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--pmp-radius);
+  }
+
+  .pmp-about p {
+    color: #eef3fb;
+    font-size: 1.08rem;
+  }
+
+  .pmp-about h2 {
+    color: #fff;
+  }
+
+  .pmp-bio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .pmp-bio-grid div {
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--pmp-radius);
+    padding: 14px;
+    background: rgba(255,255,255,0.08);
+    color: #f7f9fd;
+    font-weight: 800;
+  }
+
+  .pmp-book {
+    padding: 46px 0;
+    background:
+      linear-gradient(135deg, rgba(253,252,248,0.98), rgba(250,247,240,0.94)),
+      radial-gradient(circle at 12% 0%, rgba(196, 154, 39, 0.16), transparent 34%);
+  }
+
+  .pmp-book-panel {
+    display: grid;
+    grid-template-columns: minmax(390px, 1.08fr) minmax(0, 0.92fr);
+    gap: 20px;
+    align-items: center;
+    border: 1px solid rgba(196, 154, 39, 0.28);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 18px 48px rgba(17, 30, 62, 0.1);
+  }
+
+  .pmp-book-cover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: auto;
+    border-radius: var(--pmp-radius);
+    background:
+      radial-gradient(circle at 18% 14%, rgba(196, 154, 39, 0.2), transparent 34%),
+      linear-gradient(135deg, #111E3E, #071126);
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  .pmp-book-cover::after {
+    content: "";
+    position: absolute;
+    inset: auto 12% 8px 12%;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.32);
+    filter: blur(14px);
+    z-index: 0;
+  }
+
+  .pmp-book-cover img {
+    position: relative;
+    z-index: 1;
+    width: min(660px, 100%);
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  }
+
+  .pmp-book-copy h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.55rem, 2.45vw, 2.05rem);
+    line-height: 1.02;
+  }
+
+  .pmp-book-copy p {
+    color: var(--pmp-muted);
+    margin-bottom: 8px;
+    font-size: 0.86rem;
+    line-height: 1.38;
+  }
+
+  .pmp-book-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-book-list li {
+    border: 1px solid rgba(196, 154, 39, 0.26);
+    border-left: 4px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fff;
+    padding: 7px 9px;
+    color: var(--pmp-ink);
+    font-size: 0.78rem;
+    line-height: 1.24;
+    font-weight: 800;
+  }
+
+  .pmp-book-note {
+    border-left: 5px solid var(--pmp-gold);
+    border-radius: var(--pmp-radius);
+    background: #fffaf0;
+    padding: 10px 12px;
+    color: var(--pmp-ink);
+    font-size: 0.8rem;
+    line-height: 1.34;
+    font-weight: 800;
+  }
+
+  .pmp-bundle-strip {
+    display: grid;
+    gap: 7px;
+    margin: 10px 0;
+    border-top: 1px solid rgba(196, 154, 39, 0.28);
+    border-bottom: 1px solid rgba(196, 154, 39, 0.28);
+    padding: 10px 0;
+  }
+
+  .pmp-bundle-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 9px;
+    align-items: start;
+    font-size: 0.8rem;
+    line-height: 1.34;
+  }
+
+  .pmp-bundle-item strong {
+    color: var(--pmp-ink);
+  }
+
+  .pmp-bundle-item span {
+    color: var(--pmp-muted);
+  }
+
+  .pmp-waitlist-perks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px 8px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-waitlist-perks li {
+    color: var(--pmp-muted);
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  .pmp-results {
+    display: grid;
+    grid-template-columns: 0.78fr 1fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .pmp-result-number {
+    display: grid;
+    place-items: center;
+    border-radius: var(--pmp-radius);
+    background: var(--pmp-ink);
+    color: #fff;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .pmp-result-number strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    line-height: 0.88;
+  }
+
+  .pmp-quotes {
+    display: grid;
+    gap: 14px;
+  }
+
+  .pmp-quote {
+    border: 1px solid var(--pmp-line);
+    border-radius: var(--pmp-radius);
+    padding: 22px;
+    background: #fff;
+  }
+
+  .pmp-final {
+    background: var(--pmp-gold);
+    color: #211600;
+    padding: 54px 0;
+  }
+
+  .pmp-final .pmp-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .pmp-final h2 {
+    max-width: 780px;
+    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.04;
+  }
+
+  .pmp-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(22, 32, 51, 0.92);
+  }
+  #pmpModalGlobal {
+    position: fixed !important;
+    inset: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#pmpModalGlobal .pmp-modal {
+    margin: auto !important;
+}
+  .pmp-modal-overlay.show {
+    display: flex;
+  }
+
+  .pmp-modal {
+    position: relative;
+    width: min(540px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow: auto;
+    border-radius: 14px;
+    background: #fff;
+    padding: 38px 34px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  }
+
+  .pmp-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    border: 0;
+    background: none;
+    color: #9ba4b3;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 1;
+  }
+
+
+  .pmp-ebook-preview {
+    display: none;
+    text-align: center;
+    margin: 0 0 20px;
+  }
+
+  .pmp-modal.is-guide .pmp-ebook-preview {
+    display: block;
+  }
+
+  .pmp-ebook-cover {
+    position: relative;
+    overflow: hidden;
+    width: 122px;
+    height: 162px;
+    margin: 0 auto;
+    border-radius: 8px;
+    background: linear-gradient(145deg, var(--pmp-ink) 0%, #2a3a5c 100%);
+    box-shadow: 0 14px 28px rgba(22, 32, 51, 0.22);
+  }
+
+  .pmp-ebook-cover:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+  }
+
+  .pmp-ebook-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    padding: 14px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    color: #fff;
+  }
+
+  .pmp-ebook-label {
+    margin-bottom: 8px;
+    color: var(--pmp-gold);
+    font-size: 0.56rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .pmp-ebook-inner h4 {
+    margin: 0;
+    color: #fff;
+    font-size: 0.82rem;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+
+  .pmp-ebook-footer {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .pmp-ebook-author {
+    color: rgba(255,255,255,0.78);
+    font-size: 0.62rem;
+    line-height: 1.3;
+  }
+
+  .pmp-ebook-pages {
+    display: inline-flex;
+    min-width: 74px;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--pmp-gold);
+    color: var(--pmp-ink);
+    padding: 4px 10px;
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .pmp-modal h2 {
+    margin-bottom: 8px;
+    font-size: 1.45rem;
+    line-height: 1.1;
+  }
+
+  .pmp-checklist {
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pmp-checklist li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 26px;
+  }
+
+  .pmp-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--pmp-gold);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .pmp-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .pmp-submit-btn,
+  .pmp-download-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    padding: 16px;
+    background: var(--pmp-deep-navy);
+    color: #fff;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .pmp-success {
+    display: none;
+    text-align: center;
+  }
+
+  .pmp-success.show {
+    display: block;
+  }
+
+  @media (max-width: 920px) {
+    .pmp-home {
+      padding-top: 18px;
+    }
+
+    .pmp-hero {
+      min-height: auto;
+      align-items: start;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.98)),
+        url("https://pmptrainingacademy.com/wp-content/uploads/2026/03/ChatGPT-Image-Jan-2-2026-07_03_23-PM-1.webp") center top / cover no-repeat;
+    }
+
+    .pmp-hero .pmp-inner {
+      display: block;
+    }
+
+    .pmp-hero-copy {
+      width: 100%;
+      margin-left: 0;
+      padding: 42px 0 46px;
+      transform: none;
+    }
+
+    .pmp-eyebrow {
+      width: 100%;
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .pmp-section-head,
+    .pmp-final .pmp-inner {
+      display: grid;
+      align-items: start;
+    }
+
+    .pmp-metrics,
+    .pmp-trust-inner,
+    .pmp-trust-grid,
+    .pmp-cohort-grid,
+    .pmp-card-grid,
+    .pmp-course-grid,
+    .pmp-about-grid,
+    .pmp-book-panel,
+    .pmp-results,
+    .pmp-lead-strip,
+    .pmp-path-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .pmp-path-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pmp-course-card.featured {
+      grid-column: auto;
+    }
+
+    .pmp-course-card {
+      min-height: auto;
+    }
+
+    .pmp-book-cover {
+      min-height: auto;
+      padding: 18px;
+    }
+
+    .pmp-course-media,
+    .pmp-course-card.featured .pmp-course-media {
+      min-height: 260px;
+      aspect-ratio: 16 / 8;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pmp-home {
+      padding-top: 24px;
+    }
+
+    .pmp-hero {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.98)),
+        url("https://pmptrainingacademy.com/wp-content/uploads/2026/03/ChatGPT-Image-Jan-2-2026-07_03_23-PM-1.webp") center top / cover no-repeat;
+    }
+
+    .pmp-hero .pmp-inner {
+      display: block;
+    }
+
+    .pmp-hero-copy {
+      padding: 34px 0 34px;
+    }
+
+    .pmp-eyebrow {
+      align-items: flex-start;
+      margin-bottom: 14px;
+      border-radius: 18px;
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      line-height: 1.35;
+      letter-spacing: 0.07em;
+    }
+
+    .pmp-dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+    }
+
+    .pmp-hero h1 {
+      margin-bottom: 12px;
+      font-size: clamp(2.55rem, 11vw, 3.3rem);
+      line-height: 1.02;
+    }
+
+    .pmp-hero-lede {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .pmp-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pmp-actions .pmp-btn {
+      width: 100%;
+    }
+
+    .pmp-path-finder {
+      padding: 14px 0;
+    }
+
+    .pmp-path-panel {
+      display: block;
+      padding: 14px;
+    }
+
+    .pmp-path-copy {
+      margin-bottom: 12px;
+    }
+
+    .pmp-path-copy h2 {
+      font-size: 1.25rem;
+    }
+
+    .pmp-path-copy p {
+      display: none;
+    }
+
+    .pmp-path-grid {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 4px;
+    }
+
+    .pmp-path-card {
+      min-width: 142px;
+      min-height: 78px;
+      scroll-snap-align: start;
+      padding: 11px;
+    }
+
+    .pmp-path-card strong {
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .pmp-path-card span {
+      font-size: 0.74rem;
+      line-height: 1.25;
+    }
+
+    .pmp-course-media,
+    .pmp-course-card.featured .pmp-course-media {
+      min-height: 220px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .pmp-actions,
+    .pmp-lead-actions,
+    .pmp-free-strip .pmp-inner,
+    .pmp-feature-grid,
+    .pmp-book-list,
+    .pmp-bundle-item,
+    .pmp-offer-top,
+    .pmp-schedule-row,
+    .pmp-bio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .pmp-btn,
+    .pmp-free-strip .pmp-btn {
+      width: 100%;
+    }
+
+    .pmp-course-link {
+      width: calc(100% - 48px);
+    }
+
+    .pmp-offer-price {
+      text-align: left;
+    }
+
+    .pmp-section {
+      padding: 44px 0;
+    }
+
+    .pmp-path-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main class="pmp-home">
+  <section class="pmp-hero">
+    <div class="pmp-inner">
+      <div class="pmp-hero-copy">
+        <div class="pmp-eyebrow"><span class="pmp-dot"></span> PMI Authorized Training Partner · Led by Dr. Charlene Parks, PMP®</div>
+        <h1>Where certification meets <span>real-world leadership.</span></h1>
+        <p class="pmp-hero-lede">PMI-aligned training for modern project professionals, teams, and organizations: PMP® cohorts, CAPM® prep, PDU renewal, corporate training, and private coaching led by Dr. Charlene Parks, PMP®.</p>
+
+        <div class="pmp-actions">
+          <a class="pmp-btn pmp-btn-primary" href="#paths">Find Your Path</a>
+          <a class="pmp-btn pmp-btn-secondary" href="#cohort">View Next Cohort</a>
+          <a class="pmp-btn pmp-btn-gold" href="https://pmptrainingacademy.com/pmp-exam-diagnostic/">Take PMP Readiness Assessment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pmp-free-strip" aria-label="Free PMP cheat sheets">
+    <div class="pmp-inner">
+      <div class="pmp-free-guide-card">
+        <div class="pmp-guide-badge">PMP®<br>Cheat<br>Sheets<span>2026</span></div>
+        <div>
+          <p class="pmp-lead-text">Not ready to enroll? <strong>Start here →</strong></p>
+          <h2>Free PMP® Exam Cheat Sheets</h2>
+          <p>22 pages covering all 3 domains, key formulas, and exam-day strategies.</p>
+        </div>
+      </div>
+      <button class="pmp-btn pmp-btn-gold pmp-guide-btn" type="button" data-pmp-modal-open data-pmp-modal-type="guide">
+        Get Instant Access
+      </button>
+    </div>
+  </section>
+
+  <section class="pmp-path-finder" id="paths">
+    <div class="pmp-inner pmp-path-panel">
+      <div class="pmp-path-copy">
+        <div class="pmp-kicker">Choose your path</div>
+        <h2>The Academy is bigger than one course.</h2>
+        <p class="pmp-muted">Start with the option that matches your current goal.</p>
+      </div>
+
+      <div class="pmp-path-grid" aria-label="PMP Training Academy learning paths">
+        <a class="pmp-path-card" href="#cohort"><strong>PMP® Cohort</strong><span>View live cohort</span></a>
+        <a class="pmp-path-card" href="https://pmptrainingacademy.com/courses/"><strong>PDU Renewal</strong><span>Browse renewal courses</span></a>
+        <a class="pmp-path-card" href="https://pmptrainingacademy.com/courses/"><strong>CAPM® Prep</strong><span>Join interest list</span></a>
+        <a class="pmp-path-card" href="https://pmptrainingacademy.com/corporate-training/"><strong>Corporate</strong><span>Request team training</span></a>
+        <a class="pmp-path-card" href="#course-schedule"><strong>1:1 Coaching</strong><span>Explore support options</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="pmp-metric-bar" aria-label="Authority and outcome metrics">
+    <div class="pmp-inner pmp-metrics">
+      <div class="pmp-metric"><div><strong>$120M+</strong><span>Enterprise transformation programs led</span></div></div>
+      <div class="pmp-metric"><div><strong>15+ Years</strong><span>Fortune 500 leadership experience</span></div></div>
+      <div class="pmp-metric"><div><strong>100%</strong><span>First cohort exam completers*</span></div></div>
+      <div class="pmp-metric"><div><strong>PMI ATP</strong><span>Authorized Training Partner</span></div></div>
+    </div>
+    <div class="pmp-inner pmp-footnote">*Historical result from first cohort exam completers. This is not a guarantee of future outcomes.</div>
+  </div>
+
+  <section id="mentor" class="pmp-section pmp-about">
+    <div class="pmp-inner pmp-about-grid">
+      <img src="https://pmptrainingacademy.com/wp-content/uploads/2026/01/68b337e0218d43f961c5a27b-HeadshotPro.png" alt="Dr. Charlene Parks, PMP">
+      <div>
+        <div class="pmp-kicker">Your PMP® success partner</div>
+        <h2>Learn PMP® with an instructor who has led real enterprise change.</h2>
+        <p>PMP® | SAFe® 6 Scrum Master | ITIL® v4 | CSM | Lean Six Sigma Black Belt | PMI ATP Instructor</p>
+        <p>Dr. Charlene Parks is a Fortune 500 transformation leader, PMI Authorized Training Partner instructor, and doctoral educator with 15+ years leading complex enterprise programs. Her role in the cohort is to make your PMP® path clearer, more structured, and more connected to the way project management works in real organizations.</p>
+        <div class="pmp-bio-grid">
+          <div>Dual-doctorate transformation executive</div>
+          <div>$120M+ enterprise programs led</div>
+          <div>PMP® mentor and instructor</div>
+          <div>Real-world enterprise scenarios</div>
+          <div>PMI Authorized Training Partner</div>
+          <div>AI, governance, and business value lens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pmp-section pmp-trust">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Built for the exam that’s coming</div>
+          <h2>Most courses still teach the exam PMI is retiring.</h2>
+        </div>
+        <p class="pmp-muted">The 2026 PMP® exam is a real shift in what PMI tests. This cohort is built around it.</p>
+      </div>
+      <div class="pmp-trust-grid">
+        <div class="pmp-trust-item">
+          <strong>Built for the 2026 ECO</strong>
+          <span>Aligned to the new Exam Content Outline, including the reweighted domains PMI now tests. PMBOK® 8 supports the material as reference.</span>
+        </div>
+        <div class="pmp-trust-item">
+          <strong>Business Environment, more than tripled</strong>
+          <span>The exam’s biggest change. This domain jumps from 8% to 26%. We teach governance, compliance, and organizational strategy, not skim them.</span>
+        </div>
+        <div class="pmp-trust-item">
+          <strong>AI for project managers</strong>
+          <span>Practical AI use cases alongside risk, governance, and human accountability.</span>
+        </div>
+        <div class="pmp-trust-item">
+          <strong>Small live cohort</strong>
+          <span>10 to 12 students. Coaching, weekly readiness checks, application support, and guided practice with Dr. Parks in every session.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cohort" class="pmp-section">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Next live cohort</div>
+          <h2>PMP® Exam Prep Mastery Cohort</h2>
+        </div>
+        <p class="pmp-muted">Live, structured PMP® prep for professionals who want accountability, application support, and a current exam plan. Led personally by Dr. Parks. Never a recording, never a TA.</p>
+      </div>
+
+      <div class="pmp-cohort-grid">
+        <article class="pmp-offer">
+          <div class="pmp-offer-top">
+            <div>
+              <h3>Prepare for the exam PMI is moving toward, not the exam everyone used to teach.</h3>
+              <p class="pmp-muted">Live virtual sessions, weekly readiness checks, PMP® application support, AI-aware project management, executive decision-making practice, the official PMI® PMP Exam Prep Bundle - Student, and 35 PMI-approved contact hours for PMP® exam eligibility.</p>
+            </div>
+            <div class="pmp-offer-price">
+              <del>$1,997</del>
+              <strong>$1,297</strong>
+              <span class="pmp-muted">Early enrollment pricing available</span>
+            </div>
+          </div>
+
+          <div class="pmp-offer-body">
+            <ul class="pmp-feature-grid">
+              <li>35 PMI-approved contact hours</li>
+              <li>Official PMI® PMP Exam Prep Bundle - Student included</li>
+              <li>Full-length PMP® Practice Exam included</li>
+              <li>PMBOK® Guide Eighth Edition perspective</li>
+              <li>AI for Project Managers module</li>
+              <li>Executive Project Judgment Workshop</li>
+              <li>Weekly 10-20 question readiness checks</li>
+              <li>Scenario-based PMP® exam strategy</li>
+              <li>PMP® application support</li>
+              <li>CAPM-to-PMP bridge guide</li>
+            </ul>
+
+            <div class="pmp-actions">
+              <a class="pmp-btn pmp-btn-gold" href="https://pmptrainingacademy.com/courses/summer2026/">Enroll in the Next Cohort</a>
+              <a class="pmp-btn pmp-btn-secondary" href="https://pmptrainingacademy.com/pmp-exam-diagnostic/">Take PMP Readiness Assessment</a>
+            </div>
+
+            <ul class="pmp-pills" aria-label="Cohort limits">
+              <li>Only 10 to 12 seats</li>
+              <li>Summer 2026: July 28 to September 17</li>
+              <li>Tuesday/Thursday evening format</li>
+            </ul>
+
+            <div class="pmp-alert">
+              <strong>Why this cohort, why now.</strong>
+              <p class="pmp-muted">The 2026 PMP® exam reflects a real shift in what PMI tests. Business Environment more than triples in weight, from 8% to 26%. People and Process are rebalanced. AI, sustainability, and value delivery move to the center. This cohort is built around that exam: scenario-based reasoning, executive judgment practice, and PMBOK® 8 as supporting reference. You prepare for the exam that’s coming, not the one being retired.</p>
+            </div>
+
+            <div class="pmp-schedule" aria-label="Cohort schedule">
+              <div class="pmp-schedule-row">
+                <strong>Orientation</strong>
+                <span>Monday, July 27, 2026 · 7:00-8:00 PM ET</span>
+              </div>
+              <div class="pmp-schedule-row">
+                <strong>Live sessions</strong>
+                <span>July 28 to September 17, 2026 · Tuesdays and Thursdays, 7:00-9:00 PM ET</span>
+              </div>
+              <div class="pmp-schedule-row">
+                <strong>Best fit</strong>
+                <span>Project leaders ready to commit to a guided PMP® study plan now.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="live-cohort-schedule" class="pmp-section" style="background: #fbfaf6; border-top: 1px solid var(--pmp-line);">
+    <style>
+      .pmp-live-schedule-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .pmp-live-schedule-card {
+        display: grid;
+        grid-template-columns: minmax(210px, 0.85fr) minmax(220px, 0.85fr) minmax(300px, 1.3fr) minmax(140px, 0.5fr);
+        gap: 18px;
+        align-items: center;
+        padding: 22px;
+        border: 1px solid var(--pmp-line);
+        border-radius: var(--pmp-radius);
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(22, 32, 51, 0.07);
+      }
+
+      .pmp-live-schedule-card.is-open {
+        border-color: rgba(196, 154, 39, 0.55);
+        background: linear-gradient(90deg, #fff8e2 0%, #fff 72%);
+      }
+
+      .pmp-live-schedule-card h3 {
+        margin: 0;
+        color: var(--pmp-ink);
+        font-family: Calibri, Arial, Helvetica, sans-serif;
+        font-size: 1.08rem;
+        line-height: 1.25;
+        font-weight: 900;
+      }
+
+      .pmp-live-schedule-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--pmp-gold-dark);
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .pmp-live-schedule-dates {
+        margin: 0;
+        color: var(--pmp-ink);
+        font-weight: 900;
+        line-height: 1.35;
+      }
+
+      .pmp-live-schedule-time {
+        margin: 0;
+        color: var(--pmp-muted);
+        font-size: 0.94rem;
+        line-height: 1.55;
+      }
+
+      .pmp-live-schedule-time strong {
+        color: var(--pmp-ink);
+      }
+
+      .pmp-live-schedule-status {
+        display: grid;
+        gap: 9px;
+        justify-items: end;
+      }
+
+      .pmp-live-badge {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        min-height: 30px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .pmp-live-badge.is-open {
+        background: #1fbf75;
+        color: #fff;
+      }
+
+      .pmp-live-badge.is-soon {
+        border: 1px solid #cfd8e7;
+        background: #eef3fb;
+        color: var(--pmp-ink);
+      }
+
+      .pmp-live-schedule-link {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #bfc7d4;
+        border-radius: 6px;
+        padding: 9px 12px;
+        background: #fff;
+        color: var(--pmp-ink) !important;
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        line-height: 1.1;
+        text-transform: uppercase;
+        text-decoration: none !important;
+        white-space: nowrap;
+      }
+
+      .pmp-live-schedule-card.is-open .pmp-live-schedule-link {
+        border-color: transparent;
+        background: linear-gradient(180deg, #ffd35a 0%, var(--pmp-gold) 100%);
+        color: #211600 !important;
+        box-shadow: 0 10px 22px rgba(196, 154, 39, 0.2);
+      }
+
+      @media (max-width: 980px) {
+        .pmp-live-schedule-card {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .pmp-live-schedule-status {
+          justify-items: start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .pmp-live-schedule-card {
+          padding: 18px;
+        }
+
+        .pmp-live-schedule-link {
+          width: 100%;
+        }
+      }
+    </style>
+
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">PMP Training Academy</div>
+          <h2>2026-2027 Academic Calendar</h2>
+        </div>
+        <p class="pmp-muted">Choose the live PMP® Exam Prep Mastery cohort that fits your calendar. Each cohort includes live instruction, PMI-aligned course materials, guided application support, and 35 PMI-approved contact hours.</p>
+      </div>
+
+      <div class="pmp-live-schedule-list">
+        <article class="pmp-live-schedule-card is-open">
+          <div>
+            <span class="pmp-live-schedule-label">Summer 2026</span>
+            <h3>PMP Exam Prep Mastery — July 2026 Cohort</h3>
+          </div>
+          <p class="pmp-live-schedule-dates">July 28 - September 17, 2026</p>
+          <p class="pmp-live-schedule-time"><strong>Orientation:</strong> Monday, July 27, 7:00-8:00 PM ET<br><strong>Live Sessions:</strong> Tuesdays &amp; Thursdays, 7:00-9:00 PM ET</p>
+          <div class="pmp-live-schedule-status"><span class="pmp-live-badge is-open">Now Enrolling</span><a class="pmp-live-schedule-link" href="https://pmptrainingacademy.com/courses/summer2026/">View July Cohort</a></div>
+        </article>
+
+        <article class="pmp-live-schedule-card">
+          <div>
+            <span class="pmp-live-schedule-label">Fall 2026</span>
+            <h3>PMP Exam Prep Mastery — Fall 2026 Cohort</h3>
+          </div>
+          <p class="pmp-live-schedule-dates">October 20 - December 10, 2026</p>
+          <p class="pmp-live-schedule-time"><strong>Orientation:</strong> Monday, October 19, 7:00-8:00 PM ET<br><strong>Live Sessions:</strong> Tuesdays &amp; Thursdays, 7:00-9:00 PM ET</p>
+          <div class="pmp-live-schedule-status"><span class="pmp-live-badge is-soon">Enrollment Opens September 2026</span><a class="pmp-live-schedule-link" href="https://pmptrainingacademy.com/courses/fall2026/">View Details</a></div>
+        </article>
+
+        <article class="pmp-live-schedule-card">
+          <div>
+            <span class="pmp-live-schedule-label">Winter 2027</span>
+            <h3>PMP Exam Prep Mastery — Winter 2027 Cohort</h3>
+          </div>
+          <p class="pmp-live-schedule-dates">January 12 - March 4, 2027</p>
+          <p class="pmp-live-schedule-time"><strong>Orientation:</strong> Monday, January 11, 7:00-8:00 PM ET<br><strong>Live Sessions:</strong> Tuesdays &amp; Thursdays, 7:00-9:00 PM ET</p>
+          <div class="pmp-live-schedule-status"><span class="pmp-live-badge is-soon">Coming Soon</span><a class="pmp-live-schedule-link" href="https://pmptrainingacademy.com/courses/winter2027/">View Details</a></div>
+        </article>
+
+        <article class="pmp-live-schedule-card">
+          <div>
+            <span class="pmp-live-schedule-label">Spring 2027</span>
+            <h3>PMP Exam Prep Mastery — April 2027 Cohort</h3>
+          </div>
+          <p class="pmp-live-schedule-dates">April 6 - May 27, 2027</p>
+          <p class="pmp-live-schedule-time"><strong>Orientation:</strong> Monday, April 5, 7:00-8:00 PM ET<br><strong>Live Sessions:</strong> Tuesdays &amp; Thursdays, 7:00-9:00 PM ET</p>
+          <div class="pmp-live-schedule-status"><span class="pmp-live-badge is-soon">Coming Soon</span><a class="pmp-live-schedule-link" href="https://pmptrainingacademy.com/courses/spring2027/">View Details</a></div>
+        </article>
+
+        <article class="pmp-live-schedule-card">
+          <div>
+            <span class="pmp-live-schedule-label">Summer 2027</span>
+            <h3>PMP Exam Prep Mastery — July 2027 Cohort</h3>
+          </div>
+          <p class="pmp-live-schedule-dates">July 13 - September 2, 2027</p>
+          <p class="pmp-live-schedule-time"><strong>Orientation:</strong> Monday, July 12, 7:00-8:00 PM ET<br><strong>Live Sessions:</strong> Tuesdays &amp; Thursdays, 7:00-9:00 PM ET</p>
+          <div class="pmp-live-schedule-status"><span class="pmp-live-badge is-soon">Coming Soon</span><a class="pmp-live-schedule-link" href="https://pmptrainingacademy.com/courses/summer2027/">View Details</a></div>
+        </article>
+      </div>
+
+      <p class="pmp-muted" style="margin: 18px 0 0; font-style: italic;">Schedule details may be adjusted based on enrollment, holidays, or cohort needs. Enrolled students will be notified in advance of any schedule updates.</p>
+    </div>
+  </section>
+
+  <section id="between-cohorts" class="pmp-section" style="background:#111E3E;color:#fff;">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker" style="color:#F0D275;">Between the flagship cohorts</div>
+          <h2 style="color:#fff;">Focused workshops, recovery support, and professional development.</h2>
+        </div>
+        <p style="color:#E5EAF4;">Short-format offerings open between eight-week cohorts. Dates and registration links are announced as each offering opens.</p>
+      </div>
+      <div class="pmp-course-grid">
+        <article class="pmp-course-card">
+          <div><div class="pmp-kicker">September</div><h3>PMP® Recovery and Application</h3><p>PMP Recovery Sprint, PMP Application Workshop, and a free information session for the Fall cohort.</p></div>
+        </article>
+        <article class="pmp-course-card">
+          <div><div class="pmp-kicker">December</div><h3>Year-End Intensive</h3><p>PMP Recovery Sprint, year-end PMP bootcamp, and customized corporate workshops.</p></div>
+        </article>
+        <article class="pmp-course-card">
+          <div><div class="pmp-kicker">March</div><h3>Strategy and Recovery</h3><p>Recovery Sprint and a one-day PMP strategy intensive for candidates preparing for their next attempt.</p></div>
+        </article>
+        <article class="pmp-course-card">
+          <div><div class="pmp-kicker">June</div><h3>Summer Readiness</h3><p>Recovery Sprint, free PMP masterclass, and early preparation for the Summer cohort.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="course-schedule" class="pmp-section" style="background: #fff;">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Featured programs</div>
+          <h2>Choose the right certification and renewal path.</h2>
+        </div>
+        <p class="pmp-muted">PMP Training Academy centers the flagship live PMP® cohort, then supports your next move with certification prep, 1:1 support, retake recovery, AI training, and PDU renewal courses.</p>
+      </div>
+
+      <div class="pmp-course-grid">
+        <article class="pmp-course-card featured has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg'); --media-pos: center 30%;">
+          <div class="pmp-course-media"><span>Live cohort</span></div>
+          <div>
+            <h3>PMP® Exam Prep Mastery Cohort</h3>
+            <p>The flagship live 8-week PMP® cohort aligned to the 2026 ECO, led personally by Dr. Parks. Includes the official PMI® PMP Exam Prep Bundle - Student and full-length PMP® Practice Exam.</p>
+            <ul class="pmp-course-meta">
+              <li>Summer 2026: July 28 to September 17</li>
+              <li>35 PMI-approved contact hours</li>
+              <li>10 to 12 seats</li>
+              <li>Official PMI® bundle</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/courses/summer2026/">Enroll in the Next Cohort</a>
+        </article>
+
+        <article class="pmp-course-card accent has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/01/68b337e0218d43f961c5a27b-HeadshotPro.png'); --media-pos: center 12%;">
+          <div class="pmp-course-media"><span>Private coaching</span></div>
+          <div>
+            <h3>1:1 PMP® Exam Prep Intensive</h3>
+            <p>Private coaching for candidates who want a focused exam plan, application support, weak-area remediation, and direct accountability.</p>
+            <ul class="pmp-course-meta">
+              <li>Private coaching</li>
+              <li>Application support</li>
+              <li>Custom study plan</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://calendly.com/charlene-drcharleneparks/pmp-consultation?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;primary_color=f2b91e" data-pmp-calendly>Request 1:1 Prep</a>
+
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image1.jpeg'); --media-pos: center 22%;">
+          <div class="pmp-course-media"><span>Retake support</span></div>
+          <div>
+            <h3>PMP® Retake Recovery</h3>
+            <p>For candidates who did not pass and need a structured recovery plan, error-log review, confidence rebuild, and targeted exam strategy.</p>
+            <ul class="pmp-course-meta">
+              <li>Retake plan</li>
+              <li>Weak-area review</li>
+              <li>Exam strategy</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/pmpretakerecovery/">Request Recovery Plan</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image2.jpeg'); --media-pos: center 28%;">
+          <div class="pmp-course-media"><span>Certification prep</span></div>
+          <div>
+            <h3>CAPM® Certification Prep</h3>
+            <p>Foundational certification prep for early-career professionals and career switchers building project management credibility.</p>
+            <ul class="pmp-course-meta">
+              <li>Entry pathway</li>
+              <li>Career switchers</li>
+              <li>CAPM to PMP bridge</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/courses/">View CAPM Options</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image2.jpeg'); --media-pos: center 32%;">
+          <div class="pmp-course-media"><span>Portfolio leadership</span></div>
+          <div>
+            <h3>PfMP® / Portfolio Leadership Prep</h3>
+            <p>Advanced preparation and executive-level coaching for leaders moving from project delivery into portfolio strategy and governance.</p>
+            <ul class="pmp-course-meta">
+              <li>Advanced credential</li>
+              <li>Portfolio strategy</li>
+              <li>Executive governance</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/pfmp-prep-program/">Apply Now</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image1.jpeg'); --media-pos: center 22%;">
+          <div class="pmp-course-media"><span>Flexible study</span></div>
+          <div>
+            <h3>Self-Paced PMP® Options</h3>
+            <p>Flexible PMP® study options for learners who need structure and official resources but cannot attend the live cohort schedule.</p>
+            <ul class="pmp-course-meta">
+              <li>Flexible study</li>
+              <li>Official resources</li>
+              <li>Exam prep support</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/courses/">View PMP Options</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg'); --media-pos: center 28%;">
+          <div class="pmp-course-media"><span>Free diagnostic</span></div>
+          <div>
+            <h3>Free PMP® Diagnostic</h3>
+            <p>Start here if you want to understand your readiness before joining the cohort.</p>
+            <ul class="pmp-course-meta">
+              <li>Free</li>
+              <li>Readiness check</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/pmp-exam-diagnostic/">Take PMP Readiness Assessment</a>
+        </article>
+
+        <article class="pmp-course-card featured has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg'); --media-pos: center 30%;">
+          <div class="pmp-course-media"><span>PDU renewal</span></div>
+          <div>
+            <h3>PDU Complete Renewal Catalog</h3>
+            <p>On-demand PDU courses built from Fortune 500 practitioner experience. Complete renewal options include 60 PDUs across Ways of Working, Power Skills, and Business Acumen.</p>
+            <ul class="pmp-course-meta">
+              <li>60 PDUs</li>
+              <li>11 courses</li>
+              <li>Designed across all 3 Talent Triangle areas</li>
+              <li>Certificates and reporting support</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://drc-png.github.io/pmp-diagnostics/pdu-course-catalog.html">Explore PDU Courses</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image2.jpeg'); --media-pos: center 34%;">
+          <div class="pmp-course-media"><span>AI practice</span></div>
+          <div>
+            <h3>AI-Powered Project Management</h3>
+            <p>Practical AI for project managers: planning, status reporting, stakeholder communication, risk identification, prompt engineering, and governance.</p>
+            <ul class="pmp-course-meta">
+              <li>6 PDUs</li>
+              <li>Ways of Working</li>
+              <li>On-demand</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://drc-png.github.io/pmp-diagnostics/pdu-course-catalog.html">View AI Course</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image3.jpeg'); --media-pos: center 30%;">
+          <div class="pmp-course-media"><span>AI strategy</span></div>
+          <div>
+            <h3>AI Strategy and Business Impact</h3>
+            <p>Learn how project leaders evaluate AI opportunities, assess readiness, manage vendors, and keep business value at the center.</p>
+            <ul class="pmp-course-meta">
+              <li>4 PDUs</li>
+              <li>Business Acumen</li>
+              <li>AI strategy</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://drc-png.github.io/pmp-diagnostics/pdu-course-catalog.html">View AI Strategy</a>
+        </article>
+
+        <article class="pmp-course-card has-media" style="--course-img: url('https://pmptrainingacademy.com/wp-content/uploads/2026/06/image1.jpeg'); --media-pos: center 24%;">
+          <div class="pmp-course-media"><span>Team training</span></div>
+          <div>
+            <h3>Corporate Training</h3>
+            <p>Upskill project teams with customized training for PM capability, delivery performance, governance, and measurable outcomes.</p>
+            <ul class="pmp-course-meta">
+              <li>Teams</li>
+              <li>Custom programs</li>
+              <li>Performance improvement</li>
+            </ul>
+          </div>
+          <a class="pmp-course-link" href="https://pmptrainingacademy.com/corporate-training/">Request Info</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pmp-section" style="background: #fff;">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Modern PMP® curriculum</div>
+          <h2>Built around the way PMI now describes project success.</h2>
+        </div>
+      </div>
+
+      <div class="pmp-curriculum-list">
+        <details open>
+          <summary>PMBOK® 8 + ECO 2026</summary>
+          <p>Connect PMP exam tasks to value delivery, governance, Focus Areas, performance domains, tailoring, and the principles guiding modern project management.</p>
+        </details>
+        <details>
+          <summary>Business Environment Depth</summary>
+          <p>The domain that more than tripled, from 8% to 26%. Go deep on governance, compliance, organizational change, sustainability, and benefits realization.</p>
+        </details>
+        <details>
+          <summary>AI for Project Managers</summary>
+          <p>Use AI for stakeholder analysis, risk identification, meeting summaries, communication drafts, schedule support, and lessons learned while managing governance risks.</p>
+        </details>
+        <details>
+          <summary>Executive Project Judgment</summary>
+          <p>Practice sponsor decisions, governance escalations, risk tradeoffs, business value choices, and stakeholder politics the way scenario questions are written.</p>
+        </details>
+        <details>
+          <summary>Weekly Readiness Checks</summary>
+          <p>Each week includes a focused knowledge check so you can see progress, identify weak areas, and adjust your study plan.</p>
+        </details>
+        <details>
+          <summary>CAPM-to-PMP Bridge</summary>
+          <p>CAPM holders get a clear map of what changes at PMP level and where candidates often struggle when moving into leadership judgment.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="pmp-section pmp-book">
+    <div class="pmp-inner">
+      <div class="pmp-book-panel">
+        <div class="pmp-book-cover">
+          <img src="https://pmptrainingacademy.com/wp-content/uploads/2026/06/book-and-flashcards-illustration.png" alt="PMP Exam Prep Mastery book and flashcards bundle by Dr. Charlene Parks, PMP">
+        </div>
+        <div class="pmp-book-copy">
+          <div class="pmp-kicker">Now in development · August 2026 release</div>
+          <h2>PMP® Exam Prep Mastery Book + Flashcards Bundle</h2>
+          <p><strong>The PMP® exam does not test what you can memorize. It tests how you think.</strong></p>
+          <p>Two separate study tools: the PMP® Exam Prep Mastery book and a companion decision-card deck for scenario-based review.</p>
+          <ul class="pmp-book-list">
+            <li>PMI Mindset Cards</li>
+            <li>Stakeholder Cards</li>
+            <li>Risk Response Cards</li>
+            <li>Change Control Cards</li>
+            <li>Agile Decision Cards</li>
+            <li>Governance & Compliance Cards</li>
+          </ul>
+          <div class="pmp-bundle-strip" aria-label="PMP Exam Prep Mastery bundle includes">
+            <div class="pmp-bundle-item">
+              <strong>Book</strong>
+              <span>Teaches the PMI mindset and decision framework behind the updated exam.</span>
+            </div>
+            <div class="pmp-bundle-item">
+              <strong>Flashcards</strong>
+              <span>250+ decision cards train you to choose the best answer when several choices seem correct.</span>
+            </div>
+            <div class="pmp-bundle-item">
+              <strong>Why it works</strong>
+              <span>Most candidates find a correct answer. High scorers learn to find the best answer.</span>
+            </div>
+          </div>
+          <div class="pmp-book-note">
+            Created by Dr. Charlene Parks, PMP®, founder of PMP Training Academy and a PMI Authorized Training Partner instructor.
+            <ul class="pmp-waitlist-perks" aria-label="Bundle waitlist benefits">
+              <li>Launch pricing</li>
+              <li>Early access</li>
+              <li>Bonus PMP mindset cards</li>
+              <li>First printing notification</li>
+            </ul>
+          </div>
+          <div class="pmp-actions" style="margin-top: 12px;">
+            <a class="pmp-btn pmp-btn-gold" href="#guide" data-pmp-modal-open data-pmp-modal-type="bundle">Join Bundle Waitlist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pmp-section">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">The certification gap</div>
+          <h2>The PMP® is a wealth tool, not just a credential.</h2>
+        </div>
+        <p class="pmp-muted">You are already doing the work. The title and the certification are what help close the gap between what you earn now and what your expertise can command.</p>
+      </div>
+
+      <div class="pmp-card-grid">
+        <article class="pmp-card">
+          <h3>The work, recognized</h3>
+          <p>The complex project work you already do can finally be recognized at the level it deserves.</p>
+        </article>
+        <article class="pmp-card">
+          <h3>The credential screen</h3>
+          <p>PMP® is a credential hiring managers and promotion committees screen for, so you stop getting passed over.</p>
+        </article>
+        <article class="pmp-card">
+          <h3>The negotiation moment</h3>
+          <p>One $1,297 investment against the salary, title, and authority it positions you to negotiate.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="pmp-section">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Student results</div>
+          <h2>First cohort exam completers passed on the first attempt.</h2>
+        </div>
+        <p class="pmp-muted">Early proof, stated carefully: this reflects participants from the first cohort who completed the exam. It is not a guarantee of individual results.</p>
+      </div>
+
+      <div class="pmp-results">
+        <div class="pmp-result-number">
+          <div>
+            <strong>100%</strong>
+            <span>first-time pass rate among first cohort exam completers</span>
+          </div>
+        </div>
+        <div class="pmp-quotes">
+          <article class="pmp-quote">
+            <p>“Charlene broke complex concepts into clear, manageable pieces. Her teaching style made the material easier to understand and apply.”</p>
+            <strong>Maya R.</strong>
+            <small class="pmp-muted">Senior Project Coordinator · needed clarity</small>
+          </article>
+          <article class="pmp-quote">
+            <p>“I left every session feeling confident, motivated, and more prepared. The structure kept me moving.”</p>
+            <strong>Keisha T.</strong>
+            <small class="pmp-muted">Operations Manager · needed accountability</small>
+          </article>
+          <article class="pmp-quote">
+            <p>“The coaching helped me connect exam concepts to real project scenarios instead of just memorizing terms.”</p>
+            <strong>Danielle W.</strong>
+            <small class="pmp-muted">Program Analyst · needed real-world context</small>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="pmp-section">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Your success, supported</div>
+          <h2>You don’t have to figure this out alone.</h2>
+        </div>
+        <p class="pmp-muted">This cohort comes with a Pass Support Commitment. You get structured preparation, weekly readiness checks, application support, and direct access to Dr. Parks in every session. From orientation to exam day, you are supported the whole way.</p>
+      </div>
+
+      <div class="pmp-card-grid">
+        <article class="pmp-card">
+          <h3>Structured preparation</h3>
+          <p>A clear week-by-week path aligned to the 2026 ECO, not a pile of disconnected videos.</p>
+        </article>
+        <article class="pmp-card">
+          <h3>Weekly readiness checks</h3>
+          <p>Focused knowledge checks reveal weak areas early, while there is still time to correct them.</p>
+        </article>
+        <article class="pmp-card">
+          <h3>Direct coaching</h3>
+          <p>Dr. Parks leads every session so you get context, accountability, and real-world interpretation.</p>
+        </article>
+      </div>
+
+      <div class="pmp-actions" style="margin-top: 24px;">
+        <a class="pmp-btn pmp-btn-primary pmp-cta-main" href="https://pmptrainingacademy.com/courses/summer2026/" aria-label="Enroll in the next cohort">Enroll in the Next Cohort</a>
+        <a class="pmp-btn pmp-btn-secondary" href="https://pmptrainingacademy.com/pmp-exam-diagnostic/">Take PMP Readiness Assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="pmp-section" style="background: #fff;">
+    <div class="pmp-inner">
+      <div class="pmp-section-head">
+        <div>
+          <div class="pmp-kicker">Questions before joining</div>
+          <h2>Clear answers for serious candidates.</h2>
+        </div>
+      </div>
+
+      <details open>
+        <summary><strong>Is this aligned with the 2026 PMP® exam updates?</strong></summary>
+        <p class="pmp-muted">Yes. The cohort is built for the updated exam, including the new domain weighting, deeper scenario focus, the expanded Business Environment domain, AI, sustainability, and value delivery. You prepare for the exam PMI is moving toward.</p>
+      </details>
+      <details>
+        <summary><strong>How does PMBOK® Guide Eighth Edition show up?</strong></summary>
+        <p class="pmp-muted">PMBOK® 8 informs the material as a supporting reference. The exam itself is built on PMI’s Exam Content Outline, so that is what the cohort is structured around, with PMBOK® 8 reinforcing the concepts.</p>
+      </details>
+      <details>
+        <summary><strong>Do I need AI experience?</strong></summary>
+        <p class="pmp-muted">No. The AI for Project Managers module meets you where you are and shows practical, governance-aware ways to use AI in real project work, which is exactly the direction the exam is taking.</p>
+      </details>
+      <details>
+        <summary><strong>Is this program right for CAPM® holders?</strong></summary>
+        <p class="pmp-muted">Yes. CAPM® holders receive a bridge guide that explains what changes at PMP® level and where the exam shifts from foundational knowledge to leadership judgment.</p>
+      </details>
+      <details>
+        <summary><strong>Are payment plans available?</strong></summary>
+        <p class="pmp-muted">Yes. Reach out and we will walk you through the options so the investment fits your timeline.</p>
+      </details>
+      <details>
+        <summary><strong>Should I register now or take the diagnostic first?</strong></summary>
+        <p class="pmp-muted">Either works. If you are ready to commit to a guided plan, claim your seat. If you want to see where you stand first, take the free diagnostic. Both lead to the same place: a clear path to the credential.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="pmp-final">
+    <div class="pmp-inner">
+      <div>
+        <div class="pmp-kicker">Next cohort enrollment</div>
+        <h2>Ready to earn the credential they can’t overlook?</h2>
+        <p>Apply for the next PMP® Exam Prep Mastery cohort for live coaching, accountability, and a study plan built around the 2026 exam. Only 10 to 12 seats.</p>
+      </div>
+      <a class="pmp-btn pmp-btn-primary pmp-cta-main" href="https://pmptrainingacademy.com/courses/summer2026/" aria-label="Enroll in the next cohort">Enroll in the Next Cohort</a>
+    </div>
+  </section>
+</main>
+
+<div class="pmp-modal-overlay" id="pmpModalGlobal" aria-hidden="true">
+  <div class="pmp-modal" role="dialog" aria-modal="true" aria-labelledby="pmpModalTitle">
+    <button class="pmp-modal-close" type="button" data-pmp-modal-close aria-label="Close">&times;</button>
+
+    <div id="pmpFormContentGlobal">
+      <div class="pmp-ebook-preview" aria-hidden="true" style="display:none;">
+        <div class="pmp-ebook-cover">
+          <div class="pmp-ebook-inner">
+            <span class="pmp-ebook-label">2026 Edition</span>
+            <h4>PMP® Exam<br>Cheat Sheets</h4>
+            <div class="pmp-ebook-footer">
+              <span class="pmp-ebook-author">Dr. Charlene Parks, PMP</span>
+              <span class="pmp-ebook-pages">22 Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pmp-kicker" id="pmpModalKicker">2026 PMP® Readiness Checklist</div>
+      <h2 id="pmpModalTitle">Download the 2026 PMP® Readiness Checklist</h2>
+      <p class="pmp-muted" id="pmpModalIntro">Includes quick-reference guidance for the updated exam, PMBOK® 8 lens, and CAPM-to-PMP bridge planning.</p>
+
+      <ul class="pmp-checklist" id="pmpModalList">
+        <li>2026 PMP® exam readiness checklist</li>
+        <li>People, Process, and Business Environment quick map</li>
+        <li>PMBOK® 8 framework lens</li>
+        <li>CAPM-to-PMP bridge prompts</li>
+        <li>Exam-day strategy reminders</li>
+      </ul>
+
+      <form class="pmp-form" id="pmpLeadFormGlobal">
+        <input type="text" id="pmpFirstNameGlobal" name="FNAME" placeholder="First Name" required>
+        <input type="email" id="pmpEmailGlobal" name="EMAIL" placeholder="Email Address" required>
+        <button type="submit" class="pmp-submit-btn" id="pmpModalSubmit">Send Me the Checklist</button>
+        <p class="pmp-muted" style="margin: 8px 0 0; font-size: 0.78rem; text-align: center;">No spam. Unsubscribe anytime.</p>
+      </form>
+    </div>
+
+    <div class="pmp-success" id="pmpSuccessGlobal" aria-live="polite">
+      <h2 id="pmpSuccessTitle">You’re In!</h2>
+      <p class="pmp-muted" id="pmpSuccessText">Your 2026 PMP® Readiness Checklist is ready.</p>
+      <a href="https://pmptrainingacademy.com/wp-content/uploads/2026/06/PMP-Readiness-Checklist-2026-1.pdf" class="pmp-download-btn" id="pmpSuccessDownload" target="_blank" rel="noopener">Download Now (PDF)</a>
+    </div>
+  </div>
+</div>
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<script>
+  (function(){
+    const calendlyUrl = 'https://calendly.com/charlene-drcharleneparks/pmp-consultation?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=f2b91e';
+    let calendlyScriptPromise;
+
+    function loadCalendly(){
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        return Promise.resolve();
+      }
+
+      if (calendlyScriptPromise) {
+        return calendlyScriptPromise;
+      }
+
+      calendlyScriptPromise = new Promise(function(resolve, reject){
+        const existingScript = document.querySelector('script[src*="assets.calendly.com/assets/external/widget.js"]');
+
+        if (existingScript) {
+          existingScript.addEventListener('load', resolve, { once: true });
+          existingScript.addEventListener('error', reject, { once: true });
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+
+      return calendlyScriptPromise;
+    }
+
+    function openCalendlyPopup(){
+      loadCalendly()
+        .then(function(){
+          if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+            window.Calendly.initPopupWidget({ url: calendlyUrl });
+          } else {
+            window.location.href = calendlyUrl;
+          }
+        })
+        .catch(function(){
+          window.location.href = calendlyUrl;
+        });
+    }
+
+    const overlay = document.getElementById('pmpModalGlobal');
+    const formContent = document.getElementById('pmpFormContentGlobal');
+    const success = document.getElementById('pmpSuccessGlobal');
+    const form = document.getElementById('pmpLeadFormGlobal');
+    const firstNameInput = document.getElementById('pmpFirstNameGlobal');
+    const emailInput = document.getElementById('pmpEmailGlobal');
+    const modalBox = overlay.querySelector('.pmp-modal');
+    const ebookPreview = document.querySelector('#pmpModalGlobal .pmp-ebook-preview');
+    const modalKicker = document.getElementById('pmpModalKicker');
+    const modalTitle = document.getElementById('pmpModalTitle');
+    const modalIntro = document.getElementById('pmpModalIntro');
+    const modalList = document.getElementById('pmpModalList');
+    const modalSubmit = document.getElementById('pmpModalSubmit');
+    const successTitle = document.getElementById('pmpSuccessTitle');
+    const successText = document.getElementById('pmpSuccessText');
+    const successDownload = document.getElementById('pmpSuccessDownload');
+    let modalType = 'checklist';
+
+    const modalContent = {
+      guide: {
+        kicker: 'Free PMP® Exam Cheat Sheets',
+        title: 'PMP® Exam Cheat Sheets',
+        intro: 'Your quick-reference guide to studying with more focus and less second-guessing.',
+        items: [
+          'All 3 PMP Domains: People, Process, Business',
+          'Essential formulas and calculations',
+          'Agile vs. predictive quick reference',
+          'Key ITTOs simplified',
+          'Exam-day tips and strategy reminders'
+        ],
+        submit: 'Send Me the Cheat Sheets',
+        successTitle: 'You’re In!',
+        successText: 'Your PMP® Cheat Sheets are ready.',
+        showDownload: true,
+        downloadHref: 'https://pmptrainingacademy.com/wp-content/uploads/2026/01/PMP-Quick-Reference.pdf'
+      },
+      checklist: {
+        kicker: '2026 PMP® Readiness Checklist',
+        title: 'Download the 2026 PMP® Readiness Checklist',
+        intro: 'Includes quick-reference guidance for the updated exam, PMBOK® 8 lens, and CAPM-to-PMP bridge planning.',
+        items: [
+          '2026 PMP® exam readiness checklist',
+          'People, Process, and Business Environment quick map',
+          'PMBOK® 8 framework lens',
+          'CAPM-to-PMP bridge prompts',
+          'Exam-day strategy reminders'
+        ],
+        submit: 'Send Me the Checklist',
+        successTitle: 'You’re In!',
+        successText: 'Your 2026 PMP® Readiness Checklist is ready.',
+        showDownload: true
+      },
+      bundle: {
+        kicker: 'Book + Flashcards Bundle',
+        title: 'Join the Priority Bundle Waitlist',
+        intro: 'Be first to hear when the PMP® Exam Prep Mastery book and separate 250+ decision-card flashcard deck are ready.',
+        items: [
+          'Launch pricing notification',
+          'Early access when the bundle opens',
+          'Bonus PMP® mindset cards',
+          'First printing and release updates',
+          'Book + separate flashcard deck announcements'
+        ],
+        submit: 'Join the Priority Waitlist',
+        successTitle: 'You’re On the Waitlist!',
+        successText: 'You’ll receive bundle launch updates, early access details, and first printing notifications.',
+        showDownload: false
+      }
+    };
+
+    function setModalContent(type){
+      modalType = modalContent[type] ? type : 'checklist';
+      const content = modalContent[modalType];
+      modalBox.classList.remove('is-guide');
+      if (ebookPreview) {
+        ebookPreview.style.display = 'none';
+        ebookPreview.setAttribute('aria-hidden', 'true');
+      }
+      if (modalType === 'guide') {
+        modalBox.classList.add('is-guide');
+        if (ebookPreview) {
+          ebookPreview.style.display = 'block';
+          ebookPreview.setAttribute('aria-hidden', 'false');
+        }
+      }
+      modalKicker.textContent = content.kicker;
+      modalTitle.textContent = content.title;
+      modalIntro.textContent = content.intro;
+      modalList.innerHTML = content.items.map(function(item) {
+        return '<li>' + item + '</li>';
+      }).join('');
+      modalSubmit.textContent = content.submit;
+      successTitle.textContent = content.successTitle;
+      successText.textContent = content.successText;
+      successDownload.style.display = content.showDownload ? 'inline-flex' : 'none';
+      if (content.downloadHref) successDownload.href = content.downloadHref;
+    }
+
+    function openModal(type){
+      setModalContent(type);
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      if (success.classList.contains('show')) {
+        success.classList.remove('show');
+        formContent.style.display = 'block';
+      }
+
+      firstNameInput.focus();
+    }
+
+    function closeModal(){
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function(e){
+      const calendlyTrigger = e.target.closest('[data-pmp-calendly]');
+      if (calendlyTrigger) {
+        e.preventDefault();
+        openCalendlyPopup();
+        return;
+      }
+
+      const openTrigger = e.target.closest('[data-pmp-modal-open]');
+      if (openTrigger) {
+        e.preventDefault();
+        openModal(openTrigger.dataset.pmpModalType || 'checklist');
+      }
+
+      if (e.target.closest('[data-pmp-modal-close]')) {
+        closeModal();
+      }
+    });
+
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeModal();
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('FNAME', firstNameInput.value);
+      formData.append('EMAIL', emailInput.value);
+      formData.append('SIGNUP_SOURCE', modalType === 'guide' ? 'Free 2026 PMP Exam Cheat Sheets' : (modalType === 'bundle' ? 'PMP Exam Prep Mastery Bundle Waitlist' : '2026 PMP Readiness Checklist'));
+      formData.append('b_2756d22a6556c434782cc1511_cb9ba6b7da', '');
+
+      fetch('https://pmptrainingacademy.us13.list-manage.com/subscribe/post?u=2756d22a6556c434782cc1511&id=cb9ba6b7da&f_id=0093f7e7f0', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      formContent.style.display = 'none';
+      success.classList.add('show');
+    });
+  })();
+</script>
+</body>
+</html>
+
+<script>
+  (function () {
+    function configureHostedLinks() {
+      document.querySelectorAll('.pmp-home a[href]').forEach(function (link) {
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('#') || link.hasAttribute('data-pmp-modal-open') || link.hasAttribute('data-pmp-calendly')) return;
+        link.setAttribute('target', '_top');
+      });
+    }
+
+    function reportHeight() {
+      if (window.parent === window) return;
+      window.parent.postMessage({
+        type: 'ptaHomepageHeight',
+        height: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+      }, '*');
+    }
+
+    configureHostedLinks();
+    window.addEventListener('load', reportHeight);
+    window.addEventListener('resize', reportHeight);
+    document.addEventListener('click', function (event) {
+      if (event.target.closest('[data-pmp-modal-open]')) {
+        window.parent.postMessage({ type: 'ptaHomepageFocus' }, '*');
+      }
+      window.setTimeout(reportHeight, 80);
+    });
+
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(reportHeight).observe(document.body);
+    }
+  }());
+</script>
