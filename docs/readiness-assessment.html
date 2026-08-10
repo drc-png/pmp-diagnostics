@@ -631,7 +631,7 @@ html, body {
             </select>
           </div>
         </div>
-        <div class="consent-row">
+        <div class="consent-row" id="learnerEmailConsent">
           <input id="funnelOptIn" type="checkbox" checked>
           <label for="funnelOptIn">Send my score report and PMP&reg; prep recommendations by email.
             <span>I also agree to receive PMP Training Academy study resources and cohort information. Unsubscribe anytime.</span>
@@ -705,8 +705,13 @@ var targetWindow = '';
 var funnelOptIn = true;
 var checkpoint = 'PMP 2026 Readiness Assessment - Lead Diagnostic';
 var STORAGE_VERSION = 'pmp-2026-readiness-lead-v5';
-var STORAGE_KEY = 'pmpTrainingAcademyReadinessProgress';
-var LAST_SUBMISSION_KEY = 'pmpTrainingAcademyLastSubmission';
+var learnerStorageToken = '';
+try {
+  learnerStorageToken = new URLSearchParams(window.location.search).get('pta_learner') || '';
+} catch (error) {}
+var learnerStorageScope = learnerStorageToken ? ':' + learnerStorageToken.replace(/[^a-zA-Z0-9_-]/g, '') : '';
+var STORAGE_KEY = 'pmpTrainingAcademyReadinessProgress' + learnerStorageScope;
+var LAST_SUBMISSION_KEY = 'pmpTrainingAcademyLastSubmission' + learnerStorageScope;
 var sessionActive = false;
 var pendingSavedSession = null;
 var lastSubmissionPayload = null;
@@ -2196,6 +2201,11 @@ window.addEventListener('message', function(event) {
       document.querySelectorAll('.identity-field').forEach(function(field) {
         field.hidden = true;
       });
+      var consentRow = document.getElementById('learnerEmailConsent');
+      var consentInput = document.getElementById('funnelOptIn');
+      funnelOptIn = false;
+      if (consentInput) consentInput.checked = false;
+      if (consentRow) consentRow.hidden = true;
     }
   }
   if (message.type !== 'ptaAssessmentSaveStatus') return;
