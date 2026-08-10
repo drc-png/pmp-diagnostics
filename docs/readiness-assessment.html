@@ -175,6 +175,7 @@
   gap:12px;
   margin-top:12px;
 }
+.pmp-quiz .form-grid[hidden] { display:none; }
 .pmp-quiz .consent-row {
   display:flex;
   gap:.65rem;
@@ -604,7 +605,7 @@ html, body {
         <h2>Before You Begin</h2>
         <p>This is not a memorization quiz. Every question is a judgment scenario with four defensible-looking options. Expect close answer choices, executive judgment, AI governance, sustainability, stakeholder politics, value delivery, risk, compliance, and integrated delivery tradeoffs. Read what the scenario tells you has already been done &mdash; it usually determines the correct next action.</p>
         <p><strong>Important:</strong> This is a high-rigor diagnostic, not a pass/fail exam. Most candidates will uncover meaningful gaps. A score in the mid-70s is a strong starting point; the domain pattern and decision errors matter more than one percentage.</p>
-        <div class="form-grid">
+        <div class="form-grid" id="learnerProfileFields">
           <div class="identity-field">
             <label for="studentName">Full Name</label>
             <input id="studentName" type="text" autocomplete="name" placeholder="Enter your full name" aria-describedby="nameError">
@@ -2204,6 +2205,8 @@ window.addEventListener('message', function(event) {
       document.querySelectorAll('.identity-field').forEach(function(field) {
         field.hidden = true;
       });
+      var profileFields = document.getElementById('learnerProfileFields');
+      if (profileFields) profileFields.hidden = true;
       var consentRow = document.getElementById('learnerEmailConsent');
       var consentInput = document.getElementById('funnelOptIn');
       funnelOptIn = false;
