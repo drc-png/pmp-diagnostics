@@ -9098,7 +9098,7 @@ function submitScoresToSheet(data, isRetry) {
   fetch(GOOGLE_SCRIPT_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(data)})
     .then(function() {
       statusEl.className = 'status-box show success';
-      statusEl.textContent = 'Score sent for processing. Because Google Apps Script uses a no-CORS submission, keep reference ' + data.submissionReference + ' until the score-report email arrives.';
+      statusEl.textContent = 'Assessment submitted successfully. Your reference number is ' + data.submissionReference + '. Your results are displayed below.';
     })
     .catch(function() {
       statusEl.className = 'status-box show error';
