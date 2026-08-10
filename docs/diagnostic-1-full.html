@@ -9113,8 +9113,16 @@ window.addEventListener('message', function(event) {
   if (message.type === 'ptaLearnerContext' && message.learner) {
     var nameInput = document.getElementById('studentName');
     var emailInput = document.getElementById('studentEmail');
-    if (nameInput) nameInput.value = message.learner.name || '';
-    if (emailInput) emailInput.value = message.learner.email || '';
+    var learnerName = String(message.learner.name || '').trim();
+    var learnerEmail = String(message.learner.email || '').trim();
+    if (nameInput) nameInput.value = learnerName;
+    if (emailInput) emailInput.value = learnerEmail;
+    if (learnerName && learnerEmail) {
+      studentName = learnerName;
+      studentEmail = learnerEmail;
+      var identityFields = document.querySelector('.identity-only');
+      if (identityFields) identityFields.hidden = true;
+    }
   }
   if (message.type !== 'ptaAssessmentSaveStatus') return;
   var statusEl = document.getElementById('submitStatus');

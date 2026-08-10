@@ -602,12 +602,12 @@ html, body {
         <p>This is not a memorization quiz. Every question is a judgment scenario with four defensible-looking options. Expect close answer choices, executive judgment, AI governance, sustainability, stakeholder politics, value delivery, risk, compliance, and integrated delivery tradeoffs. Read what the scenario tells you has already been done &mdash; it usually determines the correct next action.</p>
         <p><strong>Important:</strong> This is a high-rigor diagnostic, not a pass/fail exam. Most candidates will uncover meaningful gaps. A score in the mid-70s is a strong starting point; the domain pattern and decision errors matter more than one percentage.</p>
         <div class="form-grid">
-          <div>
+          <div class="identity-field">
             <label for="studentName">Full Name</label>
             <input id="studentName" type="text" autocomplete="name" placeholder="Enter your full name" aria-describedby="nameError">
             <div class="error" id="nameError">Please enter your name to continue.</div>
           </div>
-          <div>
+          <div class="identity-field">
             <label for="studentEmail">Email Address</label>
             <input id="studentEmail" type="email" autocomplete="email" placeholder="Enter your email" aria-describedby="emailError">
             <div class="error" id="emailError">Please enter a valid email address.</div>
@@ -2143,6 +2143,13 @@ function submitScoresToSheet(data) {
   lastSubmissionPayload = data;
   safeStorageSet(LAST_SUBMISSION_KEY, JSON.stringify(data));
 
+  if (window.parent !== window) {
+    statusEl.className = 'status-box show sending';
+    statusEl.textContent = 'Saving your score to your private learner record...';
+    window.parent.postMessage({type:'ptaAssessmentResult', payload:data}, 'https://pmptrainingacademy.com');
+    return;
+  }
+
   if (!GOOGLE_SCRIPT_URL) {
     statusEl.className = 'status-box show error';
     statusEl.textContent = 'Score submission is not configured. Please save your report.';
@@ -2172,6 +2179,38 @@ function submitScoresToSheet(data) {
       retryBtn.style.display = 'inline-flex';
     });
 }
+
+window.addEventListener('message', function(event) {
+  if (event.origin !== 'https://pmptrainingacademy.com') return;
+  var message = event.data || {};
+  if (message.type === 'ptaLearnerContext' && message.learner) {
+    var nameInput = document.getElementById('studentName');
+    var emailInput = document.getElementById('studentEmail');
+    var learnerName = String(message.learner.name || '').trim();
+    var learnerEmail = String(message.learner.email || '').trim();
+    if (nameInput) nameInput.value = learnerName;
+    if (emailInput) emailInput.value = learnerEmail;
+    if (learnerName && learnerEmail) {
+      studentName = learnerName;
+      studentEmail = learnerEmail;
+      document.querySelectorAll('.identity-field').forEach(function(field) {
+        field.hidden = true;
+      });
+    }
+  }
+  if (message.type !== 'ptaAssessmentSaveStatus') return;
+  var statusEl = document.getElementById('submitStatus');
+  var retryBtn = document.getElementById('retrySubmitBtn');
+  if (message.ok) {
+    statusEl.className = 'status-box show success';
+    statusEl.textContent = 'Score saved to your private learner record. Reference: ' + message.reference;
+    retryBtn.style.display = 'none';
+  } else {
+    statusEl.className = 'status-box show error';
+    statusEl.textContent = 'Your score is visible but could not be saved. Keep your local report and retry.';
+    retryBtn.style.display = 'inline-flex';
+  }
+});
 
 function retryLastSubmission() {
   var data = lastSubmissionPayload;
