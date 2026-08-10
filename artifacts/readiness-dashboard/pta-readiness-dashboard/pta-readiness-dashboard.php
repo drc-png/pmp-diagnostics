@@ -2,7 +2,7 @@
 /**
  * Plugin Name: PMP Training Academy Readiness Dashboard
  * Description: Stores authenticated learner assessment results in WordPress and optionally mirrors them to Google Sheets.
- * Version: 2.5.6
+ * Version: 2.5.7
  * Author: PMP Training Academy
  */
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PTA_READINESS_DB_VERSION', '2.5.6' );
+define( 'PTA_READINESS_DB_VERSION', '2.5.7' );
 
 function pta_readiness_table() {
 	global $wpdb;
@@ -78,7 +78,7 @@ function pta_readiness_catalog() {
 		array(
 			'baseline'       => array(
 				'title'      => 'Checkpoint 1: Baseline Diagnostic',
-				'src'        => 'https://readiness.pmptrainingacademy.com/readiness-assessment.html?v=20260810-4',
+				'src'        => 'https://readiness.pmptrainingacademy.com/readiness-assessment.html?v=20260810-5',
 				'checkpoint' => 'PMP 2026 Readiness Assessment - Lead Diagnostic',
 			),
 			'rapid-fire'     => array(
