@@ -739,9 +739,9 @@
         <div>
           <div class="pmp-eyebrow">Start Here</div>
           <h1 class="pmp-hero-title">Your PMP® Assessment Plan</h1>
-          <p class="pmp-hero-copy">Begin with Assessment 1 to establish your baseline. Review your results, use focused practice where needed, and continue through the remaining assessments.</p>
+          <p class="pmp-hero-copy">Begin with the Baseline to establish your starting point. Review your results, use focused practice where needed, and then continue through Assessments 1–5.</p>
           <div class="pmp-hero-action">
-            <a class="pmp-button gold" data-pta-assessment="diagnostic-1" href="https://pmptrainingacademy.com/pmp-2026-full-length-readiness-diagnostic-1/">Start Assessment 1 <span aria-hidden="true">→</span></a>
+            <a class="pmp-button gold" data-pta-assessment="baseline" href="https://readiness.pmptrainingacademy.com/readiness-assessment.html">Start Baseline <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -778,10 +778,10 @@
             <h2>Your path from baseline to readiness</h2>
 
             <div class="pmp-status-list">
-              <div class="pmp-status-item" data-path-step="baseline"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">1</span>Establish your baseline</span><strong>Complete Assessment 1</strong></div>
+              <div class="pmp-status-item" data-path-step="baseline"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">1</span>Establish your baseline</span><strong>Complete the Baseline</strong></div>
               <div class="pmp-status-item" data-path-step="review"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">2</span>Review your results</span><strong>Identify weak domains and decision patterns</strong></div>
               <div class="pmp-status-item is-optional" data-path-step="practice"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">3</span>Practice as needed</span><strong>Optional · Complete only the focused sets relevant to your gaps</strong></div>
-              <div class="pmp-status-item" data-path-step="improvement"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">4</span>Measure your improvement</span><strong>0 of 4 Assessments 2–5 completed</strong></div>
+              <div class="pmp-status-item" data-path-step="improvement"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">4</span>Measure your improvement</span><strong>0 of 5 Assessments 1–5 completed</strong></div>
             </div>
           </section>
         </div>
@@ -791,11 +791,11 @@
             <div class="pmp-sequence-heading">
               <div>
                 <div class="pmp-card-label">Continue Your Assessment Sequence</div>
-                <h2 id="continue-assessments-title">Assessments 2–5</h2>
+                <h2 id="continue-assessments-title">Assessments 1–5</h2>
                 <p>Review each result, practice where needed, and continue in order.</p>
               </div>
             </div>
-            <table class="pmp-readiness-table" aria-label="Assessments 2 through 5">
+            <table class="pmp-readiness-table" aria-label="Assessments 1 through 5">
               <thead>
                 <tr>
                   <th>Assessment</th>
@@ -806,10 +806,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td data-label="Assessment"><strong>Assessment 2</strong></td>
-                  <td data-label="Recommended Use">After reviewing Assessment 1</td>
+                  <td data-label="Assessment"><strong>Assessment 1</strong></td>
+                  <td data-label="Recommended Use">After reviewing your Baseline</td>
                   <td data-label="Status"><span class="pmp-table-status">Available</span></td>
-                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-2" href="https://pmptrainingacademy.com/pta-assessment/diagnostic-2/">Start Assessment 2</a></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-1" href="https://readiness.pmptrainingacademy.com/diagnostic-1-full.html">Start Assessment 1</a></td>
+                </tr>
+                <tr>
+                  <td data-label="Assessment"><strong>Assessment 2</strong></td>
+                  <td data-label="Recommended Use">Continue your readiness sequence</td>
+                  <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-2" href="https://readiness.pmptrainingacademy.com/diagnostic-2-full.html">Start Assessment 2</a></td>
                 </tr>
                 <tr>
                   <td data-label="Assessment"><strong>Assessment 3</strong></td>
@@ -1021,8 +1027,8 @@
           if (icon) icon.textContent = '✓';
           if (detail) detail.textContent = text;
         }
-        if (byKey['diagnostic-1']) {
-          complete(rows.baseline, 'Completed · ' + score(byKey['diagnostic-1'].overall_percent));
+        if (byKey.baseline) {
+          complete(rows.baseline, 'Completed · ' + score(byKey.baseline.overall_percent));
           complete(rows.review, 'Results reviewed · Focus areas are available in your score report');
         }
         var practiceCount = ['practice-set-1','practice-set-2','practice-set-3','practice-set-4','practice-set-5'].filter(function (key) {
@@ -1034,13 +1040,13 @@
             ? 'Optional · ' + practiceCount + ' of 5 focused practice sets completed'
             : 'Optional · Complete only the focused sets relevant to your gaps';
         }
-        var improvementCount = ['diagnostic-2','diagnostic-3','diagnostic-4','diagnostic-5'].filter(function (key) {
+        var improvementCount = ['diagnostic-1','diagnostic-2','diagnostic-3','diagnostic-4','diagnostic-5'].filter(function (key) {
           return !!byKey[key];
         }).length;
         if (rows.improvement) {
           var improvementDetail = rows.improvement.querySelector('strong');
-          if (improvementDetail) improvementDetail.textContent = improvementCount + ' of 4 Assessments 2–5 completed';
-          if (improvementCount === 4) complete(rows.improvement, 'Completed · Assessments 2–5 finished');
+          if (improvementDetail) improvementDetail.textContent = improvementCount + ' of 5 Assessments 1–5 completed';
+          if (improvementCount === 5) complete(rows.improvement, 'Completed · Assessments 1–5 finished');
         }
       }
 
