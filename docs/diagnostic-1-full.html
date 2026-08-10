@@ -851,8 +851,9 @@ html, body {
 var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFydYjI7u5Nn8jyX6jswoUik-BxAYdt0mvCPiymnaQPBY3-j1lOS3mgezAF_76fItVyQ/exec';
 var DIAGNOSTIC_ACCESS_KEY = 'pmp-diagnostic-2026-report';
 var EXAM_VERSION = 'pmp-2026-full-length-diagnostic-1-v5-case-section';
-var ACTIVE_SESSION_KEY = 'pmp_full_length_diagnostic_1_active_v5_case_section';
-var SUBMISSION_BACKUP_KEY = 'pmp_full_length_diagnostic_1_last_submission_v5_case_section';
+var LEARNER_SESSION_ID = (new URLSearchParams(window.location.search).get('pta_learner') || 'standalone').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40) || 'standalone';
+var ACTIVE_SESSION_KEY = 'pmp_full_length_diagnostic_1_active_v5_case_section_' + LEARNER_SESSION_ID;
+var SUBMISSION_BACKUP_KEY = 'pmp_full_length_diagnostic_1_last_submission_v5_case_section_' + LEARNER_SESSION_ID;
 var SESSION_MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000;
 var EXAM_SECONDS = 240 * 60;
 var remainingSeconds = EXAM_SECONDS;
@@ -9080,6 +9081,12 @@ function submitScoresToSheet(data, isRetry) {
   lastSubmissionPayload = data;
   saveSubmissionBackup(data);
   retryBtn.classList.remove('show');
+  if (window.parent !== window) {
+    statusEl.className = 'status-box show sending';
+    statusEl.textContent = (isRetry ? 'Retrying' : 'Saving') + ' your score to your private learner record...';
+    window.parent.postMessage({type:'ptaAssessmentResult', payload:data}, 'https://pmptrainingacademy.com');
+    return;
+  }
   if (!GOOGLE_SCRIPT_URL) {
     statusEl.className = 'status-box show error';
     statusEl.textContent = 'Score submission is not configured. Save your report and provide reference ' + data.submissionReference + ' to your instructor.';
@@ -9099,6 +9106,29 @@ function submitScoresToSheet(data, isRetry) {
       retryBtn.classList.add('show');
     });
 }
+
+window.addEventListener('message', function(event) {
+  if (event.origin !== 'https://pmptrainingacademy.com') return;
+  var message = event.data || {};
+  if (message.type === 'ptaLearnerContext' && message.learner) {
+    var nameInput = document.getElementById('studentName');
+    var emailInput = document.getElementById('studentEmail');
+    if (nameInput) nameInput.value = message.learner.name || '';
+    if (emailInput) emailInput.value = message.learner.email || '';
+  }
+  if (message.type !== 'ptaAssessmentSaveStatus') return;
+  var statusEl = document.getElementById('submitStatus');
+  var retryBtn = document.getElementById('retrySubmitBtn');
+  if (message.ok) {
+    statusEl.className = 'status-box show success';
+    statusEl.textContent = 'Score saved to your private learner record. Reference: ' + message.reference;
+    retryBtn.classList.remove('show');
+  } else {
+    statusEl.className = 'status-box show error';
+    statusEl.textContent = 'Your score is visible but could not be saved. Keep your local report and use Retry Score Submission.';
+    retryBtn.classList.add('show');
+  }
+});
 
 
 function saveAsPDF() {
