@@ -230,6 +230,46 @@
       font-weight: 800;
     }
 
+    .pmp-step-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .pmp-step-icon {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid #bec9d8;
+      border-radius: 50%;
+      background: #f7f9fc;
+      color: var(--pmp-slate);
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .pmp-status-item.is-complete {
+      background: #f2fbf6;
+    }
+
+    .pmp-status-item.is-complete .pmp-step-icon {
+      border-color: #2f855a;
+      background: #2f855a;
+      color: var(--pmp-white);
+    }
+
+    .pmp-status-item.is-complete strong {
+      color: #256b49;
+    }
+
+    .pmp-status-item.is-optional .pmp-step-icon {
+      border-color: #d7a91e;
+      background: var(--pmp-gold-light);
+      color: #7a5a09;
+    }
+
     .pmp-status-item strong {
       color: var(--pmp-slate);
       text-align: left;
@@ -738,10 +778,10 @@
             <h2>Your path from baseline to readiness</h2>
 
             <div class="pmp-status-list">
-              <div class="pmp-status-item"><span>1. Establish your baseline</span><strong>Complete Assessment 1</strong></div>
-              <div class="pmp-status-item"><span>2. Review your results</span><strong>Identify weak domains and decision patterns</strong></div>
-              <div class="pmp-status-item"><span>3. Practice as needed</span><strong>Complete only the focused sets relevant to your gaps</strong></div>
-              <div class="pmp-status-item"><span>4. Measure your improvement</span><strong>Continue with Assessments 2–5</strong></div>
+              <div class="pmp-status-item" data-path-step="baseline"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">1</span>Establish your baseline</span><strong>Complete Assessment 1</strong></div>
+              <div class="pmp-status-item" data-path-step="review"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">2</span>Review your results</span><strong>Identify weak domains and decision patterns</strong></div>
+              <div class="pmp-status-item is-optional" data-path-step="practice"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">3</span>Practice as needed</span><strong>Optional · Complete only the focused sets relevant to your gaps</strong></div>
+              <div class="pmp-status-item" data-path-step="improvement"><span class="pmp-step-title"><span class="pmp-step-icon" aria-hidden="true">4</span>Measure your improvement</span><strong>0 of 4 Assessments 2–5 completed</strong></div>
             </div>
           </section>
         </div>
@@ -960,6 +1000,48 @@
         tag.textContent = data.history && data.history.length
           ? 'Latest: ' + (summary.latest_assessment || 'Assessment') + ' · Saved to your private learner record'
           : 'Complete your first assigned assessment to establish a score baseline.';
+        updateAssessmentPath(data.history || []);
+      }
+
+      function updateAssessmentPath(history) {
+        var rows = {};
+        Array.prototype.forEach.call(document.querySelectorAll('[data-path-step]'), function (row) {
+          rows[row.dataset.pathStep] = row;
+        });
+        var attempts = Array.isArray(history) ? history : [];
+        var byKey = {};
+        attempts.forEach(function (attempt) {
+          if (attempt && attempt.assessment_key) byKey[attempt.assessment_key] = attempt;
+        });
+        function complete(row, text) {
+          if (!row) return;
+          row.classList.add('is-complete');
+          var icon = row.querySelector('.pmp-step-icon');
+          var detail = row.querySelector('strong');
+          if (icon) icon.textContent = '✓';
+          if (detail) detail.textContent = text;
+        }
+        if (byKey['diagnostic-1']) {
+          complete(rows.baseline, 'Completed · ' + score(byKey['diagnostic-1'].overall_percent));
+          complete(rows.review, 'Results reviewed · Focus areas are available in your score report');
+        }
+        var practiceCount = ['practice-set-1','practice-set-2','practice-set-3','practice-set-4','practice-set-5'].filter(function (key) {
+          return !!byKey[key];
+        }).length;
+        if (rows.practice) {
+          var practiceDetail = rows.practice.querySelector('strong');
+          if (practiceDetail) practiceDetail.textContent = practiceCount
+            ? 'Optional · ' + practiceCount + ' of 5 focused practice sets completed'
+            : 'Optional · Complete only the focused sets relevant to your gaps';
+        }
+        var improvementCount = ['diagnostic-2','diagnostic-3','diagnostic-4','diagnostic-5'].filter(function (key) {
+          return !!byKey[key];
+        }).length;
+        if (rows.improvement) {
+          var improvementDetail = rows.improvement.querySelector('strong');
+          if (improvementDetail) improvementDetail.textContent = improvementCount + ' of 4 Assessments 2–5 completed';
+          if (improvementCount === 4) complete(rows.improvement, 'Completed · Assessments 2–5 finished');
+        }
       }
 
       function reportAssessmentHeight() {
