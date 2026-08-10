@@ -74,9 +74,9 @@
 
     .pmp-hero-grid {
       display: grid;
-      grid-template-columns: 1.5fr 0.9fr;
-      gap: 36px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: start;
     }
 
     .pmp-hero-title {
@@ -93,6 +93,10 @@
       font-size: 20px;
       max-width: 720px;
       margin: 0;
+    }
+
+    .pmp-hero-action {
+      margin-top: 24px;
     }
 
     .pmp-next-card {
@@ -201,22 +205,35 @@
 
     .pmp-status-list {
       display: grid;
-      gap: 10px;
+      gap: 0;
       margin-top: 20px;
+      border: 1px solid var(--pmp-line);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .pmp-status-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: minmax(160px, 0.8fr) 1.5fr;
+      gap: 18px;
       border-top: 1px solid var(--pmp-line);
-      padding-top: 10px;
+      padding: 11px 14px;
       color: var(--pmp-slate);
     }
 
-    .pmp-status-item strong {
+    .pmp-status-item:first-child {
+      border-top: 0;
+    }
+
+    .pmp-status-item span {
       color: var(--pmp-navy);
-      text-align: right;
+      font-weight: 800;
+    }
+
+    .pmp-status-item strong {
+      color: var(--pmp-slate);
+      text-align: left;
+      font-weight: 600;
     }
 
     .pmp-metrics {
@@ -265,6 +282,29 @@
       gap: 18px;
     }
 
+    .pmp-sequence-panel {
+      margin-bottom: 18px;
+    }
+
+    .pmp-sequence-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .pmp-sequence-heading h2 {
+      margin: 0;
+      color: var(--pmp-navy);
+      font-size: 28px;
+    }
+
+    .pmp-sequence-heading p {
+      margin: 5px 0 0;
+      color: var(--pmp-slate);
+    }
+
     details.pmp-phase {
       background: var(--pmp-white);
       border: 1px solid var(--pmp-line);
@@ -285,6 +325,10 @@
       gap: 16px;
       align-items: center;
       padding: 22px 24px;
+    }
+
+    details.pmp-optional summary.pmp-phase-summary {
+      grid-template-columns: 1fr auto;
     }
 
     summary.pmp-phase-summary::-webkit-details-marker {
@@ -329,6 +373,31 @@
       color: var(--pmp-slate);
       font-weight: 800;
       font-size: 20px;
+    }
+
+    .pmp-summary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 9px 14px;
+      border: 1px solid #bec9d8;
+      border-radius: 6px;
+      background: var(--pmp-white);
+      color: var(--pmp-navy);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .pmp-summary-action .pmp-chevron {
+      transition: transform 160ms ease;
+    }
+
+    details[open] .pmp-summary-action .pmp-chevron {
+      transform: rotate(180deg);
     }
 
     details[open] .pmp-phase-toggle {
@@ -560,13 +629,20 @@
       }
 
       .pmp-status-item {
-        display: block;
+        grid-template-columns: 1fr;
+        gap: 3px;
       }
 
       .pmp-status-item strong {
-        display: block;
         text-align: left;
-        margin-top: 2px;
+      }
+
+      details.pmp-optional summary.pmp-phase-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .pmp-summary-action {
+        width: 100%;
       }
 
       .pmp-progress-head {
@@ -621,17 +697,13 @@
     <section class="pmp-assessment-hero">
       <div class="pmp-wrap pmp-hero-grid">
         <div>
-          <div class="pmp-eyebrow">PMP Training Academy Assessment Center</div>
-          <h1 class="pmp-hero-title">Your PMP assessment plan.</h1>
-          <p class="pmp-hero-copy">Take Assessment 1 first, use the optional practice sets to strengthen weak areas, then continue through Assessments 2–5 as your readiness improves.</p>
+          <div class="pmp-eyebrow">Start Here</div>
+          <h1 class="pmp-hero-title">Your PMP® Assessment Plan</h1>
+          <p class="pmp-hero-copy">Begin with Assessment 1 to establish your baseline. Review your results, use focused practice where needed, and continue through the remaining assessments.</p>
+          <div class="pmp-hero-action">
+            <a class="pmp-button gold" data-pta-assessment="diagnostic-1" href="https://drc-png.github.io/pmp-diagnostics/diagnostic-1-full.html?v=20260721-2">Start Assessment 1 <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-
-        <aside class="pmp-next-card" aria-label="Recommended next assessment">
-          <div class="pmp-card-label">Start Here</div>
-          <h2>Assessment 1</h2>
-          <p>Your first full-length readiness assessment establishes your starting score across all three PMP® domains.</p>
-          <a class="pmp-button gold" data-pta-assessment="diagnostic-1" href="https://drc-png.github.io/pmp-diagnostics/diagnostic-1-full.html?v=20260721-2">Start Assessment 1 <span aria-hidden="true">→</span></a>
-        </aside>
       </div>
     </section>
 
@@ -662,54 +734,73 @@
           </section>
 
           <section class="pmp-panel">
-            <div class="pmp-card-label">Your Recommended Order</div>
-            <h2>Take the assessments in sequence</h2>
-            <p class="pmp-panel-copy">Begin with Assessment 1. Review your results, complete any practice you need, and move to the next assessment when you are ready.</p>
+            <div class="pmp-card-label">How to Use the Assessment Center</div>
+            <h2>Your path from baseline to readiness</h2>
 
             <div class="pmp-status-list">
-              <div class="pmp-status-item"><span>Start</span><strong>Assessment 1</strong></div>
-              <div class="pmp-status-item"><span>Review</span><strong>Your Results</strong></div>
-              <div class="pmp-status-item"><span>Practice</span><strong>As Needed</strong></div>
-              <div class="pmp-status-item"><span>Continue</span><strong>Assessments 2–5</strong></div>
+              <div class="pmp-status-item"><span>1. Establish your baseline</span><strong>Complete Assessment 1</strong></div>
+              <div class="pmp-status-item"><span>2. Review your results</span><strong>Identify weak domains and decision patterns</strong></div>
+              <div class="pmp-status-item"><span>3. Practice as needed</span><strong>Complete only the focused sets relevant to your gaps</strong></div>
+              <div class="pmp-status-item"><span>4. Measure your improvement</span><strong>Continue with Assessments 2–5</strong></div>
             </div>
           </section>
         </div>
 
         <div class="pmp-phase-stack">
-          <details class="pmp-phase gold" open>
-            <summary class="pmp-phase-summary">
-              <div class="pmp-phase-marker">1</div>
+          <section class="pmp-panel pmp-sequence-panel" aria-labelledby="continue-assessments-title">
+            <div class="pmp-sequence-heading">
               <div>
-                <h2 class="pmp-phase-title">Assessment 1: Starting Readiness</h2>
-                <div class="pmp-phase-subtitle">Your first full-length assessment and starting domain score.</div>
+                <div class="pmp-card-label">Continue Your Assessment Sequence</div>
+                <h2 id="continue-assessments-title">Assessments 2–5</h2>
+                <p>Review each result, practice where needed, and continue in order.</p>
               </div>
-              <div class="pmp-phase-toggle">⌄</div>
-            </summary>
-            <div class="pmp-phase-body">
-              <article class="pmp-assessment-row">
-                <div>
-                  <div class="pmp-row-kicker">Full Assessment</div>
-                  <h3 class="pmp-row-title">Assessment 1</h3>
-                  <div class="pmp-row-copy">Complete this assessment first to establish your readiness score and identify where your study time should go.</div>
-                  <div class="pmp-tags">
-                    <span class="pmp-tag">180 questions</span>
-                    <span class="pmp-tag">230 minutes</span>
-                    <span class="pmp-tag">Scored by domain</span>
-                  </div>
-                </div>
-                <a class="pmp-button gold" data-pta-assessment="diagnostic-1" href="https://drc-png.github.io/pmp-diagnostics/diagnostic-1-full.html?v=20260721-2">Start Assessment 1 <span aria-hidden="true">→</span></a>
-              </article>
             </div>
-          </details>
+            <table class="pmp-readiness-table" aria-label="Assessments 2 through 5">
+              <thead>
+                <tr>
+                  <th>Assessment</th>
+                  <th>Recommended Use</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Assessment"><strong>Assessment 2</strong></td>
+                  <td data-label="Recommended Use">After reviewing Assessment 1</td>
+                  <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-2" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-2/">Start Assessment 2</a></td>
+                </tr>
+                <tr>
+                  <td data-label="Assessment"><strong>Assessment 3</strong></td>
+                  <td data-label="Recommended Use">Continue your readiness sequence</td>
+                  <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-3" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-3/">Start Assessment 3</a></td>
+                </tr>
+                <tr>
+                  <td data-label="Assessment"><strong>Assessment 4</strong></td>
+                  <td data-label="Recommended Use">Continue after review and practice</td>
+                  <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-4" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-4/">Start Assessment 4</a></td>
+                </tr>
+                <tr>
+                  <td data-label="Assessment"><strong>Assessment 5</strong></td>
+                  <td data-label="Recommended Use">Final readiness validation</td>
+                  <td data-label="Status"><span class="pmp-table-status">Available</span></td>
+                  <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-5" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-5/">Start Assessment 5</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
 
-          <details class="pmp-phase">
+          <details class="pmp-phase pmp-optional">
             <summary class="pmp-phase-summary">
-              <div class="pmp-phase-marker">2</div>
               <div>
-                <h2 class="pmp-phase-title">Focused Practice Sets <span aria-label="optional">(Optional)</span></h2>
-                <div class="pmp-phase-subtitle">Open this section when you want extra practice in a specific topic area.</div>
+                <div class="pmp-card-label">Optional Practice and Progress Check</div>
+                <h2 class="pmp-phase-title">Focused Practice Sets — Optional</h2>
+                <div class="pmp-phase-subtitle">Strengthen specific domains based on your assessment results.</div>
               </div>
-              <div class="pmp-phase-toggle">⌄</div>
+              <span class="pmp-summary-action">View 5 Practice Sets <span class="pmp-chevron" aria-hidden="true">⌄</span></span>
             </summary>
             <div class="pmp-phase-body">
               <div class="pmp-progress-head">
@@ -733,7 +824,7 @@
                       <span class="pmp-tag">Study mode</span>
                     </div>
                   </div>
-                  <a class="pmp-button navy" data-pta-assessment="practice-set-1" href="https://drc-png.github.io/pmp-diagnostics/practice-set-1-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                  <a class="pmp-button navy" data-pta-assessment="practice-set-1" href="https://drc-png.github.io/pmp-diagnostics/practice-set-1-refined-direct.html">Start Practice Set 1 <span aria-hidden="true">→</span></a>
                 </article>
 
                 <article class="pmp-assessment-row">
@@ -748,7 +839,7 @@
                       <span class="pmp-tag">Study mode</span>
                     </div>
                   </div>
-                  <a class="pmp-button navy" data-pta-assessment="practice-set-2" href="https://drc-png.github.io/pmp-diagnostics/practice-set-2-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                  <a class="pmp-button navy" data-pta-assessment="practice-set-2" href="https://drc-png.github.io/pmp-diagnostics/practice-set-2-refined-direct.html">Start Practice Set 2 <span aria-hidden="true">→</span></a>
                 </article>
 
                 <article class="pmp-assessment-row">
@@ -763,7 +854,7 @@
                       <span class="pmp-tag">Study mode</span>
                     </div>
                   </div>
-                  <a class="pmp-button navy" data-pta-assessment="practice-set-3" href="https://drc-png.github.io/pmp-diagnostics/practice-set-3-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                  <a class="pmp-button navy" data-pta-assessment="practice-set-3" href="https://drc-png.github.io/pmp-diagnostics/practice-set-3-refined-direct.html">Start Practice Set 3 <span aria-hidden="true">→</span></a>
                 </article>
 
                 <article class="pmp-assessment-row">
@@ -778,7 +869,7 @@
                       <span class="pmp-tag">Study mode</span>
                     </div>
                   </div>
-                  <a class="pmp-button navy" data-pta-assessment="practice-set-4" href="https://drc-png.github.io/pmp-diagnostics/practice-set-4-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                  <a class="pmp-button navy" data-pta-assessment="practice-set-4" href="https://drc-png.github.io/pmp-diagnostics/practice-set-4-refined-direct.html">Start Practice Set 4 <span aria-hidden="true">→</span></a>
                 </article>
 
                 <article class="pmp-assessment-row">
@@ -793,20 +884,20 @@
                       <span class="pmp-tag">Study mode</span>
                     </div>
                   </div>
-                  <a class="pmp-button navy" data-pta-assessment="practice-set-5" href="https://drc-png.github.io/pmp-diagnostics/practice-set-5-refined-direct.html">Begin Set <span aria-hidden="true">→</span></a>
+                  <a class="pmp-button navy" data-pta-assessment="practice-set-5" href="https://drc-png.github.io/pmp-diagnostics/practice-set-5-refined-direct.html">Start Practice Set 5 <span aria-hidden="true">→</span></a>
                 </article>
               </div>
             </div>
           </details>
 
-          <details class="pmp-phase teal">
+          <details class="pmp-phase pmp-optional teal">
             <summary class="pmp-phase-summary">
-              <div class="pmp-phase-marker">3</div>
               <div>
-                <h2 class="pmp-phase-title">Optional Progress Check</h2>
-                <div class="pmp-phase-subtitle">Use this only if you want an additional check between full assessments.</div>
+                <div class="pmp-card-label">Optional Practice and Progress Check</div>
+                <h2 class="pmp-phase-title">Progress Check — Optional</h2>
+                <div class="pmp-phase-subtitle">Use this only when you want an additional measurement between assessments.</div>
               </div>
-              <div class="pmp-phase-toggle">⌄</div>
+              <span class="pmp-summary-action">View Progress Check <span class="pmp-chevron" aria-hidden="true">⌄</span></span>
             </summary>
             <div class="pmp-phase-body">
               <article class="pmp-feature-card teal">
@@ -825,54 +916,6 @@
             </div>
           </details>
 
-          <details class="pmp-phase red">
-            <summary class="pmp-phase-summary">
-              <div class="pmp-phase-marker">4</div>
-              <div>
-                <h2 class="pmp-phase-title">Assessments 2–5</h2>
-                <div class="pmp-phase-subtitle">Continue in order as you review, practice, and improve.</div>
-              </div>
-              <div class="pmp-phase-toggle">⌄</div>
-            </summary>
-            <div class="pmp-phase-body">
-              <table class="pmp-readiness-table" aria-label="Practice readiness assessments">
-                <thead>
-                  <tr>
-                    <th>Assessment</th>
-                    <th>Recommended Use</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td data-label="Assessment"><strong>Assessment 2</strong></td>
-                    <td data-label="Recommended Use">After reviewing Assessment 1</td>
-                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
-                    <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-2" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-2/">Begin Exam</a></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Assessment"><strong>Assessment 3</strong></td>
-                    <td data-label="Recommended Use">Continue your readiness sequence</td>
-                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
-                    <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-3" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-3/">Begin Exam</a></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Assessment"><strong>Assessment 4</strong></td>
-                    <td data-label="Recommended Use">Continue after review and practice</td>
-                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
-                    <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-4" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-4/">Begin Exam</a></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Assessment"><strong>Assessment 5</strong></td>
-                    <td data-label="Recommended Use">Final readiness validation</td>
-                    <td data-label="Status"><span class="pmp-table-status">Available</span></td>
-                    <td data-label="Action"><a class="pmp-button outline" data-pta-assessment="diagnostic-5" href="https://pmptrainingacademy.com/pmp-exam-simulator-practice-test-5/">Begin Exam</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </details>
         </div>
       </div>
     </section>
