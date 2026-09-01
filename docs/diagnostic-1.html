@@ -770,7 +770,7 @@ html, body {
       <div class="hero">
         <div class="kicker">Full-Length Readiness Diagnostic 1</div>
         <h1><span>PMP&reg; 2026</span> Full-Length Readiness Diagnostic 1</h1>
-        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions, with two scheduled 10-minute breaks after Question 60 and Question 120. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
+        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions, with two 10-minute breaks: the first after the case-study section and the second approximately midway through the independent-question portion. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
         <div class="badges">
           <span class="badge people">People: 60 questions</span>
           <span class="badge process">Process: 74 questions</span>
@@ -1202,8 +1202,17 @@ function randomizeQuestionBank(bank) {
   independent.forEach(function(q) { bank.push(q); });
 }
 function buildSectionBreaks(bank) {
-  return [60, 120].filter(function(index) {
-    return index > 0 && index < bank.length;
+  var openingCaseCount = 0;
+  while (openingCaseCount < bank.length && bank[openingCaseCount].caseSection) {
+    openingCaseCount++;
+  }
+  if (openingCaseCount === 0) {
+    openingCaseCount = bank.filter(function(q) { return q.caseHtml; }).length;
+  }
+  var independentCount = bank.length - openingCaseCount;
+  var midway = openingCaseCount + Math.floor(independentCount / 2);
+  return [openingCaseCount, midway].filter(function(index, pos, list) {
+    return index > 0 && index < bank.length && list.indexOf(index) === pos;
   });
 }
 function isBreakTarget(idx) {
@@ -1300,9 +1309,11 @@ function renderSectionReviewSummary() {
   }
 
   var sectionNumber = getSectionNumberForBoundary(pendingSectionReviewIndex);
-  document.getElementById('sectionReviewTitle').textContent = 'Review Section ' + sectionNumber;
-  document.getElementById('sectionReviewText').textContent =
-    'You have reached the end of this section. The exam clock is still running while you review.';
+  var isCaseStudyBreak = pendingSectionReviewIndex === sectionBreaks[0];
+  document.getElementById('sectionReviewTitle').textContent = isCaseStudyBreak ? 'Case Study Section Complete' : 'Review Section ' + sectionNumber;
+  document.getElementById('sectionReviewText').textContent = isCaseStudyBreak
+    ? 'You have reached the end of the case-study section. The exam clock is still running while you review before beginning the first 10-minute break.'
+    : 'You have reached the end of this section. The exam clock is still running while you review.';
   document.getElementById('sectionAnsweredCount').textContent = answered;
   document.getElementById('sectionUnansweredCount').textContent = unanswered;
   document.getElementById('sectionFlaggedCount').textContent = flaggedCount;
@@ -1405,7 +1416,7 @@ function ensureBreakOverlay() {
   var overlay = document.createElement('div');
   overlay.id = 'sectionBreakOverlay';
   overlay.className = 'break-overlay';
-  overlay.innerHTML = '<div class="break-panel"><h2>Section break</h2><p id="sectionBreakText"></p><div class="break-time" id="breakTime">10:00</div><p>The exam clock is paused during this 10-minute break. The previous section is now locked and cannot be reopened.</p><button type="button" id="continueBreakBtn">Continue to next section</button></div>';
+  overlay.innerHTML = '<div class="break-panel"><h2 id="sectionBreakTitle">Section break</h2><p id="sectionBreakText"></p><div class="break-time" id="breakTime">10:00</div><p>The exam clock is paused during this 10-minute break. The previous section is now locked and cannot be reopened.</p><button type="button" id="continueBreakBtn">Continue to next section</button></div>';
   document.querySelector('.pmp-quiz').appendChild(overlay);
   document.getElementById('continueBreakBtn').addEventListener('click', continueAfterBreak);
   return overlay;
@@ -1444,8 +1455,12 @@ function showBreakOverlay(idx) {
   if (reviewOverlay) reviewOverlay.style.display = 'none';
 
   var overlay = ensureBreakOverlay();
+  var isCaseStudyBreak = idx === sectionBreaks[0];
+  document.getElementById('sectionBreakTitle').textContent = isCaseStudyBreak ? 'Case Study Break' : 'Section Break';
   document.getElementById('sectionBreakText').textContent =
-    'Break ' + breakNumber + ' of 2. You may continue when ready, or the diagnostic will resume automatically when the 10-minute break expires.';
+    isCaseStudyBreak
+      ? 'Break ' + breakNumber + ' of 2. You have completed the case-study section. You may continue when ready, or the diagnostic will resume automatically when the 10-minute break expires.'
+      : 'Break ' + breakNumber + ' of 2. You may continue when ready, or the diagnostic will resume automatically when the 10-minute break expires.';
   breakSeconds = 10 * 60;
   renderBreakTimer();
 
