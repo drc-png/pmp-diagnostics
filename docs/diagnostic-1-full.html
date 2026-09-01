@@ -770,7 +770,7 @@ html, body {
       <div class="hero">
         <div class="kicker">Full-Length Readiness Diagnostic 1</div>
         <h1><span>PMP&reg; 2026</span> Full-Length Readiness Diagnostic 1</h1>
-        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions, with two 10-minute breaks: the first after the case-study section and the second approximately midway through the independent-question portion. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
+        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions, with two scheduled 10-minute breaks after Question 60 and Question 120. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
         <div class="badges">
           <span class="badge people">People: 60 questions</span>
           <span class="badge process">Process: 74 questions</span>
@@ -1203,17 +1203,8 @@ function randomizeQuestionBank(bank) {
   independent.forEach(function(q) { bank.push(q); });
 }
 function buildSectionBreaks(bank) {
-  var openingCaseCount = 0;
-  while (openingCaseCount < bank.length && bank[openingCaseCount].caseSection) {
-    openingCaseCount++;
-  }
-  if (openingCaseCount === 0) {
-    openingCaseCount = bank.filter(function(q) { return q.caseHtml; }).length;
-  }
-  var independentCount = bank.length - openingCaseCount;
-  var midway = openingCaseCount + Math.floor(independentCount / 2);
-  return [openingCaseCount, midway].filter(function(index, pos, list) {
-    return index > 0 && index < bank.length && list.indexOf(index) === pos;
+  return [60, 120].filter(function(index) {
+    return index > 0 && index < bank.length;
   });
 }
 function isBreakTarget(idx) {
