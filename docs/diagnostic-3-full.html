@@ -7183,16 +7183,26 @@ function setupResumePanel() {
   begin.hidden = true;
 }
 function beginExamShell() {
+  try {
+    renderQuestions();
+    updateProgress();
+  } catch (error) {
+    console.error('Diagnostic 3 could not render the exam screen.', error);
+    document.getElementById('topbar').style.display = 'none';
+    document.getElementById('startScreen').classList.add('active');
+    setupResumePanel();
+    showInlineNotice('The assessment could not finish loading. Your start screen is still available; reload the page and try again.');
+    return false;
+  }
   document.getElementById('startScreen').classList.remove('active');
   document.getElementById('topbar').style.display = 'flex';
-  renderQuestions();
-  updateProgress();
+  return true;
 }
 function resumeQuiz() {
   if (!resumeAvailable) return;
   if (!submissionReference) submissionReference = generateSubmissionReference();
   if (!attemptStartedAt) attemptStartedAt = new Date().toISOString();
-  beginExamShell();
+  if (!beginExamShell()) return;
   if (breakActive) {
     restoreBreakOverlay();
   } else {
@@ -7568,7 +7578,10 @@ function startScoredDiagnostic() {
   examStarted = true;
   submissionReference = generateSubmissionReference();
   attemptStartedAt = new Date().toISOString();
-  beginExamShell();
+  if (!beginExamShell()) {
+    examStarted = false;
+    return;
+  }
   showQuestion(0);
   startTimer();
   saveExamState();
