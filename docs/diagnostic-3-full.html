@@ -7988,6 +7988,17 @@ function submitScoresToSheet(data, isRetry) {
 function saveAsPDF() {
   setTimeout(function() { window.print(); }, 150);
 }
+
+(function() {
+  function reportEmbedHeight() {
+    if (window.parent === window) return;
+    var height = Math.min(Math.max(document.documentElement.scrollHeight, document.body.scrollHeight), 980);
+    window.parent.postMessage({type:'pmpDiagnosticHeight', height:height}, '*');
+  }
+  window.addEventListener('load', reportEmbedHeight);
+  window.addEventListener('resize', reportEmbedHeight);
+  if ('ResizeObserver' in window) new ResizeObserver(reportEmbedHeight).observe(document.documentElement);
+})();
 </script>
 </body>
 </html>

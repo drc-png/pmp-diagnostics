@@ -9176,7 +9176,7 @@ function saveAsPDF() {
   }
   function sendExamHeight() {
     try {
-      window.parent.postMessage({ type: 'pmpDiagnosticHeight', height: getExamHeight() }, '*');
+      window.parent.postMessage({ type: 'pmpDiagnosticHeight', height: Math.min(getExamHeight(), 980) }, '*');
     } catch (e) {}
   }
   window.addEventListener('load', sendExamHeight);
