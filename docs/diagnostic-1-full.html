@@ -770,14 +770,14 @@ html, body {
       <div class="hero">
         <div class="kicker">Full-Length Readiness Diagnostic 1</div>
         <h1><span>PMP&reg; 2026</span> Full-Length Readiness Diagnostic 1</h1>
-        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions, with two 10-minute breaks: the first after the case-study section and the second approximately midway through the independent-question portion. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
+        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It opens with a connected case-study section, followed by independent questions in one continuous exam flow. It includes timing pressure and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Assessment 1 of 3:</strong> This full-length diagnostic establishes your baseline and identifies coaching priorities. Final readiness will be evaluated through two subsequent independently written full-length exam simulations.</p>
         <div class="badges">
           <span class="badge people">People: 60 questions</span>
           <span class="badge process">Process: 74 questions</span>
           <span class="badge business">Business Environment: 46 questions</span>
           <span class="pill">240 minutes</span>
           <span class="pill">Case-study section first</span>
-          <span class="pill">2 scheduled 10-minute breaks</span>
+          <span class="pill">Continuous exam flow</span>
           <span class="pill">Predictive · adaptive · hybrid</span>
         </div>
       </div>
@@ -787,7 +787,7 @@ html, body {
         <p>This is not a memorization quiz. Every question is a judgment scenario with four defensible-looking options. Expect close answer choices, executive judgment, AI governance, sustainability, stakeholder politics, value delivery, risk, compliance, and integrated delivery tradeoffs. Read what the scenario tells you has already been done &mdash; it usually determines the correct next action.</p>
         <p><strong>Recommended baseline target:</strong> A score in the mid-70s indicates a promising starting point, not verified readiness. Strong provisional performance requires at least 85% overall, no domain below 78%, at least 75% on Hard items, and completion within the allotted time. Final readiness must still be confirmed through the two subsequent independently written full-length simulations. A score below 70% is useful, not bad; it tells us where to coach.</p>
         <p><strong>Interface practice:</strong> After you select <strong>Begin Diagnostic</strong>, you will first see three unscored practice items in the same exam interface. Practice responses are not saved, scored, submitted, or included in your report. The 240-minute timer begins only after practice is complete and you select <strong>Begin Scored Diagnostic</strong>.</p>
-        <p><strong>Flagged-question review:</strong> Use <strong>Flag for Review</strong> on any question you want to revisit. During the exam, the <strong>Section Flags</strong> button jumps to flagged questions in the current unlocked section; after that jump, use <strong>Return to Current Question</strong> to go back to where you were. At a section break, use <strong>Review Flagged</strong> or <strong>Review Unanswered</strong> before starting the break. Once you select <strong>Finish Section and Begin Break</strong>, that section is locked.</p>
+        <p><strong>Flagged-question review:</strong> Use <strong>Flag for Review</strong> on any question you want to revisit. During the exam, the <strong>Section Flags</strong> button jumps to flagged questions; after that jump, use <strong>Return to Current Question</strong> to go back to where you were.</p>
         <div class="form-grid identity-only">
           <div>
             <label for="studentName">Full Name</label>
@@ -850,10 +850,10 @@ html, body {
 <script>
 var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFydYjI7u5Nn8jyX6jswoUik-BxAYdt0mvCPiymnaQPBY3-j1lOS3mgezAF_76fItVyQ/exec';
 var DIAGNOSTIC_ACCESS_KEY = 'pmp-diagnostic-2026-report';
-var EXAM_VERSION = 'pmp-2026-full-length-diagnostic-1-v5-case-section';
+var EXAM_VERSION = 'pmp-2026-full-length-diagnostic-1-v6-continuous';
 var LEARNER_SESSION_ID = (new URLSearchParams(window.location.search).get('pta_learner') || 'standalone').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40) || 'standalone';
-var ACTIVE_SESSION_KEY = 'pmp_full_length_diagnostic_1_active_v5_case_section_' + LEARNER_SESSION_ID;
-var SUBMISSION_BACKUP_KEY = 'pmp_full_length_diagnostic_1_last_submission_v5_case_section_' + LEARNER_SESSION_ID;
+var ACTIVE_SESSION_KEY = 'pmp_full_length_diagnostic_1_active_v6_continuous_' + LEARNER_SESSION_ID;
+var SUBMISSION_BACKUP_KEY = 'pmp_full_length_diagnostic_1_last_submission_v6_continuous_' + LEARNER_SESSION_ID;
 var SESSION_MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000;
 var EXAM_SECONDS = 240 * 60;
 var remainingSeconds = EXAM_SECONDS;
@@ -1203,18 +1203,7 @@ function randomizeQuestionBank(bank) {
   independent.forEach(function(q) { bank.push(q); });
 }
 function buildSectionBreaks(bank) {
-  var openingCaseCount = 0;
-  while (openingCaseCount < bank.length && bank[openingCaseCount].caseSection) {
-    openingCaseCount++;
-  }
-  if (openingCaseCount === 0) {
-    openingCaseCount = bank.filter(function(q) { return q.caseHtml; }).length;
-  }
-  var independentCount = bank.length - openingCaseCount;
-  var midway = openingCaseCount + Math.floor(independentCount / 2);
-  return [openingCaseCount, midway].filter(function(index, pos, list) {
-    return index > 0 && index < bank.length && list.indexOf(index) === pos;
-  });
+  return [];
 }
 function isBreakTarget(idx) {
   return sectionBreaks.indexOf(idx) !== -1 && lockedUntil < idx;
