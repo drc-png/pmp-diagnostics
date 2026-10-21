@@ -51,4 +51,17 @@ $('focus-link').addEventListener('click',function(event){
 });
 const sample={student:{name:'Alex'},summary:{latest_score:72,latest_assessment:'Full-Length Readiness Diagnostic 3',people:78,process:62,business_environment:76,trend_points:4},history:[{assessment_key:'baseline',overall_percent:57},...Array.from({length:3},(_,i)=>({assessment_key:'diagnostic-'+(i+1),overall_percent:[62,68,72][i]}))]};
 $('state').addEventListener('change',e=>render(e.target.value==='sample'?sample:e.target.value==='error'?{error:true}:e.target.value==='complete'?{...sample,history:[...sample.history,{assessment_key:'diagnostic-4',overall_percent:79},{assessment_key:'diagnostic-5',overall_percent:84}],summary:{...sample.summary,latest_score:84,latest_assessment:'Full-Length Readiness Diagnostic 5',trend_points:5}}:{summary:{},history:[]}));if(window.parent!==window){$('preview').hidden=true;}render({summary:{},history:[]});window.addEventListener('load',()=>{if(window.parent!==window)window.parent.postMessage({type:'ptaAssessmentCenterReady'},'https://pmptrainingacademy.com');resize()});new ResizeObserver(resize).observe(document.body);
-</script></body></html>
+</script><!-- PAUSE SHARED STUDY GOAL -->
+<script>
+/* Account goal arrives only from the signed-in Academy parent; never stored in this public page. */
+(()=>{'use strict';const academy='https://pmptrainingacademy.com';
+function render(profile){const note=document.querySelector('.horizon-note');if(!note)return;note.replaceChildren();const text=document.createElement('div');const p=profile&&typeof profile==='object'?profile:null;const date=p&&typeof p.examDate==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(p.examDate)?p.examDate:null;
+text.textContent=date?(p.examBooked?'Booked exam: ':'Target exam: ')+date:p?String(p.planningWeeks)+'-week study goal':'Set your exam goal to guide your study plan.';note.append(text);
+if(p&&Array.isArray(p.weekdays)){const details=document.createElement('div');details.style.margin='6px 0';details.textContent=p.weekdays.length+' study days · '+String(p.minutesPerSession)+' minutes per day';note.append(details);}
+const button=document.createElement('button');button.type='button';button.className='button gold';button.style.marginTop='10px';button.style.width='100%';button.textContent='Set / Edit My Exam Goal';button.addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'pauseStudyGoalOpen'},academy);else window.location.href=academy+'/user-account/';});note.append(button);}
+window.addEventListener('message',event=>{if(event.origin!==academy||event.source!==window.parent||event.data?.type!=='pauseStudyProfile')return;render(event.data.profile);});
+render(null);if(window.parent!==window)window.parent.postMessage({type:'pauseStudyGoalReady'},academy);
+})();
+
+</script>
+</body></html>
