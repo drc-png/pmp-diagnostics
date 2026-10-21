@@ -90,4 +90,7 @@ render(null,window.parent===window?'loaded':'loading');if(window.parent!==window
 })();
 
 </script>
+<script>
+document.addEventListener('click',function(event){const link=event.target.closest('a[href="#practice"]');if(!link)return;const target=document.getElementById('practice');if(!target)return;event.preventDefault();target.scrollIntoView({behavior:'instant',block:'start'});});
+</script>
 </body></html>
