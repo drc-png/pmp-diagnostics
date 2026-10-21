@@ -363,10 +363,14 @@
   box-shadow:0 12px 30px rgba(17,30,62,.09);
 }
 .pmp-quiz .decision-panel.go { border-color:#71B88A; background:#F2FBF5; }
-.pmp-quiz .decision-panel.no-go { border-color:#E7A39D; background:#FFF5F4; }
+.pmp-quiz .decision-panel.no-go { border-color:#C9AE75; background:#FFFBF0; }
+.pmp-quiz .decision-panel.conditional { border-color:#C9AE75; background:#FFFBF0; }
+.pmp-quiz .decision-panel.incomplete { border-color:#90ACC9; background:#F3F7FC; }
+.pmp-quiz .decision-panel.conditional .decision-title { color:#785719; }
+.pmp-quiz .decision-panel.incomplete .decision-title { color:#234A70; }
 .pmp-quiz .decision-title { margin:0 0 8px; font-size:clamp(1.55rem,4vw,2.25rem); }
 .pmp-quiz .decision-panel.go .decision-title { color:var(--green); }
-.pmp-quiz .decision-panel.no-go .decision-title { color:var(--red); }
+.pmp-quiz .decision-panel.no-go .decision-title { color:#785719; }
 .pmp-quiz .gate-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:16px; }
 .pmp-quiz .gate { border:1px solid var(--line); border-radius:8px; padding:12px; background:#fff; }
 .pmp-quiz .gate.pass { border-left:5px solid var(--green); }
@@ -754,7 +758,7 @@ body.pmp-fullscreen-active{
       <div class="hero">
         <div class="kicker">Full-Length Readiness Diagnostic 5</div>
         <h1><span>PMP&reg; 2026</span> Full-Length Readiness Diagnostic 5</h1>
-        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It includes case/scenario sets, graphic-based items, hands-on artifact decisions, timing pressure, and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Diagnostic 5 of 5, Confirmatory Readiness Gate:</strong> This full-length mixed-domain simulation confirms your readiness decision after targeted repair. It covers the same task areas as Diagnostic 4 under changed project conditions, so it measures whether your judgment transfers to new situations. It includes eight linked case sets and eleven data/artifact questions. The final report issues a clear <strong>GO</strong> or <strong>NO-GO</strong> recommendation for scheduling the PMP&reg; exam.</p>
+        <p>This 180-question full-length PMP&reg; readiness diagnostic is aligned to the July 2026 PMP&reg; Examination Content Outline and exam-day decision style. It includes case/scenario sets, graphic-based items, hands-on artifact decisions, timing pressure, and diagnostic scoring by domain, task, format, difficulty, decision pattern, and pacing behavior.</p><p><strong>Diagnostic 5 of 5, Confirmatory Readiness Gate:</strong> This full-length mixed-domain simulation confirms your readiness decision after targeted repair. It covers the same task areas as Diagnostic 4 under changed project conditions, so it measures whether your judgment transfers to new situations. It includes eight linked case sets and eleven data/artifact questions. The final report provides GO, CONDITIONAL, NO-GO, or INCOMPLETE study guidance based on Academy readiness standards. These standards are not official PMI passing requirements.</p>
         <div class="badges">
           <span class="badge people">People: 59 questions</span>
           <span class="badge process">Process: 74 questions</span>
@@ -769,7 +773,7 @@ body.pmp-fullscreen-active{
       <div class="panel">
         <h2>Before You Begin</h2><p><strong>Response types:</strong> Single response, select-two, matching, artifact practicum, and dashboard hotspots. Each item is worth one point. Multiple-response and multi-part items require the complete correct response; no partial credit is awarded.</p>
         <p>This is not a memorization quiz. Every item tests project-management judgment through close, defensible-looking responses. Expect executive judgment, AI governance, sustainability, stakeholder politics, value delivery, risk, compliance, and integrated delivery tradeoffs. Read what the scenario tells you has already been done &mdash; it usually determines the correct next action.</p>
-        <p><strong>Academy practice GO/NO-GO rule (not a PMI passing score):</strong> A GO requires at least 85% overall, at least 78% in each domain, at least 75% on Hard items, and a response to all 180 scored items within the allotted time. Missing any gate produces a NO-GO recommendation with the specific repair priorities shown in the report.</p>
+        <p><strong>Academy practice GO/NO-GO rule (not a PMI passing score):</strong> A GO requires at least 85% overall (153/180 correct), at least 78% in each domain, at least 75% on Hard items, and at least 95% attempted (171/180), completed independently within 240 minutes. Unanswered questions receive zero points and remain in overall and domain totals. Borderline scores receive CONDITIONAL guidance; fewer than 95% attempted or unconfirmed testing conditions receive INCOMPLETE guidance. No result predicts an official PMP exam outcome.</p>
         <p><strong>Interface practice:</strong> After you select <strong>Begin Diagnostic</strong>, you will first see three unscored practice items in the same exam interface. Practice responses are not saved, scored, submitted, or included in your report. The 240-minute timer begins only after practice is complete and you select <strong>Begin Scored Diagnostic</strong>.</p>
         <p><strong>Flagged-question review:</strong> Use <strong>Flag for Review</strong> on any question you want to revisit. During the exam, the <strong>Section Flags</strong> button jumps to flagged questions in the current unlocked section; after that jump, use <strong>Return to Current Question</strong> to go back to where you were. At a section break, use <strong>Review Flagged</strong> or <strong>Review Unanswered</strong> before starting the break. Once you select <strong>Finish Section and Begin Break</strong>, that section is locked.</p>
         <div class="form-grid identity-only">
@@ -809,18 +813,18 @@ body.pmp-fullscreen-active{
       <button class="btn secondary retry-submit" id="retrySubmitBtn" type="button">Retry Score Submission</button>
       <div class="score-hero">
         <div class="score-big" id="totalPct">0%</div>
-        <div class="readiness" id="readinessLabel">GO/NO-GO Decision Pending</div>
+        <div class="readiness" id="readinessLabel">Readiness guidance pending</div>
         <div id="totalFraction">0 / -- correct</div>
         <div class="submission-ref" id="submissionReference"></div>
       </div>
       <div class="decision-panel" id="decisionPanel"><h2 class="decision-title" id="decisionTitle">Decision pending</h2><p id="decisionSummary"></p><div class="gate-list" id="gateList"></div></div>
-      <div class="focus"><h3>Diagnostic 5 of 5: Confirmatory Readiness Gate</h3><p>The recommendation below is determined from the published readiness gates. Use the task, format, decision-pattern, and pacing diagnostics to plan targeted repair when the result is NO-GO.</p></div><div class="results-grid" id="domainResults"></div><div class="focus"><h3>Task Diagnostic</h3><div id="diagnosticTaskBody"></div></div><div class="focus"><h3>Question Format Diagnostic</h3><div id="diagnosticFormatBody"></div></div><div class="focus"><h3>Difficulty Diagnostic</h3><div id="diagnosticDifficultyBody"></div></div><div class="focus"><h3>Decision Pattern Diagnostic</h3><div id="diagnosticPatternBody"></div></div><div class="focus"><h3>Pacing and Decision Behavior</h3><div id="pacingDiagnosticBody"></div></div>
+      <div class="focus"><h3>Diagnostic 5 of 5: Confirmatory Readiness Gate</h3><p>Use the Academy criteria and your task, format, decision-pattern, and pacing results to plan your next study steps. Saving status is separate from readiness guidance.</p></div><div class="results-grid" id="domainResults"></div><div class="focus"><h3>Task Diagnostic</h3><div id="diagnosticTaskBody"></div></div><div class="focus"><h3>Question Format Diagnostic</h3><div id="diagnosticFormatBody"></div></div><div class="focus"><h3>Difficulty Diagnostic</h3><div id="diagnosticDifficultyBody"></div></div><div class="focus"><h3>Decision Pattern Diagnostic</h3><div id="diagnosticPatternBody"></div></div><div class="focus"><h3>Pacing and Decision Behavior</h3><div id="pacingDiagnosticBody"></div></div>
       <div class="focus" id="focusSummary"><h3>Priority Coaching Areas</h3><ul id="focusList"></ul></div>
       <div class="coach-card" id="coachNote"></div>
       <div class="breakdown" id="breakdownContainer"></div>
       <div class="footer">
         <p><strong>Your score report is ready.</strong></p>
-        <p>Use the GO/NO-GO recommendation and failed gate details to choose the next step: schedule the exam, or complete targeted repair and retest.</p>
+        <p>Use your readiness guidance and review priorities to plan further practice and discuss scheduling with your instructor.</p>
         <p>Parks Training Academy &middot; support@parkstrainingacademy.com</p>
       </div>
       <div class="actions">
@@ -2548,10 +2552,30 @@ function gateCard(label, actual, target, passed) {
   return '<div class="gate ' + (passed ? 'pass' : 'fail') + '"><strong>' + (passed ? '&#10003; ' : '&#10007; ') + label + '</strong><span>' + actual + ' &middot; target ' + target + '</span></div>';
 }
 
+function classifyAcademyReadiness(input) {
+  var n = input.examLength, minimumAttempted = Math.ceil(n * 0.95);
+  var overall = input.correct / n * 100;
+  var domain = Math.min.apply(null, input.domains.map(function(d) { return d.total ? d.correct / d.total * 100 : 0; }));
+  var hard = input.hard.total ? input.hard.correct / input.hard.total * 100 : 0;
+  var gates = {overall:overall >= 85, domain:domain >= 78, hard:input.hard.total > 0 && hard >= 75, completion:input.attempted >= minimumAttempted, conditions:Number.isFinite(input.elapsedSeconds) && input.elapsedSeconds >= 0 && input.elapsedSeconds <= 14400 && input.independent === true};
+  var code = !gates.completion || !gates.conditions || !input.hard.total ? 'INCOMPLETE'
+    : overall < 80 || domain < 70 || hard < 65 ? 'NO-GO'
+    : gates.overall && gates.domain && gates.hard ? 'GO' : 'CONDITIONAL';
+  var labels = {GO:'GO: Readiness targets met', CONDITIONAL:'CONDITIONAL: Focused review recommended', 'NO-GO':'NO-GO: Additional preparation recommended', INCOMPLETE:'INCOMPLETE: Readiness conditions not met'};
+  var summaries = {
+    GO:'Your results meet the Academy readiness targets, including at least 95% attempted and your confirmation of independent completion within 240 minutes. Continue light review and discuss your exam plan with your instructor.',
+    CONDITIONAL:'Your results are close to the Academy readiness targets. Focus on the score areas marked for review, then use an independent confirmation assessment before deciding when to schedule.',
+    'NO-GO':'Your results identify areas that would benefit from additional preparation. Review the explanations and practice the priority skills before another timed assessment.',
+    INCOMPLETE:!gates.completion ? 'Fewer than 95% of questions were attempted. Your score is available for study planning; complete another timed, independent assessment for readiness guidance.' : !gates.conditions ? 'Timed, independent completion was not confirmed or the recorded time exceeded 240 minutes. Use these results for study planning and complete an assessment under valid conditions for readiness guidance.' : 'There is not enough hard-question evidence to confirm all readiness targets. Review these results with your instructor.'
+  };
+  return {code:code,label:labels[code],summary:summaries[code],gates:gates,minimumAttempted:minimumAttempted};
+}
+
 function submitQuiz(auto) {
   if (submitted) return;
   var unanswered = answers.filter(function(a, i) { return !answerIsSet(questions[i], a); }).length;
   if (!auto && unanswered > 0 && !confirm('You have ' + unanswered + ' unanswered question' + (unanswered === 1 ? '' : 's') + '. Submit anyway?')) return;
+  var independentConfirmed = confirm('Testing conditions: Did you complete this diagnostic independently, without outside help or answer explanations? Select OK to confirm. Select Cancel if this was assisted practice or you cannot confirm; your score will still be shown as study feedback.');
   recordCurrentQuestionTime();
   submitted = true;
   examStarted = false;
@@ -2590,31 +2614,21 @@ function submitQuiz(auto) {
   var minDomainPct = Math.min.apply(null, domainPctValues);
   var hardStats = difficultyScores.Hard || {correct:0,total:0};
   var hardPct = hardStats.total ? Math.round(hardStats.correct / hardStats.total * 100) : 0;
-  var overallGate = pct >= 85;
-  var domainGate = minDomainPct >= 78;
-  var hardGate = hardPct >= 75;
-  var completionGate = totalAnswered === questions.length;
-  var goDecision = overallGate && domainGate && hardGate && completionGate;
-  var decisionCode = goDecision ? 'GO' : 'NO-GO';
-  var finalReadinessLabel = goDecision ? 'GO — Schedule the PMP® exam' : 'NO-GO — Continue preparation before scheduling';
+  var readiness = classifyAcademyReadiness({correct:totalCorrect, examLength:questions.length, domains:['people','process','business'].map(function(k){return scores[k];}), hard:hardStats, attempted:totalAnswered, elapsedSeconds:EXAM_SECONDS-remainingSeconds, independent:independentConfirmed});
+  var overallGate = readiness.gates.overall, domainGate = readiness.gates.domain, hardGate = readiness.gates.hard, completionGate = readiness.gates.completion;
+  var goDecision = readiness.code === 'GO', decisionCode = readiness.code, finalReadinessLabel = readiness.label;
   document.getElementById('readinessLabel').textContent = finalReadinessLabel;
   var decisionPanel = document.getElementById('decisionPanel');
-  decisionPanel.classList.remove('go', 'no-go');
-  decisionPanel.classList.add(goDecision ? 'go' : 'no-go');
-  document.getElementById('decisionTitle').textContent = goDecision ? 'GO: Ready to Schedule' : 'NO-GO: Do Not Schedule Yet';
-  var failedGates = [];
-  if (!overallGate) failedGates.push('overall accuracy');
-  if (!domainGate) failedGates.push('domain consistency');
-  if (!hardGate) failedGates.push('Hard-item performance');
-  if (!completionGate) failedGates.push('exam completion');
-  document.getElementById('decisionSummary').textContent = goDecision
-    ? 'All four readiness gates were met. The evidence supports scheduling the PMP® exam while maintaining light review and pacing practice.'
-    : 'One or more readiness gates were not met: ' + failedGates.join(', ') + '. Complete targeted repair, then retest under timed conditions before scheduling.';
+  decisionPanel.classList.remove('go','no-go','conditional','incomplete');
+  decisionPanel.classList.add(decisionCode === 'GO' ? 'go' : decisionCode === 'NO-GO' ? 'no-go' : decisionCode.toLowerCase());
+  document.getElementById('decisionTitle').textContent = readiness.label;
+  document.getElementById('decisionSummary').textContent = readiness.summary + ' Unanswered questions count as incorrect. Academy standards are not official PMI passing requirements or a pass prediction.';
   document.getElementById('gateList').innerHTML = [
-    gateCard('Overall score', pct + '%', '85% or higher', overallGate),
+    gateCard('Overall score', pct + '% (' + totalCorrect + '/' + questions.length + ')', '85% or higher', overallGate),
     gateCard('Lowest domain', minDomainPct + '%', '78% or higher', domainGate),
     gateCard('Hard items', hardPct + '%', '75% or higher', hardGate),
-    gateCard('Completion', totalAnswered + '/' + questions.length + ' answered', questions.length + '/' + questions.length, completionGate)
+    gateCard('Attempted', totalAnswered + '/' + questions.length, 'at least 95% (' + readiness.minimumAttempted + '/' + questions.length + ')', completionGate),
+    gateCard('Testing conditions', Math.round((EXAM_SECONDS-remainingSeconds)/60) + ' minutes; independent completion ' + (independentConfirmed ? 'confirmed by learner' : 'not confirmed'), 'within 240 minutes, independently', readiness.gates.conditions)
   ].join('');
   document.getElementById('totalFraction').textContent = totalCorrect + ' / ' + questions.length + ' correct';
   submissionReference = submissionReference || generateSubmissionReference();
@@ -2645,10 +2659,10 @@ function submitQuiz(auto) {
   focusList.innerHTML = focusHtml.length ? focusHtml.join('') : '<li>No topic with four or more questions fell below 50%. Use the task, format, and pattern diagnostics for stronger evidence.</li>';
   buildDiagnosticReports(taskScores, formatScores, difficultyScores, patternScores);
   var pacingMetrics = renderPacingDiagnostic(totalAnswered);
-  document.getElementById('coachNote').innerHTML = '<h3>Recommended Next Step</h3><p><strong>' + finalReadinessLabel + '.</strong></p><p>' + (goDecision ? 'Schedule the exam within the planned testing window and maintain short, timed mixed-domain review sessions.' : 'Repair the failed gate areas shown above, complete timed scenario practice, and repeat a capstone readiness check before scheduling.') + '</p><p><strong>Coach note:</strong> Interpret the gate result together with pacing, flags, answer changes, and long stalls. Topic rows with fewer than four items are marked limited evidence.</p>';
+  document.getElementById('coachNote').innerHTML = '<h3>Recommended Next Step</h3><p><strong>' + finalReadinessLabel + '.</strong></p><p>' + readiness.summary + '</p><p>For a CONDITIONAL result, review your lowest task areas and arrange a fresh independent confirmation assessment with your instructor.</p><p>Topic rows with fewer than four questions provide limited evidence. Consider pacing and answer explanations alongside your scores.</p>';
   buildReview();
   renderMissedQuestionReport();
-  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, assessmentVersion:'D5-20261020-c4fbad8fdfde',questionDetails:buildQuestionDetails(),missedQuestions:buildMissedQuestionDetails()});
+  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode,readinessCriteriaVersion:'PTA-20261021-95attempted',testingConditionsGate:readiness.gates.conditions,independentConfirmed:independentConfirmed,minimumAttempted:readiness.minimumAttempted, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, assessmentVersion:'D5-20261020-c4fbad8fdfde',questionDetails:buildQuestionDetails(),missedQuestions:buildMissedQuestionDetails()});
   clearSavedSession();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -2769,7 +2783,7 @@ window.addEventListener('message', function(event) {
     status.className = 'status-box show ' + (message.ok ? 'success' : 'error');
     status.textContent = message.ok
       ? 'Score saved to your private learner record. Reference: ' + String(message.reference || submissionReference)
-      : 'Your report is ready, but the Academy could not save the score. Keep your report and retry below.';
+      : 'Your result is ready. Saving to your Academy account needs attention; this does not change your score or readiness guidance. Save your report, then select Retry score submission. If it still does not save, contact support@parkstrainingacademy.com with your submission reference.';
     retry.classList.toggle('show', !message.ok);
   }
 });
