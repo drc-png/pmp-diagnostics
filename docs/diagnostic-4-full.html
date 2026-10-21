@@ -2648,7 +2648,7 @@ function submitQuiz(auto) {
   document.getElementById('coachNote').innerHTML = '<h3>Recommended Next Step</h3><p><strong>' + finalReadinessLabel + '.</strong></p><p>' + (goDecision ? 'Schedule the exam within the planned testing window and maintain short, timed mixed-domain review sessions.' : 'Repair the failed gate areas shown above, complete timed scenario practice, and repeat a capstone readiness check before scheduling.') + '</p><p><strong>Coach note:</strong> Interpret the gate result together with pacing, flags, answer changes, and long stalls. Topic rows with fewer than four items are marked limited evidence.</p>';
   buildReview();
   renderMissedQuestionReport();
-  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, missedQuestions:buildMissedQuestionDetails()});
+  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, assessmentVersion:'D4-20261020-b5ad45ef4589',questionDetails:buildQuestionDetails(),missedQuestions:buildMissedQuestionDetails()});
   clearSavedSession();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -2674,9 +2674,16 @@ function ptaReviewSelected(q,a) {
   if (type==='matching' || type==='enhanced' || type==='pulldown' || type==='practicum') return (q.matches || q.dropdowns).map(function(row,j) { var v=a && a[j]; return (row.left || row.label)+' -> '+(v!==undefined && v!==null && v!=='' && row.options[Number(v)]!==undefined ? row.options[Number(v)] : 'Not answered'); }).join('; ');
   return answerDisplay(q,a);
 }
-function buildMissedQuestionDetails() {
-  return questions.map(function(q,i) { return {questionNumber:i+1,questionId:q.id || q._id || 'Q'+(i+1),question:ptaReviewText(q.q),context:ptaReviewText((q.caseHtml || '')+'\n'+(q.graphicHtml || '')),selectedAnswer:ptaReviewSelected(q,answers[i]),correctAnswer:correctDisplay(q),explanation:q.r || '',correct:isCorrectAnswer(q, answers[i])}; }).filter(function(row){return !row.correct;});
+function buildQuestionDetails() {
+  return questions.map(function(q,i) { return {questionNumber:i+1,task:q.task,taskLabel:q.taskLabel,domain:q.d,topic:q.t,answered:ptaHasAnyResponse(answers[i]),questionId:q.id || q._id || 'Q'+(i+1),question:ptaReviewText(q.q),context:ptaReviewText((q.caseHtml || '')+'\n'+(q.graphicHtml || '')),selectedAnswer:ptaReviewSelected(q,answers[i]),correctAnswer:correctDisplay(q),explanation:q.r || '',correct:isCorrectAnswer(q, answers[i])}; });
 }
+function ptaHasAnyResponse(value) {
+  if (value === undefined || value === null || value === '' || value === -1) return false;
+  if (typeof value === 'object') return Object.keys(value).some(function(k) { return ptaHasAnyResponse(value[k]); });
+  return true;
+}
+function buildMissedQuestionDetails() { return buildQuestionDetails().filter(function(row) { return !row.correct; }); }
+
 function buildReview() {
   var rv = document.getElementById('reviewSection');
   var reviewHtml = [];
@@ -2772,4 +2779,5 @@ window.addEventListener('message', function(event) {
 </script>
 </body>
 </html>
+
 
