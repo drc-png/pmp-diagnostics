@@ -735,6 +735,11 @@ body.pmp-fullscreen-active{
 
 .pmp-quiz .artifact-scroll{overflow-x:auto}.pmp-quiz .artifact-table{border-collapse:collapse;width:100%;font-size:.95rem}.pmp-quiz .artifact-table th,.pmp-quiz .artifact-table td{padding:10px;text-align:left;border:1px solid var(--line);vertical-align:top}.pmp-quiz .artifact-table th{background:#eef1f5}
 </style>
+<style>
+#missedQuestionReport{margin:24px 0;padding:24px;background:#fff;border:1px solid #dce2ed;border-radius:10px;color:#172b4d;line-height:1.6}
+.missed-question{border-top:1px solid #dce2ed;padding:18px 0;overflow-wrap:anywhere}.missed-question h3{margin:0 0 10px}.missed-question p{margin:8px 0}.missed-context{background:#f7f8fb;padding:12px;white-space:normal}
+@media print{#missedQuestionReport{display:block!important;padding:0;border:0}.missed-question{break-inside:avoid;page-break-inside:avoid}.missed-context{background:#fff}}
+</style>
 </head>
 <body>
 <div class="pmp-quiz">
@@ -822,7 +827,7 @@ body.pmp-fullscreen-active{
         <button class="btn" id="saveReportBtn" type="button">Save Score Report</button>
         <button class="btn secondary" id="reviewBtn">Review All Answers</button>
       </div>
-      <div id="reviewSection" style="display:none;"></div>
+      <section id="missedQuestionReport" aria-label="Missed question report"></section><div id="reviewSection" style="display:none;"></div>
     </section>
   </div>
 </div>
@@ -2642,11 +2647,36 @@ function submitQuiz(auto) {
   var pacingMetrics = renderPacingDiagnostic(totalAnswered);
   document.getElementById('coachNote').innerHTML = '<h3>Recommended Next Step</h3><p><strong>' + finalReadinessLabel + '.</strong></p><p>' + (goDecision ? 'Schedule the exam within the planned testing window and maintain short, timed mixed-domain review sessions.' : 'Repair the failed gate areas shown above, complete timed scenario practice, and repeat a capstone readiness check before scheduling.') + '</p><p><strong>Coach note:</strong> Interpret the gate result together with pacing, flags, answer changes, and long stalls. Topic rows with fewer than four items are marked limited evidence.</p>';
   buildReview();
-  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails});
+  renderMissedQuestionReport();
+  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, readinessDecision:decisionCode, overallGate:overallGate, domainGate:domainGate, hardGate:hardGate, completionGate:completionGate, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, hardPct:hardPct, lowestDomainPct:minDomainPct, answeredCount:totalAnswered, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, missedQuestions:buildMissedQuestionDetails()});
   clearSavedSession();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+
+function ptaReviewEscape(value) {
+  return String(value == null ? '' : value).replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; });
+}
+function ptaReviewText(html) {
+  var el = document.createElement('div');
+  el.innerHTML = String(html || '').replace(/<\/(p|div|li|h[1-6]|tr)>/gi, '</$1>\n').replace(/<br\s*\/?>/gi, '\n').replace(/<\/(td|th|span|b)>/gi, '</$1> | ');
+  return (el.textContent || '').replace(/[ \t]+/g, ' ').trim();
+}
+function renderMissedQuestionReport() {
+  var rows = buildMissedQuestionDetails(), target = document.getElementById('missedQuestionReport');
+  if (!target) return;
+  target.innerHTML = '<h2>Questions to Review (' + rows.length + ')</h2><p>Missed and unanswered questions from this attempt. Question numbers follow the order you saw.</p>' + (rows.length ? rows.map(function(row) {
+    return '<article class="missed-question"><h3>Question ' + row.questionNumber + ' · ' + ptaReviewEscape(row.questionId) + '</h3>' + (row.context ? '<p class="missed-context"><strong>Scenario / exhibit:</strong><br>' + ptaReviewEscape(row.context).replace(/\n/g, '<br>') + '</p>' : '') + '<p><strong>' + ptaReviewEscape(row.question) + '</strong></p><p><strong>Your answer:</strong> ' + ptaReviewEscape(row.selectedAnswer) + '</p><p><strong>Correct answer:</strong> ' + ptaReviewEscape(row.correctAnswer) + '</p><p><strong>Explanation:</strong> ' + ptaReviewEscape(row.explanation) + '</p></article>';
+  }).join('') : '<p>You answered every question correctly. No missed questions to review.</p>');
+}
+function ptaReviewSelected(q,a) {
+  var type=normalizeQuestionType(q);
+  if (type==='matching' || type==='enhanced' || type==='pulldown' || type==='practicum') return (q.matches || q.dropdowns).map(function(row,j) { var v=a && a[j]; return (row.left || row.label)+' -> '+(v!==undefined && v!==null && v!=='' && row.options[Number(v)]!==undefined ? row.options[Number(v)] : 'Not answered'); }).join('; ');
+  return answerDisplay(q,a);
+}
+function buildMissedQuestionDetails() {
+  return questions.map(function(q,i) { return {questionNumber:i+1,questionId:q.id || q._id || 'Q'+(i+1),question:ptaReviewText(q.q),context:ptaReviewText((q.caseHtml || '')+'\n'+(q.graphicHtml || '')),selectedAnswer:ptaReviewSelected(q,answers[i]),correctAnswer:correctDisplay(q),explanation:q.r || '',correct:isCorrectAnswer(q, answers[i])}; }).filter(function(row){return !row.correct;});
+}
 function buildReview() {
   var rv = document.getElementById('reviewSection');
   var reviewHtml = [];
@@ -2655,8 +2685,8 @@ function buildReview() {
     var yourText = answerDisplay(q, answers[i]);
     var your = !answerIsSet(q, answers[i]) ? '<span class="incorrect-text">Not answered</span>' : '<span class="' + (ok ? 'correct-text' : 'incorrect-text') + '">' + yourText + '</span>';
     var correct = ok ? '' : '<br>Correct answer: <span class="correct-text">' + correctDisplay(q) + '</span>';
-    var ruleIntro = ok ? 'PMI rule used:' : 'Why the selected answer is wrong:';
-    var rule = ok ? q.rule : (q.rule || 'The selected response does not preserve evidence, governance, value, and project-manager accountability.');
+    var ruleIntro = ok ? 'PMI rule used:' : 'Why this answer fits the scenario:';
+    var rule = ok ? q.rule : q.r;
     var formatLabel = q.format === 'Case' && q.itemFormat ? 'Case · ' + q.itemFormat : q.format;
     reviewHtml.push('<div class="review-item ' + (ok ? 'correct' : 'incorrect') + '"><strong>' + (i + 1) + '. ' + q.q + '</strong><div class="review-meta">' + q.t + ' · ' + q.a + ' · ' + formatLabel + '<span class="difficulty ' + difficultyClass(q.difficulty) + '">' + q.difficulty + '</span></div><p>Your answer: ' + your + correct + '</p><p><em>' + q.r + '</em></p><div class="rule-box"><strong>' + ruleIntro + '</strong> ' + rule + '</div></div>');
   });
@@ -2742,3 +2772,4 @@ window.addEventListener('message', function(event) {
 </script>
 </body>
 </html>
+
