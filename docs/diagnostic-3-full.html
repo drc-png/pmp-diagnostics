@@ -2717,9 +2717,7 @@ function submitScoresToSheet(data, isRetry) {
 }
 
 
-function saveAsPDF() {
-  setTimeout(function() { window.print(); }, 150);
-}
+function saveAsPDF() { ptaSaveReport(); }
 
 (function() {
   function reportEmbedHeight() {
@@ -2731,6 +2729,18 @@ function saveAsPDF() {
   window.addEventListener('resize', reportEmbedHeight);
   if ('ResizeObserver' in window) new ResizeObserver(reportEmbedHeight).observe(document.documentElement);
 })();
+
+var ptaSavedReportUrl = '';
+window.addEventListener('message', function(event) {
+  if (event.source !== window.parent || ['https://pmptrainingacademy.com','https://www.pmptrainingacademy.com','https://parkstrainingacademy.com','https://www.parkstrainingacademy.com'].indexOf(event.origin) === -1) return;
+  var message = event.data || {};
+  if (message.type !== 'ptaAssessmentSaveStatus' || !message.ok || typeof message.reportUrl !== 'string') return;
+  try { var url = new URL(message.reportUrl); if (url.protocol === 'https:' && ['pmptrainingacademy.com','www.pmptrainingacademy.com','parkstrainingacademy.com','www.parkstrainingacademy.com'].indexOf(url.host) !== -1 && url.pathname === '/assessments/' && url.searchParams.get('pta_report')) ptaSavedReportUrl = url.href; } catch(e) {}
+});
+function ptaSaveReport() {
+  if (ptaSavedReportUrl) { var url = new URL(ptaSavedReportUrl); url.searchParams.set('download','pdf'); window.open(url.href, '_blank', 'noopener'); return; }
+  window.print();
+}
 </script>
 </body>
 </html>
