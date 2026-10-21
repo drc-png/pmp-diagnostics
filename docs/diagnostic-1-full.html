@@ -2516,7 +2516,7 @@ function submitQuiz(auto) {
   document.getElementById('coachNote').innerHTML = '<h3>Recommended Next Step</h3><p>' + finalReadinessLabel + '</p><p><strong>Coach note:</strong> Interpret accuracy together with domain consistency, Hard-item performance, pacing, flags, answer changes, and long stalls. Topic rows with fewer than four items are marked limited evidence.</p>';
   buildReview();
   renderMissedQuestionReport();
-  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, missedQuestions:buildMissedQuestionDetails()});
+  submitScoresToSheet({submissionReference:submissionReference, attemptStartedAt:attemptStartedAt, submittedAt:new Date().toISOString(), accessKey:DIAGNOSTIC_ACCESS_KEY, checkpoint:checkpoint, studentName:studentName, email:studentEmail, candidateType:candidateType, targetWindow:targetWindow, funnelOptIn:funnelOptIn, overallPct:pct, readinessLabel:finalReadinessLabel, overallScore:totalCorrect + '/' + questions.length, peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0, peopleScore:scores.people.correct + '/' + scores.people.total, processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0, processScore:scores.process.correct + '/' + scores.process.total, businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0, businessScore:scores.business.correct + '/' + scores.business.total, examLength:questions.length, examSeconds:EXAM_SECONDS, completedSeconds:pacingMetrics.elapsedSeconds, averageSecondsPerQuestion:pacingMetrics.averageSecondsPerQuestion, flaggedCount:pacingMetrics.flaggedCount, changedQuestionCount:pacingMetrics.changedQuestionCount, answerChangeCount:pacingMetrics.answerChangeCount, stallCount:pacingMetrics.stallCount, deepStallCount:pacingMetrics.deepStallCount, sectionTimes:pacingMetrics.sectionTimes, focusTopics:focusTopics, topicDetails:topicDetails, assessmentVersion:'D1-20261020-4ffa57270fe0',questionDetails:buildQuestionDetails(),missedQuestions:buildMissedQuestionDetails()});
   clearSavedSession();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -2537,9 +2537,16 @@ function renderMissedQuestionReport() {
     return '<article class="missed-question"><h3>Question ' + row.questionNumber + ' · ' + ptaReviewEscape(row.questionId) + '</h3>' + (row.context ? '<p class="missed-context"><strong>Scenario / exhibit:</strong><br>' + ptaReviewEscape(row.context).replace(/\n/g, '<br>') + '</p>' : '') + '<p><strong>' + ptaReviewEscape(row.question) + '</strong></p><p><strong>Your answer:</strong> ' + ptaReviewEscape(row.selectedAnswer) + '</p><p><strong>Correct answer:</strong> ' + ptaReviewEscape(row.correctAnswer) + '</p><p><strong>Explanation:</strong> ' + ptaReviewEscape(row.explanation) + '</p></article>';
   }).join('') : '<p>You answered every question correctly. No missed questions to review.</p>');
 }
-function buildMissedQuestionDetails() {
-  return questions.map(function(q,i) { return {questionNumber:i+1,questionId:q.id || q._id || 'Q'+(i+1),question:ptaReviewText(q.q),context:ptaReviewText((q.caseHtml || '')+'\n'+(q.graphicHtml || '')),selectedAnswer:answers[i] >= 0 && answers[i] < q.o.length ? String.fromCharCode(65+answers[i]) + '. ' + q.o[answers[i]] : 'Not answered',correctAnswer:String.fromCharCode(65+q.x) + '. ' + q.o[q.x],explanation:q.r || '',correct:answers[i] === q.x}; }).filter(function(row){return !row.correct;});
+function buildQuestionDetails() {
+  return questions.map(function(q,i) { return {questionNumber:i+1,task:q.task,taskLabel:q.taskLabel,domain:q.d,topic:q.t,answered:ptaHasAnyResponse(answers[i]),questionId:q.id || q._id || 'Q'+(i+1),question:ptaReviewText(q.q),context:ptaReviewText((q.caseHtml || '')+'\n'+(q.graphicHtml || '')),selectedAnswer:answers[i] >= 0 && answers[i] < q.o.length ? String.fromCharCode(65+answers[i]) + '. ' + q.o[answers[i]] : 'Not answered',correctAnswer:String.fromCharCode(65+q.x) + '. ' + q.o[q.x],explanation:q.r || '',correct:answers[i] === q.x}; });
 }
+function ptaHasAnyResponse(value) {
+  if (value === undefined || value === null || value === '' || value === -1) return false;
+  if (typeof value === 'object') return Object.keys(value).some(function(k) { return ptaHasAnyResponse(value[k]); });
+  return true;
+}
+function buildMissedQuestionDetails() { return buildQuestionDetails().filter(function(row) { return !row.correct; }); }
+
 function buildReview() {
   var rv = document.getElementById('reviewSection');
   var letters = ['A','B','C','D'];
@@ -2672,4 +2679,5 @@ function saveAsPDF() {
 </script>
 </body>
 </html>
+
 
