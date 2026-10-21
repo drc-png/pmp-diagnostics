@@ -2488,7 +2488,7 @@ function selectOption(qi, oi) {
 }
 
 function updateProgress() {
-  var answered = answers.filter(function(a) { return a !== -1; }).length;
+  var answered = answers.filter(function(a, i) { return answerIsSet(questions[i], a); }).length;
   document.getElementById('progressText').textContent = answered + ' / ' + questions.length;
   document.getElementById('progressFill').style.width = (answered / questions.length * 100) + '%';
   var flaggedCount = getSectionIndexes(function(i) { return !!flagged[i]; }).length;
