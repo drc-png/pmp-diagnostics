@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP Training Academy | 2026 PMP Readiness Assessment</title>
+<style>
+.pmp-quiz {
+  --navy:#1B2E5E;
+  --deep:#111E3E;
+  --gold:#C49A27;
+  --soft-gold:#F0E4B8;
+  --cream:#FAF7F0;
+  --paper:#FDFCF8;
+  --ink:#2C2C2A;
+  --muted:#667085;
+  --line:#E2E7F0;
+  --green:#216E39;
+  --blue:#1B5E9D;
+  --red:#B42318;
+  --orange:#B65C00;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+  background:var(--cream);
+  color:var(--navy);
+  line-height:1.55;
+  overflow:hidden;
+}
+.pmp-quiz * { box-sizing:border-box; }
+.pmp-quiz h1,.pmp-quiz h2,.pmp-quiz h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height:1.05;
+  letter-spacing:0;
+  margin:.1rem 0 .55rem;
+}
+.pmp-quiz p { color:var(--muted); margin:.32rem 0; }
+.pmp-quiz .topbar {
+  display:none;
+  position:sticky;
+  top:0;
+  z-index:50;
+  align-items:center;
+  gap:1rem;
+  background:var(--deep);
+  color:#fff;
+  padding:.8rem 1.1rem;
+  box-shadow:0 8px 24px rgba(17,30,62,.18);
+}
+.pmp-quiz .brand-mini {
+  min-width:185px;
+  font-weight:900;
+  color:var(--soft-gold);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.72rem;
+}
+.pmp-quiz .progress-track {
+  height:8px;
+  flex:1;
+  border-radius:99px;
+  overflow:hidden;
+  background:rgba(255,255,255,.14);
+}
+.pmp-quiz .progress-fill {
+  width:0%;
+  height:100%;
+  background:var(--gold);
+  transition:width .2s ease;
+}
+.pmp-quiz .progress-text,.pmp-quiz .timer {
+  min-width:92px;
+  text-align:right;
+  color:#E5E7EB;
+  font-weight:800;
+  font-size:.84rem;
+}
+.pmp-quiz .timer.warning { color:#FFD166; }
+.pmp-quiz .timer.danger { color:#FF9B91; }
+.pmp-quiz .wrap {
+  width:min(980px, calc(100% - 32px));
+  margin:0 auto;
+  padding:18px 0;
+}
+.pmp-quiz .screen,.pmp-quiz .q-card,.pmp-quiz .results { display:none; }
+.pmp-quiz .active { display:block; }
+.pmp-quiz .hero {
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(196,154,39,.3);
+  border-radius:10px;
+  background:
+    linear-gradient(115deg, rgba(17,30,62,.96), rgba(27,46,94,.88) 50%, rgba(196,154,39,.22)),
+    url("brand_guide_assets/image3.jpeg") center 30% / cover no-repeat;
+  padding:26px 36px;
+  color:#fff;
+  box-shadow:0 18px 45px rgba(17,30,62,.18);
+}
+.pmp-quiz .hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(17,30,62,.94), rgba(17,30,62,.7) 48%, rgba(17,30,62,.2));
+}
+.pmp-quiz .hero > * { position:relative; z-index:1; max-width:720px; }
+.pmp-quiz .kicker {
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  color:var(--soft-gold);
+  font-weight:900;
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.pmp-quiz .kicker::before {
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--gold);
+}
+.pmp-quiz .hero h1 {
+  max-width:680px;
+  margin-bottom:10px;
+  font-size:clamp(2rem, 3.25vw, 3.25rem);
+  line-height:.96;
+  color:#fff;
+}
+.pmp-quiz .hero h1 span { color:var(--soft-gold); }
+.pmp-quiz .hero p {
+  margin-bottom:10px;
+  color:#F4F0E4;
+  font-size:.96rem;
+  line-height:1.45;
+  max-width:670px;
+}
+.pmp-quiz .panel {
+  margin-top:12px;
+  border-radius:8px;
+  background:#fff;
+  color:var(--navy);
+  padding:18px 22px 20px;
+  box-shadow:0 12px 30px rgba(17,30,62,.12);
+}
+.pmp-quiz .panel h2 {
+  font-size:clamp(1.55rem, 2.6vw, 2.25rem);
+}
+.pmp-quiz .panel > p {
+  font-size:.94rem;
+  line-height:1.38;
+}
+.pmp-quiz .badges {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+  margin:.75rem 0 0;
+}
+.pmp-quiz .badge,.pmp-quiz .pill {
+  display:inline-flex;
+  min-height:29px;
+  align-items:center;
+  border-radius:999px;
+  border:1px solid rgba(196,154,39,.36);
+  background:#fff;
+  color:var(--navy);
+  padding:.34rem .68rem;
+  font-size:.75rem;
+  font-weight:900;
+}
+.pmp-quiz .badge.people { color:var(--green); background:#ECFDF3; border-color:#B7E4C7; }
+.pmp-quiz .badge.process { color:var(--blue); background:#EFF8FF; border-color:#B9E6FE; }
+.pmp-quiz .badge.business { color:#6F3B00; background:#FFF7E3; border-color:#F4D58D; }
+.pmp-quiz .form-grid {
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.pmp-quiz .form-grid[hidden] { display:none; }
+.pmp-quiz .consent-row {
+  display:flex;
+  gap:.65rem;
+  align-items:flex-start;
+  margin:12px 0 4px;
+  border:1px solid rgba(196,154,39,.34);
+  border-radius:8px;
+  background:#FFF9EA;
+  padding:10px 12px;
+}
+.pmp-quiz .consent-row[hidden] {
+  display:none;
+}
+.pmp-quiz .consent-row input {
+  width:18px;
+  min-height:auto;
+  height:18px;
+  margin-top:.16rem;
+  accent-color:var(--gold);
+}
+.pmp-quiz .consent-row label {
+  margin:0;
+  color:var(--ink);
+  font-size:.9rem;
+  line-height:1.35;
+}
+.pmp-quiz .consent-row span {
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:400;
+}
+.pmp-quiz label {
+  display:block;
+  margin:0 0 .28rem;
+  color:var(--navy);
+  font-size:.88rem;
+  font-weight:900;
+}
+.pmp-quiz input,.pmp-quiz select {
+  width:100%;
+  min-height:45px;
+  border:2px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  color:var(--navy);
+  padding:.62rem .78rem;
+  font-size:.95rem;
+}
+.pmp-quiz input:focus,.pmp-quiz select:focus {
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 4px rgba(196,154,39,.15);
+}
+.pmp-quiz .error {
+  display:none;
+  margin-top:.22rem;
+  color:var(--red);
+  font-size:.78rem;
+  font-weight:800;
+}
+.pmp-quiz .error.show { display:block; }
+.pmp-quiz button { font:inherit; }
+.pmp-quiz .btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  border:0;
+  border-radius:6px;
+  background:var(--gold);
+  color:#201600;
+  padding:.7rem 1.12rem;
+  font-weight:950;
+  cursor:pointer;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:.8rem;
+}
+.pmp-quiz .btn { text-decoration:none; }
+.pmp-quiz .btn:hover { transform:translateY(-1px); filter:brightness(.98); }
+.pmp-quiz .btn.secondary { background:var(--navy); color:#fff; }
+.pmp-quiz .exam-shell {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.pmp-quiz .q-card {
+  border:1px solid var(--line);
+  border-top:6px solid var(--gold);
+  border-radius:10px;
+  background:#fff;
+  padding:28px;
+  box-shadow:0 12px 32px rgba(17,30,62,.09);
+}
+.pmp-quiz .q-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+.pmp-quiz .q-num {
+  color:var(--gold);
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:.78rem;
+}
+.pmp-quiz .q-domain {
+  border-radius:999px;
+  padding:.32rem .68rem;
+  font-size:.72rem;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.pmp-quiz .q-domain.people { background:#ECFDF3; color:var(--green); }
+.pmp-quiz .q-domain.process { background:#EFF8FF; color:var(--blue); }
+.pmp-quiz .q-domain.business { background:#FFF7E3; color:#6F3B00; }
+.pmp-quiz .q-type-note { margin:-.35rem 0 1rem; color:var(--muted); font-size:.86rem; font-weight:850; text-transform:uppercase; letter-spacing:.05em; }
+.pmp-quiz .structured-group { display:grid; gap:.8rem; margin:1rem 0; }
+.pmp-quiz .structured-row { border:2px solid var(--line); border-radius:8px; padding:.9rem; background:#fff; display:grid; gap:.55rem; }
+.pmp-quiz .structured-row label { font-weight:900; color:var(--navy); }
+.pmp-quiz .structured-row select { width:100%; border:1px solid var(--line); border-radius:6px; padding:.72rem; font:inherit; color:var(--ink); background:#fff; }
+.pmp-quiz .structured-row select:focus { outline:3px solid rgba(196,154,39,.28); border-color:var(--gold); }
+.pmp-quiz .q-text {
+  margin:0 0 1.2rem;
+  color:var(--navy);
+  font-size:1.08rem;
+  font-weight:900;
+}
+.pmp-quiz .option {
+  display:flex;
+  gap:.82rem;
+  align-items:flex-start;
+  border:2px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  margin:.66rem 0;
+  padding:.86rem .92rem;
+  color:var(--ink);
+  cursor:pointer;
+}
+.pmp-quiz .option:hover,.pmp-quiz .option.selected {
+  border-color:var(--gold);
+  background:#FFF9EA;
+}
+.pmp-quiz .letter {
+  flex:0 0 30px;
+  width:30px;
+  height:30px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#EEF2F7;
+  color:var(--navy);
+  font-weight:950;
+}
+.pmp-quiz .option.selected .letter { background:var(--gold); color:#201600; }
+.pmp-quiz .nav {
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  margin-top:1.3rem;
+}
+.pmp-quiz .nav button {
+  border:0;
+  border-radius:6px;
+  padding:.72rem 1.1rem;
+  font-weight:900;
+  cursor:pointer;
+}
+.pmp-quiz .prev { background:#EEF2F7; color:var(--navy); }
+.pmp-quiz .next { background:var(--navy); color:#fff; margin-left:auto; }
+.pmp-quiz .submit { background:var(--gold); color:#201600; margin-left:auto; }
+.pmp-quiz .score-hero {
+  border-radius:10px;
+  background:
+    linear-gradient(135deg, rgba(17,30,62,.98), rgba(27,46,94,.94)),
+    url("brand_guide_assets/image1.jpeg") center / cover no-repeat;
+  color:#fff;
+  text-align:center;
+  padding:34px 22px;
+  border-top:6px solid var(--gold);
+  box-shadow:0 18px 45px rgba(17,30,62,.16);
+}
+.pmp-quiz .score-big {
+  color:var(--soft-gold);
+  font-size:clamp(3.2rem, 9vw, 6rem);
+  line-height:.9;
+  font-weight:950;
+}
+.pmp-quiz .readiness {
+  margin-top:.65rem;
+  color:#fff;
+  font-weight:950;
+}
+.pmp-quiz .results-grid {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+  margin:18px 0;
+}
+.pmp-quiz .domain-card,.pmp-quiz .topic-card,.pmp-quiz .focus,.pmp-quiz .footer,.pmp-quiz .review-item,.pmp-quiz .coach-card {
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  padding:18px;
+  box-shadow:0 9px 25px rgba(17,30,62,.07);
+}
+.pmp-quiz .domain-card strong { display:block; }
+.pmp-quiz .bar-bg {
+  height:10px;
+  border-radius:999px;
+  overflow:hidden;
+  background:#EEF2F7;
+  margin:.72rem 0;
+}
+.pmp-quiz .bar { height:100%; width:0%; transition:width .8s ease; }
+.pmp-quiz .topic-row {
+  display:grid;
+  grid-template-columns:1.25fr 1fr 54px 118px;
+  gap:.7rem;
+  align-items:center;
+  padding:.62rem 0;
+  border-bottom:1px solid #F0F2F5;
+}
+.pmp-quiz .topic-row:last-child { border-bottom:0; }
+.pmp-quiz .status {
+  border-radius:999px;
+  padding:.22rem .48rem;
+  text-align:center;
+  font-size:.68rem;
+  font-weight:950;
+  text-transform:uppercase;
+}
+.pmp-quiz .strong { background:#ECFDF3; color:var(--green); }
+.pmp-quiz .developing { background:#FFF7E3; color:var(--orange); }
+.pmp-quiz .focus-status { background:#FEF3F2; color:var(--red); }
+.pmp-quiz .focus {
+  margin:18px 0;
+  border-left:5px solid var(--gold);
+  background:#FFF9EA;
+}
+.pmp-quiz .focus li { margin:.35rem 0; color:var(--ink); }
+.pmp-quiz .status-box {
+  display:none;
+  border-radius:8px;
+  padding:.85rem 1rem;
+  margin:0 0 16px;
+  font-weight:900;
+  text-align:center;
+}
+.pmp-quiz .status-box.show { display:block; }
+.pmp-quiz .status-box.sending { background:#FFF7E3; color:#805300; border:1px solid #F4D58D; }
+.pmp-quiz .status-box.success { background:#ECFDF3; color:var(--green); border:1px solid #B7E4C7; }
+.pmp-quiz .status-box.error { background:#FEF3F2; color:var(--red); border:1px solid #FDA29B; }
+.pmp-quiz .actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.75rem;
+  margin:18px 0;
+}
+.pmp-quiz .review-item {
+  margin:.85rem 0;
+  border-left:5px solid #98A2B3;
+}
+.pmp-quiz .review-item.correct { border-left-color:var(--green); }
+.pmp-quiz .review-item.incorrect { border-left-color:var(--red); }
+.pmp-quiz .review-meta { color:var(--muted); font-size:.83rem; font-weight:800; }
+.pmp-quiz .correct-text { color:var(--green); font-weight:900; }
+.pmp-quiz .incorrect-text { color:var(--red); font-weight:900; }
+.pmp-quiz .print-header,.pmp-quiz .print-student,.pmp-quiz .print-date { display:none; }
+@media (max-width:780px) {
+  .pmp-quiz .wrap { width:min(100% - 24px, 980px); padding:14px 0; }
+  .pmp-quiz .hero { padding:22px 20px; }
+  .pmp-quiz .form-grid,.pmp-quiz .results-grid,.pmp-quiz .topic-row { grid-template-columns:1fr; }
+  .pmp-quiz .topbar { gap:.55rem; padding:.65rem .75rem; }
+  .pmp-quiz .brand-mini { display:none; }
+  .pmp-quiz .progress-text,.pmp-quiz .timer { min-width:auto; font-size:.78rem; }
+  .pmp-quiz .q-card { padding:20px; }
+}
+@media print {
+  .pmp-quiz .topbar,.pmp-quiz .start,.pmp-quiz #quizContainer,.pmp-quiz .actions,.pmp-quiz #reviewSection,.pmp-quiz .status-box { display:none !important; }
+  .pmp-quiz,.pmp-quiz .results { display:block !important; overflow:visible !important; background:#fff; }
+  .pmp-quiz .wrap { width:100%; padding:0; }
+  .pmp-quiz .print-header,.pmp-quiz .print-student,.pmp-quiz .print-date { display:block !important; text-align:center; }
+  .pmp-quiz .print-date { text-align:right; color:#667085; font-size:.8rem; }
+}
+
+/* Reliability and accessibility upgrades */
+.pmp-quiz .sr-only {
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+.pmp-quiz .resume-panel {
+  margin:14px 0;
+  border:1px solid rgba(27,46,94,.22);
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  background:#F8FAFC;
+  padding:14px 16px;
+}
+.pmp-quiz .resume-panel[hidden] { display:none !important; }
+.pmp-quiz .resume-panel h3 { margin:0 0 6px; font-size:1.12rem; }
+.pmp-quiz .resume-panel p { color:var(--ink); }
+.pmp-quiz .resume-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem;
+  margin-top:10px;
+}
+.pmp-quiz .text-btn {
+  border:1px solid #D0D5DD;
+  border-radius:6px;
+  background:#fff;
+  color:var(--navy);
+  padding:.68rem 1rem;
+  font-weight:900;
+  cursor:pointer;
+}
+.pmp-quiz .option { position:relative; }
+.pmp-quiz .option-input {
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
+.pmp-quiz .option:focus-within {
+  outline:3px solid rgba(27,94,157,.35);
+  outline-offset:2px;
+  border-color:var(--blue);
+}
+.pmp-quiz .option-input:checked ~ .letter {
+  background:var(--gold);
+  color:#201600;
+}
+.pmp-quiz button:focus-visible,
+.pmp-quiz a:focus-visible,
+.pmp-quiz input:focus-visible,
+.pmp-quiz select:focus-visible {
+  outline:3px solid rgba(27,94,157,.38);
+  outline-offset:3px;
+}
+.pmp-quiz .autosave-note {
+  margin-top:10px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+
+/* GitHub Pages / Elementor iframe fit */
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  background:#FAF7F0;
+}
+.pmp-quiz {
+  width:100%;
+  max-width:100%;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:visible;
+}
+.pmp-quiz .topbar {
+  width:100%;
+  max-width:100%;
+  flex-wrap:wrap;
+}
+.pmp-quiz .brand-mini { display:none; }
+.pmp-quiz .progress-track { min-width:140px; }
+.pmp-quiz .wrap,
+.pmp-quiz .exam-shell,
+.pmp-quiz .q-card { max-width:100%; }
+@media (max-width:980px) {
+  .pmp-quiz .wrap { width:100%; padding:14px 12px; }
+  .pmp-quiz .q-card { border-radius:8px; padding:18px; }
+  .pmp-quiz .topbar { gap:.5rem; padding:.62rem .7rem; }
+  .pmp-quiz .progress-text,
+  .pmp-quiz .timer { min-width:auto; }
+}
+@media (max-width:640px) {
+  .pmp-quiz .progress-track { flex-basis:100%; order:2; }
+  .pmp-quiz .progress-text { text-align:left; }
+}
+
+</style>
+</head>
+<body>
+<div class="pmp-quiz">
+  <div class="topbar" id="topbar">
+    <div class="brand-mini">PMP Training Academy</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText" aria-live="polite">0 / 50</div>
+    <div class="timer" id="timer" role="timer" aria-label="Time remaining">67:00</div>
+  </div>
+
+  <div class="wrap">
+    <section class="screen start active" id="startScreen">
+      <div class="hero">
+        <div class="kicker">Free 2026 PMP Readiness Assessment</div>
+        <h1><span>PMP&reg; 2026</span> Readiness Assessment</h1>
+        <p>This 50-question diagnostic is intentionally demanding. It is designed to expose weak decision patterns, not reward memorization. The scenarios require you to distinguish between several defensible actions and select the best next step under governance, value, compliance, stakeholder, and delivery pressure.</p>
+        <div class="badges">
+          <span class="pill">50 questions</span>
+          <span class="pill">67 minutes</span>
+          <span class="pill">Score report after submission</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Before You Begin</h2>
+        <p>This is not a memorization quiz. Every question is a judgment scenario with four defensible-looking options. Expect close answer choices, executive judgment, AI governance, sustainability, stakeholder politics, value delivery, risk, compliance, and integrated delivery tradeoffs. Read what the scenario tells you has already been done &mdash; it usually determines the correct next action.</p>
+        <p><strong>Important:</strong> This is a high-rigor diagnostic, not a pass/fail exam. Most candidates will uncover meaningful gaps. A score in the mid-70s is a strong starting point; the domain pattern and decision errors matter more than one percentage.</p>
+        <div class="form-grid" id="learnerProfileFields">
+          <div class="identity-field">
+            <label for="studentName">Full Name</label>
+            <input id="studentName" type="text" autocomplete="name" placeholder="Enter your full name" aria-describedby="nameError">
+            <div class="error" id="nameError">Please enter your name to continue.</div>
+          </div>
+          <div class="identity-field">
+            <label for="studentEmail">Email Address</label>
+            <input id="studentEmail" type="email" autocomplete="email" placeholder="Enter your email" aria-describedby="emailError">
+            <div class="error" id="emailError">Please enter a valid email address.</div>
+          </div>
+          <div>
+            <label for="candidateType">Candidate Path</label>
+            <select id="candidateType">
+              <option>First-time PMP candidate</option>
+              <option>CAPM to PMP bridge candidate</option>
+              <option>PMP retake candidate</option>
+              <option>Exploring PMP readiness</option>
+            </select>
+          </div>
+          <div>
+            <label for="targetWindow">Target Exam Window</label>
+            <select id="targetWindow">
+              <option>Within 30 days</option>
+              <option>31 to 60 days</option>
+              <option>61 to 90 days</option>
+              <option>Not scheduled yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="consent-row" id="learnerEmailConsent">
+          <input id="funnelOptIn" type="checkbox" checked>
+          <label for="funnelOptIn">Send my score report and PMP&reg; prep recommendations by email.
+            <span>I also agree to receive PMP Training Academy study resources and cohort information. Unsubscribe anytime.</span>
+          </label>
+        </div>
+        <div class="resume-panel" id="resumePanel" hidden>
+          <h3>Resume your saved assessment?</h3>
+          <p id="resumeSummary">A saved attempt was found on this device.</p>
+          <div class="resume-actions">
+            <button class="btn secondary" id="resumeBtn" type="button">Resume Assessment</button>
+            <button class="text-btn" id="restartBtn" type="button">Discard Saved Attempt</button>
+          </div>
+        </div>
+        <div class="resume-panel" id="savedSubmissionPanel" hidden>
+          <h3>Recover your completed score</h3>
+          <p id="savedSubmissionSummary">A completed score report was found in this browser.</p>
+          <div class="resume-actions">
+            <button class="btn secondary" id="resendSavedSubmissionBtn" type="button">Send Saved Score</button>
+          </div>
+          <p class="autosave-note" id="savedSubmissionStatus" role="status" aria-live="polite"></p>
+        </div>
+        <button class="btn" id="beginBtn" type="button">Begin Readiness Assessment</button>
+      </div>
+    </section>
+
+    <main class="exam-shell" id="quizContainer"></main>
+
+    <section class="results" id="resultsScreen">
+      <div class="print-header"><h2>PMP Training Academy 2026 Readiness Assessment</h2><p>50-Question High-Rigor Diagnostic</p></div>
+      <div class="print-date" id="printDate"></div>
+      <div class="print-student" id="printStudent"></div>
+      <div class="status-box" id="submitStatus" role="status" aria-live="polite"></div>
+      <div class="score-hero">
+        <div class="score-big" id="totalPct">0%</div>
+        <div class="readiness" id="readinessLabel">High-Rigor Readiness</div>
+        <div id="totalFraction">0 / 50 correct</div>
+      </div>
+      <div class="results-grid" id="domainResults"></div>
+      <div class="focus" id="focusSummary"><h3>Priority Coaching Areas</h3><ul id="focusList"></ul></div>
+      <div class="coach-card" id="coachNote"></div>
+      <div class="breakdown" id="breakdownContainer"></div>
+      <div class="footer">
+        <p><strong>Your score report is ready.</strong></p>
+        <p>Use this as a baseline, not a verdict. Your next step is targeted study, scenario practice, and weekly readiness checks.</p>
+        <p>PMP Training Academy &middot; info@pmptrainingacademy.com</p>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="saveAsPDF()">Save Score Report</button>
+        <a class="btn secondary" href="https://calendly.com/charlene-drcharleneparks/pmp-consultation" target="_blank" rel="noopener">Schedule a Readiness Call</a>
+        <a class="btn" href="https://pmptrainingacademy.com/" target="_blank" rel="noopener">Explore PMP Training</a>
+        <button class="btn secondary" id="reviewBtn" type="button">Review Missed Questions</button>
+        <button class="btn secondary" id="retrySubmitBtn" type="button" style="display:none;">Retry Score Submission</button>
+      </div>
+      <div id="reviewSection" style="display:none;"></div>
+    </section>
+  </div>
+</div>
+
+<script>
+var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVDsonzxrvNqGyRlI9pp9tfhI8VPeIKQ4t714a1bA97smCdea3oMSy0w72nRyEdBxFOw/exec';
+var DIAGNOSTIC_ACCESS_KEY = 'pmp-diagnostic-2026-report';
+var EXAM_SECONDS = 67 * 60;
+var remainingSeconds = EXAM_SECONDS;
+var timerHandle = null;
+var currentQ = 0;
+var submitted = false;
+var studentName = '';
+var studentEmail = '';
+var candidateType = '';
+var targetWindow = '';
+var funnelOptIn = true;
+var checkpoint = 'PMP 2026 Readiness Assessment - Lead Diagnostic';
+var STORAGE_VERSION = 'pmp-2026-readiness-lead-v5';
+var learnerStorageToken = '';
+try {
+  learnerStorageToken = new URLSearchParams(window.location.search).get('pta_learner') || '';
+} catch (error) {}
+var learnerStorageScope = learnerStorageToken ? ':' + learnerStorageToken.replace(/[^a-zA-Z0-9_-]/g, '') : '';
+var STORAGE_KEY = 'pmpTrainingAcademyReadinessProgress' + learnerStorageScope;
+var LAST_SUBMISSION_KEY = 'pmpTrainingAcademyLastSubmission' + learnerStorageScope;
+var sessionActive = false;
+var pendingSavedSession = null;
+var lastSubmissionPayload = null;
+
+
+var questions = [
+  {
+    "d": "business",
+    "t": "Define and establish project governance",
+    "a": "Predictive/Hybrid",
+    "q": "A newly appointed executive directs the team to reprioritize the backlog toward features that generate revenue within the current fiscal year. The approved business case ties funding to a customer-retention benefit, and preliminary analysis indicates the requested features would reduce that benefit. The executive is a named sponsor on the project charter. What should the project manager do first?",
+    "o": [
+      "Model the revenue gain against the projected retention loss, then convene the original sponsors and the new executive to renegotiate the project's success criteria before any reprioritization proceeds",
+      "Quantify how the reprioritization would affect the approved benefits and success measures, and confirm with governance which objective now takes precedence",
+      "Implement the executive's direction as given and record the reduced retention benefit as a new risk with the executive named as risk owner",
+      "Route the reprioritization through integrated change control, since changing feature priority alters scope and expected outcomes"
+    ],
+    "x": 1,
+    "r": "The direction pits a charter-named sponsor against a funded benefit. Before renegotiating criteria, submitting a change, or executing, the PM needs the size of the benefit effect and a governance ruling on which objective now governs. Closest distractor D: Integrated change control is a legitimate later step, but it presumes the answer is a scope change before the value tradeoff is measured or the governing objective is confirmed, so it is premature."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (secondary: People P5 Align stakeholder expectations)",
+    "a": "Predictive",
+    "q": "Three influential stakeholders each sponsor a different outcome for the same project. Available funding supports roughly one and a half of the three. All three outcomes are defensible against the business case. A joint alignment workshop was held last month and ended without agreement. What should the project manager do next?",
+    "o": [
+      "Allocate the available funding proportionally across the three outcomes so that each stakeholder receives a partial result",
+      "Deliver the outcome sponsored by the stakeholder with the greatest formal authority and manage the other two as candidate future phases",
+      "Facilitate a second alignment workshop with an independent facilitator, since stakeholder consensus remains the preferred outcome",
+      "Rank the three outcomes by value against the business case and bring the funding tradeoff, with a recommendation, to the body authorized to decide it"
+    ],
+    "x": 3,
+    "r": "The funding shortfall is a prioritization decision above the PM's authority. The PM prepares a value-based recommendation and escalates to the body that can decide. Closest distractor C: Facilitation is normally preferred, but the workshop already failed once; repeating it delays a decision the PM cannot make."
+  },
+  {
+    "d": "people",
+    "t": "Manage conflicts (secondary: P3 Lead the project team)",
+    "a": "Predictive/Hybrid",
+    "q": "Two senior architects have proposed different technical approaches. Both satisfy the requirements and fit the budget. One increases long-term support complexity; the other increases transition risk at cutover. The disagreement has become personal, the team is taking sides, and the sponsor has asked the project manager to settle it before the next status meeting. What should the project manager do first?",
+    "o": [
+      "Escalate both approaches and their tradeoffs to the sponsor, since the disagreement has become personal and neither architect will concede",
+      "Ask the architects to jointly develop a combined approach that mitigates both the support complexity and the transition risk",
+      "Establish and apply agreed decision criteria with the architects and the affected operational stakeholders, and address the interpersonal conflict separately",
+      "Select the approach with the lower operational risk, since long-term supportability protects the benefits in the business case"
+    ],
+    "x": 2,
+    "r": "The sponsor asked the PM to resolve it, and the PM owns facilitation, not the technical verdict. Shared decision criteria with the architects and operational stakeholders produce a defensible choice while the interpersonal conflict is handled separately. Closest distractor B: A combined approach sounds constructive but presumes a hybrid solution exists and skips the agreed criteria that make any choice defensible."
+  },
+  {
+    "d": "people",
+    "t": "Help ensure knowledge transfer",
+    "a": "Predictive",
+    "q": "A subject matter expert who is the only person able to configure a critical integration will leave the organization in three weeks. Configuration documentation exists and is current, but the expert's troubleshooting judgment has never been captured. A replacement has been requisitioned but not yet identified. Deployment is in ten weeks. What should the project manager do first?",
+    "o": [
+      "Raise the departure as an issue and request that the resourcing process be expedited so shadowing can occur before the expert leaves",
+      "Extend the deployment date so that the replacement can be identified, onboarded, and able to shadow the expert before the departure",
+      "Identify which knowledge is critical to deployment and to operations, then select transfer mechanisms that do not depend on the replacement arriving first",
+      "Ask the expert to spend the remaining three weeks recording detailed walkthroughs of the common troubleshooting scenarios and the judgment behind them"
+    ],
+    "x": 2,
+    "r": "With three weeks and no named replacement, the PM first separates knowledge critical to deployment from knowledge critical to operations, then chooses transfer methods that do not hinge on a replacement arriving in time. Closest distractor D: Recorded walkthroughs are one valid mechanism, but selecting a mechanism before scoping the critical knowledge risks capturing the wrong things."
+  },
+  {
+    "d": "people",
+    "t": "Plan and manage communication",
+    "a": "Predictive/Hybrid",
+    "q": "Stakeholders receive every scheduled report on time, the PMO confirms the template is applied correctly, and the project manager has confirmed the reported data is accurate. Stakeholders nonetheless keep asking what is required of them and misstate project status in other forums. What should the project manager do first?",
+    "o": [
+      "Compare the communications management plan against the stakeholder engagement matrix to confirm each stakeholder is receiving the artifacts assigned to them",
+      "Identify the decisions each key stakeholder owns and the information those decisions require, then revise the communications approach accordingly",
+      "Add a decisions-required section to the existing report and monitor whether stakeholder questions decline over the next two reporting cycles",
+      "Raise an issue with the PMO that the mandated template does not support stakeholder decision needs and request a template exception"
+    ],
+    "x": 1,
+    "r": "Reports are timely, accurate, and on-template, so the gap is relevance to the decisions stakeholders must make. The PM identifies those decisions and the information they require, then revises the approach. Closest distractor C: Adding a section is a plausible partial fix, but it bolts content onto the existing report without first confirming it matches the decisions stakeholders own."
+  },
+  {
+    "d": "people",
+    "t": "Lead the project team (secondary: P2 Manage conflicts)",
+    "a": "Adaptive",
+    "q": "An adaptive team has met every sprint commitment for four iterations, but escaped defects have doubled. In one-on-one conversations, several developers say they no longer raise design objections because doing so puts the sprint commitment at risk. The product owner is satisfied with delivery and the retrospectives report no impediments. What should the project manager do first?",
+    "o": [
+      "Make the defect trend and its link to suppressed design disagreement visible to the team, and facilitate revised working agreements that protect technical dissent",
+      "Add a definition-of-done criterion requiring design-review sign-off before a story can be accepted, so that design concerns must be raised before work is completed",
+      "Reduce the next sprint's committed scope to create capacity for defect remediation and design discussion",
+      "Raise the escaped-defect trend to governance, since delivered work is not meeting quality expectations"
+    ],
+    "x": 0,
+    "r": "Doubling defects plus self-censoring developers signal suppressed dissent, a team-health cause the PM owns. Surfacing the trend and renegotiating working agreements to protect dissent addresses the cause. Closest distractor B: A design-review gate treats the symptom and can further discourage raising concerns, rather than restoring the safety that let them surface."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage risk (secondary: BE2 Plan and manage project compliance)",
+    "a": "Predictive",
+    "q": "A regulator with approval authority over the launch raises a concern that the current design may not satisfy a reporting rule. The regulator has not issued a formal finding. The sponsor considers the concern speculative and directs the team to continue design work while leadership resolves it. Which two actions should the project manager take first? Select two.",
+    "o": [
+      "Continue all design work under the sponsor's direction and assign the sponsor as the regulatory risk owner.",
+      "Determine which design work would be exposed if the regulator's concern is upheld.",
+      "Bring the exposure and the sponsor's direction to the body authorized to accept regulatory risk.",
+      "Ask the regulator to state that the concern is not a formal finding before the team proceeds."
+    ],
+    "x": [
+      1,
+      2
+    ],
+    "r": "The concern is not yet a finding, so a full halt is disproportionate, but the sponsor should not self-accept regulatory exposure. The PM scopes the affected work and routes the risk-acceptance decision to the proper authority. Continuing everything or seeking a disclaimer skips that authority question.",
+    "type": "multi",
+    "selectCount": 2
+  },
+  {
+    "d": "people",
+    "t": "Engage stakeholders (secondary: P2 Manage conflicts)",
+    "a": "Predictive/Hybrid",
+    "q": "Marketing has publicly committed to a launch in six weeks. Operations will not accept handover without a fully trained support model, which requires eight weeks. Finance has refused all overtime. Each commitment was made in a separate meeting with the sponsor, and each group believes its position is already approved. What should the project manager do first?",
+    "o": [
+      "Convene the three groups to expose the conflict, establish the launch decision criteria and acceptable tradeoffs, and escalate only what they cannot resolve",
+      "Determine which commitment most directly supports the benefits in the business case and plan the project to that commitment",
+      "Present the three commitments and their mutual incompatibility to the sponsor and request a decision on which constraint gives way",
+      "Deliver a reduced launch scope in six weeks that operations can support with existing staff, and defer the remaining scope to a second release"
+    ],
+    "x": 0,
+    "r": "Three sponsor-blessed but incompatible commitments call for the PM to convene the groups, expose the conflict, set decision criteria, and escalate only the unresolved remainder. Closest distractor C: Escalating to the sponsor is defensible, but it hands up the entire tradeoff before facilitation and removes decisions the groups could make themselves."
+  },
+  {
+    "d": "people",
+    "t": "Manage stakeholder expectations (secondary: PR3 Help ensure value-based delivery)",
+    "a": "Adaptive",
+    "q": "A customer representative has approved every increment in writing, but after each review a business executive reports that the delivered workflow does not solve the operational problem. The representative says the approvals only confirm that the stories meet acceptance criteria; the executive says the representative was expected to confirm business usability. The product owner believes both interpretations are reasonable. What should the project manager do first?",
+    "o": [
+      "Clarify and document the acceptance authority, the distinction between story acceptance and business validation, and the path for raising dissatisfaction before the next increment is reviewed",
+      "Treat the written approvals as binding and route the executive's concerns through backlog refinement as new requirements",
+      "Invite the executive to all future reviews and require both stakeholders to approve each increment before it is accepted",
+      "Ask the sponsor to replace the customer representative with someone who can confirm both technical acceptance and business usability"
+    ],
+    "x": 0,
+    "r": "The dispute is about what acceptance means, so the PM clarifies and documents the acceptance authority, the story-acceptance versus business-validation distinction, and the escalation path before the next review. Closest distractor B: Treating the approvals as binding is tempting because they are real, but it ignores the unmet business-usability need the executive is raising."
+  },
+  {
+    "d": "people",
+    "t": "Lead the project team (Determine an appropriate leadership style)",
+    "a": "Predictive",
+    "q": "A newly formed team is scheduled to begin a safety-critical installation package. Most members completed the required training, but only two have demonstrated competence under field conditions. The quality plan permits delegated execution when a qualified reviewer approves defined hold points. The team asks to self-organize because the schedule is compressed. What should the project manager do?",
+    "o": [
+      "Allow the team to self-organize, assign one of the qualified members as a mentor, and review performance at the end of the first work package",
+      "Delay the work package until every team member has independently demonstrated full competence under field conditions",
+      "Use staged delegation: define decision boundaries, require qualified review at the hold points, and expand autonomy as field competence is demonstrated",
+      "Request sponsor approval for a temporary authority matrix that transfers routine installation decisions to the team while the project manager retains escalation authority"
+    ],
+    "x": 2,
+    "r": "Mixed demonstrated competence plus a plan that permits delegated execution at approved hold points calls for staged delegation, expanding autonomy as field competence is shown. Closest distractor A: Self-organization with a mentor grants full autonomy before field competence exists and reviews too late for safety-critical work."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (secondary: PR7 Plan and optimize quality)",
+    "a": "Predictive",
+    "q": "Preparing for a governance meeting, the team demonstrates with evidence that the sponsor's requested date can be met only by reducing accessibility testing below the organizational standard. The project manager has confirmed the analysis. The sponsor, who chairs the meeting, wants the date committed and says accessibility can be caught up after launch. What should the project manager do?",
+    "o": [
+      "Present the team's evidence in the meeting and require an explicit governance decision on the date, the scope, and the standards tradeoff",
+      "Propose an alternative date that preserves the standard, and ask the sponsor to take the revised date to governance",
+      "Commit the date and open a post-launch remediation item for the accessibility shortfall, with the sponsor as owner",
+      "Ask the accessibility lead whether the reduced testing approach is acceptable, and commit the date if the lead agrees"
+    ],
+    "x": 0,
+    "r": "The evidence shows the date is reachable only by dropping below an organizational standard, a tradeoff above the PM and above any single lead. The PM puts the evidence in front of governance and forces an explicit decision. Closest distractor B: Proposing a compliant date is constructive, but it hands the decision framing to the sponsor rather than presenting the tradeoff for a governance ruling."
+  },
+  {
+    "d": "people",
+    "t": "Lead the project team (Empower the team) (secondary: PR3 Help ensure value-based delivery)",
+    "a": "Adaptive",
+    "q": "A junior product owner repeatedly accepts the priorities of a senior funding stakeholder, even when benefits data shows that other backlog items contribute more to the release goal. The stakeholder's funding authority is real, but the product charter assigns backlog priority to the product owner and requires value-based decisions. What should the project manager do first?",
+    "o": [
+      "Ask the sponsor to decide whether funding authority overrides the product charter for the remainder of the release",
+      "Coach the product owner on role authority, facilitate use of explicit value criteria that includes the funding constraint, and surface any unresolved governance conflict",
+      "Introduce a weighted scoring model and require the product owner to apply the resulting ranking without stakeholder adjustment",
+      "Invite the funding stakeholder to refinement so that priority decisions are made transparently in front of the team"
+    ],
+    "x": 1,
+    "r": "The PO holds the authority but is deferring against value evidence, so the PM coaches on role authority and facilitates explicit value criteria that include the funding constraint, surfacing any genuine governance conflict. Closest distractor A: Escalating to the sponsor is premature, because it asks someone else to decide a call the PO is empowered to make once supported."
+  },
+  {
+    "d": "process",
+    "t": "Evaluate project status (secondary: P8 Plan and manage communication)",
+    "a": "Predictive/Hybrid",
+    "q": "The formal defect system and a team-maintained spreadsheet contain different counts for the same release. Sampling confirms that both contain valid records and that several defects were entered in only one source. A customer-facing status update is due tomorrow, and the PMO requires the formal system to remain the system of record. What should the project manager do first?",
+    "o": [
+      "Use the higher defect count in tomorrow's report, note that reconciliation is in progress, and postpone source correction until after the reporting deadline",
+      "Pause the status update until the PMO identifies which individual records should be considered authoritative",
+      "Reconcile the records enough to correct the customer-facing position, disclose any remaining uncertainty, and establish controlled ownership and synchronization for the formal source",
+      "Require the team to enter every spreadsheet item into the formal system before any status is issued, even if the reporting deadline is missed"
+    ],
+    "x": 2,
+    "r": "Two valid sources disagree before a customer update, so the PM reconciles enough to correct the customer-facing position, discloses residual uncertainty, and sets up controlled ownership and synchronization for the system of record. Closest distractor A: Reporting the higher count with a caveat is tempting, but it publishes an unreconciled number and postpones the actual fix."
+  },
+  {
+    "d": "process",
+    "t": "Evaluate project status (Identify and tailor needed artifacts) (secondary: P8 Plan and manage communication)",
+    "a": "Predictive",
+    "q": "A benefit owner says the mandated PMO dashboard is accurate but does not show the benefit exposure or the decision she must make. The PMO has denied a template exception because portfolio reporting must remain standardized. The benefit owner has begun relying on an analyst's unofficial summary instead. What should the project manager do?",
+    "o": [
+      "Continue the mandated dashboard and add a controlled decision brief for the benefit owner using the same reconciled source data",
+      "Escalate the denied template exception, because unofficial reporting now creates a governance risk",
+      "Replace the analyst's unofficial summary with a more detailed version of the PMO dashboard and require the benefit owner to use it",
+      "Document the benefit owner's dissatisfaction in the communications plan and ask her to attend the regular status meeting for additional context"
+    ],
+    "x": 0,
+    "r": "The dashboard is accurate but does not surface the owner's decision, and the exception was properly denied to keep reporting standard. The PM keeps the standard dashboard and adds a controlled decision brief from the same reconciled data. Closest distractor C: A more detailed dashboard adds volume to the wrong artifact without addressing the specific decision the owner must make."
+  },
+  {
+    "d": "people",
+    "t": "Manage conflicts (Establish ground rules) (secondary: P3 Lead the project team)",
+    "a": "Adaptive/Hybrid",
+    "q": "A technically strong team has shortened design meetings by assigning each topic to a senior decision owner. Delivery speed has improved, but junior members now raise concerns only in private and rework is increasing. The senior decision owners say written comments are always welcome and no one has been explicitly prevented from speaking. What should the project manager do first?",
+    "o": [
+      "Require anonymous written input ahead of major design decisions so junior members can flag concerns without challenging senior owners directly",
+      "Coach the senior owners privately and leave the current decision process in place while monitoring whether rework declines",
+      "Facilitate a team discussion using the rework evidence, establish working agreements for constructive dissent, and make decision criteria and participation expectations explicit",
+      "Rotate the decision-owner role among team members so authority is distributed more evenly across the next several iterations"
+    ],
+    "x": 2,
+    "r": "Concentrated decision-making plus rising rework and private-only concerns show the structure is suppressing dissent. The PM uses the rework evidence to establish working agreements for constructive dissent and explicit participation expectations. Closest distractor B: Coaching individuals is reasonable, but leaving the suppressing structure in place lets the cause persist."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (Outline escalation paths and thresholds) (secondary: P4 Engage stakeholders)",
+    "a": "Predictive",
+    "q": "A community group affected by a rollout has been engaged and its concerns analyzed. The analysis shows the concerns will delay a required permit unless the project commits to a revised construction schedule and a public communication program. Both commitments exceed the project manager's authority. The sponsor is traveling for two weeks and the permit application is due in five days. What should the project manager do next?",
+    "o": [
+      "Make the public communication commitment, which sits within the project's communication budget, and hold the schedule commitment for the sponsor",
+      "Take the permit exposure, both commitments, and their cost and schedule impacts through the governance escalation path so an authorized decision is made before the deadline",
+      "Request an extension to the permit deadline from the issuing authority, so that the decision can wait until the sponsor returns in two weeks",
+      "Submit the permit application on the current basis and add the community concerns to the issue log for resolution when the sponsor returns"
+    ],
+    "x": 1,
+    "r": "Both commitments exceed PM authority and the deadline lands during the sponsor's absence, so the PM uses the governance escalation path to obtain an authorized decision in time. Closest distractor A: Making the communication commitment looks affordable, but it authorizes part of a decision the PM cannot make and splits a coupled tradeoff."
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (secondary: P5 Align stakeholder expectations)",
+    "a": "Adaptive",
+    "q": "An agile team has stable velocity and stakeholders regularly accept demonstrations, but completed features support three different interpretations of the release goal. The product owner says the roadmap is intentionally broad and that stakeholder acceptance proves the direction is acceptable. What should the project manager do first?",
+    "o": [
+      "Map the completed features to the roadmap and quantify how much work supports each interpretation before asking stakeholders to choose",
+      "Facilitate alignment among the product owner, team, and key stakeholders on a measurable release outcome, and use it to test future priorities",
+      "Ask the product owner to publish a more specific release statement and validate it at the next sprint review",
+      "Continue the current iteration and address the conflicting interpretations during the release retrospective"
+    ],
+    "x": 1,
+    "r": "Stable velocity and acceptance hide that delivered work supports three different goals. The PM facilitates alignment on one measurable outcome and uses it to test future priorities. Closest distractor A: The mapping is useful and necessary input, but analysis alone stops short of resolving the missing shared goal."
+  },
+  {
+    "d": "process",
+    "t": "Develop an integrated project management plan (Assess consolidated plans for dependencies and gaps)",
+    "a": "Hybrid",
+    "q": "A project combines an AI-assisted triage capability, a data-center migration with a contractual cutover date, an analytics vendor doing exploratory work, and one shared release milestone. Match each workstream condition to the planning control that best fits it.",
+    "r": "Different workstreams can require different controls. The PM should combine adaptive discovery, predictive milestones, supplier controls, and an integrated roadmap rather than forcing one planning method across all work.",
+    "type": "matching",
+    "pairs": [
+      {
+        "left": "AI-assisted triage capability",
+        "answer": "Adaptive backlog and review cadence with defined integration checkpoints"
+      },
+      {
+        "left": "Data-center migration with contractual cutover",
+        "answer": "Predictive milestone plan with change and readiness gates"
+      },
+      {
+        "left": "Analytics vendor doing exploratory work",
+        "answer": "Supplier integration plan with acceptance criteria and review cadence"
+      },
+      {
+        "left": "Shared release milestone",
+        "answer": "Integrated roadmap showing dependencies, decision points, and handoffs"
+      }
+    ],
+    "choices": [
+      "Adaptive backlog and review cadence with defined integration checkpoints",
+      "Predictive milestone plan with change and readiness gates",
+      "Supplier integration plan with acceptance criteria and review cadence",
+      "Integrated roadmap showing dependencies, decision points, and handoffs",
+      "Single team-managed backlog with no external milestones"
+    ]
+  },
+  {
+    "d": "process",
+    "t": "Develop an integrated project management plan (Recommend a development approach)",
+    "a": "Hybrid",
+    "q": "Regulatory reporting requirements are stable and must produce auditable evidence at defined checkpoints. Customer analytics requirements are unstable and require experimentation with real users. Both share one data platform and one team. Governance has asked the project manager to recommend a development approach. What should the project manager recommend?",
+    "o": [
+      "A predictive approach with a formally controlled backlog for the analytics work, so a single governance model applies to the shared platform",
+      "A hybrid approach, with predictive controls governing the regulatory work and adaptive delivery for the analytics work, defining how the shared platform and team are managed across both",
+      "An adaptive approach with the compliance evidence produced as a definition-of-done criterion in each iteration, so that experimentation on the analytics work is not constrained",
+      "Deferring the approach decision until the analytics requirements are defined well enough to allow a consistent approach across the project"
+    ],
+    "x": 1,
+    "r": "Stable auditable regulatory work alongside unstable experimental analytics on one platform is the textbook hybrid case, governing each stream appropriately and defining shared-platform and team management. Closest distractor C: Making compliance a definition-of-done item subordinates mandatory audit evidence to a per-iteration checklist inside experimentation."
+  },
+  {
+    "d": "business",
+    "t": "Manage and control changes",
+    "a": "Predictive",
+    "q": "Impact analysis confirms that a sponsor-requested reporting module would delay a regulatory compliance feature unless the release scope changes. Place the change-control actions in the correct order.",
+    "x": [
+      4,
+      1,
+      2,
+      3
+    ],
+    "r": "When impact analysis is complete, the PM records the request and analysis, sends the package to the authorized change authority, communicates the disposition, and updates baselines only after approval. Implementation before disposition bypasses change control.",
+    "type": "sequence",
+    "steps": [
+      "Update affected baselines and authorize implementation of the reporting module.",
+      "Record the requested reporting-module change and the completed impact analysis.",
+      "Submit the change package to the authorized change authority for disposition.",
+      "Communicate the approved, rejected, or deferred decision and update plans only if approved."
+    ]
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (Evaluate delivery options)",
+    "a": "Adaptive",
+    "q": "An adaptive team can release a narrow workflow in three weeks that removes a manual step for one user group, or a complete integration in eight weeks that serves all groups. The support organization says a partial release will generate confusion and has not budgeted for the additional call volume. Benefits data shows the manual step is the largest single cost driver. What should the project manager do first?",
+    "o": [
+      "Weigh the earlier benefit against user readiness, support capacity, and benefit measurement, and put the release options and their tradeoffs to the product owner and sponsor to decide",
+      "Release the narrow workflow to a limited pilot group, so that benefits can begin accruing without exposing the support organization to the full additional call volume",
+      "Deliver the complete integration in eight weeks, since the support organization cannot absorb a partial release",
+      "Release the narrow workflow in three weeks, since it addresses the largest cost driver and starts benefits realization earlier"
+    ],
+    "x": 0,
+    "r": "The early release has genuine benefit and genuine readiness cost, and the choice belongs to the PO and sponsor once framed. The PM assembles the readiness-versus-benefit tradeoff and options for their decision. Closest distractor B: A pilot looks measured, but it still commits a direction the decision-owners have not chosen and still exposes support."
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage resources (Manage and optimize resource availability) (secondary: BE1 governance)",
+    "a": "Predictive",
+    "q": "A specialist analyst is baselined at 50% allocation. For six weeks, operational escalations have consumed nearly all of the analyst's time. The functional manager has told the analyst that operations comes first. The schedule still assumes 50% and shows no variance, because the analyst has been working evenings to stay on track. What should the project manager do first?",
+    "o": [
+      "Reassign the analyst's non-specialist tasks to other team members so the remaining capacity is used only on specialist work",
+      "Establish the analyst's actual and forecast availability, quantify the schedule and sustainability exposure, and take the conflict to the governance path that can resolve it",
+      "Escalate to the functional manager's superior, since the 50% allocation was formally committed to the project and is not being honored",
+      "Rebaseline the schedule using the analyst's actual availability, and report the resulting variance and forecast slip to the sponsor"
+    ],
+    "x": 1,
+    "r": "The schedule looks clean only because the analyst is absorbing the gap after hours. The PM first surfaces real availability and the sustainability exposure, then routes the resource conflict to the authority that can resolve it. Closest distractor D: Rebaselining reflects reality but accepts the slip and the unsustainable pattern instead of resolving the underlying conflict."
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage procurement (Manage suppliers and contracts)",
+    "a": "Predictive",
+    "q": "A vendor deliverable meets the numerical performance threshold in the acceptance appendix, but integrated validation shows that it fails the business outcome stated in the procurement statement of work. The contract requires written notice and a defined cure period before milestone acceptance may be withheld. The sponsor wants conditional acceptance to protect the launch date. What should the project manager do?",
+    "o": [
+      "Issue the contractual notice with the validation evidence, begin the cure process, and defer milestone acceptance until the contract criteria are satisfied or formally amended",
+      "Grant conditional acceptance because the numerical threshold was met, while reserving the right to reject the final deliverable if the cure is unsuccessful",
+      "Withhold acceptance and refer the vendor to legal, since the business outcome outranks the acceptance appendix",
+      "Accept the milestone and raise a change request to revise the business outcome or fund internal remediation"
+    ],
+    "x": 0,
+    "r": "The deliverable meets the numeric appendix but fails the SOW business outcome, and the contract sets the remedy path, so the PM issues written notice with evidence, runs the cure period, and defers acceptance until criteria are met or the contract is amended. Closest distractor C: Refusing acceptance is directionally right, but skipping the required notice-and-cure sequence and going to legal is premature under the contract."
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage finance (Monitor financial variations and work with governance)",
+    "a": "Predictive",
+    "q": "Reserve analysis shows contingency is being consumed faster than planned. If current response costs continue, the project will cross the delegated contingency threshold within the next reporting period, but the threshold has not yet been crossed. Which two actions should the project manager take next? Select two.",
+    "o": [
+      "Reforecast expected reserve consumption against the delegated threshold using the current response-cost trend.",
+      "Use management reserve now so the project can avoid reporting a contingency threshold issue.",
+      "Prepare decision-ready options for governance if the forecast shows the threshold will be exceeded.",
+      "Reduce quality-review frequency to preserve contingency until the next baseline review."
+    ],
+    "x": [
+      0,
+      2
+    ],
+    "r": "A threshold that is forecast to be crossed requires active forecasting and decision-ready options, not hidden use of management reserve or quality cuts. The PM prepares governance before the threshold is breached.",
+    "type": "multi",
+    "selectCount": 2
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (Examine business value throughout)",
+    "a": "Predictive/Hybrid",
+    "q": "All deliverables have passed verification against documented requirements. Post-pilot observation shows users complete the task in a sequence the requirements did not anticipate, and the solution will therefore deliver roughly half the expected efficiency benefit. Acceptance criteria have been met and the customer has raised no objection. What should the project manager do first?",
+    "o": [
+      "Proceed with acceptance, since the deliverables conform to the agreed criteria, and record the benefit shortfall for the operations owner",
+      "Reopen requirements elicitation with the pilot users and raise change requests for the workflow differences observed",
+      "Check whether the acceptance criteria actually represent fitness for use, size the benefit gap, and lay out options for the sponsor and benefit owner",
+      "Escalate to governance, since the project will not deliver the benefits in the business case despite meeting its requirements"
+    ],
+    "x": 2,
+    "r": "Deliverables conform but observed use will halve the benefit, so conformance is not proof of fitness for use. The PM tests whether the criteria capture fitness, quantifies the gap, and presents options to the sponsor and benefit owner. Closest distractor B: Reopening elicitation and raising changes is a plausible response, but it commits to rework before the gap is quantified or the decision-owners weigh in."
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage schedule (Analyze schedule variation) (secondary: BE1 governance)",
+    "a": "Predictive",
+    "q": "An external dependency is forecast to slip by four weeks. It feeds two components: one on the critical path and one optional. The other project's manager has not confirmed the forecast and says a recovery plan is being prepared. Your next governance report is in three days. What should the project manager do first?",
+    "o": [
+      "Wait for the other project's recovery plan before reporting, so that the governance report reflects a confirmed forecast rather than an uncertain slip",
+      "Escalate to the sponsor now, since another project is creating schedule risk the project cannot control",
+      "Assess the dependency against available float and release options, build response alternatives with their impacts, and report the exposure with those options at the governance review",
+      "Report the full four-week schedule impact in the governance report and request the corresponding change to the committed release date"
+    ],
+    "x": 2,
+    "r": "With a report due and the forecast unconfirmed, the PM analyzes the slip against float and release options, develops alternatives with impacts, and reports the exposure and options rather than a single number. Closest distractor D: Reporting the full four-week impact and requesting a date change acts on an unconfirmed forecast before float and options are analyzed, so it commits to one outcome prematurely."
+  },
+  {
+    "d": "process",
+    "t": "Develop and manage project scope (Obtain stakeholder agreement on scope)",
+    "a": "Predictive/Hybrid",
+    "q": "Midway through development, the customer says a requirement for near real-time updates means five seconds. The architect designed for sixty seconds, and neither the requirements documentation nor the contract defines the term. Meeting the customer's interpretation may affect the critical path. What should the project manager do first?",
+    "o": [
+      "Direct the team to meet the five-second expectation because the customer defines acceptance, then update the requirements documentation",
+      "Continue with the sixty-second design because it reflects the documented technical assumption, and defer clarification until formal validation",
+      "Submit a change request for the five-second requirement, begin schedule analysis, and ask the customer to confirm acceptance criteria",
+      "Facilitate clarification of the business need and acceptance criteria, document the agreed requirement, and then assess change impacts"
+    ],
+    "x": 3,
+    "r": "The term was never defined, so before acting or filing a change the PM clarifies the business need and acceptance criteria, documents the agreed requirement, and only then assesses change impacts. Closest distractor C: Submitting a change request treats the five-second figure as the agreed requirement before it is defined, so it formalizes an unvalidated interpretation and analyzes the wrong target."
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (Prioritize work based on value) (secondary: P3 Lead the project team)",
+    "a": "Adaptive",
+    "q": "The product owner prioritizes the backlog by responding to whichever stakeholder escalates most persistently. Benefits data indicates that a quieter customer segment drives most revenue retention. The product owner acknowledges the data but notes that the escalating stakeholder controls funding for the next release. What should the project manager do first?",
+    "o": [
+      "Reserve a fixed proportion of each iteration for the high-retention segment, so its features are not crowded out",
+      "Accept the current prioritization, since backlog priority is the product owner's accountability and funding is a legitimate input",
+      "Facilitate a prioritization session in which the product owner applies explicit value criteria with the benefits data and the funding constraint both visible, and surface any remaining conflict for decision",
+      "Present the benefits data to the sponsor and request a decision on whether the funding stakeholder's priorities should override the retention evidence for the coming release"
+    ],
+    "x": 2,
+    "r": "The PO owns priority but is reacting to pressure over value, so the PM facilitates a session where the PO applies explicit value criteria with both the benefits data and the funding constraint visible, surfacing any real conflict. Closest distractor D: Escalating to the sponsor asks someone else to decide a prioritization the PO owns; the data can inform the PO's decision without removing it."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (sustainability) (secondary: PR3 value)",
+    "a": "Predictive",
+    "q": "The approved business case commits the organization to a carbon-reduction target, but the target was never carried into the scope or schedule baselines. The team has selected a deployment option that satisfies the baselined schedule and is projected to exceed the carbon commitment by a material margin. The sponsor wants the schedule protected. What should the project manager do first?",
+    "o": [
+      "Proceed with the baselined option and record the overage as a lesson learned for future projects",
+      "Size the carbon variance and its benefit and reputational exposure, then put deployment alternatives and their schedule and cost impacts in front of the decision makers",
+      "Escalate to the sponsor as a scope change, since the sustainability target does not appear in any baseline",
+      "Raise a change request to add the carbon-reduction target to the scope baseline, so that the deployment options can then be evaluated against a controlled requirement"
+    ],
+    "x": 1,
+    "r": "The commitment is real even though it never reached the baselines, so the PM quantifies the variance and its benefit and reputational exposure and presents deployment alternatives with impacts to the decision makers. Closest distractor D: Adding the target to the baseline via change control is a tidy-looking governance step, but it sequences the paperwork ahead of quantifying the actual variance and the options, which is the decision that matters now."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (Use methods to support compliance)",
+    "a": "Adaptive/Hybrid",
+    "q": "A team uses generative AI to draft customer communications. Policy requires approved human review before external release, but it also permits an expedited risk-based review when AI governance approves the reviewer pool and sampling method. The product owner wants to release low-risk messages tomorrow using experienced business reviewers who have not yet been approved for that role. What should the project manager do?",
+    "o": [
+      "Release only the low-risk messages after the business reviewers sign individual accountability statements",
+      "Hold the affected messages, request expedited AI-governance approval of the reviewer pool and sampling method, and release only after the approved control is in place",
+      "Use the normal human-review process for high-risk messages and release low-risk messages under enhanced post-release monitoring",
+      "Ask the sponsor to accept the temporary control because the policy already recognizes risk-based review"
+    ],
+    "x": 1,
+    "r": "The policy allows an expedited path, but only after AI governance approves the reviewer pool and method, so the PM holds the affected messages, requests that approval, and releases once the control is in place. Closest distractor C: Routing high-risk messages normally sounds prudent, but releasing low-risk messages still relies on an unapproved reviewer pool, which the policy requires AI governance to approve first."
+  },
+  {
+    "d": "process",
+    "t": "Evaluate project status (Develop metrics, analysis, and reconciliation)",
+    "a": "Predictive/Hybrid",
+    "q": "A roadmap, a sprint backlog, a risk register, and a contract milestone log are each maintained by a different owner and currently tell a different project story. Match each artifact to the status insight it should primarily provide before the project manager reconciles the report.",
+    "r": "The PM reconciles status by understanding what each artifact is meant to prove. Mixing artifact purposes creates misleading status reporting even when each source is accurate in isolation.",
+    "type": "matching",
+    "pairs": [
+      {
+        "left": "Roadmap",
+        "answer": "Release sequence and benefit timing assumptions"
+      },
+      {
+        "left": "Sprint backlog",
+        "answer": "Near-term work selected and progress toward the next increment"
+      },
+      {
+        "left": "Risk register",
+        "answer": "Uncertainty, triggers, response owners, and exposure"
+      },
+      {
+        "left": "Contract milestone log",
+        "answer": "Supplier obligations, acceptance events, and committed dates"
+      }
+    ],
+    "choices": [
+      "Release sequence and benefit timing assumptions",
+      "Near-term work selected and progress toward the next increment",
+      "Uncertainty, triggers, response owners, and exposure",
+      "Supplier obligations, acceptance events, and committed dates",
+      "Stakeholder sentiment and communications preference"
+    ]
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage schedule (Estimate project tasks) (secondary: P8 communication)",
+    "a": "Adaptive/Hybrid",
+    "q": "A sponsor needs a completion date for a board commitment. The team has run two experiments in a new product area and the assumptions are still moving. The sponsor says the board will not accept a range and asks for the project manager's best single date. What should the project manager provide?",
+    "o": [
+      "The date the team considers achievable at high confidence, with the remaining uncertainty managed through schedule contingency and reviewed at each stage gate",
+      "The sponsor's preferred date, with a plan to manage scope so that something can be delivered by it",
+      "A statement that no reliable date can be given until discovery is complete, together with a committed date on which the first credible estimate will be available",
+      "A forecast with its assumptions and range, a proposed commitment date drawn from a stated confidence level, and the checkpoints at which the forecast will be refined"
+    ],
+    "x": 3,
+    "r": "Under moving assumptions, an honest forecast pairs assumptions and a range with a commitment date drawn from a stated confidence level and the checkpoints where it will be refined. Closest distractor A: A single high-confidence date with contingency is tempting, but it hides the assumptions and range the sponsor and board need to understand the risk they are accepting."
+  },
+  {
+    "d": "process",
+    "t": "Plan and manage procurement (Select preferred contract types)",
+    "a": "Predictive",
+    "q": "A sponsor wants a firm fixed-price contract for an exploratory design engagement because the budget is capped and cannot be exceeded. Requirements will change materially as the seller learns, and qualified sellers have signalled they will price heavy contingency into any fixed-price bid. What should the project manager recommend?",
+    "o": [
+      "Deferring the procurement until enough internal design work has been completed to define a stable statement of work",
+      "A cost-reimbursable contract, since the scope cannot be defined well enough to price on a fixed basis",
+      "A contract strategy that holds the budget cap while accommodating change, such as a phased fixed-price approach with a defined design phase, or incentive terms with a not-to-exceed ceiling",
+      "A firm fixed-price contract with a detailed statement of work, since the budget cap is a hard constraint and the design risk transfers to the seller, who is best placed to price it"
+    ],
+    "x": 2,
+    "r": "The requirement is both changing scope and a hard cap, so the strategy must hold the cap while accommodating change, such as a phased fixed-price design phase or incentive terms with a not-to-exceed ceiling. Closest distractor B: Cost-reimbursable fits the changing scope, but it does not hold the sponsor's hard budget cap, which the chosen strategy must preserve."
+  },
+  {
+    "d": "process",
+    "t": "Plan and optimize quality (Conduct ongoing quality reviews)",
+    "a": "Predictive",
+    "q": "An audit finds that all required quality checks were completed and no defects were found, but several checks were performed by technically qualified people who were not authorized in the quality plan. What should the project manager do?",
+    "o": [
+      "Repeat every affected check with authorized reviewers, then investigate why the quality plan was bypassed",
+      "Assess the process nonconformance and the product impact, correct the records or checks as required, and address the root cause",
+      "Accept the checks because qualified reviewers performed them, document the deviation, and update the authorization list for future work",
+      "Raise a change request to broaden reviewer authority for this work and close the audit finding once approval is obtained"
+    ],
+    "x": 1,
+    "r": "The finding is a process nonconformance, so the PM assesses both the process gap and the product impact, corrects records or checks as needed, and addresses why the plan was bypassed. Closest distractor A: Re-running every check assumes the results are invalid before the product impact is assessed, so it may be wasteful and still misses the root cause."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (Outline escalation thresholds) (secondary: PR3 value)",
+    "a": "Adaptive/Hybrid",
+    "q": "Readiness analysis shows that a limited workflow release can produce measurable benefits with manageable operational risk. Training and support are ready, but one regional stakeholder objects because the partial release creates a temporary reporting difference. The governance plan allows the product owner to approve incremental releases unless a regional reporting commitment is affected; analysis shows that this commitment may be affected. What should the project manager do next?",
+    "o": [
+      "Proceed with the incremental release because the overall risk is manageable and the product owner owns release priority",
+      "Delay the release until the regional stakeholder agrees that the temporary reporting difference is acceptable",
+      "Bring the readiness evidence, the reporting impact, and the release options to the governance path that can decide the commitment tradeoff",
+      "Remove the affected region from the release and proceed with the remaining users under the product owner's authority"
+    ],
+    "x": 2,
+    "r": "The governance plan carves out exactly this case, so once a regional reporting commitment may be affected the decision leaves the PO and goes to the governance path with the readiness evidence and options. Closest distractor D: Carving out the region lets the release proceed, but it sidesteps the governance decision the affected commitment requires rather than resolving it."
+  },
+  {
+    "d": "process",
+    "t": "Evaluate project status (Communicate project status) (secondary: P8 communication)",
+    "a": "Hybrid",
+    "q": "Software increments are ahead of plan and customer demonstrations are receiving positive feedback, but data migration is behind and may delay the integrated release. Leadership asks the project manager to report the project as green because the visible product work is progressing well. What should the project manager do?",
+    "o": [
+      "Report amber because any delay on a critical workstream requires the entire project to be amber",
+      "Report green overall, and describe the data migration position as a workstream-level concern within the report narrative",
+      "Delay the status decision until the migration team has an approved recovery plan",
+      "Determine overall status from the integrated release forecast and disclose both the software progress and the migration exposure"
+    ],
+    "x": 3,
+    "r": "Overall status should reflect the integrated release forecast, so the PM sets status from that forecast and discloses both the strong software progress and the migration exposure. Closest distractor A: A blanket rule that one delayed workstream forces amber ignores the integrated forecast, which is what should actually determine overall status."
+  },
+  {
+    "d": "business",
+    "t": "Manage and control changes (Implement approved changes)",
+    "a": "Predictive",
+    "q": "A change request has been approved. Procurement amendments, training impacts, and baseline updates remain outstanding. To protect the date, the team has already begun implementing the change and has completed two days of work. The affected supplier has not been notified. What should the project manager do first?",
+    "o": [
+      "Allow the work to continue, since the change is approved, and complete the outstanding updates in parallel",
+      "Stop the affected work until the approved change has been processed through the required procurement, training, and baseline updates, and assess the exposure created by the work already performed",
+      "Report the early start to governance as a process nonconformance, and await direction on whether the work already performed should be retained or reversed",
+      "Accept the completed work, update the baselines to reflect it, and notify the supplier at the next scheduled review"
+    ],
+    "x": 1,
+    "r": "Approval does not license implementation before amendments, training, and baselines are processed, so the PM stops the affected work and assesses the exposure the early start created. Closest distractor C: Reporting the early start is appropriate later, but the PM should first stop the uncontrolled work and assess exposure rather than let it continue while awaiting direction."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (Outline escalation paths and thresholds) (secondary: BE3 change)",
+    "a": "Adaptive/Hybrid",
+    "q": "Backlog decisions have begun altering commitments in a customer contract and a regulatory filing. The product owner argues that routing backlog changes to the steering committee will destroy the team's responsiveness, and notes that no change so far has actually breached a commitment. What should the project manager do first?",
+    "o": [
+      "Require legal and compliance to review the backlog before each iteration begins, so that changes affecting commitments are caught before the team commits to them",
+      "Accept the product owner's position while no commitment has been breached, and introduce governance review only if a breach becomes likely",
+      "Define governance thresholds identifying which backlog changes affect contracted or regulated commitments, escalate those, and leave decisions below the threshold with the product owner",
+      "Add the contract and regulatory commitments to the team's definition of done, so that every increment is validated against them before it can be accepted or released"
+    ],
+    "x": 2,
+    "r": "Thresholds let the PM escalate only the backlog changes that touch contracted or regulated commitments while leaving everything below the line with the PO, which protects both governance and responsiveness. Closest distractor B: Waiting until a breach becomes likely is tempting because nothing has breached yet, but it leaves commitment-affecting changes ungoverned until the last moment."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (Determine actions to address compliance needs)",
+    "a": "Predictive/Hybrid",
+    "q": "A new privacy rule takes effect before launch. Legal confirms that one project data flow falls within the rule, but the regulator permits compensating controls when they are reviewed and approved by compliance. The technical team proposes adding the permanent control after launch. What should the project manager do first?",
+    "o": [
+      "Proceed with launch using enhanced monitoring and record the permanent control as a time-bound post-launch compliance action",
+      "Ask the sponsor to accept the temporary exposure, document the proposed compensating control, and notify compliance after launch",
+      "Suspend the entire launch until the permanent privacy control is implemented and independently validated by legal and compliance",
+      "Work with legal and compliance to evaluate the compensating-control path, and hold the affected release decision until that control is approved"
+    ],
+    "x": 3,
+    "r": "The regulator permits a compensating control with compliance approval, so the PM evaluates that path with legal and compliance and holds the affected release until the control is approved. Closest distractor C: Suspending the whole launch is over-broad, since only one data flow is in scope and an approved compensating control is available."
+  },
+  {
+    "d": "business",
+    "t": "Remove impediments and manage issues (Determine an intervention strategy) (secondary: PR4 resources)",
+    "a": "Adaptive",
+    "q": "Recurring production-support incidents are reducing the agile team's delivery capacity. The product owner favors reducing release scope, while the operations manager favors a temporary support rotation. Available data shows the trend but has not isolated the main capacity drivers. What should the project manager do first?",
+    "o": [
+      "Escalate the resource-priority conflict to the sponsor with both preferred responses for decision",
+      "Reduce release scope, since velocity has declined for two iterations and the release goal is no longer realistic",
+      "Facilitate analysis of incident demand, capacity impact, and response tradeoffs so the team and managers can choose an evidence-based intervention",
+      "Implement the support rotation, since it preserves the release scope while sharing operational demand across the team"
+    ],
+    "x": 2,
+    "r": "The drivers are not yet isolated, so the PM facilitates analysis of incident demand, capacity impact, and tradeoffs so the parties select an evidence-based intervention rather than a preferred guess. Closest distractor A: Escalating hands the sponsor a choice between two unanalyzed options, which is premature before the drivers are understood."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage risk (Execute a risk response) (secondary: BE4 issues)",
+    "a": "Predictive",
+    "q": "A supplier delay triggers the project's approved response to switch to an alternate supplier. Before execution, the risk owner learns that the alternate supplier's required sustainability certification has expired. What should the project manager do first?",
+    "o": [
+      "Keep the original supplier, update the schedule forecast, and wait until the delay becomes an actual issue before changing vendors",
+      "Escalate the supplier delay to the sponsor with the original response plan and request immediate authorization to proceed",
+      "Execute the approved response because the trigger occurred, then address the expired certification as a procurement issue during onboarding",
+      "Reassess the response's viability, update the risk or issue information, and obtain the appropriate decision before switching suppliers"
+    ],
+    "x": 3,
+    "r": "A trigger normally means execute, but the alternate supplier's expired certification is new information that undermines the approved response, so the PM reassesses viability and obtains the appropriate decision before switching. Closest distractor C: Executing on the trigger is usually correct, but here it commits to a response that new information has already undermined."
+  },
+  {
+    "d": "business",
+    "t": "Support organizational change (Evaluate impact and determine actions)",
+    "a": "Predictive/Hybrid",
+    "q": "Adoption analysis has confirmed that middle managers are discouraging use of a new automated approval workflow because it removes a control they value. The sponsor has approved a change-management plan with manager coaching and adoption metrics. Two weeks in, adoption remains flat and the coaching sessions are being scheduled but not attended. What should the project manager do next?",
+    "o": [
+      "Execute the approved plan while making adoption metrics and coaching attendance visible to the sponsor and the managers' leadership, and adjust the response if the trend does not move",
+      "Redesign the workflow to preserve a manager review step, since the resistance reflects an operational control the managers are accountable for and the plan did not address",
+      "Escalate the non-attendance to the sponsor and request that manager approval authority be withdrawn",
+      "Report the flat adoption as an issue and pause further deployment until the managers commit to attending the coaching"
+    ],
+    "x": 0,
+    "r": "The plan is only two weeks in, so the PM executes it, makes attendance and adoption visible to the sponsor and the managers' leadership to create accountability, and adjusts if the trend does not move. Closest distractor B: Redesigning to add a manager step responds to the resistance by changing the product before the approved plan has had a fair, visible run."
+  },
+  {
+    "d": "business",
+    "t": "Evaluate external business environment changes (Assess impact on scope/backlog)",
+    "a": "Adaptive",
+    "q": "A competitor has released a capability that changes what customers now expect from the product your team is building. The current backlog still supports the approved business case. The sponsor's initial reaction is that the competitor's feature is superficial. The product owner wants to insert a comparable feature into the next iteration. What should the project manager do first?",
+    "o": [
+      "Evaluate how the shift affects expected value, backlog priority, and strategic alignment, and take that assessment to the product owner and sponsor for a prioritization decision",
+      "Insert the comparable feature into the next iteration, since the product owner owns backlog priority and customer expectations have moved",
+      "Continue with the approved backlog, since the business case remains valid, the sponsor considers the competitor's feature superficial, and the expected value is unchanged",
+      "Request that the sponsoring organization revalidate the business case before any backlog change is considered"
+    ],
+    "x": 0,
+    "r": "A market shift with conflicting reads is assessed for its effect on value, priority, and alignment, and that assessment goes to the PO and sponsor for a prioritization decision. Closest distractor B: Inserting the feature respects PO authority, but it commits backlog capacity before the value and alignment effect of the shift is assessed."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (secondary: BE1 governance; PMI Code of Ethics)",
+    "a": "Predictive",
+    "q": "A confirmed compliance concern is due in tomorrow's steering report. A senior executive asks the project manager to omit it until the response owner selects a workaround, arguing that reporting an unresolved concern will cause unnecessary escalation. The reporting standard requires confirmed material concerns and current response status, but permits sensitive details to be restricted. What should the project manager do?",
+    "o": [
+      "Include the concern and current response status through the defined reporting path, restrict sensitive details appropriately, and brief the executive on the message",
+      "Delay the concern one reporting cycle because the response owner is actively developing a workaround and the issue is not yet actionable",
+      "Report the concern only to the steering chair and legal counsel until a workaround can be presented to the full committee",
+      "Escalate the executive's request to the ethics office before issuing the report, because the request attempts to suppress material information"
+    ],
+    "x": 0,
+    "r": "The standard requires reporting confirmed material concerns and status while allowing sensitive details to be restricted, so the PM reports through the defined path, restricts sensitive detail, and briefs the executive. Closest distractor D: Taking the request to the ethics office treats the situation as an investigation before the PM has simply done the required thing, which is to report the concern accurately."
+  },
+  {
+    "d": "process",
+    "t": "Manage project closure (Validate readiness for transition) (secondary: BE1 governance)",
+    "a": "Predictive",
+    "q": "A transition gate requires a named benefits owner and an agreed measurement method for the expected reduction in customer wait time. Operations has accepted the deliverables and says benefits ownership can be settled after go-live, once the operating model stabilizes. The sponsor wants the project closed this quarter. What should the project manager do?",
+    "o": [
+      "Assign benefits measurement to the project team for the first quarter after go-live, so that the transition can proceed and the project can close this quarter",
+      "Add wait-time metrics to the project dashboard and continue reporting them until operations designates an owner",
+      "Pass the gate, since operations has accepted the deliverables, and record the missing benefits ownership in lessons learned",
+      "Hold the gate and take the unmet criterion to governance with options, so ownership and measurement are assigned or the criterion is formally waived"
+    ],
+    "x": 3,
+    "r": "The gate requires an owner and a measurement method, so with the criterion unmet the PM holds the gate and takes it to governance with options to assign ownership and measurement or formally waive it. Closest distractor A: Having the project team measure benefits for a quarter lets closure proceed, but it parks an operations accountability with the project and still does not satisfy the gate criterion."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (Analyze consequences of noncompliance) (secondary: BE1 governance)",
+    "a": "Predictive",
+    "q": "Impact analysis confirms that a cybersecurity control and an accessibility requirement cannot both be satisfied within the approved scope and cost. Both are mandatory organizational policies. Cybersecurity governance can approve security exceptions, accessibility governance can approve accessibility exceptions, and neither body has authority over the other policy. What should the project manager do next?",
+    "o": [
+      "Ask both policy owners to approve temporary exceptions independently and proceed if both approvals are obtained",
+      "Take the documented conflict, options, and impacts to the enterprise governance body that has authority to resolve cross-policy tradeoffs",
+      "Implement the control with the greater quantified risk reduction and document the other requirement as residual organizational risk",
+      "Pause detailed design and ask the technical team to continue searching for a solution until both policy owners agree that no compliant option exists"
+    ],
+    "x": 1,
+    "r": "Neither policy body can decide the other's policy, so the cross-policy tradeoff goes to the enterprise governance body with authority over both, with the conflict, options, and impacts documented. Closest distractor A: Independent exceptions look like progress, but neither body has authority over the other policy, so parallel approvals cannot settle the tradeoff between them."
+  },
+  {
+    "d": "business",
+    "t": "Remove impediments and manage issues (Recognize when a risk becomes an issue) (secondary: PR3 value)",
+    "a": "Adaptive",
+    "q": "A risk that users would reject a redesigned workflow has materialized: pilot adoption is 20% against a 70% target. Release is three weeks away. Analysis shows the workflow does not match how users sequence the task, and training will not close the gap. The product owner proposes releasing on schedule with enhanced support and fixing the workflow in the next release. What should the project manager do next?",
+    "o": [
+      "Keep the item in the risk register with increased probability and impact until the release decision is made",
+      "Reclassify the materialized risk as an issue, then present the intervention options, their release and benefit impacts, and a recommendation to the decision makers",
+      "Accept the product owner's proposal, since the release date is committed, enhanced support is available, and a workflow fix is already planned for the next release",
+      "Delay the release until the workflow has been redesigned around the users' actual task sequence and re-piloted with the affected user group"
+    ],
+    "x": 1,
+    "r": "A materialized risk is an issue, so the PM reclassifies it and presents the intervention options with their release and benefit impacts and a recommendation to the decision makers. Closest distractor C: Releasing with enhanced support respects the date, but adoption at 20% with a workflow that does not fit how users work is a known benefit failure the decision-owners should weigh, not one the PM accepts by default."
+  },
+  {
+    "d": "business",
+    "t": "Plan and manage project compliance (secondary: BE5 risk)",
+    "a": "Predictive/Hybrid",
+    "q": "An AI recommendation engine meets its overall accuracy target, but validation confirms materially worse outcomes for a protected customer segment. Policy requires AI-governance review before any use affected by confirmed disparate impact. The team has identified a configuration that reduces the disparity but also lowers overall accuracy below the contractual target. What should the project manager do next?",
+    "o": [
+      "Deploy the original configuration only to customer segments without observed disparity while remediation continues",
+      "Adopt the lower-accuracy configuration because reducing disparate impact takes precedence over the contractual accuracy target",
+      "Pause the affected release and present both configurations, the validation evidence, the contractual impacts, and remediation options to AI governance",
+      "Ask the sponsor and customer to jointly accept the residual disparity until the model can be retrained"
+    ],
+    "x": 2,
+    "r": "Policy requires AI-governance review on confirmed disparate impact, and the fix creates a contractual conflict, so the PM holds the affected release and puts both configurations, evidence, contractual impacts, and options to AI governance. Closest distractor B: The lower-disparity configuration is ethically appealing, but choosing it drops accuracy below a contractual target, a tradeoff the PM cannot decide alone."
+  },
+  {
+    "d": "process",
+    "t": "Help ensure value-based delivery (Examine business value throughout) (secondary: BE1 governance)",
+    "a": "Predictive/Hybrid",
+    "q": "An independent market analysis, accepted by the sponsoring organization, shows the project's remaining benefits no longer justify the remaining investment. Schedule and cost performance are healthy, the team is highly engaged, and roughly 70% of the budget has already been spent. What should the project manager do next?",
+    "o": [
+      "Continue to completion, since most of the investment is already committed and performance remains strong",
+      "Reduce the remaining scope to those elements that still deliver benefit, and complete the project within the reduced scope and the remaining budget",
+      "Prepare and present a continue, pivot, or terminate recommendation to governance, based on the remaining investment against the revised benefits",
+      "Rebaseline the project's success measures to reflect the revised market conditions and continue against the new baseline"
+    ],
+    "x": 2,
+    "r": "Remaining value below remaining investment is a continue, pivot, or terminate decision for governance, so the PM prepares and presents that recommendation weighing remaining investment against revised benefits. Closest distractor B: Trimming to the still-valuable scope is sensible analysis, but it commits to \"continue reduced\" before the decision-owners weigh termination."
+  },
+  {
+    "d": "business",
+    "t": "Define and establish project governance (secondary: BE3 change; BE8 external environment)",
+    "a": "Predictive/Hybrid",
+    "q": "A regional business unit requests a customization that is likely to improve local adoption and remains within the project's scope tolerance. The enterprise architecture council warns that the customization may undermine a strategic standardization objective. The project manager can approve ordinary scope changes but cannot authorize strategic exceptions. What should the project manager do next?",
+    "o": [
+      "Move the customization to a future phase so the current project can proceed without a governance decision",
+      "Approve the customization, since it remains within the project's delegated scope tolerance",
+      "Reject the customization, since enterprise architecture objectives take precedence over local adoption benefits",
+      "Assess the local value against the enterprise impacts, then route the strategic exception to the governance body authorized to decide it"
+    ],
+    "x": 3,
+    "r": "The change looks like ordinary scope but the council's strategic warning makes it a strategic exception beyond the PM's authority, so the PM assesses local value against enterprise impacts and routes the exception to the authorized body. Closest distractor B: Approving inside scope tolerance is tempting, but the strategic-standardization warning turns this into an exception the PM cannot authorize."
+  }
+];
+
+
+function shuffleInPlace(list) {
+  for (var i = list.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = list[i];
+    list[i] = list[j];
+    list[j] = temp;
+  }
+  return list;
+}
+function getQuestionType(q) {
+  return q.type || 'single';
+}
+function randomizeQuestionBank(bank) {
+  bank.forEach(function(q) {
+    var type = getQuestionType(q);
+    if (type === 'single' || type === 'multi') {
+      var correctIndexes = type === 'multi' ? q.x.slice() : [q.x];
+      var paired = q.o.map(function(text, index) {
+        return {text:text, correct:correctIndexes.indexOf(index) !== -1};
+      });
+      shuffleInPlace(paired);
+      q.o = paired.map(function(item) { return item.text; });
+      if (type === 'multi') {
+        q.x = paired.map(function(item, index) { return item.correct ? index : -1; }).filter(function(index) { return index !== -1; });
+      } else {
+        q.x = paired.findIndex(function(item) { return item.correct; });
+      }
+    } else if (type === 'matching' && Array.isArray(q.choices)) {
+      shuffleInPlace(q.choices);
+    }
+  });
+  shuffleInPlace(bank);
+}
+function makeEmptyAnswer(q) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return [];
+  if (type === 'matching' || type === 'sequence') return {};
+  return -1;
+}
+function makeEmptyAnswers() {
+  return questions.map(function(q) { return makeEmptyAnswer(q); });
+}
+function sortedCopy(list) {
+  return list.slice().sort(function(a, b) { return a - b; });
+}
+function isQuestionAnswered(q, answer) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return Array.isArray(answer) && answer.length === q.selectCount;
+  if (type === 'matching') return q.pairs.every(function(_, index) { return answer && answer[index] && answer[index] !== ''; });
+  if (type === 'sequence') {
+    if (!answer) return false;
+    var ranks = q.steps.map(function(_, index) { return parseInt(answer[index], 10); });
+    return ranks.every(function(rank) { return rank >= 1 && rank <= q.steps.length; }) &&
+      new Set(ranks).size === q.steps.length;
+  }
+  return answer !== -1;
+}
+function isCorrectAnswer(q, answer) {
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    if (!Array.isArray(answer) || answer.length !== q.x.length) return false;
+    var a = sortedCopy(answer.map(Number));
+    var x = sortedCopy(q.x.map(Number));
+    return a.every(function(value, index) { return value === x[index]; });
+  }
+  if (type === 'matching') {
+    return q.pairs.every(function(pair, index) { return answer && answer[index] === pair.answer; });
+  }
+  if (type === 'sequence') {
+    return q.steps.every(function(_, index) { return parseInt(answer && answer[index], 10) === q.x[index]; });
+  }
+  return answer === q.x;
+}
+var questionTemplate = JSON.parse(JSON.stringify(questions));
+var answers = makeEmptyAnswers();
+
+function safeStorageGet(key) {
+  try { return localStorage.getItem(key); } catch (err) { return null; }
+}
+function safeStorageSet(key, value) {
+  try { localStorage.setItem(key, value); return true; } catch (err) { return false; }
+}
+function safeStorageRemove(key) {
+  try { localStorage.removeItem(key); } catch (err) {}
+}
+function loadSavedProgress() {
+  var raw = safeStorageGet(STORAGE_KEY);
+  if (!raw) return null;
+  try {
+    var saved = JSON.parse(raw);
+    var valid =
+      saved &&
+      saved.version === STORAGE_VERSION &&
+      Array.isArray(saved.questions) &&
+      saved.questions.length === questionTemplate.length &&
+      Array.isArray(saved.answers) &&
+      saved.answers.length === questionTemplate.length &&
+      saved.remainingSeconds > 0 &&
+      !saved.submitted;
+    if (!valid) {
+      safeStorageRemove(STORAGE_KEY);
+      return null;
+    }
+    return saved;
+  } catch (err) {
+    safeStorageRemove(STORAGE_KEY);
+    return null;
+  }
+}
+function clearSavedProgress() {
+  safeStorageRemove(STORAGE_KEY);
+  pendingSavedSession = null;
+}
+function saveProgress() {
+  if (!sessionActive || submitted) return;
+  var state = {
+    version: STORAGE_VERSION,
+    savedAt: new Date().toISOString(),
+    submitted: false,
+    questions: questions,
+    answers: answers,
+    currentQ: currentQ,
+    remainingSeconds: remainingSeconds,
+    studentName: studentName,
+    studentEmail: studentEmail,
+    candidateType: candidateType,
+    targetWindow: targetWindow,
+    funnelOptIn: funnelOptIn
+  };
+  safeStorageSet(STORAGE_KEY, JSON.stringify(state));
+}
+function prepareNewAttempt() {
+  questions = JSON.parse(JSON.stringify(questionTemplate));
+  randomizeQuestionBank(questions);
+  answers = makeEmptyAnswers();
+  remainingSeconds = EXAM_SECONDS;
+  currentQ = 0;
+  submitted = false;
+}
+function showResumeOption() {
+  pendingSavedSession = loadSavedProgress();
+  var panel = document.getElementById('resumePanel');
+  if (!pendingSavedSession) {
+    panel.hidden = true;
+    return;
+  }
+  var answered = pendingSavedSession.answers.filter(function(a) { return a !== -1; }).length;
+  var minutes = Math.floor(pendingSavedSession.remainingSeconds / 60);
+  var savedDate = new Date(pendingSavedSession.savedAt);
+  document.getElementById('resumeSummary').textContent =
+    answered + ' of ' + questionTemplate.length + ' questions answered · ' +
+    minutes + ' minutes remaining · saved ' + savedDate.toLocaleString();
+  panel.hidden = false;
+}
+function launchAssessment(startIndex) {
+  sessionActive = true;
+  document.getElementById('startScreen').classList.remove('active');
+  document.getElementById('topbar').style.display = 'flex';
+  renderQuestions();
+  showQuestion(Math.min(Math.max(startIndex || 0, 0), questions.length - 1), false);
+  startTimer();
+  saveProgress();
+}
+function resumeQuiz() {
+  var saved = loadSavedProgress();
+  if (!saved) {
+    showResumeOption();
+    alert('The saved attempt is no longer available. Please begin a new assessment.');
+    return;
+  }
+  questions = saved.questions;
+  answers = saved.answers;
+  currentQ = saved.currentQ || 0;
+  remainingSeconds = saved.remainingSeconds;
+  studentName = saved.studentName || '';
+  studentEmail = saved.studentEmail || '';
+  candidateType = saved.candidateType || 'First-time PMP candidate';
+  targetWindow = saved.targetWindow || 'Within 30 days';
+  funnelOptIn = saved.funnelOptIn !== false;
+  submitted = false;
+
+  document.getElementById('studentName').value = studentName;
+  document.getElementById('studentEmail').value = studentEmail;
+  document.getElementById('candidateType').value = candidateType;
+  document.getElementById('targetWindow').value = targetWindow;
+  document.getElementById('funnelOptIn').checked = funnelOptIn;
+  launchAssessment(currentQ);
+}
+function discardSavedAttempt() {
+  clearSavedProgress();
+  prepareNewAttempt();
+  document.getElementById('resumePanel').hidden = true;
+}
+function createSubmissionId() {
+  return 'PMP-' + Date.now().toString(36).toUpperCase() + '-' +
+    Math.random().toString(36).slice(2, 8).toUpperCase();
+}
+
+function loadLastSubmission() {
+  var raw = safeStorageGet(LAST_SUBMISSION_KEY);
+  if (!raw) return null;
+  try {
+    var data = JSON.parse(raw);
+    return data && data.email && data.checkpoint ? data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function showSavedSubmissionOption() {
+  var data = loadLastSubmission();
+  var panel = document.getElementById('savedSubmissionPanel');
+  if (!data) {
+    panel.hidden = true;
+    return;
+  }
+  var score = data.overallScore || (data.overallPct === undefined ? 'saved result' : data.overallPct + '%');
+  document.getElementById('savedSubmissionSummary').textContent =
+    'A completed ' + (data.checkpoint || 'assessment') + ' result (' + score + ') is saved in this browser.';
+  panel.hidden = false;
+}
+
+function resendSavedSubmission() {
+  var data = loadLastSubmission();
+  var status = document.getElementById('savedSubmissionStatus');
+  if (!data) {
+    status.textContent = 'No completed score is available in this browser.';
+    showSavedSubmissionOption();
+    return;
+  }
+  data.accessKey = DIAGNOSTIC_ACCESS_KEY;
+  data.submissionId = data.submissionId || createSubmissionId();
+  data.submissionReference = data.submissionReference || data.submissionId;
+  data.submittedAt = data.submittedAt || new Date().toISOString();
+  safeStorageSet(LAST_SUBMISSION_KEY, JSON.stringify(data));
+  status.textContent = 'Sending the saved score…';
+  fetch(GOOGLE_SCRIPT_URL, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(data)
+  })
+    .then(function() {
+      status.textContent = 'Saved score sent. Refresh the Assessment Center in a few moments. Reference: ' + data.submissionReference;
+    })
+    .catch(function() {
+      status.textContent = 'The saved score could not be sent. Keep the saved report and contact support with reference: ' + data.submissionReference;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('beginBtn').addEventListener('click', startQuiz);
+  document.getElementById('resumeBtn').addEventListener('click', resumeQuiz);
+  document.getElementById('restartBtn').addEventListener('click', discardSavedAttempt);
+  document.getElementById('resendSavedSubmissionBtn').addEventListener('click', resendSavedSubmission);
+  document.getElementById('reviewBtn').addEventListener('click', toggleReview);
+  document.getElementById('retrySubmitBtn').addEventListener('click', retryLastSubmission);
+  showResumeOption();
+  showSavedSubmissionOption();
+});
+
+window.addEventListener('beforeunload', function(event) {
+  if (!sessionActive || submitted) return;
+  saveProgress();
+  event.preventDefault();
+  event.returnValue = '';
+});
+
+function validateForm() {
+  var nameInput = document.getElementById('studentName');
+  var emailInput = document.getElementById('studentEmail');
+  var name = nameInput.value.trim();
+  var email = emailInput.value.trim();
+  var ok = true;
+  document.getElementById('nameError').classList.remove('show');
+  document.getElementById('emailError').classList.remove('show');
+  nameInput.setAttribute('aria-invalid', 'false');
+  emailInput.setAttribute('aria-invalid', 'false');
+  if (!name) {
+    document.getElementById('nameError').classList.add('show');
+    nameInput.setAttribute('aria-invalid', 'true');
+    ok = false;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('emailError').classList.add('show');
+    emailInput.setAttribute('aria-invalid', 'true');
+    ok = false;
+  }
+  return ok;
+}
+
+function startQuiz() {
+  if (!validateForm()) return;
+  if (loadSavedProgress() && !confirm('Starting a new assessment will erase the saved attempt on this device. Continue?')) return;
+  clearSavedProgress();
+  prepareNewAttempt();
+  studentName = document.getElementById('studentName').value.trim();
+  studentEmail = document.getElementById('studentEmail').value.trim();
+  candidateType = document.getElementById('candidateType').value;
+  targetWindow = document.getElementById('targetWindow').value;
+  funnelOptIn = document.getElementById('funnelOptIn').checked;
+  launchAssessment(0);
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>\"']/g, function(ch) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch];
+  });
+}
+function renderSingleOrMulti(q, i, type) {
+  var letters = ['A','B','C','D','E','F'];
+  return q.o.map(function(o, j) {
+    var inputId = 'q' + i + 'o' + j;
+    var isChecked = type === 'multi' ? (answers[i] || []).indexOf(j) !== -1 : answers[i] === j;
+    var checked = isChecked ? ' checked' : '';
+    var selected = isChecked ? ' selected' : '';
+    var inputType = type === 'multi' ? 'checkbox' : 'radio';
+    return '<label class="option' + selected + '" for="' + inputId + '">' +
+      '<input class="option-input" type="' + inputType + '" id="' + inputId + '" name="question-' + i + '" value="' + j + '" data-q="' + i + '" data-opt="' + j + '"' + checked + '>' +
+      '<span class="letter" aria-hidden="true">' + letters[j] + '</span>' +
+      '<span class="option-text">' + escapeHtml(o) + '</span>' +
+    '</label>';
+  }).join('');
+}
+function renderMatching(q, i) {
+  var answer = answers[i] || {};
+  var choiceOptions = '<option value="">Choose a match</option>' + q.choices.map(function(choice) {
+    return '<option value="' + escapeHtml(choice) + '">' + escapeHtml(choice) + '</option>';
+  }).join('');
+  return '<div class="structured-group">' + q.pairs.map(function(pair, index) {
+    var selectId = 'q' + i + 'm' + index;
+    var options = choiceOptions.replace('value="' + escapeHtml(answer[index] || '') + '"', 'value="' + escapeHtml(answer[index] || '') + '" selected');
+    return '<div class="structured-row"><label for="' + selectId + '">' + escapeHtml(pair.left) + '</label>' +
+      '<select class="match-select" id="' + selectId + '" data-q="' + i + '" data-row="' + index + '">' + options + '</select></div>';
+  }).join('') + '</div>';
+}
+function renderSequence(q, i) {
+  var answer = answers[i] || {};
+  var rankOptions = '<option value="">Choose order</option>' + q.steps.map(function(_, index) {
+    return '<option value="' + (index + 1) + '">' + (index + 1) + '</option>';
+  }).join('');
+  return '<div class="structured-group">' + q.steps.map(function(step, index) {
+    var selectId = 'q' + i + 's' + index;
+    var selectedValue = String(answer[index] || '');
+    var options = selectedValue ? rankOptions.replace('value="' + selectedValue + '"', 'value="' + selectedValue + '" selected') : rankOptions;
+    return '<div class="structured-row"><label for="' + selectId + '">' + escapeHtml(step) + '</label>' +
+      '<select class="sequence-select" id="' + selectId + '" data-q="' + i + '" data-row="' + index + '">' + options + '</select></div>';
+  }).join('') + '</div>';
+}
+function renderQuestionBody(q, i) {
+  var type = getQuestionType(q);
+  if (type === 'matching') return renderMatching(q, i);
+  if (type === 'sequence') return renderSequence(q, i);
+  return renderSingleOrMulti(q, i, type);
+}
+function questionTypeNote(q) {
+  var type = getQuestionType(q);
+  if (type === 'multi') return 'Select ' + q.selectCount + ' responses';
+  if (type === 'matching') return 'Match each item';
+  if (type === 'sequence') return 'Choose the correct order';
+  return '';
+}
+function renderQuestions() {
+  var c = document.getElementById('quizContainer');
+  c.innerHTML = '';
+  questions.forEach(function(q, i) {
+    var domainLabel = q.d === 'people' ? 'People' : q.d === 'process' ? 'Process' : 'Business Environment';
+    var card = document.createElement('section');
+    card.className = 'q-card';
+    card.id = 'q' + i;
+    card.setAttribute('aria-labelledby', 'qText' + i);
+    var note = questionTypeNote(q);
+
+    var prev = i > 0 ? '<button class="prev" type="button" data-goto="' + (i - 1) + '">Previous</button>' : '<span></span>';
+    var next = i < questions.length - 1
+      ? '<button class="next" type="button" data-goto="' + (i + 1) + '">Next</button>'
+      : '<button class="submit" type="button" data-submit="true">Submit Diagnostic</button>';
+
+    card.innerHTML =
+      '<div class="q-head"><span class="q-num">Question ' + (i + 1) + ' of ' + questions.length + '</span></div>' +
+      '<div class="q-text" id="qText' + i + '">' + escapeHtml(q.q) + '</div>' +
+      (note ? '<div class="q-type-note">' + note + '</div>' : '') +
+      '<fieldset style="border:0;padding:0;margin:0;"><legend class="sr-only">Answer question ' + (i + 1) + '</legend>' +
+      renderQuestionBody(q, i) + '</fieldset><div class="nav">' + prev + next + '</div>';
+    c.appendChild(card);
+  });
+
+  c.addEventListener('change', function(e) {
+    if (e.target.matches('.option-input')) {
+      selectOption(parseInt(e.target.dataset.q, 10), parseInt(e.target.dataset.opt, 10), e.target.checked);
+    }
+    if (e.target.matches('.match-select') || e.target.matches('.sequence-select')) {
+      selectStructured(parseInt(e.target.dataset.q, 10), parseInt(e.target.dataset.row, 10), e.target.value);
+    }
+  });
+  c.addEventListener('click', function(e) {
+    var go = e.target.closest('[data-goto]');
+    if (go) return showQuestion(parseInt(go.dataset.goto, 10));
+    if (e.target.closest('[data-submit]')) submitQuiz(false);
+  });
+}
+
+function showQuestion(idx, shouldSave) {
+  document.querySelectorAll('.q-card').forEach(function(card) { card.classList.remove('active'); });
+  document.getElementById('q' + idx).classList.add('active');
+  currentQ = idx;
+  updateProgress();
+  if (shouldSave !== false) saveProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  var selected = document.querySelector('#q' + idx + ' .option-input:checked, #q' + idx + ' select');
+  var first = selected || document.querySelector('#q' + idx + ' .option-input, #q' + idx + ' select');
+  if (first) setTimeout(function() { first.focus({preventScroll:true}); }, 100);
+}
+
+function selectOption(qi, oi, checked) {
+  if (submitted) return;
+  var q = questions[qi];
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    var current = Array.isArray(answers[qi]) ? answers[qi].slice() : [];
+    if (checked && current.indexOf(oi) === -1) {
+      if (current.length >= q.selectCount) {
+        var input = document.querySelector('#q' + qi + ' .option-input[data-opt="' + oi + '"]');
+        if (input) input.checked = false;
+        return;
+      }
+      current.push(oi);
+    }
+    if (!checked) current = current.filter(function(value) { return value !== oi; });
+    answers[qi] = current;
+  } else {
+    answers[qi] = oi;
+  }
+  document.querySelectorAll('#q' + qi + ' .option').forEach(function(opt, j) {
+    var selected = type === 'multi' ? answers[qi].indexOf(j) !== -1 : j === oi;
+    opt.classList.toggle('selected', selected);
+  });
+  updateProgress();
+  saveProgress();
+}
+function selectStructured(qi, row, value) {
+  if (submitted) return;
+  if (!answers[qi] || typeof answers[qi] !== 'object' || Array.isArray(answers[qi])) answers[qi] = {};
+  answers[qi][row] = value;
+  updateProgress();
+  saveProgress();
+}
+
+function updateProgress() {
+  var answered = answers.filter(function(answer, index) { return isQuestionAnswered(questions[index], answer); }).length;
+  document.getElementById('progressText').textContent = answered + ' / ' + questions.length;
+  document.getElementById('progressFill').style.width = (answered / questions.length * 100) + '%';
+}
+
+function startTimer() {
+  if (timerHandle) clearInterval(timerHandle);
+  renderTimer();
+  timerHandle = setInterval(function() {
+    remainingSeconds--;
+    renderTimer();
+    if (remainingSeconds % 5 === 0) saveProgress();
+    if (remainingSeconds <= 0) {
+      clearInterval(timerHandle);
+      timerHandle = null;
+      submitQuiz(true);
+    }
+  }, 1000);
+}
+
+function renderTimer() {
+  var t = document.getElementById('timer');
+  var m = Math.floor(Math.max(remainingSeconds, 0) / 60);
+  var s = Math.max(remainingSeconds, 0) % 60;
+  t.textContent = m + ':' + String(s).padStart(2, '0');
+  t.classList.toggle('warning', remainingSeconds <= 600 && remainingSeconds > 180);
+  t.classList.toggle('danger', remainingSeconds <= 180);
+}
+
+function getStatus(correct, total) {
+  var pct = total ? correct / total * 100 : 0;
+  if (pct >= 78) return {label:'Strong', cls:'strong'};
+  if (pct >= 60) return {label:'Developing', cls:'developing'};
+  return {label:'Review Needed', cls:'focus-status'};
+}
+
+function barColor(correct, total) {
+  var pct = total ? correct / total * 100 : 0;
+  if (pct >= 78) return '#216E39';
+  if (pct >= 60) return '#B65C00';
+  return '#B42318';
+}
+
+function readinessLabel(pct) {
+  if (pct >= 84) return 'Exceptional baseline on a high-rigor diagnostic. Your next risk is full-length consistency, pacing, and format execution.';
+  if (pct >= 75) return 'Strong starting point, but the misses still reveal exam-day decision risks that should be repaired before scheduling.';
+  if (pct >= 65) return 'Developing readiness. A structured study plan and coached scenario practice are strongly recommended.';
+  return 'Significant readiness gaps identified. Do not rely on more memorization alone; use guided training to rebuild judgment and exam strategy.';
+}
+
+function submitQuiz(auto) {
+  if (submitted) return;
+  var unanswered = answers.filter(function(answer, index) { return !isQuestionAnswered(questions[index], answer); }).length;
+  if (!auto && unanswered > 0 && !confirm('You have ' + unanswered + ' unanswered question' + (unanswered === 1 ? '' : 's') + '. Submit anyway?')) return;
+  var completionStatus = unanswered === 0 ? 'Completed' : 'Incomplete';
+  submitted = true;
+  sessionActive = false;
+  clearSavedProgress();
+  if (timerHandle) { clearInterval(timerHandle); timerHandle = null; }
+
+  var scores = {people:{correct:0,total:0}, process:{correct:0,total:0}, business:{correct:0,total:0}};
+  var topicScores = {};
+  var totalCorrect = 0;
+  questions.forEach(function(q, i) {
+    scores[q.d].total++;
+    var key = q.d + '||' + q.t;
+    if (!topicScores[key]) topicScores[key] = {domain:q.d, topic:q.t, correct:0, total:0};
+    topicScores[key].total++;
+    if (isCorrectAnswer(q, answers[i])) {
+      scores[q.d].correct++;
+      topicScores[key].correct++;
+      totalCorrect++;
+    }
+  });
+
+  document.getElementById('quizContainer').style.display = 'none';
+  document.getElementById('topbar').style.display = 'none';
+  document.getElementById('resultsScreen').classList.add('active');
+  var pct = Math.round(totalCorrect / questions.length * 100);
+  var completedSeconds = EXAM_SECONDS - Math.max(remainingSeconds, 0);
+  var answeredCount = answers.filter(function(answer, index) { return isQuestionAnswered(questions[index], answer); }).length;
+  document.getElementById('totalPct').textContent = pct + '%';
+  document.getElementById('readinessLabel').textContent = readinessLabel(pct);
+  document.getElementById('totalFraction').textContent = totalCorrect + ' / ' + questions.length + ' correct · ' + Math.floor(completedSeconds / 60) + 'm ' + (completedSeconds % 60) + 's';
+  var now = new Date();
+  document.getElementById('printDate').textContent = 'Completed: ' + now.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  document.getElementById('printStudent').textContent = studentName + ' \u00b7 ' + studentEmail + ' \u00b7 ' + candidateType + ' \u00b7 ' + targetWindow;
+
+  var domainMeta = [
+    {key:'people', label:'People', color:'#216E39'},
+    {key:'process', label:'Process', color:'#1B5E9D'},
+    {key:'business', label:'Business Environment', color:'#C49A27'}
+  ];
+  var domainResults = document.getElementById('domainResults');
+  var breakdown = document.getElementById('breakdownContainer');
+  var focusList = document.getElementById('focusList');
+  var topicDetails = [];
+  var focusTopics = [];
+  domainResults.innerHTML = '';
+  breakdown.innerHTML = '';
+  focusList.innerHTML = '';
+
+  domainMeta.forEach(function(d) {
+    var dp = scores[d.key].total ? Math.round(scores[d.key].correct / scores[d.key].total * 100) : 0;
+    domainResults.innerHTML += '<div class="domain-card"><strong style="color:' + d.color + '">' + d.label + '</strong><div class="bar-bg"><div class="bar" style="background:' + d.color + ';width:' + dp + '%"></div></div><strong>' + dp + '%</strong><span>' + scores[d.key].correct + '/' + scores[d.key].total + '</span></div>';
+    var rows = Object.keys(topicScores).filter(function(k) { return topicScores[k].domain === d.key; }).map(function(k) { return topicScores[k]; });
+    rows.sort(function(a, b) { return (a.correct/a.total) - (b.correct/b.total); });
+    var html = '<div class="topic-card"><h3>' + d.label + ' Topic Breakdown</h3>';
+    rows.forEach(function(t) {
+      var tp = Math.round(t.correct / t.total * 100);
+      var st = getStatus(t.correct, t.total);
+      var color = barColor(t.correct, t.total);
+      if (st.label === 'Review Needed') {
+        focusList.innerHTML += '<li><strong>' + t.topic + '</strong> <span class="review-meta">(' + d.label + ' \u00b7 ' + t.correct + '/' + t.total + ')</span></li>';
+        focusTopics.push(d.label + ': ' + t.topic + ' (' + t.correct + '/' + t.total + ')');
+      }
+      topicDetails.push({domain:d.label, topic:t.topic, correct:t.correct, total:t.total, pct:tp, status:st.label});
+      html += '<div class="topic-row"><strong>' + t.topic + '</strong><div class="bar-bg"><div class="bar" style="background:' + color + ';width:' + tp + '%"></div></div><span>' + t.correct + '/' + t.total + '</span><span class="status ' + st.cls + '">' + st.label + '</span></div>';
+    });
+    html += '</div>';
+    breakdown.innerHTML += html;
+  });
+  if (!focusList.innerHTML) focusList.innerHTML = '<li>No topic fell below the review threshold. Confirm this performance with a full-length timed simulation before scheduling the exam.</li>';
+  var lowestDomain = domainMeta.map(function(d) {
+    var s = scores[d.key];
+    return {label:d.label, pct:s.total ? Math.round(s.correct / s.total * 100) : 0};
+  }).sort(function(a,b){ return a.pct - b.pct; })[0];
+  document.getElementById('coachNote').innerHTML =
+    '<h3>Your Training Recommendation</h3>' +
+    '<p>' + readinessLabel(pct) + '</p>' +
+    '<p><strong>Primary risk area:</strong> ' + lowestDomain.label + ' at ' + lowestDomain.pct + '%.</p>' +
+    '<p>This diagnostic is intentionally harder than a basic practice quiz. The goal is not to make you feel ready; it is to identify the decision habits that could cost you points under pressure. A guided plan should address your weakest domain, your lowest-scoring topics, and timed scenario execution.</p>';
+  buildReview();
+  submitScoresToSheet({
+    accessKey:DIAGNOSTIC_ACCESS_KEY,
+    checkpoint:checkpoint,
+    studentName:studentName,
+    email:studentEmail,
+    candidateType:candidateType,
+    targetWindow:targetWindow,
+    funnelOptIn:funnelOptIn,
+    overallPct:pct,
+    readinessLabel:readinessLabel(pct),
+    overallScore:totalCorrect + '/' + questions.length,
+    peoplePct:scores.people.total ? Math.round(scores.people.correct / scores.people.total * 100) : 0,
+    peopleScore:scores.people.correct + '/' + scores.people.total,
+    processPct:scores.process.total ? Math.round(scores.process.correct / scores.process.total * 100) : 0,
+    processScore:scores.process.correct + '/' + scores.process.total,
+    businessPct:scores.business.total ? Math.round(scores.business.correct / scores.business.total * 100) : 0,
+    businessScore:scores.business.correct + '/' + scores.business.total,
+    completedSeconds:completedSeconds,
+    answeredCount:answeredCount,
+    unansweredCount:questions.length - answeredCount,
+    completionStatus:completionStatus,
+    focusTopics:focusTopics,
+    topicDetails:topicDetails
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function formatAnswer(q, answer) {
+  var letters = ['A','B','C','D','E','F'];
+  var type = getQuestionType(q);
+  if (!isQuestionAnswered(q, answer)) return '<span class="incorrect-text">Not answered</span>';
+  if (type === 'multi') {
+    return sortedCopy(answer.map(Number)).map(function(index) { return letters[index] + '. ' + escapeHtml(q.o[index]); }).join('<br>');
+  }
+  if (type === 'matching') {
+    return q.pairs.map(function(pair, index) { return escapeHtml(pair.left) + ' → ' + escapeHtml(answer[index] || ''); }).join('<br>');
+  }
+  if (type === 'sequence') {
+    return q.steps.map(function(step, index) { return escapeHtml(answer[index] || '?') + '. ' + escapeHtml(step); }).join('<br>');
+  }
+  return letters[answer] + '. ' + escapeHtml(q.o[answer]);
+}
+function formatCorrectAnswer(q) {
+  var letters = ['A','B','C','D','E','F'];
+  var type = getQuestionType(q);
+  if (type === 'multi') {
+    return sortedCopy(q.x.map(Number)).map(function(index) { return letters[index] + '. ' + escapeHtml(q.o[index]); }).join('<br>');
+  }
+  if (type === 'matching') {
+    return q.pairs.map(function(pair) { return escapeHtml(pair.left) + ' → ' + escapeHtml(pair.answer); }).join('<br>');
+  }
+  if (type === 'sequence') {
+    return q.steps.map(function(step, index) { return q.x[index] + '. ' + escapeHtml(step); }).sort().join('<br>');
+  }
+  return letters[q.x] + '. ' + escapeHtml(q.o[q.x]);
+}
+function buildReview() {
+  var rv = document.getElementById('reviewSection');
+  rv.innerHTML = '';
+  var missedCount = 0;
+  questions.forEach(function(q, i) {
+    var ok = isCorrectAnswer(q, answers[i]);
+    if (ok) return;
+    missedCount++;
+    var your = '<span class="incorrect-text">' + formatAnswer(q, answers[i]) + '</span>';
+    var correct = '<br>Correct answer: <span class="correct-text">' + formatCorrectAnswer(q) + '</span>';
+    rv.innerHTML += '<div class="review-item incorrect"><strong>' + (i + 1) + '. ' + escapeHtml(q.q) + '</strong><div class="review-meta">' + escapeHtml(q.t) + ' \u00b7 ' + escapeHtml(q.a) + '</div><p>Your answer: ' + your + correct + '</p><p><em>' + escapeHtml(q.r) + '</em></p></div>';
+  });
+  if (missedCount === 0) {
+    rv.innerHTML = '<div class="review-item correct"><strong>No missed questions.</strong><p>Your next step is to verify this performance under a full-length timed simulation.</p></div>';
+  }
+}
+
+function toggleReview() {
+  var rv = document.getElementById('reviewSection');
+  var show = rv.style.display === 'none';
+  rv.style.display = show ? 'block' : 'none';
+  document.getElementById('reviewBtn').textContent = show ? 'Hide Missed Questions' : 'Review Missed Questions';
+}
+
+function submitScoresToSheet(data) {
+  var statusEl = document.getElementById('submitStatus');
+  var retryBtn = document.getElementById('retrySubmitBtn');
+  retryBtn.style.display = 'none';
+
+  data.submissionId = data.submissionId || createSubmissionId();
+  data.submissionReference = data.submissionReference || data.submissionId;
+  data.submittedAt = data.submittedAt || new Date().toISOString();
+  lastSubmissionPayload = data;
+  safeStorageSet(LAST_SUBMISSION_KEY, JSON.stringify(data));
+
+  if (window.parent !== window) {
+    statusEl.className = 'status-box show sending';
+    statusEl.textContent = 'Saving your score to your private learner record...';
+    window.parent.postMessage({type:'ptaAssessmentResult', payload:data}, 'https://pmptrainingacademy.com');
+    return;
+  }
+
+  if (!GOOGLE_SCRIPT_URL) {
+    statusEl.className = 'status-box show error';
+    statusEl.textContent = 'Score submission is not configured. Please save your report.';
+    return;
+  }
+
+  statusEl.className = 'status-box show sending';
+  statusEl.textContent = 'Sending your score for processing...';
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(data)
+  })
+    .then(function() {
+      statusEl.className = 'status-box show success';
+      statusEl.innerHTML =
+        'Your score submission was sent. Refresh the Assessment Center in a few moments to view your updated Score Snapshot. If the result does not appear, save this report and provide the reference number to support. ' +
+        '<strong>Reference: ' + data.submissionId + '</strong>';
+    })
+    .catch(function() {
+      statusEl.className = 'status-box show error';
+      statusEl.innerHTML =
+        'The browser could not send your score. Save your report, then retry or email it to <strong>info@pmptrainingacademy.com</strong>. ' +
+        '<strong>Reference: ' + data.submissionId + '</strong>';
+      retryBtn.style.display = 'inline-flex';
+    });
+}
+
+window.addEventListener('message', function(event) {
+  if (event.origin !== 'https://pmptrainingacademy.com') return;
+  var message = event.data || {};
+  if (message.type === 'ptaLearnerContext' && message.learner) {
+    var nameInput = document.getElementById('studentName');
+    var emailInput = document.getElementById('studentEmail');
+    var learnerName = String(message.learner.name || '').trim();
+    var learnerEmail = String(message.learner.email || '').trim();
+    if (nameInput) nameInput.value = learnerName;
+    if (emailInput) emailInput.value = learnerEmail;
+    if (learnerName && learnerEmail) {
+      studentName = learnerName;
+      studentEmail = learnerEmail;
+      document.querySelectorAll('.identity-field').forEach(function(field) {
+        field.hidden = true;
+      });
+      var profileFields = document.getElementById('learnerProfileFields');
+      if (profileFields) profileFields.hidden = true;
+      var consentRow = document.getElementById('learnerEmailConsent');
+      var consentInput = document.getElementById('funnelOptIn');
+      funnelOptIn = false;
+      if (consentInput) consentInput.checked = false;
+      if (consentRow) consentRow.hidden = true;
+    }
+  }
+  if (message.type !== 'ptaAssessmentSaveStatus') return;
+  var statusEl = document.getElementById('submitStatus');
+  var retryBtn = document.getElementById('retrySubmitBtn');
+  if (message.ok) {
+    statusEl.className = 'status-box show success';
+    statusEl.textContent = 'Score saved to your private learner record. Reference: ' + message.reference;
+    retryBtn.style.display = 'none';
+  } else {
+    statusEl.className = 'status-box show error';
+    statusEl.textContent = 'Your score is visible but could not be saved. Keep your local report and retry.';
+    retryBtn.style.display = 'inline-flex';
+  }
+});
+
+function retryLastSubmission() {
+  var data = lastSubmissionPayload;
+  if (!data) {
+    var raw = safeStorageGet(LAST_SUBMISSION_KEY);
+    try { data = raw ? JSON.parse(raw) : null; } catch (err) { data = null; }
+  }
+  if (!data) {
+    alert('No saved submission is available to retry.');
+    return;
+  }
+  submitScoresToSheet(data);
+}
+
+function saveAsPDF() {
+  setTimeout(function() { window.print(); }, 150);
+}
+
+(function() {
+  function getExamHeight() {
+    var body = document.body;
+    var doc = document.documentElement;
+    return Math.max(
+      body ? body.scrollHeight : 0,
+      body ? body.offsetHeight : 0,
+      doc ? doc.clientHeight : 0,
+      doc ? doc.scrollHeight : 0,
+      doc ? doc.offsetHeight : 0
+    );
+  }
+  function sendExamHeight() {
+    try {
+      window.parent.postMessage({ type: 'pmpDiagnosticHeight', height: getExamHeight() }, '*');
+    } catch (e) {}
+  }
+  window.addEventListener('load', sendExamHeight);
+  window.addEventListener('resize', sendExamHeight);
+  window.addEventListener('message', function(event) {
+    if (event && event.data && event.data.type === 'pmpDiagnosticRequestHeight') sendExamHeight();
+  });
+  if (window.MutationObserver) {
+    new MutationObserver(sendExamHeight).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true
+    });
+  }
+  setInterval(sendExamHeight, 1500);
+  sendExamHeight();
+})();
+
+</script>
+</body>
+</html>
